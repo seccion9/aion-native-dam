@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_app"
+    android:padding="2dp">
+
+    <TextView
+        android:id="@+id/tvtituloDiario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Calendario de reservas"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearBotonesExperiencias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvtituloDiario">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnTodasExp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/boton_experiencia_azul"
+            android:text="Todas las experiencias"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnTestExp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginStart="5dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/boton_experiencia"
+            android:text="Experiencia Test"
+            android:textColor="@color/gray"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+
+        android:id="@+id/tvVisualizacionCalendario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Visualización del Calendario"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearBotonesExperiencias" />
+
+    <Spinner
+        android:id="@+id/spinnerCalendario"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="6dp"
+        android:background="@color/white"
+        android:entries="@array/calendario_array"
+        app:layout_constraintEnd_toEndOf="@+id/linearBotonesExperiencias"
+        app:layout_constraintStart_toStartOf="@+id/linearBotonesExperiencias"
+        app:layout_constraintTop_toBottomOf="@+id/tvVisualizacionCalendario" />
+
+    <LinearLayout
+        android:id="@+id/layoutFechas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerCalendario"
+        app:layout_constraintStart_toStartOf="@+id/spinnerCalendario"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCalendario">
+
+        <LinearLayout
+            android:id="@+id/linearHoy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.3"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerCalendario">
+
+            <TextView
+
+                android:id="@+id/tvFlechaIzquierdaHoy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.27"
+                android:background="@drawable/tv_home"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="&lt;"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvHoy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.45"
+                android:background="@drawable/tv_home"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Hoy"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/tvFlechaDerechaHoy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.27"
+                android:background="@drawable/tv_home"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="&gt;"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.3"
+            android:background="@drawable/tv_home"
+            android:padding="10dp"
+            android:text="Seleccionar fecha"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/linearHoy"
+            app:layout_constraintStart_toEndOf="@+id/linearHoy"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerCalendario" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvFecha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="7 - 8 abr 2025"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/layoutFechas"
+        app:layout_constraintStart_toStartOf="@+id/layoutFechas"
+        app:layout_constraintTop_toBottomOf="@+id/layoutFechas" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearSelectorDias"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toEndOf="@+id/tvFecha"
+        app:layout_constraintStart_toStartOf="@+id/tvFecha"
+        app:layout_constraintTop_toBottomOf="@+id/tvFecha">
+
+        <TextView
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/tv2dias"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/tv_home"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="dia"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvSemana"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/tvSemana"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/tv_home"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Semana"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvMes"
+            app:layout_constraintStart_toEndOf="@+id/tv2dias"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/tvMes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/tv_home"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Mes"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvSemana"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvDia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Lunes, 5 de abril"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearCabeceraReservas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/tvDia"
+        app:layout_constraintStart_toStartOf="@+id/tvDia"
+        app:layout_constraintTop_toBottomOf="@+id/tvDia">
+
+        <TextView
+            android:id="@+id/tvHora"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.14"
+            android:gravity="center"
+            android:text="Hora"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSala1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.43"
+            android:gravity="center"
+            android:text="Sala 1"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSala2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.43"
+            android:gravity="center"
+            android:text="Sala 2"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHorasSalas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="@id/linearCabeceraReservas"
+        app:layout_constraintEnd_toEndOf="@id/linearCabeceraReservas"
+        app:layout_constraintTop_toBottomOf="@id/linearCabeceraReservas"
+        app:layout_constraintBottom_toTopOf="@id/btnBloquear" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBloquear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/boton_bloqueo"
+        android:text="Bloquear"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/recyclerHorasSalas"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerHorasSalas" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="10dp"
+        android:id="@+id/btnBloqueoMasivo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_bloqueo"
+        android:text="Bloqueo masivo"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerHorasSalas"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerHorasSalas" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.99" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

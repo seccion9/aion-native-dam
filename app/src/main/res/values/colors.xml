@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="fondo_app">#e5e5e5</color>
+    <color name="botones">#29a745</color>
+    <color name="azul_app">#277af3</color>
+    <color name="gray">#7C7C7C</color>
+    <color name="editHoy">#2c3e51</color>
+    <color name="botones_bloqueo">#555555</color>
+
+    <color name="verde_suave">#A7F4A9</color>
+    <color name="verde_libre">#66FB6C</color>
+    <color name="rojo_reserva">#F29898</color>
+    <color name="amarillo_sinhorario">#F4E34A</color>
+</resources>

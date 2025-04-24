@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#2c3e51" />
+    <corners android:radius="3dp" />
+    <!-- Borde (opcional, si quieres agregar un borde visible) -->
+    <stroke android:width="2dp" android:color="#34495e" />
+
+    <!-- Relleno (opcional, si quieres añadir espacio interno) -->
+    <padding android:left="8dp" android:top="8dp" android:right="8dp" android:bottom="8dp" />
+</shape>

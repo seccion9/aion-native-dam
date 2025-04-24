@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardReservaHora"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="4dp"
+    android:background="@drawable/boton_experiencia"
+    app:cardElevation="4dp"
+    android:layout_marginBottom="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <!-- Hora -->
+        <LinearLayout
+            android:padding="2dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.14"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/boton_experiencia"
+            android:paddingEnd="4dp">
+
+            <TextView
+                android:id="@+id/tvHoraInicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="09:00"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/tvHoraFin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="09:30"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <!-- Sala 1 -->
+        <!-- Sala 1 -->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="0.43">
+
+            <TextView
+                android:id="@+id/tvSala1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:gravity="center"
+                android:text="10:00\nLibre"
+                android:textSize="16sp"
+                android:background="@drawable/boton_experiencia"
+                android:textColor="@color/black"/>
+        </FrameLayout>
+
+        <!-- Sala 2 -->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="0.43">
+
+            <TextView
+                android:id="@+id/tvSala2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:gravity="center"
+                android:text="10:00\nLibre"
+                android:textSize="16sp"
+                android:background="@drawable/boton_experiencia"
+                android:textColor="@color/black"/>
+        </FrameLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

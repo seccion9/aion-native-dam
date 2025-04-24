@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/reservas_home"
+        android:icon="@drawable/cita"
+        android:title="Reservas">
+        <menu>
+            <item
+                android:id="@+id/home"
+                android:icon="@drawable/casa"
+                android:title="Home"/>
+            <item
+                android:id="@+id/listado"
+                android:icon="@drawable/lista"
+                android:title="Listado"/>
+            <item
+                android:id="@+id/calendario"
+                android:icon="@drawable/calendario"
+                android:title="Calendario"/>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/configuracion"
+        android:icon="@drawable/configuraciones"
+        android:title="Configuración"/>
+
+    <item
+        android:id="@+id/cerrar_sesion"
+        android:icon="@drawable/cerrarsesion"
+        android:title="Cerrar Sesión"/>
+</menu>

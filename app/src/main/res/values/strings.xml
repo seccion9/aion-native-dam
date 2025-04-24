@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">GestionReservas</string>
+    <string name="openDrawer">Abrir Menú</string>
+    <string name="closeDrawer">Cerrar Menú</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="open_drawer">Abrir menú</string>
+    <string name="close_drawer">Cerrar menú</string>
+    <array name="calendario_array">
+        <item>Semanal</item>
+        <item>Diario</item>
+    </array>
+    <string-array name="array_jugadores">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4</item>
+    </string-array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
