@@ -1,6 +1,7 @@
 package com.example.gestionreservas.view.fragment
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context.MODE_PRIVATE
 import android.os.Build
@@ -27,7 +28,8 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
-
+import kotlin.random.Random
+import android.app.AlertDialog.Builder
 
 
 class CalendarioFragmentDiario: Fragment() ,OnClickListener{
@@ -47,12 +49,12 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
         // Inflamos el layout del fragmento para que cargue la vista correctamente
         binding = FragmentCalendarioDiarioBinding.inflate(inflater, container, false)
         instancias()
-        /*recibimos por argumentos de nuestro fragment la fecha seleccionada
+        /*recibimos por argumentos de nuestro fragment semanal y mensual la fecha seleccionada
           si no es nula llamamos a la funcion actualizar fecha para obtener la
           fecha que se selecciono y sus horarios.
           Si es nula se obtiene la fecha de hoy
          */
-        val fechaString = arguments?.getString("fecha")
+        val fechaString = arguments?.getString("fechaSeleccionada") ?: arguments?.getString("fecha")
         if (fechaString != null) {
             fechaActual = LocalDate.parse(fechaString)
             actualizarFecha()
@@ -77,10 +79,10 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
          binding.tvMes.setOnClickListener(this)
          binding.btnTestExp.setOnClickListener(this)
          binding.btnTodasExp.setOnClickListener(this)
-         binding.selectFecha!!.setOnClickListener(this)
+         binding.selectFecha.setOnClickListener(this)
          binding.tvHoy.setOnClickListener(this)
-         binding.tvDiario!!.setOnClickListener(this)
-         binding.tvRecargar!!.setOnClickListener(this)
+         binding.tvDiario.setOnClickListener(this)
+         binding.tvRecargar.setOnClickListener(this)
          binding.tvSemana.setOnClickListener(this)
 
          //Adaptadores y recycler reservas
@@ -99,7 +101,6 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
         val mes = fechaHoy.month.getDisplayName(TextStyle.FULL, Locale("es", "ES"))
         val anio = fechaHoy.year
         val diaSemana = fechaHoy.dayOfWeek.getDisplayName(TextStyle.FULL, Locale("es", "ES"))
-        val diaMayuscula = diaSemana.replaceFirstChar { it.uppercase() }
         val fechaDiaSemana="${diaSemana.replaceFirstChar { it.titlecase(Locale("es", "ES")) }} $dia $mes $anio"
 
         binding.tvFecha.text = fechaDiaSemana
@@ -161,14 +162,14 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
                 transacion.addToBackStack(null)
                 transacion.commit()
             }
-            binding.selectFecha!!.id->{
+            binding.selectFecha.id->{
 
                 mostrarSeleccionFecha()
             }
             binding.tvHoy.id->{
                 volverDiaActual()
             }
-            binding.tvDiario!!.id->{
+            binding.tvDiario.id->{
                 volverDiaActual()
             }
             binding.tvSemana.id->{
@@ -178,7 +179,7 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
                     .addToBackStack(null)
                     .commit()
             }
-            binding.tvRecargar!!.id->{
+            binding.tvRecargar.id->{
                 val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
                 obtenerHorariosDelDia(token!!,listaIdsExperiencias,fechaStr)
                 Log.d("Recargando datos", "cargando datos para dia: $fechaStr")
@@ -225,7 +226,11 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
                         call: Call<List<ExperienciaConHorarios>>,
                         response: Response<List<ExperienciaConHorarios>>
                     ) {
-                        if (response.isSuccessful) {
+                        /*false añadido para que salte al else y genere los datos falsos ya que la API
+                           actualmente no nos devuelve datos consistentes,se enseñara un mensaje en la
+                           pantalla advirtiendo que los mensajes son falseados
+                         */
+                        if (response.isSuccessful && false) {
                             val experiencias = response.body()
                             Log.d("API Response", "Experiencias recibidas: $experiencias")
                             val mapaHorarios: MutableMap<String, MutableMap<Int, Boolean>> = mutableMapOf()
@@ -273,10 +278,24 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
                             adaptadorHoraReserva.actualizarLista(listaReservaHoras)
 
                         } else {
+                            val dialogo= AlertDialog.Builder(context)
+                            dialogo.setTitle("Datos simulados")
+                            dialogo.setMessage("Los datos mostrados no son reales. Estamos usando información falsa debido a un fallo en la conexión.")
+                            dialogo.setPositiveButton("Aceptar") { dialog, _ ->
+                                dialog.dismiss()
+                            }
+                            dialogo.setCancelable(true)
+                            dialogo.show()
+
                             val codigo = response.code()
                             val errorBody = response.errorBody()?.string()
                             Log.e("Horarios", "Error al obtener los horarios. Código: $codigo")
                             Log.e("Horarios", "Mensaje del error: $errorBody")
+                            // Generar horarios falsos según la fecha actual
+                            val horariosFalsos = generarDatosFalsosParaFecha(fecha)
+                            listaReservaHoras.clear()
+                            listaReservaHoras.addAll(horariosFalsos)
+                            adaptadorHoraReserva.actualizarLista(listaReservaHoras)
                         }
                     }
 
@@ -324,7 +343,21 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
         }
 
     }
+    //Funcion creada para devolver datos de reservas diarias cuando la respuesta a la api no devuelva nada
+    private fun generarDatosFalsosParaFecha(fecha: String): List<HoraReserva> {
+        val franjas = listOf("10:00-11:00", "11:10-12:10", "12:20-13:20", "13:30-14:30", "16:20-17:20", "18:30-19:30")
+        val aleatorio = Random(fecha.hashCode())
 
+        return franjas.map {
+            val (inicio, fin) = it.split("-")
+            HoraReserva(
+                horaInicio = inicio,
+                horaFin = fin,
+                sala1Libre = aleatorio.nextBoolean(),
+                sala2Libre = aleatorio.nextBoolean()
+            )
+        }
+    }
     //Metodo para obtener nuestro token guardado en shared preferences
     private fun getTokenFromSharedPreferences(): String? {
         val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", MODE_PRIVATE)

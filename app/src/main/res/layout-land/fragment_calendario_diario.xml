@@ -29,6 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvtituloDiario">
 
         <androidx.appcompat.widget.AppCompatButton
+            android:foreground="?attr/selectableItemBackground"
             android:id="@+id/btnTodasExp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -41,6 +42,7 @@
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:foreground="?attr/selectableItemBackground"
             android:id="@+id/btnTestExp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -65,13 +67,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearBotonesExperiencias" />
 
-    <Spinner
-        android:id="@+id/spinnerCalendario"
+    <TextView
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tvRecargar"
         android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="6dp"
-        android:background="@color/white"
-        android:entries="@array/calendario_array"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tv_home"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="Recargar"
+        android:textSize="14sp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="@+id/linearBotonesExperiencias"
         app:layout_constraintStart_toStartOf="@+id/linearBotonesExperiencias"
         app:layout_constraintTop_toBottomOf="@+id/tvVisualizacionCalendario" />
@@ -82,9 +91,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.3"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerCalendario"
-        app:layout_constraintStart_toStartOf="@+id/spinnerCalendario"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCalendario">
+        app:layout_constraintEnd_toEndOf="@+id/tvRecargar"
+        app:layout_constraintStart_toStartOf="@+id/tvRecargar"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecargar">
 
         <LinearLayout
             android:id="@+id/linearHoy"
@@ -98,7 +107,7 @@
             app:layout_constraintTop_toBottomOf="@+id/spinnerCalendario">
 
             <TextView
-
+                android:foreground="?attr/selectableItemBackground"
                 android:id="@+id/tvFlechaIzquierdaHoy"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -114,6 +123,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:foreground="?attr/selectableItemBackground"
                 android:id="@+id/tvHoy"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -128,6 +138,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:foreground="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
                 android:id="@+id/tvFlechaDerechaHoy"
@@ -145,9 +156,10 @@
         </LinearLayout>
 
         <TextView
+            android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:id="@+id/textView"
+            android:id="@+id/selectFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -189,9 +201,10 @@
         app:layout_constraintTop_toBottomOf="@+id/tvFecha">
 
         <TextView
+            android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:id="@+id/tv2dias"
+            android:id="@+id/tvDiario"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -207,6 +220,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
             android:id="@+id/tvSemana"
@@ -222,10 +236,11 @@
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/tvMes"
-            app:layout_constraintStart_toEndOf="@+id/tv2dias"
+            app:layout_constraintStart_toEndOf="@+id/tvDiario"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
             android:id="@+id/tvMes"
@@ -245,6 +260,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        android:layout_marginEnd="10dp"
         android:id="@+id/tvDia"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -253,6 +269,7 @@
         android:gravity="center"
         android:text="Lunes, 5 de abril"
         android:textSize="20sp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="parent" />
@@ -310,6 +327,7 @@
         app:layout_constraintBottom_toTopOf="@id/btnBloquear" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:foreground="?attr/selectableItemBackground"
         android:id="@+id/btnBloquear"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -325,6 +343,7 @@
         app:layout_constraintTop_toBottomOf="@+id/recyclerHorasSalas" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:foreground="?attr/selectableItemBackground"
         android:layout_marginTop="10dp"
         android:id="@+id/btnBloqueoMasivo"
         android:layout_width="0dp"

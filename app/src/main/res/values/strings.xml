@@ -10,16 +10,12 @@
 
     <string name="open_drawer">Abrir menú</string>
     <string name="close_drawer">Cerrar menú</string>
-    <array name="calendario_array">
-        <item>Semanal</item>
-        <item>Diario</item>
+    <array name="comentario_array">
+        <item>Comentario</item>
+        <item>Consulta</item>
+        <item>Cancelacion</item>
     </array>
-    <string-array name="array_jugadores">
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>4</item>
-    </string-array>
+
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

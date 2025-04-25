@@ -11,6 +11,7 @@ import com.example.gestionreservas.databinding.ActivityReservasBinding
 import com.example.gestionreservas.view.fragment.CalendarioFragmentDiario
 import com.example.gestionreservas.view.fragment.HomeFragment
 import com.example.gestionreservas.view.fragment.ListadoFragment
+import com.example.gestionreservas.view.fragment.MailingFragment
 
 class ReservasActivity : AppCompatActivity() {
     private lateinit var binding: ActivityReservasBinding
@@ -56,6 +57,9 @@ class ReservasActivity : AppCompatActivity() {
                         Log.d("Navigation", "Se seleccionó Calendario")
                         CalendarioFragmentDiario()
                     }
+                    R.id.mailing->{
+                        MailingFragment()
+                    }
                     else -> null
             }
 
@@ -63,7 +67,7 @@ class ReservasActivity : AppCompatActivity() {
                 // Reemplaza el contenido del FrameLayout con el fragment seleccionado
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fragment_principal, it)
-                    .addToBackStack(null)  // Este metodo te permite volver al fragment anterior al hacer back o dar hacia atra
+                    .addToBackStack(null)
                     .commit()
             }
             //Metodo para cerrar el menu lateral una vez que se selecciona una opcion en el

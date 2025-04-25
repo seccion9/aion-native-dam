@@ -3,6 +3,7 @@ package com.example.gestionreservas.network
 import com.example.gestionreservas.models.entity.Experiencia
 import com.example.gestionreservas.models.entity.ExperienciaConHorarios
 import com.example.gestionreservas.models.entity.LoginRequest
+import com.example.gestionreservas.models.entity.OcupacionCalendarioSemanal
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -26,4 +27,12 @@ interface ApiService {
         @Query("ids[]") ids: List<Int>,
         @Query("date") fecha: String
     ): Call<List<ExperienciaConHorarios>>
+
+    @GET("api/getMonthlyOccupancyByExperienceIdsAndDates")
+    fun obtenerCalendarioSemanal(
+        @Header("Authorization") token:String,
+        @Query("ids[]") ids: List<Int>,
+        @Query("date_start") fechaInicio:String,
+        @Query("date_end") fechaFin:String
+    ):Call<Map<String, OcupacionCalendarioSemanal>>
 }
