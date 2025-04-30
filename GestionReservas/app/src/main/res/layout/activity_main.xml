@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_app"
+    android:padding="20dp"
+    tools:context=".view.activities.MainActivity">
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Iniciar Sesión"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivUser"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="20dp"
+        android:maxWidth="400dp"
+        android:background="@color/fondo_app"
+        android:scaleType="centerCrop"
+        android:src="@drawable/usuario"
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+        app:layout_constraintStart_toStartOf="@id/tvTitulo"
+        app:layout_constraintEnd_toEndOf="@id/tvTitulo" />
+
+    <EditText
+        android:id="@+id/editCorreo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:maxWidth="400dp"
+        android:background="@drawable/edit_login"
+        android:drawableLeft="@drawable/sobre"
+        android:hint="Correo electrónico"
+        android:paddingLeft="10dp"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/ivUser"
+        app:layout_constraintStart_toStartOf="@id/ivUser"
+        app:layout_constraintEnd_toEndOf="@id/ivUser" />
+
+    <EditText
+        android:id="@+id/editPass"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:maxWidth="400dp"
+        android:background="@drawable/edit_login"
+        android:drawableLeft="@drawable/candado"
+        android:hint="Contraseña"
+        android:paddingLeft="10dp"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/editCorreo"
+        app:layout_constraintStart_toStartOf="@id/editCorreo"
+        app:layout_constraintEnd_toEndOf="@id/editCorreo" />
+
+    <!-- Botón Login -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        android:layout_marginEnd="10dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/boton_personalizado"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/editPass"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/editPass" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginStart="10dp"
+        android:id="@+id/btnReset"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/boton_personalizado"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="Reset"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/editPass"
+        app:layout_constraintStart_toEndOf="@id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/editPass" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <!-- Guideline vertical para organización (si la necesitas) -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

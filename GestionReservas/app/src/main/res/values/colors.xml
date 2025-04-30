@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="fondo_app">#e5e5e5</color>
+    <color name="botones">#29a745</color>
+    <color name="azul_app">#277af3</color>
+    <color name="gray">#7C7C7C</color>
+    <color name="editHoy">#2c3e51</color>
+    <color name="botones_bloqueo">#555555</color>
+
+    <!-- Colores recycler listado-->
+    <color name="verde_confirmado">#91C282</color>
+    <color name="verde_recycler">#d8ead2</color>
+    <color name="naranja_pendiente">#f4d36e</color>
+    <color name="naranja_recycler">#fbefcb</color>
+    <color name="casilla_pagado">#83a4f4</color>
+    <color name="enviar_whatsapp">#16a2b8</color>
+    <color name="verde_suave">#d8ead2</color>
+    <color name="verde_libre">#8BB38D</color>
+    <color name="rojo_reserva">#F29898</color>
+    <color name="amarillo_sinhorario">#F4E34A</color>
+</resources>

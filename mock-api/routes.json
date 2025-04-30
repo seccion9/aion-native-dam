@@ -1,0 +1,7 @@
+{
+  "/api/getMonthlyOccupancyByExperienceIdsAndDates": "/monthlyOccupancy",
+  "/api/getPurchaseById": "/purchasesById",
+  "/api/getExperiencesByIdsAndDate": "/experiencesByDate",
+  "/api/getExperiencesByIds": "/experiencesByIds",
+  "/api/escaperadar/getOccupancyBetweenDates": "/occupancyER"
+}
