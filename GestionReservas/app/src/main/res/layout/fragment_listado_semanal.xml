@@ -195,24 +195,10 @@
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tvFechaAlta"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_weight="1"/>
-
-        <TextView
-            android:id="@+id/tvFechaAlta"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Fecha Alta"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/tvStatus"
             app:layout_constraintEnd_toStartOf="@id/tvFechaJuego"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_weight="1"/>
+            app:layout_constraintHorizontal_weight="0.22" />
 
         <TextView
             android:id="@+id/tvFechaJuego"
@@ -222,11 +208,11 @@
             android:text="Fecha Juego"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/tvFechaAlta"
+            app:layout_constraintStart_toEndOf="@id/tvStatus"
             app:layout_constraintEnd_toStartOf="@id/tvExperiencia"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_weight="1"/>
+            app:layout_constraintHorizontal_weight="0.24" />
 
         <TextView
             android:id="@+id/tvExperiencia"
@@ -237,13 +223,13 @@
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/tvFechaJuego"
-            app:layout_constraintEnd_toStartOf="@id/tvSala"
+            app:layout_constraintEnd_toStartOf="@id/tvCalendario"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_weight="1"/>
+            app:layout_constraintHorizontal_weight="0.27" />
 
         <TextView
-            android:id="@+id/tvSala"
+            android:id="@+id/tvCalendario"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -251,10 +237,24 @@
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/tvExperiencia"
+            app:layout_constraintEnd_toStartOf="@id/tvPago"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_weight="0.21" />
+
+        <TextView
+            android:id="@+id/tvPago"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Pago"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tvCalendario"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_weight="1"/>
+            app:layout_constraintHorizontal_weight="0.21" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

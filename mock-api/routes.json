@@ -3,5 +3,7 @@
   "/api/getPurchaseById": "/purchasesById",
   "/api/getExperiencesByIdsAndDate": "/experiencesByDate",
   "/api/getExperiencesByIds": "/experiencesByIds",
-  "/api/escaperadar/getOccupancyBetweenDates": "/occupancyER"
+  "/api/purchases": "/purchases",              
+  "/api/sanctum/token": "/_sanctum_token_placeholder",      
+  "/api/sanctum/check_token": "/_sanctum_check_token_placeholder"  
 }

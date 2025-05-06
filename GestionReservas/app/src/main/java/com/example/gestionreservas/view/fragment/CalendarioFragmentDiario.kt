@@ -21,17 +21,15 @@ import com.example.gestionreservas.models.entity.ExperienciaConHorarios
 import com.example.gestionreservas.models.entity.HoraReserva
 import com.example.gestionreservas.network.RetrofitInstance
 import com.example.gestionreservas.view.adapter.AdaptadorHoraReserva
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
-import kotlin.random.Random
-import android.app.AlertDialog.Builder
 import androidx.lifecycle.lifecycleScope
+import com.example.gestionreservas.network.RetrofitFakeInstance
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class CalendarioFragmentDiario: Fragment() ,OnClickListener{
@@ -39,11 +37,8 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
     private val reservasPorDia: MutableMap<LocalDate, List<HoraReserva>> = mutableMapOf()
     private lateinit var listaReservaHoras:ArrayList<HoraReserva>
     private lateinit var adaptadorHoraReserva: AdaptadorHoraReserva
-    private val listaIdsExperiencias = mutableListOf<Int>()
-    private var token: String? = null
     @RequiresApi(Build.VERSION_CODES.O)
     private var fechaActual: LocalDate = LocalDate.now()
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -60,11 +55,14 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
         if (fechaString != null) {
             fechaActual = LocalDate.parse(fechaString)
             actualizarFecha()
-            val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-            obtenerHorariosDelDia(getTokenFromSharedPreferences()!!, listaIdsExperiencias, fechaStr)
         } else {
             obtenerFechaHoy()
         }
+
+        /* Lanza la mock para la fecha mostrada */
+        val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
+
+        cargarDesdeMock(fechaStr)
 
         return binding.root
     }
@@ -73,8 +71,20 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
      fun instancias(){
          //Obtenemos la fecha de hoy
          obtenerFechaHoy()
-         //generarReservasParaMesActual()
-         obtenerExperiencias()
+
+         //Instancias nuestro adaptador y recycler
+         listaReservaHoras = arrayListOf()
+         adaptadorHoraReserva = AdaptadorHoraReserva(requireContext(), listaReservaHoras)
+         binding.recyclerHorasSalas.apply {
+             adapter = adaptadorHoraReserva
+             layoutManager = LinearLayoutManager(requireContext())
+         }
+
+         //Cargamos datos desde nuestro mock API
+         val hoyStr = fechaActual.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
+
+         cargarDesdeMock(hoyStr)
+
          //Instancias click
          binding.tvFlechaDerechaHoy.setOnClickListener(this)
          binding.tvFlechaIzquierdaHoy.setOnClickListener(this)
@@ -87,15 +97,34 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
          binding.tvRecargar.setOnClickListener(this)
          binding.tvSemana.setOnClickListener(this)
 
-         //Adaptadores y recycler reservas
-         listaReservaHoras = arrayListOf()
-         adaptadorHoraReserva = AdaptadorHoraReserva(requireContext(), listaReservaHoras)
-         binding.recyclerHorasSalas.adapter = adaptadorHoraReserva
-         binding.recyclerHorasSalas.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    //Este metodo obtiene la fecha actual y la asigna al textview tvFecha
+    /*Obtenemos nuestro token y con la fecha obtenida por parametros cargamos los datos del dia
+     despues actualizamos nuestro adaptador para notificarle que cambiaron los datos,esta funcion nos vale cada
+     vez que cambiemos de fecha
+    */
+    @SuppressLint("NewApi")
+    private fun cargarDesdeMock(fechaDDMM: String) {
+        val tkn = getTokenFromSharedPreferences() ?: return
 
+        // Cambiamos formato a lo que devuelve la API -> 05/05/2025 -> 2025-05-05
+
+        val fechaAPI = try {
+            // Intenta parsear como dd/MM/yyyy
+            LocalDate.parse(fechaDDMM, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+        } catch (e: Exception) {
+            // Si falla, intenta como yyyy/MM/dd
+            LocalDate.parse(fechaDDMM, DateTimeFormatter.ofPattern("yyyy/MM/dd"))
+        }.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
+
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            val lista = obtenerOcupacionDiaria(tkn, fechaAPI)
+            Log.e("fun cargarDatosDesdeMock","Lista Ocupacion ${fechaDDMM}: ~${lista}")
+            adaptadorHoraReserva.actualizarLista(lista)
+        }
+    }
+    //Este metodo obtiene la fecha actual y la asigna al textview tvFecha
     @RequiresApi(Build.VERSION_CODES.O)
     private fun obtenerFechaHoy(){
         val fechaHoy = LocalDate.now()
@@ -106,7 +135,6 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
         val fechaDiaSemana="${diaSemana.replaceFirstChar { it.titlecase(Locale("es", "ES")) }} $dia $mes $anio"
 
         binding.tvFecha.text = fechaDiaSemana
-        Log.d("Fecha actual",fechaHoy.toString())
 
     }
 
@@ -124,24 +152,23 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
         val reservasDelDia = reservasPorDia[fechaActual] ?: emptyList()
         adaptadorHoraReserva.actualizarLista(reservasDelDia)
     }
+    //Funciones on click de nuestro fragment
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onClick(v: View?) {
-        val token=getTokenFromSharedPreferences()
+
         when(v?.id){
 
             binding.tvFlechaIzquierdaHoy.id->{
                 fechaActual = fechaActual.minusDays(1)
                 actualizarFecha()
                 val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-                Log.d("CalendarioDiario", "Flecha izquierda - Fecha: $fechaStr")
-                obtenerHorariosDelDia(token!!, listaIdsExperiencias, fechaStr)
+                cargarDesdeMock(fechaStr)
             }
             binding.tvFlechaDerechaHoy.id->{
                 fechaActual = fechaActual.plusDays(1)
                 actualizarFecha()
                 val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-                Log.d("CalendarioDiario", "Flecha derecha - Fecha: $fechaStr")
-                obtenerHorariosDelDia(token!!, listaIdsExperiencias, fechaStr)
+                cargarDesdeMock(fechaStr)
             }
             binding.tvMes.id->{
                 val fragment=CalendarioFragment()
@@ -183,179 +210,80 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
             }
             binding.tvRecargar.id->{
                 val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-                obtenerHorariosDelDia(token!!,listaIdsExperiencias,fechaStr)
-                Log.d("Recargando datos", "cargando datos para dia: $fechaStr")
+                cargarDesdeMock(fechaStr)
             }
         }
     }
+    //Volvemos al dia actual y se cargan los datos de ese dia
     @SuppressLint("NewApi")
     private fun volverDiaActual(){
         fechaActual = LocalDate.now()
         actualizarFecha()
-        val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-        obtenerHorariosDelDia(getTokenFromSharedPreferences()!!, listaIdsExperiencias, fechaStr)
+        val hoy = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+        cargarDesdeMock(hoy)
     }
+    //Muestra calendario en boton seleccionar fecha para elegir cualquier fecha
     @SuppressLint("NewApi")
-    private fun mostrarSeleccionFecha(){
-
-        val fechaHoy = LocalDate.now()
-        val datePicker = DatePickerDialog(
+    private fun mostrarSeleccionFecha() {
+        val hoy = LocalDate.now()
+        DatePickerDialog(
             requireContext(),
-            { _, year, month, dayOfMonth ->
-                val nuevaFecha = LocalDate.of(year, month + 1, dayOfMonth)
-                fechaActual = nuevaFecha
+            { _, y, m, d ->
+                fechaActual = LocalDate.of(y, m + 1, d)
                 actualizarFecha()
-
-                val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-                obtenerHorariosDelDia(getTokenFromSharedPreferences()!!, listaIdsExperiencias, fechaStr)
+                val diaSel = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+                cargarDesdeMock(diaSel)         // ← solo mock
             },
-            fechaHoy.year,
-            fechaHoy.monthValue - 1,
-            fechaHoy.dayOfMonth
-        )
-
-        datePicker.show()
-
-
+            hoy.year, hoy.monthValue - 1, hoy.dayOfMonth
+        ).show()
     }
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun obtenerHorariosDelDia(token: String, listaIds: List<Int>, fecha: String) {
-        viewLifecycleOwner.lifecycleScope.launch {
-            try {
-                val response = RetrofitInstance.api.obtenerReservas(token, listaIds, fecha)
-
-                if (response.isSuccessful && response.body() != null && response.body()!!.isNotEmpty()) {
-                    val experiencias = response.body()
-                    Log.d("API Response", "Experiencias recibidas: $experiencias")
-
-                    val mapaHorarios: MutableMap<String, MutableMap<Int, Boolean>> = mutableMapOf()
-
-                    experiencias?.forEach { experiencia ->
-                        val idSala = experiencia.id
-                        experiencia.calendarios?.forEach { calendario ->
-                            calendario.horarios.forEach { horario ->
-                                val inicio = horario.horaInicio.substring(0, 5)
-                                val fin = horario.horaFin.substring(0, 5)
-                                val clave = "$inicio-$fin"
-
-                                val mapaPorSala = mapaHorarios.getOrPut(clave) { mutableMapOf() }
-                                mapaPorSala[idSala] = horario.estaLibre
-                            }
-                        }
-                    }
-
-                    val sala1Id = listaIds.getOrNull(0)
-                    val sala2Id = listaIds.getOrNull(1)
-
-                    listaReservaHoras.clear()
-
-                    mapaHorarios.forEach { (clave, mapaSalas) ->
-                        val (inicio, fin) = clave.split("-")
-
-                        val sala1 = mapaSalas[sala1Id] ?: true
-                        val sala2 = mapaSalas[sala2Id] ?: true
-
-                        listaReservaHoras.add(
-                            HoraReserva(
-                                horaInicio = inicio,
-                                horaFin = fin,
-                                sala1Libre = sala1,
-                                sala2Libre = sala2
-                            )
-                        )
-                    }
-
-                    adaptadorHoraReserva.actualizarLista(listaReservaHoras)
-
-                } else {
-                    Log.e("API Response", "Respuesta fallida o sin datos: ${response.code()}")
-
-                    val horariosFalsos = generarDatosFalsosParaFecha(fecha)
-                    listaReservaHoras.clear()
-                    listaReservaHoras.addAll(horariosFalsos)
-                    adaptadorHoraReserva.actualizarLista(listaReservaHoras)
-
-                    mostrarDialogoDatosSimulados()
-                }
-            } catch (e: Exception) {
-                Log.e("API Error", "Excepción en obtenerHorariosDelDia: ${e.message}")
-
-                val horariosFalsos = generarDatosFalsosParaFecha(fecha)
-                listaReservaHoras.clear()
-                listaReservaHoras.addAll(horariosFalsos)
-                adaptadorHoraReserva.actualizarLista(listaReservaHoras)
-
-                mostrarDialogoDatosSimulados()
-            }
-        }
-    }
-
-    private fun obtenerExperiencias(){
-        val token=getTokenFromSharedPreferences()
-        if (token != null) {
-            RetrofitInstance.api.obtenerExperiencias(token)
-                .enqueue(object : Callback<List<Experiencia>> {
-                    @SuppressLint("NewApi")
-                    override fun onResponse(
-                        call: Call<List<Experiencia>>,
-                        response: Response<List<Experiencia>>
-                    ) {
-                        if (response.isSuccessful) {
-                            val experiencias = response.body()
-                            val listaIds = experiencias?.map { it.id } ?: emptyList()
-
-                            listaIdsExperiencias.clear()
-                            listaIdsExperiencias.addAll(listaIds)
-                            Log.d("IDs", "IDs recogidos: $listaIdsExperiencias")
-
-                            if (listaIdsExperiencias.isNotEmpty()) {
-                                val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-                                obtenerHorariosDelDia(token, listaIdsExperiencias,fechaStr.toString())
-                            }else {
-                                Log.e("IDs", "Lista de IDs vacía")
-                            }
-                        } else {
-                            val errorTexto = response.errorBody()?.string()
-                            Log.e("CalendarioDiario", "Error ${response.code()} - Detalle: $errorTexto")
-                        }
-                    }
-
-                    override fun onFailure(call: Call<List<Experiencia>>, t: Throwable) {
-                        Log.e("CalendarioDiario", "Fallo al conectar: ${t.message}")
-                    }
-                })
-        }
-
-    }
-    //Funcion creada para devolver datos de reservas diarias cuando la respuesta a la api no devuelva nada
-    private fun generarDatosFalsosParaFecha(fecha: String): List<HoraReserva> {
-        val franjas = listOf("10:00-11:00", "11:10-12:10", "12:20-13:20", "13:30-14:30", "16:20-17:20", "18:30-19:30")
-        val aleatorio = Random(fecha.hashCode())
-
-        return franjas.map {
-            val (inicio, fin) = it.split("-")
-            HoraReserva(
-                horaInicio = inicio,
-                horaFin = fin,
-                sala1Libre = aleatorio.nextBoolean(),
-                sala2Libre = aleatorio.nextBoolean()
+    /*
+    Llama a nuestra instancia de retofit para obtener de la API las ocupaciones de hoy y las transformamos
+    a hora reserva para mostrarlas en nuestro recycler
+     */
+    @SuppressLint("NewApi")
+    private suspend fun obtenerOcupacionDiaria(token: String, fechaStr: String): List<HoraReserva> {
+        return try {
+            //Llamamos a nuestra API y guardamos el resultado del filtrado de fechas
+            val ocupaciones = RetrofitFakeInstance.apiFake.obtenerReservasDia(
+                token, fechaStr, fechaStr
             )
+            Log.e("ObtenerOcupacionDiaria", "Ocupaciones: $ocupaciones")
+            //Nos aseguramos de filtrar otra vez por si la API devuelve mas valores
+            val ocupacionesDelDia = ocupaciones.filter { it.date == fechaStr }
+            //Obtenemos nuestra lista de ocupaciones
+            val listaHoraReserva = ocupacionesDelDia
+                /*Se agrupan las reservas por horas y en cada hora se ve si hay reserva en cada sala(cal1-2)
+                ,si la hay se marca  false y si no true,Se transforma a hora reservava y se ordenan las horas.
+                * */
+                .groupBy { it.start.substring(0, 5) to it.end.substring(0, 5) }
+                .map { (horas, lista) ->
+                    val (ini, fin) = horas
+
+                    val hayCal1 = lista.any { it.calendarioId == "cal1" }
+                    val hayCal2 = lista.any { it.calendarioId == "cal2" }
+
+                    HoraReserva(
+                        horaInicio = ini,
+                        horaFin = fin,
+                        sala1Libre = !hayCal1,
+                        sala2Libre = !hayCal2
+                    )
+                }
+                .sortedBy { it.horaInicio }
+
+            return listaHoraReserva
+
+        } catch (e: Exception) {
+            Log.e("MockFallback", "error: ${e.message}")
+            return emptyList()
         }
     }
+
     //Metodo para obtener nuestro token guardado en shared preferences
     private fun getTokenFromSharedPreferences(): String? {
         val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", MODE_PRIVATE)
         val token = sharedPreferences.getString("auth_token", null)
         return token?.let { "Bearer $it" }
-    }
-    private fun mostrarDialogoDatosSimulados() {
-        val dialogo = AlertDialog.Builder(requireContext())
-            .setTitle("Datos simulados")
-            .setMessage("Los datos mostrados no son reales. Estamos usando información falsa debido a un fallo en la conexión.")
-            .setPositiveButton("Aceptar") { dialog, _ -> dialog.dismiss() }
-            .setCancelable(true)
-            .create()
-
-        dialogo.show()
     }
 }

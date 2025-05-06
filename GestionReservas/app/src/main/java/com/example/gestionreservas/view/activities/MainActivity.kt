@@ -4,12 +4,20 @@ package com.example.gestionreservas.view.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import kotlinx.coroutines.launch
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.gestionreservas.models.repository.AuthRepository
 import com.example.gestionreservas.databinding.ActivityMainBinding
+import com.example.gestionreservas.models.entity.LoginRequest
+import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.network.RetrofitInstance
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +34,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //Aqui van las instancias de nuestra activity
         binding.btnLogin?.setOnClickListener(this)
         binding.btnReset?.setOnClickListener(this)
+        binding.editCorreo.setText("admin@aether.com")
+        binding.editPass.setText("1234")
 
     }
     override fun onClick(v: View?) {
@@ -56,7 +66,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val sharedPreferences = getSharedPreferences("my_prefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("auth_token", token)
-        editor.apply()  // Guardamos el token
+        editor.apply()
     }
 
     /*Credenciales validas para obtener token,cambiar por llamar a funcion login comentada para insertar datos en edittest
@@ -70,32 +80,48 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //Metodo para obtener respuesta de nuestra API a nuestra autenticacion,nos devuelve un token en
         //formato string
         val authRepository = AuthRepository(RetrofitInstance.api)
+        lifecycleScope.launch {
+            try{
 
-        // Usamos el repositorio para hacer login
-        authRepository.login(email, password).enqueue(object : Callback<String> {
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                Log.d("LoginDebug", "Código: ${response.code()}")
-                Log.d("LoginDebug", "Éxito: ${response.isSuccessful}")
-                Log.d("LoginDebug", "Cuerpo: ${response.body()}")
-                Log.d("LoginDebug", "ErrorBody: ${response.errorBody()?.string()}")
-
-                if (response.isSuccessful) {
+                val response = authRepository.login(email, password)
+                if (response.isSuccessful && false) {
                     val token = response.body()
-                    Log.e("LoginDebug", "Token recibido: $token")
                     saveTokenToSharedPreferences(token.toString())
-                    startActivity(intent)
-                    finish()
-                } else {
-                    val errorBody = response.errorBody()?.string()
-                    Log.e("LoginDebug", "ErrorBody: $errorBody")
-                }
-            }
 
-            override fun onFailure(call: Call<String>, t: Throwable) {
-                Toast.makeText(applicationContext, "Error: ${t.message}", Toast.LENGTH_LONG).show()
-                Log.e("LoginDebug", "Error de red: ${t.message}", t)
+                    // Sacamos el intent y el start activity fuera del contexto para evitar errores
+                    withContext(Dispatchers.Main) {
+                        delay(2000)
+                        startActivity(Intent(applicationContext, ReservasActivity::class.java))
+                        finish()
+                    }
+                }else{
+                    loginApiFake()
+                }
+            }catch (e: Exception) {
+                Log.e("MainActivity", "Error en la API real: ${e.message}")
+
             }
-        })
+        }
+    }
+    private suspend fun loginApiFake(){
+        val response=RetrofitFakeInstance.apiFake.autenticacion(LoginRequest(
+            binding.editCorreo.text.toString(),
+            binding.editPass.text.toString()
+        ))
+        if(response.isSuccessful){
+            val loginResponse = response.body() ?: return          // LoginResponse
+            val token      = loginResponse.token                // "fake-token-abc123"
+            saveTokenToSharedPreferences(token)
+            Log.e("login Activity","Token : ${token}")
+            // Sacamos el intent y el start activity fuera del contexto para evitar errores
+            withContext(Dispatchers.Main) {
+                delay(2000)
+                startActivity(Intent(applicationContext, ReservasActivity::class.java))
+                finish()
+            }
+        }else{
+            Log.e("LoginFake", "HTTP ${response.code()}  ${response.errorBody()?.string()}")
+        }
     }
 }
 

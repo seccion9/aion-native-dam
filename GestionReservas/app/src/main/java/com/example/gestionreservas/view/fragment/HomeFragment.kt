@@ -31,14 +31,8 @@ import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.network.RetrofitInstance
 import kotlinx.coroutines.launch
-import okhttp3.internal.wait
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.time.format.TextStyle
-import java.util.Locale
+
 
 class HomeFragment: Fragment(),OnClickListener {
     @SuppressLint("NewApi")
@@ -110,8 +104,9 @@ class HomeFragment: Fragment(),OnClickListener {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private suspend fun cargarDatosDesdeJsonServer() {
+        val token=getTokenFromSharedPreferences()
         try {
-            val compras = RetrofitFakeInstance.apiFake.getPurchases()
+            val compras = RetrofitFakeInstance.apiFake.getPurchases(token!!)
             Log.d("Fake API", "Datos obtenidos: $compras")
 
             val sesiones = transformarComprasASesiones(compras, fechaActual)

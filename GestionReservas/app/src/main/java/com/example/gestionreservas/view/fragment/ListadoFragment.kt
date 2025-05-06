@@ -58,9 +58,11 @@ class ListadoFragment: Fragment(),OnClickListener {
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun cargarDatosSesionesHoy() {
+        val token=getTokenFromSharedPreferences()
         viewLifecycleOwner.lifecycleScope.launch {
             try {
-                val compras = RetrofitFakeInstance.apiFake.getPurchases()
+                actualizarFecha()
+                val compras = RetrofitFakeInstance.apiFake.getPurchases(token.toString())
                 Log.d("Fake API", "Datos obtenidos: $compras")
 
                 val sesiones = transformarComprasASesiones(compras, fechaActual)
@@ -118,12 +120,10 @@ class ListadoFragment: Fragment(),OnClickListener {
             }
             binding.tvFlechaIzquierdaHoy.id->{
                 fechaActual=fechaActual.minusDays(1)
-                actualizarFecha()
                 cargarDatosSesionesHoy()
             }
             binding.tvFlechaDerechaHoy.id->{
                 fechaActual=fechaActual.plusDays(1)
-                actualizarFecha()
                 cargarDatosSesionesHoy()
             }
         }

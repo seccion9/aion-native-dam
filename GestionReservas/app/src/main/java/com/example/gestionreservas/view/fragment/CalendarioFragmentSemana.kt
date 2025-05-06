@@ -11,16 +11,20 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentCalendarioSemanaBinding
 import com.example.gestionreservas.models.entity.DiaSemana
 import com.example.gestionreservas.models.entity.OcupacionCalendarioSemanal
+import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.network.RetrofitInstance
 import com.example.gestionreservas.view.adapter.AdaptadorDiaSemana
 import com.example.gestionreservas.view.adapter.OnDiaSemanaClickListener
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
+import retrofit2.Retrofit
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
@@ -73,7 +77,7 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
             RetrofitInstance.api.obtenerCalendarioSemanal(token, ids, fechaInicio, fechaFin)
                 .enqueue(object : retrofit2.Callback<Map<String, OcupacionCalendarioSemanal>> {
                     override fun onResponse(call: Call<Map<String, OcupacionCalendarioSemanal>>, response: Response<Map<String, OcupacionCalendarioSemanal>>) {
-                      if(response.isSuccessful){
+                      if(response.isSuccessful && false){
                           val mapaOcupacionSemanal=response.body()
                           listaCalendarioSemana=transformarMapaADiasSemana(mapaOcupacionSemanal)
                           adaptadorDiaSemana.actualizarLista(listaCalendarioSemana)
@@ -83,6 +87,7 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
                           val errorBody = response.errorBody()?.string()
                           Log.e("Horarios", "Error al obtener los horarios. Código: $codigo")
                           Log.e("Horarios", "Mensaje del error: $errorBody")
+                          cargarReservasSemanaAPIFake()
 
                       }
                     }
@@ -93,6 +98,27 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
                 })
         }
 
+    }
+    @SuppressLint("NewApi")
+    private fun cargarReservasSemanaAPIFake(){
+        val lunes=fechaLunesActual
+        val domingo=lunes.plusDays(6)
+        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        val fechaInicio = lunes.format(formatter)
+        val fechaFin = domingo.format(formatter)
+        val token=getTokenFromSharedPreferences()
+        val ids = listOf(1, 2)
+        viewLifecycleOwner.lifecycleScope.launch {
+            try{
+                val response= RetrofitFakeInstance.apiFake.getMonthlyOccupancy(token.toString(), ids, fechaInicio, fechaFin)
+                val mapaOcupacionSemanal=response
+                listaCalendarioSemana=transformarMapaADiasSemana(mapaOcupacionSemanal)
+                adaptadorDiaSemana.actualizarLista(listaCalendarioSemana)
+
+            }catch (e: Exception) {
+                Log.e("calendarioFragmentSemana", "Error en la API falsa: ${e.message}")
+            }
+        }
     }
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)

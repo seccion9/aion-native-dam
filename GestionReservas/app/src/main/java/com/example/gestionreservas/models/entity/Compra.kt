@@ -1,28 +1,31 @@
 package com.example.gestionreservas.models.entity
 
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class Compra(
-    val id: String,
-    val uuid: String,
-    val status: String,
-    val mailStatus: String,
-    val internaPermanent: Boolean,
-    val idDiscount: String?,
-    val idBono: String?,
-    val priceFinal: Double,
-    val priceAfterDiscount: Double,
-    val priceFractioned: Double,
-    val isFractioned: Boolean,
-    val name: String,
-    val mail: String,
-    val dni: String,
-    val phone: String,
-    val direction: String,
-    val language: String,
-    val ip: String,
-    val comment: String,
-    val automaticActions: String,
-    val items: List<ItemReserva>,
-    val payments: List<Pago>
+    var id: String,
+    var uuid: String,
+    var status: String,
+    var mailStatus: String,
+    var internaPermanent: Boolean,
+    var idDiscount: String?,
+    var idBono: String?,
+    var priceFinal: Double,
+    var priceAfterDiscount: Double,
+    var priceFractioned: Double,
+    var isFractioned: Boolean,
+    var name: String,
+    var mail: String,
+    var dni: String,
+    var phone: String,
+    var direction: String,
+    var language: String,
+    var ip: String,
+    var comment: String,
+    var automaticActions: String,
+    var items: List<ItemReserva>,
+    var payments: List<Pago>,
+    @SerializedName("resumenItems")
+    var resumenItems: List<ResumenItem>?=null
 ):Serializable

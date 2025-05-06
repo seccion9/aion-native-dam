@@ -21,7 +21,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <EditText
+        android:enabled="false"
         android:id="@+id/tvNombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -34,7 +35,8 @@
         app:layout_constraintStart_toStartOf="@+id/tvTituloDetalles"
         app:layout_constraintTop_toBottomOf="@+id/tvTituloDetalles" />
 
-    <TextView
+    <EditText
+        android:enabled="false"
         android:id="@+id/tvTelefono"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -47,7 +49,8 @@
         app:layout_constraintStart_toStartOf="@+id/tvNombre"
         app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
 
-    <TextView
+    <EditText
+        android:enabled="false"
         android:id="@+id/tvEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -60,7 +63,8 @@
         app:layout_constraintStart_toStartOf="@+id/tvTelefono"
         app:layout_constraintTop_toBottomOf="@+id/tvTelefono" />
 
-    <TextView
+    <EditText
+        android:enabled="false"
         android:id="@+id/tvDNI"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -88,7 +92,8 @@
         app:layout_constraintStart_toStartOf="@+id/tvDNI"
         app:layout_constraintTop_toBottomOf="@+id/tvDNI" />
 
-    <TextView
+    <EditText
+        android:enabled="false"
         android:id="@+id/tvFechaInicio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -101,7 +106,8 @@
         app:layout_constraintStart_toStartOf="@+id/tvDatosSesion"
         app:layout_constraintTop_toBottomOf="@+id/tvDatosSesion" />
 
-    <TextView
+    <EditText
+        android:enabled="false"
         android:id="@+id/tvFechaFin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -114,7 +120,8 @@
         app:layout_constraintStart_toStartOf="@+id/tvFechaInicio"
         app:layout_constraintTop_toBottomOf="@+id/tvFechaInicio" />
 
-    <TextView
+    <EditText
+        android:enabled="false"
         android:id="@+id/tvSala"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -127,7 +134,8 @@
         app:layout_constraintStart_toStartOf="@+id/tvFechaFin"
         app:layout_constraintTop_toBottomOf="@+id/tvFechaFin" />
 
-    <TextView
+    <EditText
+        android:enabled="false"
         android:id="@+id/tvParticipantes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -140,7 +148,8 @@
         app:layout_constraintStart_toStartOf="@+id/tvSala"
         app:layout_constraintTop_toBottomOf="@+id/tvSala" />
 
-    <TextView
+    <EditText
+        android:enabled="false"
         android:id="@+id/tvExperiencia"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -153,7 +162,8 @@
         app:layout_constraintStart_toStartOf="@+id/tvParticipantes"
         app:layout_constraintTop_toBottomOf="@+id/tvParticipantes" />
 
-    <TextView
+    <EditText
+        android:enabled="false"
         android:id="@+id/tvIdioma"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -166,7 +176,8 @@
         app:layout_constraintStart_toStartOf="@+id/tvExperiencia"
         app:layout_constraintTop_toBottomOf="@+id/tvExperiencia" />
 
-    <TextView
+    <EditText
+        android:enabled="false"
         android:id="@+id/tvEstado"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -193,7 +204,8 @@
         app:layout_constraintStart_toStartOf="@+id/tvEstado"
         app:layout_constraintTop_toBottomOf="@+id/tvEstado" />
 
-    <TextView
+    <EditText
+        android:enabled="false"
         android:id="@+id/tvTotalPagado"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -206,7 +218,8 @@
         app:layout_constraintStart_toStartOf="@+id/tvDatosPago"
         app:layout_constraintTop_toBottomOf="@+id/tvDatosPago" />
 
-    <TextView
+    <EditText
+        android:enabled="false"
         android:id="@+id/tvMetodoPago"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -220,30 +233,55 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTotalPagado" />
 
 
-    <TextView
-        android:id="@+id/tvEditar"
+    <FrameLayout
+        android:id="@+id/frameBotonEditarGuardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/boton_experiencia_azul"
-        android:drawableLeft="@drawable/editar"
-        android:drawablePadding="12dp"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="Editar"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvMetodoPago"
+        app:layout_constraintTop_toBottomOf="@+id/tvMetodoPago"
         app:layout_constraintStart_toStartOf="@+id/tvMetodoPago"
-        app:layout_constraintTop_toBottomOf="@+id/tvMetodoPago" />
+        app:layout_constraintEnd_toEndOf="@+id/tvMetodoPago">
+
+        <TextView
+            android:id="@+id/tvEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_experiencia_azul"
+            android:drawableLeft="@drawable/edit"
+            android:drawablePadding="12dp"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Editar"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tvGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_experiencia_azul"
+            android:drawableLeft="@drawable/edit"
+            android:drawablePadding="12dp"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Guardar"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:visibility="gone" />
+    </FrameLayout>
+
 
     <TextView
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
         android:id="@+id/tvConfirmacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/boton_bloqueo"
-        android:drawableLeft="@drawable/correo"
+        android:drawableLeft="@drawable/mail"
         android:drawablePadding="12dp"
         android:gravity="center"
         android:padding="8dp"
@@ -252,15 +290,18 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/tvMetodoPago"
         app:layout_constraintStart_toStartOf="@+id/tvMetodoPago"
-        app:layout_constraintTop_toBottomOf="@+id/tvEditar" />
+        app:layout_constraintTop_toBottomOf="@+id/frameBotonEditarGuardar" />
 
     <TextView
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
         android:layout_marginTop="10dp"
         android:id="@+id/tvWhatsapp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/boton_mensaje"
-        android:drawableLeft="@drawable/enviar"
+        android:drawableLeft="@drawable/send"
         android:gravity="center"
         android:padding="8dp"
         android:drawablePadding="12dp"

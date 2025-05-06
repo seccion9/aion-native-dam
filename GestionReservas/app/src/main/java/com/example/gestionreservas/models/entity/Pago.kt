@@ -1,7 +1,7 @@
 package com.example.gestionreservas.models.entity
 
 data class Pago(
-    val id: String,
-    val amount: Double,
-    val method: String
+    var id: String,
+    var amount: Double,
+    var method: String
 )

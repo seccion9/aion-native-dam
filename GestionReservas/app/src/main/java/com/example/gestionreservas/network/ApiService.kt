@@ -15,7 +15,7 @@ import retrofit2.http.Query
 interface ApiService {
     //Conexion con cabecera de la api para que nos devuelva el token del body de la cabecera
     @POST("api/sanctum/token")
-    fun login(@Body request: LoginRequest): Call<String>
+    suspend fun login(@Body request: LoginRequest): Response<String>
 
     @GET("api/getExperiences")
     fun obtenerExperiencias(
