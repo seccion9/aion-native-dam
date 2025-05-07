@@ -25,12 +25,15 @@ import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentHomeBinding
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.ExperienciaConHorarios
+import com.example.gestionreservas.models.entity.Pago
 import com.example.gestionreservas.models.entity.PagoCaja
 import com.example.gestionreservas.models.entity.Sesion
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.network.RetrofitInstance
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.LocalDate
 
 
@@ -39,6 +42,7 @@ class HomeFragment: Fragment(),OnClickListener {
     private var fechaActual: LocalDate = LocalDate.now()
     private var token: String? = null
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var listaPagos:List<PagoCaja>
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -62,7 +66,7 @@ class HomeFragment: Fragment(),OnClickListener {
         binding.tvFlechaIzquierdaHoy.setOnClickListener(this)
         binding.tvFlechaDerechaHoy.setOnClickListener(this)
 
-        val listaPagosCaja = listOf(
+        /*val listaPagosCaja = listOf(
             PagoCaja("25/04/2025", "Calendario A", "80.0", "tarjeta", "40.0"),
             PagoCaja("25/04/2025", "Calendario B", "40.0", "tarjeta", "20.0"),
             PagoCaja("25/04/2025", "Calendario A", "25.0", "bizum", "50.0"),
@@ -71,15 +75,18 @@ class HomeFragment: Fragment(),OnClickListener {
             PagoCaja("25/04/2025", "Calendario B", "40.0", "tarjeta", "20.0"),
 
 
-            )
+            )*/
 
         //Metodos para cargar datos
-        cargarPagosCajaChica(binding.tablaCajaChica, listaPagosCaja, requireContext())
+
         cargarDatosSesionesHoy()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun cargarDatosSesionesHoy() {
+
+        binding.tablaSesiones.visibility = View.GONE
+        binding.tablaCajaChica.visibility=View.GONE
         viewLifecycleOwner.lifecycleScope.launch {
             try {
                 val token = getTokenFromSharedPreferences()
@@ -94,6 +101,7 @@ class HomeFragment: Fragment(),OnClickListener {
                     //cargarSesiones(binding.tablaSesiones, sesiones, requireContext())
                 } else {
                     cargarDatosDesdeJsonServer()
+
                 }
             } catch (e: Exception) {
                 Log.e("HomeFragment", "Error en la API real: ${e.message}")
@@ -109,13 +117,53 @@ class HomeFragment: Fragment(),OnClickListener {
             val compras = RetrofitFakeInstance.apiFake.getPurchases(token!!)
             Log.d("Fake API", "Datos obtenidos: $compras")
 
-            val sesiones = transformarComprasASesiones(compras, fechaActual)
+            val sesiones = withContext(Dispatchers.Default) {
+                transformarComprasASesiones(compras, fechaActual)
+            }
+            listaPagos= withContext(Dispatchers.Default){
+                transformarComprasAPagos(compras,fechaActual)
+            }
+            Log.e("Sesiones dia: ${fechaActual}","${sesiones}")
             cargarSesiones(binding.tablaSesiones, sesiones, requireContext())
+            cargarPagosCajaChica(binding.tablaCajaChica,listaPagos,requireContext())
+
+            binding.tablaSesiones.visibility = View.VISIBLE
+            binding.tablaCajaChica.visibility=View.VISIBLE
         } catch (e: Exception) {
             Log.e("HomeFragment", "Error en la API fake: ${e.localizedMessage}")
         }
     }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun transformarComprasAPagos(compras: List<Compra>,
+                                         fechaSeleccionada: LocalDate): List<PagoCaja> {
 
+        val pagos= mutableListOf<PagoCaja>()
+        compras.forEach{compra->
+            val itemsDelDia = compra.items.filter {
+                val fechaItem = LocalDate.parse(it.start.substring(0, 10))
+                fechaItem == fechaSeleccionada
+            }
+
+            if (itemsDelDia.isNotEmpty()) {
+                val fecha = itemsDelDia.first().start.substring(0, 10)
+                val concepto = "Reserva de ${compra.name}"
+                val cantidad = "%.2f €".format(compra.priceFinal)
+
+                compra.payments.forEach { pago ->
+                    val pagoCaja = PagoCaja(
+                        fecha = fecha,
+                        concepto = concepto,
+                        cantidad = cantidad,
+                        tipo = pago.method,
+                        parcial = "%.2f €".format(pago.amount)
+                    )
+                    pagos.add(pagoCaja)
+                }
+            }
+        }
+
+        return pagos
+    }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun transformarComprasASesiones(
         compras: List<Compra>,
@@ -281,7 +329,7 @@ class HomeFragment: Fragment(),OnClickListener {
                 val nuevaFecha = LocalDate.of(year, month + 1, dayOfMonth)
                 fechaActual = nuevaFecha
                 actualizarFecha()
-
+                cargarDatosSesionesHoy()
             },
             fechaHoy.year,
             fechaHoy.monthValue - 1,

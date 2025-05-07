@@ -1,7 +1,11 @@
 package com.example.gestionreservas.view.fragment
 
 import android.annotation.SuppressLint
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +13,7 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.gestionreservas.databinding.FragmentDetalleSesionBinding
@@ -20,6 +25,7 @@ import com.example.gestionreservas.models.entity.Sesion
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import kotlinx.coroutines.launch
+import java.net.URLEncoder
 
 class DetalleSesionFragment: Fragment(),OnClickListener {
     private lateinit var binding:FragmentDetalleSesionBinding
@@ -46,6 +52,8 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         //Instancias botones
         binding.tvEditar.setOnClickListener(this)
         binding.tvGuardar.setOnClickListener(this)
+        binding.tvConfirmacion.setOnClickListener(this)
+        binding.tvWhatsapp.setOnClickListener(this)
         //Instancias edits
         configurarEditConEtiqueta(binding.tvNombre, "Nombre")
         configurarEditConEtiqueta(binding.tvTelefono, "Teléfono")
@@ -173,12 +181,44 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
             .trim().toDoubleOrNull() ?: pago.amount
         pago.method = binding.tvMetodoPago.text.toString().removePrefix("Método de pago: ").trim()
     }
-    private fun getTokenFromSharedPreferences(): String? {
-        val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
-        val token = sharedPreferences.getString("auth_token", null)
-        return token?.let { "Bearer $it" }
-    }
+    private fun enviarConfirmacion(){
+        //Obtenemos mail y rellenamos asunto y cuerpo de prueba
+        val destinatario=compraRecuperada.mail
+        val asunto="Confirmación reservas"
+        val cuerpo= "Hola, esta es la confirmación de su reserva. ¡Gracias por confiar en nosotros!"
+        //Uri de apps de correos del movil(nos mostrara nuestras app instaladas)
+        val uri= Uri.parse("mailto:$destinatario")
+        //Intentamos mandar el correo
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "message/rfc822"
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(destinatario))
+            putExtra(Intent.EXTRA_SUBJECT, asunto)
+            putExtra(Intent.EXTRA_TEXT, cuerpo)
+        }
 
+        if (intent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(Intent.createChooser(intent, "Enviar correo con..."))
+        } else {
+            Toast.makeText(requireContext(), "No hay apps de correo instaladas", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+    private fun enviarMensaje(){
+        //Recuperamos telefono y hacemos un mensaje de prueba
+        val numero = "34${compraRecuperada.phone}"
+        val mensaje = "Hola! Esto es un mensaje de prueba"
+
+        try {//Usamos la uri de Whatsapp y se pasan el numero y mensaje
+            val uri = Uri.parse("https://wa.me/$numero?text=${URLEncoder.encode(mensaje, "UTF-8")}")
+            //Intentamos lanzar Whatsapp
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(requireContext(), "WhatsApp no está instalado", Toast.LENGTH_SHORT).show()
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), "Error al abrir WhatsApp", Toast.LENGTH_SHORT).show()
+        }
+    }
     override fun onClick(v: View?) {
         when(v?.id){
             binding.tvEditar.id->{
@@ -188,6 +228,17 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
                 desactivarEdits()
                 modificarDatosCompra()
             }
+            binding.tvConfirmacion.id->{
+                enviarConfirmacion()
+            }
+            binding.tvWhatsapp.id->{
+                enviarMensaje()
+            }
         }
+    }
+    private fun getTokenFromSharedPreferences(): String? {
+        val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("auth_token", null)
+        return token?.let { "Bearer $it" }
     }
 }

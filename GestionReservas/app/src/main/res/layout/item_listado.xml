@@ -11,7 +11,7 @@
     <LinearLayout
         android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:clickable="true"
         android:focusable="true"
@@ -29,6 +29,7 @@
             android:layout_weight="0.22"
             android:gravity="center"
             android:textSize="10sp"
+            android:minHeight="64dp"
         />
         <TextView
             android:layout_margin="2dp"
@@ -37,13 +38,15 @@
             android:layout_width="0dp"
             android:background="@color/verde_recycler"
             android:textStyle="bold"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="29/04/2025\n10:00"
+            android:minHeight="64dp"
             android:id="@+id/tvFechaCard"
             android:layout_weight="0.24"
             android:textSize="10sp"
             />
         <TextView
+            android:minHeight="64dp"
             android:background="@color/verde_recycler"
             android:layout_margin="2dp"
             android:padding="5dp"
@@ -57,6 +60,7 @@
             android:id="@+id/tvExpCard"
             />
         <TextView
+            android:minHeight="64dp"
             android:background="@color/verde_recycler"
             android:layout_margin="2dp"
             android:padding="5dp"
@@ -70,6 +74,7 @@
             android:text="Sala 1"
             />
         <TextView
+            android:minHeight="64dp"
             android:background="@color/verde_recycler"
             android:layout_margin="2dp"
             android:padding="5dp"

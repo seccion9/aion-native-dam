@@ -1,5 +1,7 @@
 package com.example.gestionreservas.models.entity
 
+import java.io.Serializable
+
 data class ItemReserva(
     var id: String,
     var idExperience: String,
@@ -16,4 +18,4 @@ data class ItemReserva(
     var priceFractioned: Double,
     var discountAmount: Int,
     var fields: List<Field>
-)
+):Serializable

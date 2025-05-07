@@ -47,6 +47,7 @@ class ListadoFragment: Fragment(),OnClickListener {
         binding.tvListadoSemanal.setOnClickListener(this)
         binding.tvFlechaDerechaHoy.setOnClickListener(this)
         binding.tvFlechaIzquierdaHoy.setOnClickListener(this)
+        binding.tvHoy.setOnClickListener(this)
         // Crear adaptador vacío
         adaptadorListado = AdaptadorListado(requireContext())
         binding.recyclerReservasListado.layoutManager =
@@ -109,7 +110,11 @@ class ListadoFragment: Fragment(),OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id){
             binding.tvListadoDia.id->{
-
+                cargarDatosSesionesHoy()
+            }
+            binding.tvHoy.id->{
+                fechaActual=LocalDate.now()
+                cargarDatosSesionesHoy()
             }
             binding.tvListadoSemanal.id->{
                 val fragment=ListadoSemanalFragment()

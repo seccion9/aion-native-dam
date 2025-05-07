@@ -2,12 +2,14 @@ package com.example.gestionreservas.view.fragment
 
 import android.annotation.SuppressLint
 import android.content.Context.MODE_PRIVATE
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,6 +43,10 @@ class ListadoSemanalFragment:Fragment(),OnClickListener {
         calcularFechaActual()
         //Instancias click
         binding.tvListadoDia.setOnClickListener(this)
+        binding.tvFlechaDerechaSemana.setOnClickListener(this)
+        binding.tvFlechaIzquierdaSemana.setOnClickListener(this)
+        binding.tvListadoSemanal.setOnClickListener(this)
+        binding.tvSemana.setOnClickListener(this)
         //Adaptador
         adaptadorListado=AdaptadorListado(requireContext())
         binding.recyclerReservasListado.layoutManager=
@@ -50,6 +56,7 @@ class ListadoSemanalFragment:Fragment(),OnClickListener {
         obtenerListadoReservasSemanal()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onClick(v: View?) {
         when(v?.id){
             binding.tvListadoDia.id->{
@@ -59,8 +66,20 @@ class ListadoSemanalFragment:Fragment(),OnClickListener {
                     .addToBackStack(null)
                 transaction.commit()
             }
+            binding.tvSemana.id->{
+                fechaActual=LocalDate.now()
+                obtenerListadoReservasSemanal()
+            }
             binding.tvListadoSemanal.id->{
-
+                obtenerListadoReservasSemanal()
+            }
+            binding.tvFlechaDerechaSemana.id->{
+                fechaActual=fechaActual.plusDays(7)
+                obtenerListadoReservasSemanal()
+            }
+            binding.tvFlechaIzquierdaSemana.id->{
+                fechaActual=fechaActual.minusDays(7)
+                obtenerListadoReservasSemanal()
             }
         }
     }
@@ -84,7 +103,7 @@ class ListadoSemanalFragment:Fragment(),OnClickListener {
     @SuppressLint("NewApi")
     private fun transformarComprasASesiones(compras: List<Compra>):List<SesionConCompra> {
         val sesiones = mutableListOf<SesionConCompra>()
-        val hoy = LocalDate.now()
+        val hoy = fechaActual
         //Obtenemos el lunes y domingo de la semana
         val lunes = hoy.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
         val domingo = hoy.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY))

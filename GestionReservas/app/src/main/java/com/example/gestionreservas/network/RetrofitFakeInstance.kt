@@ -17,7 +17,7 @@ object RetrofitFakeInstance {
 
     // 1️⃣ construimos Retrofit…
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("http://10.0.2.2:3000/api/")
+        .baseUrl("http://192.168.1.142:3000/api/")
         .client(okHttp)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
