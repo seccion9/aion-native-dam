@@ -50,8 +50,8 @@
         </LinearLayout>
 
         <!-- Sala 1 -->
-        <!-- Sala 1 -->
         <FrameLayout
+            android:id="@+id/sala1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -71,6 +71,7 @@
 
         <!-- Sala 2 -->
         <FrameLayout
+            android:id="@+id/sala2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"

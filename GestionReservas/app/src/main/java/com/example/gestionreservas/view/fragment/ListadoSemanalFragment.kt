@@ -2,6 +2,7 @@ package com.example.gestionreservas.view.fragment
 
 import android.annotation.SuppressLint
 import android.content.Context.MODE_PRIVATE
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.gestionreservas.R
@@ -48,9 +50,27 @@ class ListadoSemanalFragment:Fragment(),OnClickListener {
         binding.tvListadoSemanal.setOnClickListener(this)
         binding.tvSemana.setOnClickListener(this)
         //Adaptador
-        adaptadorListado=AdaptadorListado(requireContext())
-        binding.recyclerReservasListado.layoutManager=
-            LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+        adaptadorListado= AdaptadorListado(
+            requireContext(),
+            mutableListOf()
+        ) { sesion: SesionConCompra ->
+            val fragment=DetalleSesionFragment()
+            val bundle=Bundle()
+            bundle.putSerializable("sesionConCompra",sesion)
+            fragment.arguments=bundle
+            val transacion=parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_principal,fragment)
+                .addToBackStack(null)
+            transacion.commit()
+
+        }
+        val orientation = resources.configuration.orientation
+        val layoutManager = if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            GridLayoutManager(requireContext(), 2) // 2 columnas en landscape
+        } else {
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        }
+        binding.recyclerReservasListado.layoutManager = layoutManager
         binding.recyclerReservasListado.adapter=adaptadorListado
         //cargamos datos sesiones semana
         obtenerListadoReservasSemanal()

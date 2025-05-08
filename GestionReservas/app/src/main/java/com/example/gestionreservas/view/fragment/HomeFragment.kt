@@ -57,6 +57,7 @@ class HomeFragment: Fragment(),OnClickListener {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun instancias() {
         actualizarFecha()
+
         //Instancias Click
         binding.tvCalendario.setOnClickListener(this)
         binding.tvReservas.setOnClickListener(this)
@@ -65,17 +66,6 @@ class HomeFragment: Fragment(),OnClickListener {
         binding.tvHoy.setOnClickListener(this)
         binding.tvFlechaIzquierdaHoy.setOnClickListener(this)
         binding.tvFlechaDerechaHoy.setOnClickListener(this)
-
-        /*val listaPagosCaja = listOf(
-            PagoCaja("25/04/2025", "Calendario A", "80.0", "tarjeta", "40.0"),
-            PagoCaja("25/04/2025", "Calendario B", "40.0", "tarjeta", "20.0"),
-            PagoCaja("25/04/2025", "Calendario A", "25.0", "bizum", "50.0"),
-            PagoCaja("25/04/2025", "Calendario B", "50.0", "tarjeta", "25.0"),
-            PagoCaja("25/04/2025", "Calendario A", "80.0", "metálico", "40.0"),
-            PagoCaja("25/04/2025", "Calendario B", "40.0", "tarjeta", "20.0"),
-
-
-            )*/
 
         //Metodos para cargar datos
 

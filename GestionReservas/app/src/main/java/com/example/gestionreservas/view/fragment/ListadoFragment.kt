@@ -10,6 +10,7 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.TableLayout
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -30,7 +31,6 @@ import java.time.LocalDate
 
 class ListadoFragment: Fragment(),OnClickListener {
     private lateinit var binding:FragmentListadoBinding
-    private var listaCompras:ArrayList<SesionConCompra> = arrayListOf()
     private lateinit var adaptadorListado:AdaptadorListado
     @RequiresApi(Build.VERSION_CODES.O)
     private var fechaActual: LocalDate = LocalDate.now()
@@ -48,8 +48,21 @@ class ListadoFragment: Fragment(),OnClickListener {
         binding.tvFlechaDerechaHoy.setOnClickListener(this)
         binding.tvFlechaIzquierdaHoy.setOnClickListener(this)
         binding.tvHoy.setOnClickListener(this)
-        // Crear adaptador vacío
-        adaptadorListado = AdaptadorListado(requireContext())
+        // Crear adaptador para pasar datos con el click
+        adaptadorListado = AdaptadorListado(
+            requireContext(),
+            mutableListOf()
+        ) { sesion: SesionConCompra ->
+            val fragment=DetalleSesionFragment()
+            val bundle=Bundle()
+            bundle.putSerializable("sesionConCompra",sesion)
+            fragment.arguments=bundle
+            val transacion=parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_principal,fragment)
+                .addToBackStack(null)
+            transacion.commit()
+
+        }
         binding.recyclerReservasListado.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recyclerReservasListado.adapter = adaptadorListado
@@ -67,6 +80,7 @@ class ListadoFragment: Fragment(),OnClickListener {
                 Log.d("Fake API", "Datos obtenidos: $compras")
 
                 val sesiones = transformarComprasASesiones(compras, fechaActual)
+
                 Log.d("ListadoFragment", "Sesiones transformadas: ${sesiones.size}")
 
                 // Aquí es donde actualizas el adaptador directamente

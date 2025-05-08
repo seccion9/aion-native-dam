@@ -38,22 +38,32 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
     ): View? {
         binding = FragmentDetalleSesionBinding.inflate(inflater, container, false)
         val sesionConCompra = arguments?.getSerializable("sesionConCompra") as? SesionConCompra
-        sesion = sesionConCompra?.sesion!!
-        compraRecuperada = sesionConCompra.compra
-        reserva=compraRecuperada.items.last()
-        pago=compraRecuperada.payments.last()
-        // Inflamos el layout del fragmento para que cargue la vista correctamente
-        instancias()
+        /*
+        Si los datos no son nulos se cargan en la interfaz y si son nulos no se carga nada y se depura
+        por el log.
+         */
+        if (sesionConCompra != null) {
+            sesion = sesionConCompra.sesion
+
+            if (sesionConCompra.compra != null) {
+                compraRecuperada = sesionConCompra.compra
+                reserva = compraRecuperada.items.lastOrNull()!!
+                pago = compraRecuperada.payments.lastOrNull()!!
+                instancias()
+            } else {
+                Log.w("DetalleSesionFragment", "Sesión sin compra: modo nuevo")
+                mostrarFormularioVacio()
+            }
+
+        } else {
+            Log.w("DetalleSesionFragment", "No se recibió sesión con compra")
+        }
+        configurarBotones()
         return binding.root
     }
     @SuppressLint("SetTextI18n")
     private fun instancias(){
         cargarDatosCompra()
-        //Instancias botones
-        binding.tvEditar.setOnClickListener(this)
-        binding.tvGuardar.setOnClickListener(this)
-        binding.tvConfirmacion.setOnClickListener(this)
-        binding.tvWhatsapp.setOnClickListener(this)
         //Instancias edits
         configurarEditConEtiqueta(binding.tvNombre, "Nombre")
         configurarEditConEtiqueta(binding.tvTelefono, "Teléfono")
@@ -142,6 +152,17 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         binding.tvGuardar.visibility = View.VISIBLE
     }
     private fun desactivarEdits(){
+        if (!validarCamposObligatorios()) {
+            Toast.makeText(requireContext(), "Por favor, completa todos los campos obligatorios", Toast.LENGTH_SHORT).show()
+            actualizarEditsAFalse()
+            return
+        }else{
+            actualizarEditsAFalse()
+            actualizarCompra()
+        }
+
+    }
+    private fun actualizarEditsAFalse(){
         binding.tvNombre.isEnabled=false
         binding.tvTelefono.isEnabled=false
         binding.tvEmail.isEnabled=false
@@ -157,7 +178,28 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         binding.tvDNI.isEnabled=false
         binding.tvGuardar.visibility = View.GONE
         binding.tvEditar.visibility = View.VISIBLE
-        actualizarCompra()
+    }
+    private fun validarCamposObligatorios(): Boolean {
+        val campos = listOf(
+            binding.tvNombre,
+            binding.tvTelefono,
+            binding.tvEmail,
+            binding.tvEstado,
+            binding.tvFechaInicio,
+            binding.tvFechaFin,
+            binding.tvSala,
+            binding.tvParticipantes,
+            binding.tvExperiencia,
+            binding.tvIdioma,
+            binding.tvTotalPagado,
+            binding.tvMetodoPago,
+            binding.tvDNI
+        )
+
+        return campos.all { editText ->
+            val texto = editText.text.toString().substringAfter(":").trim()
+            texto.isNotEmpty()
+        }
     }
     private fun actualizarCompra(){
         compraRecuperada.name = binding.tvNombre.text.toString().removePrefix("Nombre: ").trim()
@@ -241,4 +283,28 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         val token = sharedPreferences.getString("auth_token", null)
         return token?.let { "Bearer $it" }
     }
+    @SuppressLint("SetTextI18n")
+    private fun mostrarFormularioVacio() {
+        binding.tvNombre.setText("Nombre: ")
+        binding.tvTelefono.setText("Teléfono: ")
+        binding.tvEmail.setText("Email: ")
+        binding.tvEstado.setText("Estado: ")
+        binding.tvFechaInicio.setText("Inicio: ")
+        binding.tvFechaFin.setText("Fin: ")
+        binding.tvSala.setText("Sala: ${sesion.calendario}")
+        binding.tvParticipantes.setText("Participantes: ")
+        binding.tvExperiencia.setText("Experiencia: ")
+        binding.tvIdioma.setText("Idioma: ")
+        binding.tvTotalPagado.setText("Total pagado: ")
+        binding.tvMetodoPago.setText("Método de pago: ")
+        binding.tvDNI.setText("DNI: ")
+
+    }
+    private fun configurarBotones() {
+        binding.tvEditar.setOnClickListener(this)
+        binding.tvGuardar.setOnClickListener(this)
+        binding.tvConfirmacion.setOnClickListener(this)
+        binding.tvWhatsapp.setOnClickListener(this)
+    }
+
 }

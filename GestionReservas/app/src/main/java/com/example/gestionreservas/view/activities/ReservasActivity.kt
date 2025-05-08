@@ -1,9 +1,12 @@
 package com.example.gestionreservas.view.activities
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.example.gestionreservas.R
@@ -33,58 +36,79 @@ class ReservasActivity : AppCompatActivity() {
             R.string.open_drawer,
             R.string.close_drawer
         )
+
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
         /* Manejo de diferentes selecciones en la activity,cada zona del menu llevara a un fragment
-        * diferente para que haya menos consumo de datos
+        * diferente para que haya menos consumo de datos y la logica de cerrar sesion al pulsarlo
+        * en el menu
         * */
 
         binding.navView.setNavigationItemSelectedListener { item ->
 
-            val fragment: Fragment? =
-                when (item.itemId) {
-                    R.id.home -> {
-                        //Depuracion con log para comprobar que funciona al pinchar las opciones
-                        Log.d("Navigation", "Se seleccionó Home")
-                        HomeFragment()
-                    }
-                    R.id.listado -> {
-                        Log.d("Navigation", "Se seleccionó Listado")
-                        ListadoFragment()
-                    }
-                    R.id.calendario -> {
-                        Log.d("Navigation", "Se seleccionó Calendario")
-                        CalendarioFragmentDiario()
-                    }
-                    R.id.mailing->{
-                        MailingFragment()
-                    }
-                    else -> null
-            }
+            when (item.itemId) {
+                R.id.home -> {
+                    Log.d("Navigation", "Se seleccionó Home")
+                    replaceFragment(HomeFragment())
+                }
 
-            fragment?.let {
-                // Reemplaza el contenido del FrameLayout con el fragment seleccionado
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_principal, it)
-                    .addToBackStack(null)
-                    .commit()
+                R.id.listado -> {
+                    Log.d("Navigation", "Se seleccionó Listado")
+                    replaceFragment(ListadoFragment())
+                }
+
+                R.id.calendario -> {
+                    replaceFragment(CalendarioFragmentDiario())
+                }
+
+                R.id.mailing -> {
+                    replaceFragment(MailingFragment())
+                }
+
+                R.id.cerrar_sesion -> {
+                    cerrarSesion(this)
+                    return@setNavigationItemSelectedListener true
+                }
+
+                else -> false
             }
-            //Metodo para cerrar el menu lateral una vez que se selecciona una opcion en el
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
 
-        // Cargamoss por defecto nuestro fragment principal(fragment_principal)
+        //Metodo para cerrar el menu lateral una vez que se selecciona una opcion en el
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+        true
+        //Carga el fragment home por defecto al inicio despues del login
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_principal, HomeFragment())
-                .commit()
+            replaceFragment(HomeFragment())
         }
     }
-        //Funcion que permite responder a los click del usuario,es necesario sobreescribirla
+
+    //Metodo para reemplazar un fragmento por otro
+    private fun replaceFragment(fragment: Fragment): Boolean {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_principal, fragment)
+            .addToBackStack(null)
+            .commit()
+        return true
+    }
+
+    //Funcion que permite responder a los click del usuario,es necesario sobreescribirla
     override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
         return if (toggle.onOptionsItemSelected(item)) true
         else super.onOptionsItemSelected(item)
+    }
+
+    /*
+    Borra el token de sharedpreferences y nos redirige a la pantalla de login
+     */
+    private fun cerrarSesion(context: Context) {
+        val preferencias = context.getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
+        preferencias.edit().remove("auth_token").apply()
+        val intent = Intent(context, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        context.startActivity(intent)
     }
 }

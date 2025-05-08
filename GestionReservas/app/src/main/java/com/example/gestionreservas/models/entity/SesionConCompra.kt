@@ -4,5 +4,5 @@ import java.io.Serializable
 
 data class SesionConCompra(
     val sesion: Sesion,
-    val compra: Compra
+    val compra: Compra?
 ):Serializable

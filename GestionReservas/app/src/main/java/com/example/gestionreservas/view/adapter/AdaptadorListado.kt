@@ -1,19 +1,23 @@
 package com.example.gestionreservas.view.adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.gestionreservas.R
 import com.example.gestionreservas.models.entity.SesionConCompra
+import com.example.gestionreservas.view.fragment.DetalleSesionFragment
 
 
-class AdaptadorListado(var context: Context,var listaReservas: MutableList<SesionConCompra> = mutableListOf()):
+class AdaptadorListado(var context: Context,var listaReservas: MutableList<SesionConCompra> = mutableListOf(),var onItemClick: (SesionConCompra) -> Unit = {}):
     RecyclerView.Adapter<AdaptadorListado.MyHolder>() {
     class MyHolder(itemView: View) : ViewHolder(itemView) {
         var statusItem=itemView.findViewById<TextView>(R.id.tvStatusCard)
@@ -21,6 +25,9 @@ class AdaptadorListado(var context: Context,var listaReservas: MutableList<Sesio
         var horaJuegoItem=itemView.findViewById<TextView>(R.id.tvFechaCard)
         var experienciaItem=itemView.findViewById<TextView>(R.id.tvExpCard)
         var calendarioItem=itemView.findViewById<TextView>(R.id.tvCalendarioCard)
+        val contenedor = itemView.findViewById<LinearLayout>(R.id.contenedorCard)
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
@@ -34,20 +41,20 @@ class AdaptadorListado(var context: Context,var listaReservas: MutableList<Sesio
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        Log.d("AdaptadorListado", "Mostrando: ${listaReservas[position].compra.name}")
+        Log.d("AdaptadorListado", "Mostrando: ${listaReservas[position].compra?.name}")
         val sesionConCompra = listaReservas[position]
         val compra = sesionConCompra.compra
         val sesion = sesionConCompra.sesion
-        val item = compra.items.first()
+        val item = compra?.items?.first()
 
 
-        holder.statusItem.text=item.status
-        holder.horaJuegoItem.text=item.start.substring(0, 16)
-        holder.experienciaItem.text=item.idExperience
-        holder.calendarioItem.text=item.idCalendario
-        holder.pagoItem.text=compra.status
+        holder.statusItem.text=item?.status
+        holder.horaJuegoItem.text=item?.start?.substring(0, 16)
+        holder.experienciaItem.text=item?.idExperience
+        holder.calendarioItem.text=item?.idCalendario
+        holder.pagoItem.text=compra?.status
         // Aplicar colores según estado
-        if (item.status.equals("confirmada")) {
+        if (item?.status.equals("confirmada")) {
             holder.statusItem.setBackgroundColor(ContextCompat.getColor(context, R.color.verde_confirmado))
             holder.statusItem.setTextColor(ContextCompat.getColor(context, R.color.white))
             holder.horaJuegoItem.setBackgroundColor(ContextCompat.getColor(context, R.color.verde_suave))
@@ -55,7 +62,7 @@ class AdaptadorListado(var context: Context,var listaReservas: MutableList<Sesio
             holder.calendarioItem.setBackgroundColor(ContextCompat.getColor(context, R.color.verde_suave))
             holder.pagoItem.setBackgroundColor(ContextCompat.getColor(context, R.color.casilla_pagado))
             holder.pagoItem.setTextColor(ContextCompat.getColor(context, R.color.white))
-        }else if (item.status.equals("pendiente", ignoreCase = true)) {
+        }else if (item?.status.equals("pendiente", ignoreCase = true)) {
             holder.statusItem.setBackgroundColor(ContextCompat.getColor(context, R.color.naranja_pendiente))
             holder.statusItem.setTextColor(ContextCompat.getColor(context, R.color.black))
 
@@ -71,7 +78,9 @@ class AdaptadorListado(var context: Context,var listaReservas: MutableList<Sesio
             holder.pagoItem.setBackgroundColor(ContextCompat.getColor(context, R.color.naranja_pendiente))
             holder.pagoItem.setTextColor(ContextCompat.getColor(context, R.color.black))
         }
-
+        holder.contenedor.setOnClickListener {
+            onItemClick(sesionConCompra)
+        }
     }
 
     fun actualizarLista(nuevaLista: List<SesionConCompra>) {

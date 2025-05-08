@@ -2,6 +2,7 @@ package com.example.gestionreservas.view.fragment
 
 import android.annotation.SuppressLint
 import android.content.Context.MODE_PRIVATE
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentCalendarioSemanaBinding
@@ -57,8 +59,13 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
 
         adaptadorDiaSemana= AdaptadorDiaSemana(requireContext(),listaCalendarioSemana,this)
         binding.recyclerDiasSemana.adapter=adaptadorDiaSemana
-        binding.recyclerDiasSemana.layoutManager=
+        val orientation = resources.configuration.orientation
+        val layoutManager = if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            GridLayoutManager(requireContext(), 2) // 2 columnas en landscape
+        } else {
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        }
+        binding.recyclerDiasSemana.layoutManager = layoutManager
         calcularSemana()
         generarDiasSemana()
     }
@@ -127,9 +134,9 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun calcularLunesDeHoy(): LocalDate {
-        val hoy = LocalDate.now()
-        val diaSemana = hoy.dayOfWeek.value
-        return hoy.minusDays((diaSemana - 1).toLong())
+        fechaLunesActual = LocalDate.now()
+        val diaSemana = fechaLunesActual.dayOfWeek.value
+        return fechaLunesActual.minusDays((diaSemana - 1).toLong())
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun transformarMapaADiasSemana(
@@ -194,11 +201,8 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
                     .commit()
             }
             binding.tvSemana.id->{
-                val fragment=CalendarioFragmentSemana()
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_principal,fragment)
-                    .addToBackStack(null)
-                    .commit()
+                calcularLunesDeHoy()
+                actualizarSemana()
             }
             binding.tvMes.id->{
                 val fragment=CalendarioFragment()
