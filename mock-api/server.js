@@ -122,8 +122,21 @@ server.patch('/api/purchases/:id', (req, res) => {
 
   res.status(200).json(compraActualizada);
 });
+
+/* ────────── Endpoint /api/paymentsCajaChica ────────── */
+server.get('/api/paymentsCajaChicaDia/:fecha', (req, res) => {
+  const { fecha } = req.params;
+
+  const pagosDelDia = router.db
+    .get('paymentsCajaChica')
+    .filter({ fecha })
+    .value();
+
+  res.status(200).json(pagosDelDia);
+});
+
 server.use(router);     // todas las colecciones con prefijo /api
 /* ───────────────────────── Lanzar servidor ───────────────────────── */
 server.listen(3000, () =>
-  console.log('✅  Mock API corriendo en http://localhost:3000 – listo!')
+  console.log('  Mock API corriendo en http://localhost:3000 – listo!')
 );

@@ -5836,7 +5836,7 @@
       "priceAfterDiscount": 120,
       "priceFractioned": 60,
       "isFractioned": false,
-      "name": "Ana Perez",
+      "name": "Ana Martin",
       "mail": "cliente@example.com",
       "dni": "00000000X",
       "phone": "600123456",
@@ -5921,55 +5921,54 @@
       "automaticActions": "",
       "items": [
         {
-          "id": "b98208f6-8308-48be-9393-0ba580cc4dda",
-          "idExperience": "1",
-          "idCalendario": "cal1",
-          "idBusinessUnit": null,
-          "status": "pendiente",
-          "internaPermanent": false,
-          "start": "2025-05-07 10:00:00",
-          "end": "2025-05-07 11:00:00",
-          "duration": 60,
-          "peopleNumber": 2,
-          "priceOriginal": 50,
-          "priceTotal": 50,
-          "priceFractioned": 25,
           "discountAmount": 0,
+          "duration": 60,
+          "end": "2025-05-07 11:00:00",
           "fields": [
             {
+              "amount": 0,
               "id": "9253bade-fa8c-4b35-9a85-13d0951d40a9",
-              "title": "Idioma",
               "name": "language",
-              "value": "Spanish",
-              "amount": 0
+              "title": "Idioma",
+              "value": "Spanish"
             },
             {
+              "amount": 10.5,
               "id": "b5e32c89-d147-43e5-9aae-49f299d26377",
-              "title": "Monitor",
               "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
+              "title": "Monitor",
+              "value": "1 pax"
             }
-          ]
+          ],
+          "id": "b98208f6-8308-48be-9393-0ba580cc4dda",
+          "idCalendario": "cal1",
+          "idExperience": "1",
+          "internaPermanent": false,
+          "peopleNumber": 2,
+          "priceFractioned": 25,
+          "priceOriginal": 50,
+          "priceTotal": 50,
+          "start": "2025-05-07 10:00:00",
+          "status": "pendiente"
         }
       ],
       "payments": [
         {
-          "id": "1b67710f-3b00-4d73-ab4b-5bf4042f1405",
           "amount": 50,
+          "id": "1b67710f-3b00-4d73-ab4b-5bf4042f1405",
           "method": "Tarjeta"
         }
       ],
       "resumenItems": [
         {
-          "id": "b98208f6-8308-48be-9393-0ba580cc4dda",
-          "id_experience": "1",
-          "id_calendario": "cal1",
-          "start": "2025-05-07 10:00:00",
           "end": "2025-05-07 11:00:00",
+          "id": "b98208f6-8308-48be-9393-0ba580cc4dda",
+          "id_calendario": "cal1",
+          "id_experience": "1",
           "people_number": 2,
+          "price_fractioned": 25,
           "price_original": 50,
-          "price_fractioned": 25
+          "start": "2025-05-07 10:00:00"
         }
       ]
     },
@@ -5996,55 +5995,54 @@
       "automaticActions": "",
       "items": [
         {
-          "id": "41f1a02b-1bc1-4a0d-9621-e9f3b2529a0c",
-          "idExperience": "1",
-          "idCalendario": "cal1",
-          "idBusinessUnit": null,
-          "status": "confirmada",
-          "internaPermanent": false,
-          "start": "2025-05-07 11:00:00",
-          "end": "2025-05-07 12:00:00",
-          "duration": 60,
-          "peopleNumber": 2,
-          "priceOriginal": 50,
-          "priceTotal": 50,
-          "priceFractioned": 25,
           "discountAmount": 0,
+          "duration": 60,
+          "end": "2025-05-07 12:00:00",
           "fields": [
             {
+              "amount": 0,
               "id": "9253bade-fa8c-4b35-9a85-13d0951d40a9",
-              "title": "Idioma",
               "name": "language",
-              "value": "Spanish",
-              "amount": 0
+              "title": "Idioma",
+              "value": "Spanish"
             },
             {
+              "amount": 10.5,
               "id": "b5e32c89-d147-43e5-9aae-49f299d26377",
-              "title": "Monitor",
               "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
+              "title": "Monitor",
+              "value": "1 pax"
             }
-          ]
+          ],
+          "id": "41f1a02b-1bc1-4a0d-9621-e9f3b2529a0c",
+          "idCalendario": "cal1",
+          "idExperience": "1",
+          "internaPermanent": false,
+          "peopleNumber": 2,
+          "priceFractioned": 25,
+          "priceOriginal": 50,
+          "priceTotal": 50,
+          "start": "2025-05-07 11:00:00",
+          "status": "confirmada"
         }
       ],
       "payments": [
         {
-          "id": "09e43b1e-d2f8-4903-87af-7500cfaf0466",
           "amount": 50,
+          "id": "09e43b1e-d2f8-4903-87af-7500cfaf0466",
           "method": "Bizum"
         }
       ],
       "resumenItems": [
         {
-          "id": "41f1a02b-1bc1-4a0d-9621-e9f3b2529a0c",
-          "id_experience": "1",
-          "id_calendario": "cal1",
-          "start": "2025-05-07 11:00:00",
           "end": "2025-05-07 12:00:00",
+          "id": "41f1a02b-1bc1-4a0d-9621-e9f3b2529a0c",
+          "id_calendario": "cal1",
+          "id_experience": "1",
           "people_number": 2,
+          "price_fractioned": 25,
           "price_original": 50,
-          "price_fractioned": 25
+          "start": "2025-05-07 11:00:00"
         }
       ]
     },
@@ -6135,7 +6133,7 @@
       "priceAfterDiscount": 75,
       "priceFractioned": 37.5,
       "isFractioned": false,
-      "name": "Carlos Ruiz",
+      "name": "Carlos Costa",
       "mail": "cliente@example.com",
       "dni": "00000000X",
       "phone": "600123456",
@@ -6146,55 +6144,54 @@
       "automaticActions": "",
       "items": [
         {
-          "id": "c50b081c-3dd5-4d69-8fc4-389bb57bee9f",
-          "idExperience": "2",
-          "idCalendario": "cal2",
-          "idBusinessUnit": null,
-          "status": "confirmada",
-          "internaPermanent": false,
-          "start": "2025-05-08 10:00:00",
-          "end": "2025-05-08 11:00:00",
-          "duration": 60,
-          "peopleNumber": 3,
-          "priceOriginal": 75,
-          "priceTotal": 75,
-          "priceFractioned": 37.5,
           "discountAmount": 0,
+          "duration": 60,
+          "end": "2025-05-08 11:00:00",
           "fields": [
             {
+              "amount": 0,
               "id": "9253bade-fa8c-4b35-9a85-13d0951d40a9",
-              "title": "Idioma",
               "name": "language",
-              "value": "Spanish",
-              "amount": 0
+              "title": "Idioma",
+              "value": "Spanish"
             },
             {
+              "amount": 10.5,
               "id": "b5e32c89-d147-43e5-9aae-49f299d26377",
-              "title": "Monitor",
               "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
+              "title": "Monitor",
+              "value": "1 pax"
             }
-          ]
+          ],
+          "id": "c50b081c-3dd5-4d69-8fc4-389bb57bee9f",
+          "idCalendario": "cal2",
+          "idExperience": "2",
+          "internaPermanent": false,
+          "peopleNumber": 3,
+          "priceFractioned": 37.5,
+          "priceOriginal": 75,
+          "priceTotal": 75,
+          "start": "2025-05-08 10:00:00",
+          "status": "confirmada"
         }
       ],
       "payments": [
         {
-          "id": "cc637df2-540d-45cf-8748-d0214201f493",
           "amount": 75,
+          "id": "cc637df2-540d-45cf-8748-d0214201f493",
           "method": "Efectivo"
         }
       ],
       "resumenItems": [
         {
-          "id": "c50b081c-3dd5-4d69-8fc4-389bb57bee9f",
-          "id_experience": "2",
-          "id_calendario": "cal2",
-          "start": "2025-05-08 10:00:00",
           "end": "2025-05-08 11:00:00",
+          "id": "c50b081c-3dd5-4d69-8fc4-389bb57bee9f",
+          "id_calendario": "cal2",
+          "id_experience": "2",
           "people_number": 3,
+          "price_fractioned": 37.5,
           "price_original": 75,
-          "price_fractioned": 37.5
+          "start": "2025-05-08 10:00:00"
         }
       ]
     },
@@ -6210,7 +6207,7 @@
       "priceAfterDiscount": 75,
       "priceFractioned": 37.5,
       "isFractioned": false,
-      "name": "Luis Martínez",
+      "name": "Luis Martín",
       "mail": "cliente@example.com",
       "dni": "00000000X",
       "phone": "600123456",
@@ -6221,55 +6218,54 @@
       "automaticActions": "",
       "items": [
         {
-          "id": "ac6193f0-3b79-44d1-bd9a-dc7e841211d2",
-          "idExperience": "2",
-          "idCalendario": "cal2",
-          "idBusinessUnit": null,
-          "status": "pendiente",
-          "internaPermanent": false,
-          "start": "2025-05-09 10:00:00",
-          "end": "2025-05-09 11:00:00",
-          "duration": 60,
-          "peopleNumber": 3,
-          "priceOriginal": 75,
-          "priceTotal": 75,
-          "priceFractioned": 37.5,
           "discountAmount": 0,
+          "duration": 60,
+          "end": "2025-05-09 11:00:00",
           "fields": [
             {
+              "amount": 0,
               "id": "9253bade-fa8c-4b35-9a85-13d0951d40a9",
-              "title": "Idioma",
               "name": "language",
-              "value": "Spanish",
-              "amount": 0
+              "title": "Idioma",
+              "value": "Spanish"
             },
             {
+              "amount": 10.5,
               "id": "b5e32c89-d147-43e5-9aae-49f299d26377",
-              "title": "Monitor",
               "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
+              "title": "Monitor",
+              "value": "1 pax"
             }
-          ]
+          ],
+          "id": "ac6193f0-3b79-44d1-bd9a-dc7e841211d2",
+          "idCalendario": "cal2",
+          "idExperience": "2",
+          "internaPermanent": false,
+          "peopleNumber": 3,
+          "priceFractioned": 37.5,
+          "priceOriginal": 75,
+          "priceTotal": 75,
+          "start": "2025-05-09 10:00:00",
+          "status": "pendiente"
         }
       ],
       "payments": [
         {
-          "id": "ddcc01d3-e5c7-4f77-9af9-10a8e6ce9cd8",
           "amount": 75,
+          "id": "ddcc01d3-e5c7-4f77-9af9-10a8e6ce9cd8",
           "method": "Tarjeta"
         }
       ],
       "resumenItems": [
         {
-          "id": "ac6193f0-3b79-44d1-bd9a-dc7e841211d2",
-          "id_experience": "2",
-          "id_calendario": "cal2",
-          "start": "2025-05-09 10:00:00",
           "end": "2025-05-09 11:00:00",
+          "id": "ac6193f0-3b79-44d1-bd9a-dc7e841211d2",
+          "id_calendario": "cal2",
+          "id_experience": "2",
           "people_number": 3,
+          "price_fractioned": 37.5,
           "price_original": 75,
-          "price_fractioned": 37.5
+          "start": "2025-05-09 10:00:00"
         }
       ]
     },
@@ -17744,6 +17740,22 @@
       "calendar_id": "cal2",
       "experience_id": "2",
       "id_purchase": "95bdd137-c1c1-4e9d-902f-17c5e689ef79"
+    }
+  ],
+  "paymentsCajaChica": [
+    {
+      "id": "1",
+      "fecha": "2025-05-09",
+      "concepto": "Reembolso de cambio monitor",
+      "cantidad": 20,
+      "tipo": "Ingreso"
+    },
+    {
+      "id": "2",
+      "fecha": "2025-05-09",
+      "concepto": "Caja manual",
+      "cantidad": 15,
+      "tipo": "Ingreso"
     }
   ]
 }

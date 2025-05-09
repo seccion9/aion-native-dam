@@ -17,7 +17,7 @@ MEJORAS DE UX
 -Añadimos un ripple en todos los elementos clickables para mejorar la experiencia de usuario
 -Landscape Detalles y calendariosemanal y mensual no realizados
 -Borrar interceptores cuando se este finalizando la app(hace que vaya mas lento)
-
+-Se añade titulo de la toolbar cambiante segun el fragment que el usuario este para saber donde se encuentra y mejorar asi la UX
 FUNCIONALIDADES
 -Configuracion(poder cambiar algun aspecto de la app)
 -Hacer logout(hecho)

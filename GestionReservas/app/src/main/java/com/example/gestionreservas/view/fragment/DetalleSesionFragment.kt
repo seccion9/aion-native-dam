@@ -14,6 +14,7 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.gestionreservas.databinding.FragmentDetalleSesionBinding
@@ -23,6 +24,7 @@ import com.example.gestionreservas.models.entity.ItemReserva
 import com.example.gestionreservas.models.entity.Pago
 import com.example.gestionreservas.models.entity.Sesion
 import com.example.gestionreservas.models.entity.SesionConCompra
+import com.example.gestionreservas.models.repository.CompraRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import kotlinx.coroutines.launch
 import java.net.URLEncoder
@@ -37,6 +39,7 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetalleSesionBinding.inflate(inflater, container, false)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Detalles Sesion"
         val sesionConCompra = arguments?.getSerializable("sesionConCompra") as? SesionConCompra
         /*
         Si los datos no son nulos se cargan en la interfaz y si son nulos no se carga nada y se depura
@@ -64,7 +67,9 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
     @SuppressLint("SetTextI18n")
     private fun instancias(){
         cargarDatosCompra()
+        detectarScroll()
         //Instancias edits
+        binding.btnScrollSubir?.setOnClickListener(this)
         configurarEditConEtiqueta(binding.tvNombre, "Nombre")
         configurarEditConEtiqueta(binding.tvTelefono, "Teléfono")
         configurarEditConEtiqueta(binding.tvEmail, "Email")
@@ -115,16 +120,12 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
     private fun modificarDatosCompra(){
         viewLifecycleOwner.lifecycleScope.launch {
             try {
-                val token = getTokenFromSharedPreferences()
-                val compraModificada = compraRecuperada
-                val id = compraRecuperada.id.trim()
+                val token = getTokenFromSharedPreferences() ?: return@launch
+                val repo = CompraRepository(RetrofitFakeInstance.apiFake)
+                val success = repo.modificarCompra(token, compraRecuperada)
 
-                Log.d("PATCH_COMPRA", "ID a enviar: $id")
-                val response=RetrofitFakeInstance.apiFake.patchCompra(token.toString(),id,compraModificada)
-                if (response.isSuccessful) {
+                if (success) {
                     Log.d("DetalleSesionFragment", "Compra modificada correctamente")
-                } else {
-                    Log.e("DetalleSesionFragment", "Error en respuesta PATCH: ${response.code()} - ${response.message()}")
                 }
 
             }catch (e: Exception) {
@@ -263,6 +264,9 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
     }
     override fun onClick(v: View?) {
         when(v?.id){
+            binding.btnScrollSubir?.id->{
+                binding.nestedScroll?.smoothScrollTo(0, 0)
+            }
             binding.tvEditar.id->{
                 activarEdits()
             }
@@ -306,5 +310,13 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         binding.tvConfirmacion.setOnClickListener(this)
         binding.tvWhatsapp.setOnClickListener(this)
     }
-
+    private fun detectarScroll(){
+        binding.nestedScroll?.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            if (scrollY > 200) {
+                binding.btnScrollSubir?.visibility = View.VISIBLE
+            } else {
+                binding.btnScrollSubir?.visibility = View.GONE
+            }
+        }
+    }
 }

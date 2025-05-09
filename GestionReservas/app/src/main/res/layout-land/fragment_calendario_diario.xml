@@ -8,272 +8,286 @@
     android:layout_margin="2dp"
     android:padding="10dp">
 
-    <!-- Título -->
-    <TextView
-        android:id="@+id/tvtituloDiario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="Calendario de reservas"
-        android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/guideline4" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearBotonesExperiencias"
+        android:id="@+id/contenedorIzquierdo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/tvtituloDiario">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnTodasExp"
+        <TextView
+
+            android:id="@+id/tvtituloDiario"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/boton_experiencia_azul"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            android:text="Todas las experiencias"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnTestExp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_weight="0.5" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnTestExp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:background="@drawable/boton_experiencia"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            android:text="Experiencia Test"
-            android:textColor="@color/gray"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/btnTodasExp"
+            android:text="Calendario de reservas"
+            android:textAlignment="center"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_weight="0.5" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Visualización del calendario -->
-    <TextView
-        android:id="@+id/tvVisualizacionCalendario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="Visualización del Calendario"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/linearBotonesExperiencias"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/guideline4" />
-
-    <!-- Botón Recargar -->
-    <TextView
-        android:id="@+id/tvRecargar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/tv_home"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="center"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="Recargar"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/tvVisualizacionCalendario"
-        app:layout_constraintStart_toStartOf="@id/linearBotonesExperiencias"
-        app:layout_constraintEnd_toEndOf="@id/linearBotonesExperiencias" />
-
-    <!-- Layout de fechas -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutFechas"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvRecargar"
-        app:layout_constraintStart_toStartOf="@id/tvRecargar"
-        app:layout_constraintEnd_toEndOf="@id/tvRecargar">
-
-        <!-- LinearHoy (flechas + hoy) -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearHoy"
+            android:id="@+id/linearBotonesExperiencias"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/selectFecha"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_weight="0.3">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvtituloDiario">
 
             <TextView
-                android:id="@+id/tvFlechaIzquierdaHoy"
+                android:id="@+id/btnTodasExp"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/tv_home"
-                android:foreground="?attr/selectableItemBackground"
+                android:padding="7dp"
                 android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/boton_experiencia_azul"
                 android:clickable="true"
                 android:focusable="true"
-                android:padding="10dp"
-                android:text="&lt;"
-                android:textColor="@color/white"
                 android:textSize="14sp"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="Todas las experiencias"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tvHoy"
+                app:layout_constraintEnd_toStartOf="@+id/btnTestExp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_weight="0.27" />
+                app:layout_constraintHorizontal_weight="0.5" />
 
             <TextView
-                android:id="@+id/tvHoy"
+                android:gravity="center"
+                android:padding="7dp"
+                android:id="@+id/btnTestExp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/boton_experiencia"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="Experiencia Test"
+                android:textColor="@color/gray"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/btnTodasExp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_weight="0.5" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Visualización del calendario -->
+        <TextView
+            android:id="@+id/tvVisualizacionCalendario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Visualización del Calendario"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearBotonesExperiencias" />
+
+        <!-- Botón Recargar -->
+        <TextView
+            android:id="@+id/tvRecargar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/tv_home"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Recargar"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tvVisualizacionCalendario"
+            app:layout_constraintStart_toStartOf="@id/linearBotonesExperiencias"
+            app:layout_constraintEnd_toEndOf="@id/linearBotonesExperiencias" />
+
+        <!-- Layout de fechas -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutFechas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvRecargar"
+            app:layout_constraintStart_toStartOf="@id/tvRecargar"
+            app:layout_constraintEnd_toEndOf="@id/tvRecargar">
+
+            <!-- LinearHoy (flechas + hoy) -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearHoy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/selectFecha"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_weight="0.3">
+
+                <TextView
+                    android:id="@+id/tvFlechaIzquierdaHoy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tv_home"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="7dp"
+                    android:text="&lt;"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tvHoy"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_weight="0.27" />
+
+                <TextView
+                    android:id="@+id/tvHoy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tv_home"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="7dp"
+                    android:text="Hoy"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/tvFlechaIzquierdaHoy"
+                    app:layout_constraintEnd_toStartOf="@id/tvFlechaDerechaHoy"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_weight="0.45" />
+
+                <TextView
+                    android:id="@+id/tvFlechaDerechaHoy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tv_home"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="7dp"
+                    android:text="&gt;"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/tvHoy"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_weight="0.27" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Botón seleccionar fecha -->
+            <TextView
+                android:id="@+id/selectFecha"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/tv_home"
                 android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
-                android:padding="10dp"
-                android:text="Hoy"
+                android:padding="7dp"
+                android:text="Seleccionar fecha"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@id/tvFlechaIzquierdaHoy"
-                app:layout_constraintEnd_toStartOf="@id/tvFlechaDerechaHoy"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_weight="0.45" />
-
-            <TextView
-                android:id="@+id/tvFlechaDerechaHoy"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/tv_home"
-                android:foreground="?attr/selectableItemBackground"
-                android:gravity="center"
                 android:clickable="true"
                 android:focusable="true"
-                android:padding="10dp"
-                android:text="&gt;"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@id/tvHoy"
+                app:layout_constraintStart_toEndOf="@id/linearHoy"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_weight="0.27" />
+                app:layout_constraintHorizontal_weight="0.3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearSelectorDias"
+            android:layout_width="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/layoutFechas"
+            app:layout_constraintStart_toStartOf="@+id/layoutFechas"
+            app:layout_constraintTop_toBottomOf="@+id/layoutFechas">
+
+            <TextView
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/tvDiario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tv_home"
+                android:gravity="center"
+                android:padding="7dp"
+                android:text="dia"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/tvSemana"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/tvSemana"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tv_home"
+                android:gravity="center"
+                android:padding="7dp"
+                android:text="Semana"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/tvMes"
+                app:layout_constraintStart_toEndOf="@+id/tvDiario"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/tvMes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tv_home"
+                android:gravity="center"
+                android:padding="7dp"
+                android:text="Mes"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvSemana"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- Botón seleccionar fecha -->
-        <TextView
-            android:id="@+id/selectFecha"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/tv_home"
-            android:foreground="?attr/selectableItemBackground"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Seleccionar fecha"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintStart_toEndOf="@id/linearHoy"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_weight="0.3" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearSelectorDias"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toEndOf="@+id/layoutFechas"
-        app:layout_constraintStart_toStartOf="@+id/layoutFechas"
-        app:layout_constraintTop_toBottomOf="@+id/layoutFechas">
-
-        <TextView
-            android:foreground="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:id="@+id/tvDiario"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/tv_home"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="dia"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/tvSemana"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:foreground="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:id="@+id/tvSemana"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/tv_home"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Semana"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/tvMes"
-            app:layout_constraintStart_toEndOf="@+id/tvDiario"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:foreground="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:id="@+id/tvMes"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/tv_home"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Mes"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvSemana"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:layout_marginStart="5dp"
@@ -281,9 +295,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
+
         android:text="7 - 8 abr 2025"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline4"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -355,7 +370,8 @@
         app:layout_constraintBottom_toTopOf="@id/btnBloquear" />
 
     <!-- Botón Bloquear -->
-    <androidx.appcompat.widget.AppCompatButton
+    <TextView
+        android:gravity="center"
         android:id="@+id/btnBloquear"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -363,6 +379,7 @@
         android:background="@drawable/boton_bloqueo"
         android:foreground="?attr/selectableItemBackground"
         android:text="Bloquear"
+        android:padding="7dp"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -372,7 +389,9 @@
         app:layout_constraintEnd_toStartOf="@id/guideline5" />
 
     <!-- Botón Bloqueo Masivo -->
-    <androidx.appcompat.widget.AppCompatButton
+    <TextView
+        android:gravity="center"
+        android:padding="7dp"
         android:layout_marginTop="10dp"
         android:id="@+id/btnBloqueoMasivo"
         android:layout_width="0dp"

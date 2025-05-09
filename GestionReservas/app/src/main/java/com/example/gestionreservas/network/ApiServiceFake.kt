@@ -5,6 +5,7 @@ import com.example.gestionreservas.models.entity.LoginRequest
 import com.example.gestionreservas.models.entity.LoginResponse
 import com.example.gestionreservas.models.entity.Ocupacion
 import com.example.gestionreservas.models.entity.OcupacionCalendarioSemanal
+import com.example.gestionreservas.models.entity.PagoCajaChica
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -26,6 +27,10 @@ interface ApiServiceFake {
     suspend fun getPurchases(
         @Header("Authorization") token: String
     ): List<Compra>
+    @GET("purchases")
+    suspend fun getPurchasesV2(
+        @Header("Authorization") token: String
+    ): Response<List<Compra>>
 
     //Obtiene la ocupacion por ids de experiencias y fechas y devuelve un mapa del dia y los datos de ese dia
     @GET("getMonthlyOccupancyByExperienceIdsAndDates")
@@ -51,4 +56,11 @@ interface ApiServiceFake {
         @Path("id") id: String,
         @Body compra: Compra
     ): Response<Compra>
+
+    //Obtener los pagos del dia de la caja chica
+    @GET("paymentsCajaChicaDia/{fecha}")
+    suspend fun getPagosCajaDia(
+        @Header("Authorization") token: String,
+        @Path("fecha") fecha: String
+    ): Response<List<PagoCajaChica>>
 }

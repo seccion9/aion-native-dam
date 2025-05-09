@@ -12,14 +12,12 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentCalendarioDiarioBinding
-import com.example.gestionreservas.models.entity.Experiencia
-import com.example.gestionreservas.models.entity.ExperienciaConHorarios
 import com.example.gestionreservas.models.entity.HoraReserva
-import com.example.gestionreservas.network.RetrofitInstance
 import com.example.gestionreservas.view.adapter.AdaptadorHoraReserva
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -30,10 +28,11 @@ import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.Ocupacion
 import com.example.gestionreservas.models.entity.Sesion
 import com.example.gestionreservas.models.entity.SesionConCompra
+import com.example.gestionreservas.models.repository.CalendarioRepository
+import com.example.gestionreservas.models.repository.CompraRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+
 
 
 class CalendarioFragmentDiario: Fragment() ,OnClickListener{
@@ -42,6 +41,8 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
     private lateinit var listaReservaHoras:ArrayList<HoraReserva>
     private lateinit var adaptadorHoraReserva: AdaptadorHoraReserva
     private var listaOcupaciones:List<Ocupacion> = mutableListOf()
+    private val compraRepository = CompraRepository(RetrofitFakeInstance.apiFake)
+    private val calendarioRepository = CalendarioRepository(RetrofitFakeInstance.apiFake)
     @RequiresApi(Build.VERSION_CODES.O)
     private var fechaActual: LocalDate = LocalDate.now()
     @RequiresApi(Build.VERSION_CODES.O)
@@ -50,6 +51,7 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
     ): View? {
         // Inflamos el layout del fragmento para que cargue la vista correctamente
         binding = FragmentCalendarioDiarioBinding.inflate(inflater, container, false)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Calendario Diario"
         instancias()
         /*recibimos por argumentos de nuestro fragment semanal y mensual la fecha seleccionada
           si no es nula llamamos a la funcion actualizar fecha para obtener la
@@ -100,7 +102,7 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
                      if (ocupacion != null && token != null) {
 
                          //Buscamos la compra en la API y buscamos por su id para obtenerla
-                         val listaCompras = RetrofitFakeInstance.apiFake.getPurchases(token)
+                         val listaCompras = compraRepository.obtenerCompras(token)
                          compra = listaCompras.find { it.id == ocupacion.idCompra }
 
                         //Si hay compra se trnasfor,a sesion para usarlo en sesionConCompra
@@ -147,7 +149,6 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
                  }
              }
 
-
          }
          binding.recyclerHorasSalas.apply {
              adapter = adaptadorHoraReserva
@@ -174,8 +175,8 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
     }
 
     /*Obtenemos nuestro token y con la fecha obtenida por parametros cargamos los datos del dia
-     despues actualizamos nuestro adaptador para notificarle que cambiaron los datos,esta funcion nos vale cada
-     vez que cambiemos de fecha
+     despues actualizamos nuestro adaptador para notificarle que cambiaron los datos,esta funcion nos
+     vale cada vez que cambiemos de fecha
     */
     @SuppressLint("NewApi")
     private fun cargarDesdeMock(fechaDDMM: String) {
@@ -193,9 +194,10 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
 
 
         viewLifecycleOwner.lifecycleScope.launch {
-            val lista = obtenerOcupacionDiaria(tkn, fechaAPI)
-            Log.e("fun cargarDatosDesdeMock","Lista Ocupacion ${fechaDDMM}: ~${lista}")
-            adaptadorHoraReserva.actualizarLista(lista)
+            val listaFiltrada=calendarioRepository.obtenerOcupacionesDelDia(tkn,fechaAPI)
+            val listaOcupaciones=calendarioRepository.transformarOcupacionesAHoraReserva(listaFiltrada)
+            Log.e("fun cargarDatosDesdeMock","Lista Ocupacion ${fechaDDMM}: ~${listaOcupaciones}")
+            adaptadorHoraReserva.actualizarLista(listaOcupaciones)
         }
     }
     //Este metodo obtiene la fecha actual y la asigna al textview tvFecha
@@ -310,49 +312,6 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
             },
             hoy.year, hoy.monthValue - 1, hoy.dayOfMonth
         ).show()
-    }
-    /*
-    Llama a nuestra instancia de retofit para obtener de la API las ocupaciones de hoy y las transformamos
-    a hora reserva para mostrarlas en nuestro recycler
-     */
-    @SuppressLint("NewApi")
-    private suspend fun obtenerOcupacionDiaria(token: String, fechaStr: String): List<HoraReserva> {
-        return try {
-            //Llamamos a nuestra API y guardamos el resultado del filtrado de fechas
-            val ocupaciones = RetrofitFakeInstance.apiFake.obtenerReservasDia(
-                token, fechaStr, fechaStr
-            )
-            Log.e("ObtenerOcupacionDiaria", "Ocupaciones: $ocupaciones")
-            //Nos aseguramos de filtrar otra vez por si la API devuelve mas valores
-            val ocupacionesDelDia = ocupaciones.filter { it.date == fechaStr }
-            listaOcupaciones=ocupacionesDelDia
-            //Obtenemos nuestra lista de ocupaciones
-            val listaHoraReserva = ocupacionesDelDia
-                /*Se agrupan las reservas por horas y en cada hora se ve si hay reserva en cada sala(cal1-2)
-                ,si la hay se marca  false y si no true,Se transforma a hora reservava y se ordenan las horas.
-                * */
-                .groupBy { it.start.substring(0, 5) to it.end.substring(0, 5) }
-                .map { (horas, lista) ->
-                    val (ini, fin) = horas
-
-                    val hayCal1 = lista.any { it.calendarioId == "cal1" }
-                    val hayCal2 = lista.any { it.calendarioId == "cal2" }
-
-                    HoraReserva(
-                        horaInicio = ini,
-                        horaFin = fin,
-                        sala1Libre = !hayCal1,
-                        sala2Libre = !hayCal2
-                    )
-                }
-                .sortedBy { it.horaInicio }
-
-            return listaHoraReserva
-
-        } catch (e: Exception) {
-            Log.e("MockFallback", "error: ${e.message}")
-            return emptyList()
-        }
     }
 
     //Metodo para obtener nuestro token guardado en shared preferences

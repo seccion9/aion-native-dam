@@ -11,6 +11,7 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -18,15 +19,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentCalendarioSemanaBinding
 import com.example.gestionreservas.models.entity.DiaSemana
-import com.example.gestionreservas.models.entity.OcupacionCalendarioSemanal
+import com.example.gestionreservas.models.repository.CalendarioRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
-import com.example.gestionreservas.network.RetrofitInstance
 import com.example.gestionreservas.view.adapter.AdaptadorDiaSemana
 import com.example.gestionreservas.view.adapter.OnDiaSemanaClickListener
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Response
-import retrofit2.Retrofit
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
@@ -38,11 +35,14 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
     private var listaCalendarioSemana: ArrayList<DiaSemana> = arrayListOf()
     @RequiresApi(Build.VERSION_CODES.O)
     private var fechaLunesActual: LocalDate = calcularLunesDeHoy()
+    private val calendarioRepository = CalendarioRepository(RetrofitFakeInstance.apiFake)
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         binding = FragmentCalendarioSemanaBinding.inflate(inflater, container, false)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Calendario Semanal"
 
         instancias()
 
@@ -70,95 +70,41 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
         generarDiasSemana()
     }
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun generarDiasSemana(){
+    private fun generarDiasSemana() {
         //Obtenemos nuestro token y la fecha de inicio y fin de la busqueda semanal de ocupaciones
-        val lunes=fechaLunesActual
-        val domingo=lunes.plusDays(6)
+        val lunes = fechaLunesActual
+        val domingo = lunes.plusDays(6)
         val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
         val fechaInicio = lunes.format(formatter)
         val fechaFin = domingo.format(formatter)
-        val token=getTokenFromSharedPreferences()
+        val token = getTokenFromSharedPreferences()
         val ids = listOf(1, 2)
 
-        if (token != null) {
-            RetrofitInstance.api.obtenerCalendarioSemanal(token, ids, fechaInicio, fechaFin)
-                .enqueue(object : retrofit2.Callback<Map<String, OcupacionCalendarioSemanal>> {
-                    override fun onResponse(call: Call<Map<String, OcupacionCalendarioSemanal>>, response: Response<Map<String, OcupacionCalendarioSemanal>>) {
-                      if(response.isSuccessful && false){
-                          val mapaOcupacionSemanal=response.body()
-                          listaCalendarioSemana=transformarMapaADiasSemana(mapaOcupacionSemanal)
-                          adaptadorDiaSemana.actualizarLista(listaCalendarioSemana)
-                      }else{
-                          //Mostrar errores en el log en caso de respuesta no exitosa
-                          val codigo = response.code()
-                          val errorBody = response.errorBody()?.string()
-                          Log.e("Horarios", "Error al obtener los horarios. Código: $codigo")
-                          Log.e("Horarios", "Mensaje del error: $errorBody")
-                          cargarReservasSemanaAPIFake()
-
-                      }
-                    }
-
-                    override fun onFailure(call: Call<Map<String, OcupacionCalendarioSemanal>>, t: Throwable) {
-                        Log.e("API", "Error de red: ${t.message}")
-                    }
-                })
-        }
-
-    }
-    @SuppressLint("NewApi")
-    private fun cargarReservasSemanaAPIFake(){
-        val lunes=fechaLunesActual
-        val domingo=lunes.plusDays(6)
-        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-        val fechaInicio = lunes.format(formatter)
-        val fechaFin = domingo.format(formatter)
-        val token=getTokenFromSharedPreferences()
-        val ids = listOf(1, 2)
         viewLifecycleOwner.lifecycleScope.launch {
-            try{
-                val response= RetrofitFakeInstance.apiFake.getMonthlyOccupancy(token.toString(), ids, fechaInicio, fechaFin)
-                val mapaOcupacionSemanal=response
-                listaCalendarioSemana=transformarMapaADiasSemana(mapaOcupacionSemanal)
+            try {
+                val mapaOcupacionSemanal = calendarioRepository.obtenerOcupacionSemanalFake(
+                    token ?: return@launch, ids, fechaInicio, fechaFin)
+
+                listaCalendarioSemana = calendarioRepository.transformarMapaADiasSemana(
+                    mapaOcupacionSemanal,
+                    fechaLunesActual
+                )
+
                 adaptadorDiaSemana.actualizarLista(listaCalendarioSemana)
 
-            }catch (e: Exception) {
+            } catch (e: Exception) {
                 Log.e("calendarioFragmentSemana", "Error en la API falsa: ${e.message}")
             }
         }
     }
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun calcularSemanaActual(){
-        calcularSemana()
-    }
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun calcularLunesDeHoy(): LocalDate {
         fechaLunesActual = LocalDate.now()
         val diaSemana = fechaLunesActual.dayOfWeek.value
         return fechaLunesActual.minusDays((diaSemana - 1).toLong())
     }
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun transformarMapaADiasSemana(
-        mapa: Map<String, OcupacionCalendarioSemanal>?
-    ): ArrayList<DiaSemana> {
-        val lista = arrayListOf<DiaSemana>()
-        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
 
-        for (i in 0..6) {
-            val fecha = fechaLunesActual.plusDays(i.toLong())
-            val clave = fecha.format(formatter)
-            val datos = mapa?.get(clave)
-            val nombreDia = fecha.dayOfWeek.getDisplayName(TextStyle.FULL, Locale("es", "ES"))
-
-            val reservas = datos?.ocupadas?.toString() ?: "0"
-            val sesiones = datos?.sesiones?.toString() ?: "0"
-
-            lista.add(DiaSemana(fecha, reservas, sesiones, nombreDia))
-        }
-
-        return lista
-    }
     /*Cambia el text de las fechas segun vayan avanzando o disminuyendo las semanas y
         llamara a una funcion que cargue los datos de la API de esa semana
      */
@@ -183,11 +129,7 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
             // Si caen en meses distintos, lo mostramos completo
             binding.tvFechaSemana.text = "${lunes.dayOfMonth} $mesLunes - ${domingo.dayOfMonth} $mesDomingo"
         }
-
         adaptadorDiaSemana.actualizarLista(listaCalendarioSemana)
-
-
-
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

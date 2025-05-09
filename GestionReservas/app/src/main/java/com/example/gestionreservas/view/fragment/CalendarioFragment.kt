@@ -9,6 +9,7 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.CalendarView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentCalendarioBinding
@@ -23,7 +24,7 @@ class CalendarioFragment : Fragment(),OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         binding = FragmentCalendarioBinding.inflate(inflater, container, false)
-
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Calendario Mensual"
         instancias()
 
         return binding.root

@@ -2,6 +2,7 @@ package com.example.gestionreservas.view.fragment
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -12,8 +13,10 @@ import android.view.ViewGroup
 import android.widget.TableLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionreservas.R
@@ -23,6 +26,7 @@ import com.example.gestionreservas.models.entity.ItemReserva
 import com.example.gestionreservas.models.entity.Pago
 import com.example.gestionreservas.models.entity.Sesion
 import com.example.gestionreservas.models.entity.SesionConCompra
+import com.example.gestionreservas.models.repository.CompraRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.network.RetrofitInstance
 import com.example.gestionreservas.view.adapter.AdaptadorListado
@@ -32,12 +36,14 @@ import java.time.LocalDate
 class ListadoFragment: Fragment(),OnClickListener {
     private lateinit var binding:FragmentListadoBinding
     private lateinit var adaptadorListado:AdaptadorListado
+    private val compraRepository = CompraRepository(RetrofitFakeInstance.apiFake)
     @RequiresApi(Build.VERSION_CODES.O)
     private var fechaActual: LocalDate = LocalDate.now()
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding=FragmentListadoBinding.inflate(layoutInflater)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Listado Diario"
         instancias()
         return binding.root
     }
@@ -63,8 +69,13 @@ class ListadoFragment: Fragment(),OnClickListener {
             transacion.commit()
 
         }
-        binding.recyclerReservasListado.layoutManager =
+        val orientation = resources.configuration.orientation
+        val layoutManager = if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            GridLayoutManager(requireContext(), 2) // 2 columnas en landscape
+        } else {
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        }
+        binding.recyclerReservasListado.layoutManager = layoutManager
         binding.recyclerReservasListado.adapter = adaptadorListado
 
         // Cargar datos del día
@@ -76,50 +87,13 @@ class ListadoFragment: Fragment(),OnClickListener {
         viewLifecycleOwner.lifecycleScope.launch {
             try {
                 actualizarFecha()
-                val compras = RetrofitFakeInstance.apiFake.getPurchases(token.toString())
-                Log.d("Fake API", "Datos obtenidos: $compras")
-
-                val sesiones = transformarComprasASesiones(compras, fechaActual)
-
-                Log.d("ListadoFragment", "Sesiones transformadas: ${sesiones.size}")
-
-                // Aquí es donde actualizas el adaptador directamente
+                val sesiones = compraRepository.obtenerSesionesDelDia(token.toString(), fechaActual)
                 adaptadorListado.actualizarLista(sesiones)
-
             } catch (e: Exception) {
-                Log.e("ListadoFragment", "Error en la API fake: ${e.localizedMessage}")
+                Log.e("ListadoFragment", "Error: ${e.localizedMessage}")
             }
         }
     }
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun transformarComprasASesiones(
-        compras: List<Compra>,
-        fechaSeleccionada: LocalDate
-    ): List<SesionConCompra> {
-        val sesiones = mutableListOf<SesionConCompra>()
-
-        compras.forEach { compra ->
-            compra.items.forEach { item ->
-                val fechaItem = LocalDate.parse(item.start.substring(0, 10))
-
-                if (fechaItem == fechaSeleccionada) {
-                    val sesion = Sesion(
-                        hora = item.start.substring(11, 16),
-                        calendario = item.idCalendario,
-                        nombre = compra.name,
-                        participantes = item.peopleNumber,
-                        totalPagado = item.priceTotal,
-                        estado = compra.status,
-                        idiomas = compra.language
-                    )
-                    sesiones.add(SesionConCompra(sesion, compra))
-                }
-            }
-        }
-
-        return sesiones
-    }
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onClick(v: View?) {
         when(v?.id){

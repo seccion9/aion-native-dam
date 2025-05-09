@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,498 +8,525 @@
     android:fillViewport="true"
     android:padding="10dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayoutContenedor"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:context=".view.fragment.CalendarioFragmentDiario">
-
-        <TextView
-            android:id="@+id/tvPanelPrincipal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Panel Principal"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvSesiones"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:padding="10dp"
-            android:text="Sesiones"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="@+id/tvPanelPrincipal"
-            app:layout_constraintStart_toStartOf="@+id/tvPanelPrincipal"
-            app:layout_constraintTop_toBottomOf="@+id/tvPanelPrincipal" />
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutFechas"
+            android:id="@+id/constraintLayoutContenedor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/tvSesiones"
-            app:layout_constraintStart_toStartOf="@+id/tvSesiones"
-            app:layout_constraintTop_toBottomOf="@+id/tvSesiones">
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:context=".view.fragment.CalendarioFragmentDiario">
 
-            <!-- LinearHoy convertido directamente -->
+            <TextView
+                android:id="@+id/tvPanelPrincipal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Panel Principal"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/linearHoy"
+            <TextView
+                android:id="@+id/tvSesiones"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvFecha"
-                app:layout_constraintHorizontal_weight="0.3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:text="Sesiones"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvPanelPrincipal"
+                app:layout_constraintStart_toStartOf="@+id/tvPanelPrincipal"
+                app:layout_constraintTop_toBottomOf="@+id/tvPanelPrincipal" />
 
-                <TextView
-                    android:id="@+id/tvFlechaIzquierdaHoy"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutFechas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvSesiones"
+                app:layout_constraintStart_toStartOf="@+id/tvSesiones"
+                app:layout_constraintTop_toBottomOf="@+id/tvSesiones">
+
+                <!-- LinearHoy convertido directamente -->
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/linearHoy"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/btn_borde_azul"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvFecha"
+                    app:layout_constraintHorizontal_weight="0.3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tvFlechaIzquierdaHoy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_borde_azul"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="&lt;"
+                        android:textColor="@color/azul_app"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tvHoy"
+                        app:layout_constraintHorizontal_weight="0.27"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvHoy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_borde_azul"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Hoy"
+                        android:textAlignment="center"
+                        android:textColor="@color/azul_app"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tvFlechaDerechaHoy"
+                        app:layout_constraintHorizontal_weight="0.45"
+                        app:layout_constraintStart_toEndOf="@id/tvFlechaIzquierdaHoy"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvFlechaDerechaHoy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_borde_azul"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="&gt;"
+                        android:textColor="@color/azul_app"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_weight="0.27"
+                        app:layout_constraintStart_toEndOf="@id/tvHoy"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- tvFecha -->
+
+                <TextView
+                    android:id="@+id/tvFecha"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="10dp"
-                    android:text="&lt;"
-                    android:textColor="@color/azul_app"
-                    android:textSize="14sp"
+                    android:text=""
+                    android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tvHoy"
-                    app:layout_constraintHorizontal_weight="0.27"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/selectFecha"
+                    app:layout_constraintHorizontal_weight="0.2"
+                    app:layout_constraintStart_toEndOf="@id/linearHoy"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <!-- selectFecha -->
+
                 <TextView
-                    android:id="@+id/tvHoy"
+                    android:id="@+id/selectFecha"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_borde_azul"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
-                    android:gravity="center"
                     android:padding="10dp"
-                    android:text="Hoy"
+                    android:text="Seleccionar fecha"
                     android:textAlignment="center"
                     android:textColor="@color/azul_app"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/tvFlechaDerechaHoy"
-                    app:layout_constraintHorizontal_weight="0.45"
-                    app:layout_constraintStart_toEndOf="@id/tvFlechaIzquierdaHoy"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="0.3"
+                    app:layout_constraintStart_toEndOf="@id/tvFecha"
                     app:layout_constraintTop_toTopOf="parent" />
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/layoutFechas"
+                app:layout_constraintStart_toStartOf="@+id/layoutFechas"
+                app:layout_constraintTop_toBottomOf="@+id/layoutFechas">
+
                 <TextView
-                    android:id="@+id/tvFlechaDerechaHoy"
+                    android:id="@+id/tvCalendario"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
                     android:background="@drawable/btn_borde_azul"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
-                    android:gravity="center"
                     android:padding="10dp"
-                    android:text="&gt;"
+                    android:text="Calendario"
+                    android:textAlignment="center"
+                    android:textColor="@color/azul_app"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvReservas"
+                    app:layout_constraintHorizontal_weight="0.27"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvReservas"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/btn_borde_azul"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:text="Listado Reservas"
+                    android:textAlignment="center"
+                    android:textColor="@color/azul_app"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvMailing"
+                    app:layout_constraintHorizontal_weight="0.36"
+                    app:layout_constraintStart_toEndOf="@+id/tvCalendario"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvMailing"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/btn_borde_azul"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp"
+                    android:text="Mailing"
+                    android:textAlignment="center"
                     android:textColor="@color/azul_app"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_weight="0.27"
-                    app:layout_constraintStart_toEndOf="@id/tvHoy"
+                    app:layout_constraintStart_toEndOf="@+id/tvReservas"
                     app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- tvFecha -->
-
-            <TextView
-                android:id="@+id/tvFecha"
+            <HorizontalScrollView
+                android:id="@+id/scrollTabla"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text=""
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/selectFecha"
-                app:layout_constraintHorizontal_weight="0.2"
-                app:layout_constraintStart_toEndOf="@id/linearHoy"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- selectFecha -->
-
-            <TextView
-                android:id="@+id/selectFecha"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_borde_azul"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
+                android:background="@color/white"
                 android:padding="10dp"
-                android:text="Seleccionar fecha"
-                android:textAlignment="center"
-                android:textColor="@color/azul_app"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_weight="0.3"
-                app:layout_constraintStart_toEndOf="@id/tvFecha"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintEnd_toEndOf="@+id/linearMenu"
+                app:layout_constraintStart_toStartOf="@+id/linearMenu"
+                app:layout_constraintTop_toBottomOf="@+id/linearMenu">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearMenu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/layoutFechas"
-            app:layout_constraintStart_toStartOf="@+id/layoutFechas"
-            app:layout_constraintTop_toBottomOf="@+id/layoutFechas">
+                <TableLayout
+                    android:id="@+id/tablaSesiones"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/gray"
+                    android:stretchColumns="*">
 
-            <TextView
-                android:id="@+id/tvCalendario"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:background="@drawable/btn_borde_azul"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:padding="10dp"
-                android:text="Calendario"
-                android:textAlignment="center"
-                android:textColor="@color/azul_app"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvReservas"
-                app:layout_constraintHorizontal_weight="0.27"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                    <!-- Cabecera fija -->
+                    <TableRow
+                        android:background="@drawable/tabla_home"
+                        android:padding="4dp">
 
-            <TextView
-                android:id="@+id/tvReservas"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:background="@drawable/btn_borde_azul"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:padding="10dp"
-                android:text="Listado Reservas"
-                android:textAlignment="center"
-                android:textColor="@color/azul_app"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvMailing"
-                app:layout_constraintHorizontal_weight="0.36"
-                app:layout_constraintStart_toEndOf="@+id/tvCalendario"
-                app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:gravity="center"
+                            android:text="Hora"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:text="Calendario"
+                            android:textSize="10dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:text="Nombre"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:text="Participantes"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:text="Total pagado"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:text="Estado"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:text="Idiomas"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                </TableLayout>
+            </HorizontalScrollView>
 
             <TextView
-                android:id="@+id/tvMailing"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:background="@drawable/btn_borde_azul"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="10dp"
-                android:text="Mailing"
-                android:textAlignment="center"
-                android:textColor="@color/azul_app"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_weight="0.27"
-                app:layout_constraintStart_toEndOf="@+id/tvReservas"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <HorizontalScrollView
-            android:id="@+id/scrollTabla"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/linearMenu"
-            app:layout_constraintStart_toStartOf="@+id/linearMenu"
-            app:layout_constraintTop_toBottomOf="@+id/linearMenu">
-
-
-            <TableLayout
-                android:id="@+id/tablaSesiones"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@color/gray"
-                android:stretchColumns="*">
-
-                <!-- Cabecera fija -->
-                <TableRow
-                    android:background="@drawable/tabla_home"
-                    android:padding="4dp">
-
-                    <TextView
-                        android:gravity="center"
-                        android:text="Hora"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:gravity="center"
-                        android:text="Calendario"
-                        android:textSize="10dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:gravity="center"
-                        android:text="Nombre"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:gravity="center"
-                        android:text="Participantes"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:gravity="center"
-                        android:text="Total pagado"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:gravity="center"
-                        android:text="Estado"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:gravity="center"
-                        android:text="Idiomas"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-                </TableRow>
-
-            </TableLayout>
-        </HorizontalScrollView>
-
-        <TextView
-            android:id="@+id/tvCajaChica"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@color/white"
-            android:gravity="left"
-            android:padding="5dp"
-            android:text="Caja Chica"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="@+id/scrollTabla"
-            app:layout_constraintStart_toStartOf="@+id/scrollTabla"
-            app:layout_constraintTop_toBottomOf="@+id/scrollTabla" />
-
-        <LinearLayout
-
-            android:id="@+id/linearBotonesCajaChica"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCajaChica">
-
-            <EditText
-                android:id="@+id/editCopcepto"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="0.9"
-                android:background="@drawable/boton_experiencia"
-                android:hint="Concepto" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="0.9"
-                android:background="@drawable/boton_experiencia"
-                android:drawableRight="@drawable/euro"
-                android:hint="Cantidad" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/boton_personalizado"
-                android:gravity="center"
-                android:text="Enviar"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <HorizontalScrollView
-            android:id="@+id/scrollCajaChica"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/linearBotonesCajaChica"
-            app:layout_constraintTop_toBottomOf="@+id/linearBotonesCajaChica">
-
-            <TableLayout
-                android:id="@+id/tablaCajaChica"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:stretchColumns="*"
-                android:background="@color/white">
-
-                <!-- Cabecera fija -->
-                <TableRow
-                    android:background="@drawable/tabla_home"
-                    android:padding="4dp">
-
-                    <TextView
-                        android:gravity="center"
-                        android:text="Fecha"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:gravity="center"
-                        android:text="Concepto"
-                        android:textSize="10dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:gravity="center"
-                        android:text="Cantidad"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:gravity="center"
-                        android:text="Tipo"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:gravity="center"
-                        android:text="Total parcial"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-                </TableRow>
-
-            </TableLayout>
-        </HorizontalScrollView>
-
-        <TextView
-            android:id="@+id/tvIncidencias"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@color/white"
-            android:padding="5dp"
-            android:paddingStart="10dp"
-            android:text="Incidencias y comentarios"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scrollCajaChica" />
-
-        <LinearLayout
-            android:id="@+id/linearComentario"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:padding="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvIncidencias"
-            app:layout_constraintTop_toBottomOf="@+id/tvIncidencias">
-
-            <EditText
-                android:id="@+id/editComentario"
+                android:id="@+id/tvCajaChica"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/boton_experiencia"
-                android:hint="Descripcion comentario/incidencia" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvTipo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="5dp"
-            android:paddingStart="10dp"
-            android:text="Seleccione tipo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/linearComentario"
-            app:layout_constraintTop_toBottomOf="@+id/linearComentario" />
-
-        <LinearLayout
-            android:id="@+id/linearSpinnerBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:padding="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvTipo"
-            app:layout_constraintTop_toBottomOf="@+id/tvTipo">
-
-            <Spinner
-                android:id="@+id/spinnerComentario"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1.3"
+                android:layout_marginTop="20dp"
                 android:background="@color/white"
-                android:entries="@array/comentario_array" />
+                android:gravity="left"
+                android:padding="5dp"
+                android:text="Caja Chica"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="@+id/scrollTabla"
+                app:layout_constraintStart_toStartOf="@+id/scrollTabla"
+                app:layout_constraintTop_toBottomOf="@+id/scrollTabla" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <LinearLayout
+
+                android:id="@+id/linearBotonesCajaChica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCajaChica">
+
+                <EditText
+                    android:id="@+id/editCopcepto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.9"
+                    android:background="@drawable/boton_experiencia"
+                    android:hint="Concepto" />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.9"
+                    android:id="@+id/editCantidad"
+                    android:background="@drawable/boton_experiencia"
+                    android:drawableRight="@drawable/euro"
+                    android:hint="Cantidad" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:id="@+id/btnEnviarCaja"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/boton_personalizado"
+                    android:gravity="center"
+                    android:text="Enviar"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/scrollCajaChica"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/boton_personalizado"
-                android:gravity="center"
-                android:text="Enviar"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+                android:background="@color/white"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/linearBotonesCajaChica"
+                app:layout_constraintTop_toBottomOf="@+id/linearBotonesCajaChica">
+
+                <TableLayout
+                    android:id="@+id/tablaCajaChica"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:stretchColumns="*">
+
+                    <!-- Cabecera fija -->
+                    <TableRow
+                        android:background="@drawable/tabla_home"
+                        android:padding="4dp">
+
+                        <TextView
+                            android:gravity="center"
+                            android:text="Fecha"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:text="Concepto"
+                            android:textSize="10dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:text="Cantidad"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:text="Tipo"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:text="Total parcial"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                </TableLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/tvIncidencias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:paddingStart="10dp"
+                android:text="Incidencias y comentarios"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scrollCajaChica" />
+
+            <LinearLayout
+                android:id="@+id/linearComentario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvIncidencias"
+                app:layout_constraintTop_toBottomOf="@+id/tvIncidencias">
+
+                <EditText
+                    android:id="@+id/editComentario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/boton_experiencia"
+                    android:hint="Descripcion comentario/incidencia" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvTipo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:paddingStart="10dp"
+                android:text="Seleccione tipo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/linearComentario"
+                app:layout_constraintTop_toBottomOf="@+id/linearComentario" />
+
+            <LinearLayout
+                android:id="@+id/linearSpinnerBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvTipo"
+                app:layout_constraintTop_toBottomOf="@+id/tvTipo">
+
+                <Spinner
+                    android:id="@+id/spinnerComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1.3"
+                    android:background="@color/white"
+                    android:entries="@array/comentario_array" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/boton_personalizado"
+                    android:gravity="center"
+                    android:text="Enviar"
+                    android:id="@+id/btnEnviarComentarios"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ImageButton
+        android:id="@+id/btnScrollSubir"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+
+        android:background="@drawable/fab_borde_azul"
+        android:src="@drawable/flecha_btn"
+        android:scaleType="center"
+        android:contentDescription="Volver arriba"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true" />
+</FrameLayout>

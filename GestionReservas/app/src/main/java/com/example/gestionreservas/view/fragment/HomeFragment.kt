@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
-import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -18,17 +17,17 @@ import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentHomeBinding
 import com.example.gestionreservas.models.entity.Compra
-import com.example.gestionreservas.models.entity.ExperienciaConHorarios
-import com.example.gestionreservas.models.entity.Pago
 import com.example.gestionreservas.models.entity.PagoCaja
 import com.example.gestionreservas.models.entity.Sesion
 import com.example.gestionreservas.models.entity.SesionConCompra
+import com.example.gestionreservas.models.repository.CajaChicaRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.network.RetrofitInstance
 import kotlinx.coroutines.Dispatchers
@@ -42,13 +41,17 @@ class HomeFragment: Fragment(),OnClickListener {
     private var fechaActual: LocalDate = LocalDate.now()
     private var token: String? = null
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var listaPagos:List<PagoCaja>
+    private var pagosCajaChicaYReservas: MutableList<PagoCaja> = mutableListOf()
+    private val cajaChicaRepository = CajaChicaRepository(RetrofitFakeInstance)
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Home"
+
         // // Inflamos el layout del fragmento para que cargue la vista correctamente
         instancias()
         return binding.root
@@ -57,7 +60,7 @@ class HomeFragment: Fragment(),OnClickListener {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun instancias() {
         actualizarFecha()
-
+        detectarScroll()
         //Instancias Click
         binding.tvCalendario.setOnClickListener(this)
         binding.tvReservas.setOnClickListener(this)
@@ -66,7 +69,8 @@ class HomeFragment: Fragment(),OnClickListener {
         binding.tvHoy.setOnClickListener(this)
         binding.tvFlechaIzquierdaHoy.setOnClickListener(this)
         binding.tvFlechaDerechaHoy.setOnClickListener(this)
-
+        binding.btnScrollSubir.setOnClickListener(this)
+        binding.btnEnviarCaja.setOnClickListener(this)
         //Metodos para cargar datos
 
         cargarDatosSesionesHoy()
@@ -102,58 +106,38 @@ class HomeFragment: Fragment(),OnClickListener {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private suspend fun cargarDatosDesdeJsonServer() {
-        val token=getTokenFromSharedPreferences()
+        val token = getTokenFromSharedPreferences()
         try {
-            val compras = RetrofitFakeInstance.apiFake.getPurchases(token!!)
-            Log.d("Fake API", "Datos obtenidos: $compras")
-
+            val compras = cajaChicaRepository.obtenerCompras(token!!)
             val sesiones = withContext(Dispatchers.Default) {
                 transformarComprasASesiones(compras, fechaActual)
             }
-            listaPagos= withContext(Dispatchers.Default){
-                transformarComprasAPagos(compras,fechaActual)
+
+            val pagosReservas = withContext(Dispatchers.Default) {
+                cajaChicaRepository.transformarComprasAPagos(compras, fechaActual)
             }
-            Log.e("Sesiones dia: ${fechaActual}","${sesiones}")
+
+            val pagosCajaChica = withContext(Dispatchers.IO) {
+                val fechaStr = fechaActual.toString()
+                val pagosApi = cajaChicaRepository.obtenerPagosDelDia(token, fechaStr)
+                cajaChicaRepository.transformarPagosCajaApi(pagosApi)
+            }
+
+            // Combinar y guardar
+            pagosCajaChicaYReservas = (pagosReservas + pagosCajaChica).toMutableList()
+
+            // Mostrar en interfaz
+            Log.e("Sesiones día: $fechaActual", sesiones.toString())
             cargarSesiones(binding.tablaSesiones, sesiones, requireContext())
-            cargarPagosCajaChica(binding.tablaCajaChica,listaPagos,requireContext())
+            cargarPagosCajaChica(binding.tablaCajaChica, pagosCajaChicaYReservas, requireContext())
 
             binding.tablaSesiones.visibility = View.VISIBLE
-            binding.tablaCajaChica.visibility=View.VISIBLE
+            binding.tablaCajaChica.visibility = View.VISIBLE
         } catch (e: Exception) {
             Log.e("HomeFragment", "Error en la API fake: ${e.localizedMessage}")
         }
     }
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun transformarComprasAPagos(compras: List<Compra>,
-                                         fechaSeleccionada: LocalDate): List<PagoCaja> {
 
-        val pagos= mutableListOf<PagoCaja>()
-        compras.forEach{compra->
-            val itemsDelDia = compra.items.filter {
-                val fechaItem = LocalDate.parse(it.start.substring(0, 10))
-                fechaItem == fechaSeleccionada
-            }
-
-            if (itemsDelDia.isNotEmpty()) {
-                val fecha = itemsDelDia.first().start.substring(0, 10)
-                val concepto = "Reserva de ${compra.name}"
-                val cantidad = "%.2f €".format(compra.priceFinal)
-
-                compra.payments.forEach { pago ->
-                    val pagoCaja = PagoCaja(
-                        fecha = fecha,
-                        concepto = concepto,
-                        cantidad = cantidad,
-                        tipo = pago.method,
-                        parcial = "%.2f €".format(pago.amount)
-                    )
-                    pagos.add(pagoCaja)
-                }
-            }
-        }
-
-        return pagos
-    }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun transformarComprasASesiones(
         compras: List<Compra>,
@@ -185,7 +169,7 @@ class HomeFragment: Fragment(),OnClickListener {
 
     private fun cargarPagosCajaChica(tabla:TableLayout, pagos:List<PagoCaja>, context:Context) {
         tabla.removeAllViews()
-
+        var totalParcial=0
         val filaCabecera = TableRow(context)
 
         val titulos = listOf("Fecha", "Concepto", "Cantidad", "Tipo", "Total Parcial")
@@ -195,12 +179,14 @@ class HomeFragment: Fragment(),OnClickListener {
         tabla.addView(filaCabecera)
         for (pago in pagos) {
             val fila = TableRow(context)
-
+            val cantidadNumerica = pago.cantidad.replace("€", "").trim().replace(",", ".").toDouble()
+            totalParcial += cantidadNumerica.toInt()
+            var totalString="$totalParcial €"
             fila.addView(crearCelda(context, pago.fecha))
             fila.addView(crearCelda(context,pago.concepto))
             fila.addView(crearCelda(context, pago.cantidad))
             fila.addView(crearCelda(context, pago.tipo))
-            fila.addView(crearCelda(context, pago.parcial))
+            fila.addView(crearCelda(context, totalString))
 
             val outValue = TypedValue()
             context.theme.resolveAttribute(android.R.attr.selectableItemBackground, outValue, true)
@@ -301,7 +287,27 @@ class HomeFragment: Fragment(),OnClickListener {
                 actualizarFecha()
                 cargarDatosSesionesHoy()
             }
+            binding.btnScrollSubir.id->{
+                binding.nestedScroll.smoothScrollTo(0, 0)
+            }
+            binding.btnEnviarCaja.id->{
+                agregarDineroCajaChica()
+            }
         }
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun agregarDineroCajaChica(){
+        val dia = fechaActual.dayOfMonth
+        val mes = fechaActual.month.value
+        val year=fechaActual.year
+        val fechaFormateada = "$year-/$dia-$mes"
+        var concepto=binding.editCopcepto.text.toString()
+        var cantidad=binding.editCantidad.text.toString()
+        var pagoNuevo=PagoCaja(fechaFormateada,concepto,cantidad,"","")
+        pagosCajaChicaYReservas.add(pagoNuevo)
+        cargarPagosCajaChica(binding.tablaCajaChica,pagosCajaChicaYReservas,requireContext())
+        binding.editCopcepto.text.clear()
+        binding.editCantidad.text.clear()
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun volverDiaActual(){
@@ -348,5 +354,14 @@ class HomeFragment: Fragment(),OnClickListener {
             .replace(R.id.fragment_principal,fragment)
             .addToBackStack(null)
         transaction.commit()
+    }
+    private fun detectarScroll(){
+        binding.nestedScroll.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            if (scrollY > 200) {
+                binding.btnScrollSubir.visibility = View.VISIBLE
+            } else {
+                binding.btnScrollSubir.visibility = View.GONE
+            }
+        }
     }
 }

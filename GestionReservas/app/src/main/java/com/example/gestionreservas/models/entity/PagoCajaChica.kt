@@ -1,9 +1,9 @@
 package com.example.gestionreservas.models.entity
 
-class PagoCaja (
+data class PagoCajaChica(
+    var id:String,
     var fecha:String,
     var concepto:String,
-    var cantidad:String,
-    var tipo:String,
-    var parcial:String
+    var cantidad:Double,
+    var tipo:String
 )
