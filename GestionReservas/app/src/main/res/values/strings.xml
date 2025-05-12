@@ -15,7 +15,6 @@
         <item>Consulta</item>
         <item>Cancelacion</item>
     </array>
-
-
+    <string name="default_web_client_ids">159471557568-5ss7dj0bhb0ukk58d8ll8i7isuqn4cav.apps.googleusercontent.com</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -86,12 +86,16 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
              listaReservaHoras
 
          ) { hora: HoraReserva, calendarioId: String ->
+
+
              /*Buscamos en nuestra lista ocupaciones si nuetro item coincide en hora y calendario
                 con el seleccionado.
               */
              val ocupacion = listaOcupaciones.find {
-                 it.start.startsWith(hora.horaInicio) && it.calendarioId == calendarioId
+                 it.start == hora.horaInicio && it.calendarioId == calendarioId
+
              }
+
 
              val token = getTokenFromSharedPreferences()
              viewLifecycleOwner.lifecycleScope.launch {
@@ -105,7 +109,8 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
                          val listaCompras = compraRepository.obtenerCompras(token)
                          compra = listaCompras.find { it.id == ocupacion.idCompra }
 
-                        //Si hay compra se trnasfor,a sesion para usarlo en sesionConCompra
+
+                         //Si hay compra se trnasfor,a sesion para usarlo en sesionConCompra
                          sesion = if (compra != null) {
                              transformarItemASesion(compra, ocupacion)
                          } else {
@@ -121,6 +126,7 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
                              )
                          }
                      } else {
+                         Log.d("DEBUG_COMPRAS", "se paso al else")
                          // No hay ocupación: crear sesión vacía para pasarla a detalles
                          sesion = Sesion(hora = hora.horaInicio,
                              calendario = calendarioId,
@@ -195,9 +201,12 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
 
         viewLifecycleOwner.lifecycleScope.launch {
             val listaFiltrada=calendarioRepository.obtenerOcupacionesDelDia(tkn,fechaAPI)
-            val listaOcupaciones=calendarioRepository.transformarOcupacionesAHoraReserva(listaFiltrada)
+            listaOcupaciones = listaFiltrada
+            val listaHoras = calendarioRepository.transformarOcupacionesAHoraReserva(listaFiltrada)
+            adaptadorHoraReserva.actualizarLista(listaHoras)
+
             Log.e("fun cargarDatosDesdeMock","Lista Ocupacion ${fechaDDMM}: ~${listaOcupaciones}")
-            adaptadorHoraReserva.actualizarLista(listaOcupaciones)
+            adaptadorHoraReserva.actualizarLista(listaHoras)
         }
     }
     //Este metodo obtiene la fecha actual y la asigna al textview tvFecha

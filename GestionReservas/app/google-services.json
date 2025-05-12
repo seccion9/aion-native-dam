@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "677930889810",
+    "project_id": "gestorreservas-ca77c",
+    "storage_bucket": "gestorreservas-ca77c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677930889810:android:267db8779105e6fd96e58b",
+        "android_client_info": {
+          "package_name": "com.example.gestionreservas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "677930889810-6s55oisob2m8qurhnh070jl2p51sv312.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gestionreservas",
+            "certificate_hash": "cc5da4dd17390ea58cdd360a697b72b6bf804a60"
+          }
+        },
+        {
+          "client_id": "677930889810-tq5dbm3vovubh82nvio66fn0al6a0l6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9M2zxulKo9OC1dmNYoRDrw8jS6sytSDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "677930889810-tq5dbm3vovubh82nvio66fn0al6a0l6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

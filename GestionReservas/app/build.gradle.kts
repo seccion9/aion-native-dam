@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -44,7 +45,8 @@ android {
 dependencies {
     //corrutinas
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-
+    //Auth correo
+    implementation ("com.google.android.gms:play-services-auth:20.7.0")
 
 
     implementation(libs.kotlinx.coroutines.android)
@@ -65,4 +67,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 }
+
