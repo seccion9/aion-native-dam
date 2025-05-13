@@ -135,6 +135,21 @@ server.get('/api/paymentsCajaChicaDia/:fecha', (req, res) => {
   res.status(200).json(pagosDelDia);
 });
 
+/* ────────── Endpoint POST /pucrhases ────────── */
+server.post('/api/purchases', (req, res) => {
+  const nuevaCompra = req.body;
+
+  // Validación básica (puedes extenderla)
+  if (!nuevaCompra || !nuevaCompra.id) {
+    return res.status(400).json({ error: 'Compra inválida. Falta ID u otros campos.' });
+  }
+
+  // Guardar la compra en la colección 'purchases'
+  router.db.get('purchases').push(nuevaCompra).write();
+
+  res.status(201).json(nuevaCompra);
+});
+
 server.use(router);     // todas las colecciones con prefijo /api
 /* ───────────────────────── Lanzar servidor ───────────────────────── */
 server.listen(3000, () =>

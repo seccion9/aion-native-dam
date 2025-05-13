@@ -177,7 +177,7 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
          binding.tvDiario.setOnClickListener(this)
          binding.tvRecargar.setOnClickListener(this)
          binding.tvSemana.setOnClickListener(this)
-
+         binding.btnBloquear.setOnClickListener(this)
     }
 
     /*Obtenemos nuestro token y con la fecha obtenida por parametros cargamos los datos del dia
@@ -257,24 +257,15 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
             }
             binding.tvMes.id->{
                 val fragment=CalendarioFragment()
-                val transacion=parentFragmentManager.beginTransaction()
-                transacion.replace(R.id.fragment_principal,fragment)
-                transacion.addToBackStack(null)
-                transacion.commit()
+                cambiarFragment(fragment)
             }
             binding.btnTestExp.id->{
                 val fragment=ExperienciaTestFragment()
-                val transacion=parentFragmentManager.beginTransaction()
-                transacion.replace(R.id.fragment_principal,fragment)
-                transacion.addToBackStack(null)
-                transacion.commit()
+                cambiarFragment(fragment)
             }
             binding.btnTodasExp.id->{
                 val fragment=ExperienciaTestFragment()
-                val transacion=parentFragmentManager.beginTransaction()
-                transacion.replace(R.id.fragment_principal,fragment)
-                transacion.addToBackStack(null)
-                transacion.commit()
+                cambiarFragment(fragment)
             }
             binding.selectFecha.id->{
 
@@ -288,14 +279,15 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
             }
             binding.tvSemana.id->{
                 val fragment=CalendarioFragmentSemana()
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_principal,fragment)
-                    .addToBackStack(null)
-                    .commit()
+                cambiarFragment(fragment)
             }
             binding.tvRecargar.id->{
                 val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
                 cargarDesdeMock(fechaStr)
+            }
+            binding.btnBloquear.id->{
+                val fragment=PostPurchaseFragment()
+                cambiarFragment(fragment)
             }
         }
     }
@@ -340,5 +332,11 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
             estado = compra.status,
             idiomas = compra.language
         )
+    }
+    private fun cambiarFragment(fragment:Fragment){
+        val transacion=parentFragmentManager.beginTransaction()
+        transacion.replace(R.id.fragment_principal,fragment)
+        transacion.addToBackStack(null)
+        transacion.commit()
     }
 }

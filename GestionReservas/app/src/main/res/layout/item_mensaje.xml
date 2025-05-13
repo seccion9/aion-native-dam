@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="10dp">
+    <LinearLayout
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearCorreo"
+        android:orientation="horizontal">
+        <ImageView
+
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/imagenCorreo"
+            android:src="@drawable/vector_imagen_correo"
+            />
+        <LinearLayout
+            android:gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvRemitente"
+                android:textSize="20sp"
+                android:text="Pinterest"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvAsuntoCorreo"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Ideas de corte de cabello para sergio"
+                />
+            <TextView
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvCuerpoMensaje"
+                android:textSize="12sp"
+                android:text="Ver mas¿Te interesa este tema? Ideas de corte de pelo"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

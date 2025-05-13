@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_app"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tvTituloDetalles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Cliente"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:hint="Nombre"
+        android:id="@+id/tvNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvTituloDetalles"
+        app:layout_constraintStart_toStartOf="@+id/tvTituloDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloDetalles" />
+
+    <EditText
+        android:id="@+id/tvTelefono"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:hint="Telefono"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvNombre"
+        app:layout_constraintStart_toStartOf="@+id/tvNombre"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
+
+    <EditText
+        android:id="@+id/tvEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:hint="Email"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvTelefono"
+        app:layout_constraintStart_toStartOf="@+id/tvTelefono"
+        app:layout_constraintTop_toBottomOf="@+id/tvTelefono" />
+
+    <EditText
+        android:id="@+id/tvDNI"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:hint="Dni"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvEmail"
+        app:layout_constraintStart_toStartOf="@+id/tvEmail"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+    <TextView
+        android:id="@+id/tvDireccion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:hint="Direccion"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvDNI"
+        app:layout_constraintStart_toStartOf="@+id/tvDNI"
+        app:layout_constraintTop_toBottomOf="@+id/tvDNI"/>
+    <TextView
+        android:id="@+id/tvDatosSesion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Sesión"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvDireccion"
+        app:layout_constraintStart_toStartOf="@+id/tvDireccion"
+        app:layout_constraintTop_toBottomOf="@+id/tvDireccion" />
+
+    <EditText
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:id="@+id/tvFechaInicio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:hint="Fecha Inicio : 2025-05-13 14:00:00"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvDatosSesion"
+        app:layout_constraintStart_toStartOf="@+id/tvDatosSesion"
+        app:layout_constraintTop_toBottomOf="@+id/tvDatosSesion" />
+
+    <EditText
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:id="@+id/tvFechaFin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:hint="Fecha fin: 2025-05-13 15:00:00"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvFechaInicio"
+        app:layout_constraintStart_toStartOf="@+id/tvFechaInicio"
+        app:layout_constraintTop_toBottomOf="@+id/tvFechaInicio" />
+
+    <Spinner
+        android:entries="@array/calendario_array"
+        android:id="@+id/tvSala"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:text="Calendario: "
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvFechaFin"
+        app:layout_constraintStart_toStartOf="@+id/tvFechaFin"
+        app:layout_constraintTop_toBottomOf="@+id/tvFechaFin" />
+
+    <Spinner
+        android:entries="@array/participantes_array"
+        android:id="@+id/tvParticipantes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:text="Participantes: "
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvSala"
+        app:layout_constraintStart_toStartOf="@+id/tvSala"
+        app:layout_constraintTop_toBottomOf="@+id/tvSala" />
+
+    <Spinner
+        android:id="@+id/tvExperiencia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:entries="@array/experiencia_array"
+        android:padding="5dp"
+        android:text="Tipo Experiencia: "
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvParticipantes"
+        app:layout_constraintStart_toStartOf="@+id/tvParticipantes"
+        app:layout_constraintTop_toBottomOf="@+id/tvParticipantes" />
+
+    <Spinner
+        android:entries="@array/idioma_array"
+        android:id="@+id/tvIdioma"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:text="Idioma: "
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvExperiencia"
+        app:layout_constraintStart_toStartOf="@+id/tvExperiencia"
+        app:layout_constraintTop_toBottomOf="@+id/tvExperiencia" />
+
+    <EditText
+        android:id="@+id/tvEstado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:hint="Estado: "
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvIdioma"
+        app:layout_constraintStart_toStartOf="@+id/tvIdioma"
+        app:layout_constraintTop_toBottomOf="@+id/tvIdioma" />
+
+    <TextView
+        android:id="@+id/tvDatosPago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Pago"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tvEstado"
+        app:layout_constraintTop_toBottomOf="@+id/tvEstado" />
+    <EditText
+        android:id="@+id/tvPrecio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:hint="Precio: "
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvDatosPago"
+        app:layout_constraintStart_toStartOf="@+id/tvDatosPago"
+        app:layout_constraintTop_toBottomOf="@+id/tvDatosPago" />
+    <EditText
+        android:id="@+id/tvTotalPagado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:hint="Total Pagado: "
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvPrecio"
+        app:layout_constraintStart_toStartOf="@+id/tvPrecio"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrecio" />
+
+    <EditText
+        android:id="@+id/tvMetodoPago"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:hint="Método Pago: "
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalPagado" />
+
+
+    <TextView
+        android:id="@+id/tvGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_experiencia_azul"
+        android:drawableLeft="@drawable/edit"
+        android:drawablePadding="12dp"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="Agregar Reserva"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvMetodoPago"
+        app:layout_constraintStart_toStartOf="@+id/tvMetodoPago"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvMetodoPago" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,4 +63,11 @@ interface ApiServiceFake {
         @Header("Authorization") token: String,
         @Path("fecha") fecha: String
     ): Response<List<PagoCajaChica>>
+
+    //Registrar compra en la API
+    @POST("purchases")
+    suspend fun registrarCompra(
+        @Header("Authorization") toekn:String,
+        @Body compra:Compra
+    ):Response<Compra>
 }

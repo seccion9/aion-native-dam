@@ -6,6 +6,7 @@ import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.Sesion
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.network.ApiServiceFake
+import retrofit2.Response
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.temporal.TemporalAdjusters
@@ -83,5 +84,7 @@ class CompraRepository(private val api: ApiServiceFake) {
     suspend fun obtenerCompras(token: String): List<Compra> {
         return api.getPurchases(token)
     }
-
+    suspend fun registrarCompra(token: String, compra: Compra): Response<Compra> {
+        return api.registrarCompra("Bearer $token", compra)
+    }
 }

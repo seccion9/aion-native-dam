@@ -1,5 +1,6 @@
 package com.example.gestionreservas.network
 
+import com.example.gestionreservas.models.entity.GmailMessageDetailResponse
 import com.example.gestionreservas.models.entity.GmailMessagesResponse
 
 import retrofit2.Response
@@ -12,5 +13,9 @@ interface GmailService {
     suspend fun getMessages(
         @Header("Authorization") authHeader: String
     ): Response<GmailMessagesResponse>
-
+    @GET("gmail/v1/users/me/messages/{id}")
+    suspend fun getMessageById(
+        @Header("Authorization") authHeader: String,
+        @Path("id") messageId: String
+    ): Response<GmailMessageDetailResponse>
 }

@@ -6967,55 +6967,54 @@
       "automaticActions": "",
       "items": [
         {
-          "id": "fd8353f2-eae4-47f9-ab5b-eff2fab3dec2",
-          "idExperience": "1",
-          "idCalendario": "cal1",
-          "idBusinessUnit": null,
-          "status": "pendiente",
-          "internaPermanent": false,
-          "start": "2025-05-13 10:00:00",
-          "end": "2025-05-13 11:00:00",
-          "duration": 60,
-          "peopleNumber": 4,
-          "priceOriginal": 90,
-          "priceTotal": 90,
-          "priceFractioned": 45,
           "discountAmount": 0,
+          "duration": 60,
+          "end": "2025-05-13 11:00:00",
           "fields": [
             {
+              "amount": 0,
               "id": "9253bade-fa8c-4b35-9a85-13d0951d40a9",
-              "title": "Idioma",
               "name": "language",
-              "value": "Spanish",
-              "amount": 0
+              "title": "Idioma",
+              "value": "Spanish"
             },
             {
+              "amount": 10.5,
               "id": "b5e32c89-d147-43e5-9aae-49f299d26377",
-              "title": "Monitor",
               "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
+              "title": "Monitor",
+              "value": "1 pax"
             }
-          ]
+          ],
+          "id": "fd8353f2-eae4-47f9-ab5b-eff2fab3dec2",
+          "idCalendario": "cal1",
+          "idExperience": "1",
+          "internaPermanent": false,
+          "peopleNumber": 4,
+          "priceFractioned": 45,
+          "priceOriginal": 90,
+          "priceTotal": 90,
+          "start": "2025-05-13 10:00:00",
+          "status": "pendiente"
         }
       ],
       "payments": [
         {
-          "id": "443348d8-d552-4e6f-8535-1be93ee97b01",
           "amount": 90,
+          "id": "443348d8-d552-4e6f-8535-1be93ee97b01",
           "method": "Efectivo"
         }
       ],
       "resumenItems": [
         {
-          "id": "fd8353f2-eae4-47f9-ab5b-eff2fab3dec2",
-          "id_experience": "1",
-          "id_calendario": "cal1",
-          "start": "2025-05-13 10:00:00",
           "end": "2025-05-13 11:00:00",
+          "id": "fd8353f2-eae4-47f9-ab5b-eff2fab3dec2",
+          "id_calendario": "cal1",
+          "id_experience": "1",
           "people_number": 4,
+          "price_fractioned": 45,
           "price_original": 90,
-          "price_fractioned": 45
+          "start": "2025-05-13 10:00:00"
         }
       ]
     },
