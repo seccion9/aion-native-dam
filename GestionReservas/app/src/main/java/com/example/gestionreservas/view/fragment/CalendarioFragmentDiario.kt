@@ -188,27 +188,41 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
     private fun cargarDesdeMock(fechaDDMM: String) {
         val tkn = getTokenFromSharedPreferences() ?: return
 
-        // Cambiamos formato a lo que devuelve la API -> 05/05/2025 -> 2025-05-05
-
         val fechaAPI = try {
-            // Intenta parsear como dd/MM/yyyy
             LocalDate.parse(fechaDDMM, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
         } catch (e: Exception) {
-            // Si falla, intenta como yyyy/MM/dd
             LocalDate.parse(fechaDDMM, DateTimeFormatter.ofPattern("yyyy/MM/dd"))
-        }.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
-
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            val listaFiltrada=calendarioRepository.obtenerOcupacionesDelDia(tkn,fechaAPI)
-            listaOcupaciones = listaFiltrada
-            val listaHoras = calendarioRepository.transformarOcupacionesAHoraReserva(listaFiltrada)
-            adaptadorHoraReserva.actualizarLista(listaHoras)
+            try {
+                val sesiones = compraRepository.obtenerSesionesDelDia(tkn, fechaAPI)
 
-            Log.e("fun cargarDatosDesdeMock","Lista Ocupacion ${fechaDDMM}: ~${listaOcupaciones}")
-            adaptadorHoraReserva.actualizarLista(listaHoras)
+                listaOcupaciones = sesiones.map {
+                    Ocupacion(
+                        experienciaId = it.compra?.items?.first()!!.idExperience,
+                        calendarioId = it.sesion.calendario,
+                        date = fechaAPI.toString(), // ISO: yyyy-MM-dd
+                        start = it.sesion.hora,
+                        end = calcularHoraFin(it.sesion.hora), // ahora lo vemos abajo
+                        idCompra = it.compra!!.id
+                    )
+                }
+
+                val listaHoras = calendarioRepository.transformarOcupacionesAHoraReserva(listaOcupaciones)
+                adaptadorHoraReserva.actualizarLista(listaHoras)
+
+            } catch (e: Exception) {
+                Log.e("CalendarioDiario", "Error en getSesionesDelDia: ${e.message}, usando fallback")
+
+                val fallback = calendarioRepository.obtenerOcupacionesDelDia(tkn, fechaAPI.format(DateTimeFormatter.ofPattern("yyyy/MM/dd")))
+                listaOcupaciones = fallback
+                val listaHoras = calendarioRepository.transformarOcupacionesAHoraReserva(listaOcupaciones)
+                adaptadorHoraReserva.actualizarLista(listaHoras)
+            }
         }
     }
+
     //Este metodo obtiene la fecha actual y la asigna al textview tvFecha
     @RequiresApi(Build.VERSION_CODES.O)
     private fun obtenerFechaHoy(){
@@ -318,8 +332,7 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
     //Metodo para obtener nuestro token guardado en shared preferences
     private fun getTokenFromSharedPreferences(): String? {
         val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", MODE_PRIVATE)
-        val token = sharedPreferences.getString("auth_token", null)
-        return token?.let { "Bearer $it" }
+        return sharedPreferences.getString("auth_token", null)
     }
     fun transformarItemASesion(compra: Compra, ocupacion: Ocupacion): Sesion {
         val item = compra.items.firstOrNull { it.id == ocupacion.idCompra } ?: compra.items.first()
@@ -338,5 +351,12 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
         transacion.replace(R.id.fragment_principal,fragment)
         transacion.addToBackStack(null)
         transacion.commit()
+    }
+    fun calcularHoraFin(horaInicio: String): String {
+        val partes = horaInicio.split(":")
+        val hora = partes[0].toInt()
+        val minutos = partes[1].toInt()
+        val nuevaHora = String.format("%02d:%02d", (hora + 1) % 24, minutos)
+        return nuevaHora
     }
 }

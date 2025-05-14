@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class Compra(
+    val userId: String? = null,
     var id: String,
     var uuid: String,
     var status: String,

@@ -131,7 +131,6 @@ class ListadoFragment: Fragment(),OnClickListener {
     }
     private fun getTokenFromSharedPreferences(): String? {
         val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", MODE_PRIVATE)
-        val token = sharedPreferences.getString("auth_token", null)
-        return token?.let { "Bearer $it" }
+        return sharedPreferences.getString("auth_token", null)
     }
 }

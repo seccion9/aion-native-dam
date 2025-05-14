@@ -72,7 +72,7 @@
         app:layout_constraintEnd_toEndOf="@+id/tvEmail"
         app:layout_constraintStart_toStartOf="@+id/tvEmail"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
-    <TextView
+    <EditText
         android:id="@+id/tvDireccion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -138,7 +138,6 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:padding="5dp"
-        android:text="Calendario: "
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tvFechaFin"
@@ -152,7 +151,6 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:padding="5dp"
-        android:text="Participantes: "
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tvSala"
@@ -166,7 +164,6 @@
         android:background="@color/white"
         android:entries="@array/experiencia_array"
         android:padding="5dp"
-        android:text="Tipo Experiencia: "
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tvParticipantes"
@@ -180,7 +177,6 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:padding="5dp"
-        android:text="Idioma: "
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tvExperiencia"

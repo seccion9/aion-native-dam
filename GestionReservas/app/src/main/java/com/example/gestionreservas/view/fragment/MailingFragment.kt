@@ -10,9 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentMailingBinding
 import com.example.gestionreservas.model.CorreoItem
@@ -23,9 +25,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.Scope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 @RequiresApi(Build.VERSION_CODES.O)
 class MailingFragment : Fragment(), View.OnClickListener {
@@ -33,130 +33,199 @@ class MailingFragment : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentMailingBinding
     private lateinit var googleSignInClient: GoogleSignInClient
     private val RC_SIGN_IN = 1234
+    private var nextPageToken: String? = null
+    private var isLoading = false
+    private lateinit var token: TokenResponse
+    private val listaTotalCorreos = mutableListOf<CorreoItem>()
+    private lateinit var adaptadorCorreo: AdaptadorCorreo
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentMailingBinding.inflate(inflater, container, false)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Mailing"
         instancias()
         return binding.root
     }
 
+
+    //Funcion para instanciar listeners,adaptadores,funciones de inicio
     private fun instancias() {
         binding.btnLogin.setOnClickListener(this)
+        binding.btnCerrarSesion.setOnClickListener(this)
+
         configurarGoogleSignIn()
 
-        val cuenta = GoogleSignIn.getLastSignedInAccount(requireContext())
-        if (cuenta != null) {
-            obtenerCorreosDirectamente()
+        adaptadorCorreo = AdaptadorCorreo(requireContext(), listaTotalCorreos)
+        binding.recyclerCorreos.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerCorreos.adapter = adaptadorCorreo
+
+        // Comprobar si ya hay cuenta conectada
+        GoogleSignIn.getLastSignedInAccount(requireContext())?.let {
+            inicializarCorreoConCuentaGuardada()
         }
     }
 
+
+    //Configuracion del inicio de sesion de gmail con nuestro id de cliente y la ruta a la api
     private fun configurarGoogleSignIn() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .requestScopes(Scope("https://www.googleapis.com/auth/gmail.readonly"))
-            .requestServerAuthCode(getString(R.string.default_web_client_id), true)
+            .requestServerAuthCode(getString(com.example.gestionreservas.R.string.default_web_client_id), true)
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
     }
 
+    //Metodos onclick
     override fun onClick(v: View?) {
-        if (v?.id == binding.btnLogin.id) {
-            val signInIntent = googleSignInClient.signInIntent
-            startActivityForResult(signInIntent, RC_SIGN_IN)
+        when(v?.id){
+            binding.btnLogin.id->{
+                startActivityForResult(googleSignInClient.signInIntent, RC_SIGN_IN)
+            }
+            binding.btnCerrarSesion.id->{
+                cerrarSesion()
+            }
         }
     }
-
+    /**
+     * Inicio de sesion de GMAIL,si es exitoso obtenemos correos y sus datos y los cargamos al adaptador a traves
+     * de mostrarListaCorreos()
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             if (task.isSuccessful) {
-                val authCode = task.result?.serverAuthCode
-                Log.d("MailingFragment", "AuthCode: $authCode")
+                task.result?.serverAuthCode?.let { authCode ->
+                    binding.progressBar.visibility = View.VISIBLE
+                    lifecycleScope.launch {
+                        try {
+                            // Guarda tokens en SharedPreferences
+                            MailingRepository.loginYObtenerCorreos(authCode, requireContext())
 
-                lifecycleScope.launch {
-                    try {
-                        val tokenResponse = authCode?.let { MailingRepository.getAccessToken(it) }
-
-                        if (tokenResponse != null) {
-                            guardarTokens(requireContext(), tokenResponse.access_token, tokenResponse.refresh_token)
-
-                            val lista = MailingRepository.obtenerMensajes(tokenResponse)
-
-                            withContext(Dispatchers.Main) {
-                                val adaptador = AdaptadorCorreo(requireContext(), lista)
-                                binding.recyclerCorreos.layoutManager = LinearLayoutManager(requireContext())
-                                binding.recyclerCorreos.adapter = adaptador
-                                Toast.makeText(requireContext(), "Login y consulta OK", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-
-                    } catch (e: Exception) {
-                        Log.e("MailingFragment", "Error general: ${e.message}")
-                        withContext(Dispatchers.Main) {
+                            inicializarCorreoConCuentaGuardada()
+                            Toast.makeText(requireContext(), "Login y correos OK", Toast.LENGTH_SHORT).show()
+                        } catch (e: Exception) {
+                            Log.e("MailingFragment", "Error login: ${e.message}")
                             Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                            binding.progressBar.visibility = View.GONE
                         }
                     }
                 }
-
             } else {
-                Log.e("MailingFragment", "Fallo en login: ${task.exception}")
                 Toast.makeText(requireContext(), "Error al iniciar sesión", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun obtenerCorreosDirectamente() {
-        val accessToken = obtenerAccessToken(requireContext())
-        val refreshToken = obtenerRefreshToken(requireContext())
+    /**
+     * Recibe la nueva lista y se la añade al adaptador para mostrarla
+     */
+    private fun mostrarListaCorreos(nuevaLista: List<CorreoItem>) {
 
-        if (accessToken == null) {
-            Log.e("MailingFragment", "No se encontró access token")
-            return
-        }
+        listaTotalCorreos.clear()
+        listaTotalCorreos.addAll(nuevaLista)
+        adaptadorCorreo.notifyDataSetChanged()
+        Log.d("DEBUG", "Mostrando lista con ${nuevaLista.size} correos")
+    }
 
-        val token = TokenResponse(
-            access_token = accessToken,
-            refresh_token = refreshToken,
-            expires_in = 3600,
-            token_type = "Bearer",
-            scope = "https://www.googleapis.com/auth/gmail.readonly"
-        )
+    /**
+     * Llama al repositorio y obtiene los nuevos mensajes añadidos a la lista para despues mostrarlos en
+     * el fragment.
+     */
+    private fun cargarPaginaSiguiente() {
+        isLoading = true
+        binding.progressBar.visibility = View.VISIBLE
 
         lifecycleScope.launch {
             try {
-                val lista = MailingRepository.obtenerMensajes(token)
-                withContext(Dispatchers.Main) {
-                    val adaptador = AdaptadorCorreo(requireContext(), lista)
-                    binding.recyclerCorreos.layoutManager = LinearLayoutManager(requireContext())
-                    binding.recyclerCorreos.adapter = adaptador
-                }
+                val (nuevosCorreos, nuevaToken) = MailingRepository.obtenerMensajesPagina(token, nextPageToken)
+                nextPageToken = nuevaToken
+                mostrarListaCorreos(nuevosCorreos)
             } catch (e: Exception) {
-                Log.e("MailingFragment", "Error al obtener correos automáticamente: ${e.message}")
+                Log.e("MailingFragment", "Error en paginación: ${e.message}")
+            } finally {
+                isLoading = false
+                binding.progressBar.visibility = View.GONE
             }
         }
     }
 
-    private fun guardarTokens(context: Context, accessToken: String, refreshToken: String?) {
-        val prefs = context.getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
-        prefs.edit()
-            .putString("access_token", accessToken)
-            .putString("refresh_token", refreshToken)
+
+    /**Metodo para obtener token gmail guardado de shared preferences,devuelve un token response con
+     * la expiracion,token de acceso  y el resfresh del token
+     */
+    private fun obtenerTokenGuardado(): TokenResponse {
+        val prefs = requireContext().getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
+        val access = prefs.getString("access_token", null) ?: throw Exception("No hay token")
+        val refresh = prefs.getString("refresh_token", null)
+        return TokenResponse(access, 3600, refresh, "Bearer", "https://www.googleapis.com/auth/gmail.readonly")
+    }
+
+    /**
+     * Metodo que inicia sesion directamente si hay cuenta guardada y muestra los correos,se oculta
+     * el boton de login ya que no es necesario.
+     */
+    private fun inicializarCorreoConCuentaGuardada() {
+        binding.btnLogin.visibility = View.GONE
+        binding.btnCerrarSesion.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.VISIBLE
+
+        lifecycleScope.launch {
+            try {
+                obtenerCorreosAlHacerScroll()
+            } catch (e: Exception) {
+                Log.e("MailingFragment", "Error cargando correos: ${e.message}")
+                binding.btnLogin.visibility = View.VISIBLE
+                binding.btnCerrarSesion.visibility = View.GONE
+                Toast.makeText(requireContext(), "Fallo cargando correos", Toast.LENGTH_SHORT).show()
+            } finally {
+                binding.progressBar.visibility = View.GONE
+            }
+        }
+    }
+    private suspend fun obtenerCorreosAlHacerScroll(){
+        //Obtenemos token  y cargamos los correos
+        token = obtenerTokenGuardado()
+        val (lista, tokenInicial) = MailingRepository.obtenerMensajesPagina(token)
+        Log.d("DEBUG", "Correos obtenidos en scroll: ${lista.size}")
+        nextPageToken = tokenInicial
+        mostrarListaCorreos(lista)
+        //Detectamos si el usuario hace scroll,si lo hace se carga la siguiente pagina de correos
+        binding.recyclerCorreos.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
+                val totalItemCount = layoutManager.itemCount
+
+                if (!isLoading && nextPageToken != null && lastVisibleItem >= totalItemCount - 2) {
+                    cargarPaginaSiguiente()
+                }
+            }
+        })
+    }
+    private fun cerrarSesion() {
+        googleSignInClient.signOut().addOnCompleteListener {
+            // Si quieres impedir que vuelva a iniciar sesión automática-
+            // mente en este dispositivo, usa también revokeAccess():
+            googleSignInClient.revokeAccess().addOnCompleteListener {
+                Log.d("MailingFragment", "Cuenta desconectada")
+            }
+        }
+
+        requireContext().getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
+            .edit()
+            .clear()
             .apply()
-    }
 
-    private fun obtenerAccessToken(context: Context): String? {
-        val prefs = context.getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
-        return prefs.getString("access_token", null)
-    }
-
-    private fun obtenerRefreshToken(context: Context): String? {
-        val prefs = context.getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
-        return prefs.getString("refresh_token", null)
+        listaTotalCorreos.clear()
+        adaptadorCorreo.notifyDataSetChanged()
+        binding.btnLogin.visibility = View.VISIBLE
+        nextPageToken = null
+        Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()
     }
 }

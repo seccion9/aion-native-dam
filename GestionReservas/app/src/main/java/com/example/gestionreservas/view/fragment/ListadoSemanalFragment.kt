@@ -28,6 +28,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.time.DayOfWeek
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAdjusters
 
 class ListadoSemanalFragment:Fragment(),OnClickListener {
@@ -108,6 +110,7 @@ class ListadoSemanalFragment:Fragment(),OnClickListener {
         }
     }
     @RequiresApi(Build.VERSION_CODES.O)
+    //Obtenemos las sesiones filtradas por la fecha actual y las ordenamos por fecha
     private fun obtenerListadoReservasSemanal(){
         val token=getTokenFromSharedPreferences()
         viewLifecycleOwner.lifecycleScope.launch {
@@ -117,7 +120,12 @@ class ListadoSemanalFragment:Fragment(),OnClickListener {
                     RetrofitFakeInstance.apiFake.getPurchases(token.toString())
                 }
                 val sesiones = compraRepository.obtenerSesionesDeSemana(compras, fechaActual)
-                adaptadorListado.actualizarLista(sesiones)
+                val sesionesOrdenadas = sesiones.sortedBy { sesion ->
+                    val fechaHoraStr = sesion.compra!!.items.first().start
+                    LocalDateTime.parse(fechaHoraStr, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+                }
+
+                adaptadorListado.actualizarLista(sesionesOrdenadas)
             }catch (e:Exception){
                 Log.e("ListadoFragmentSemanal","Error en la API fake ${e.localizedMessage}")
             }

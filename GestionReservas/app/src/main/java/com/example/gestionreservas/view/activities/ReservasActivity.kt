@@ -2,8 +2,10 @@ package com.example.gestionreservas.view.activities
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
@@ -12,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.ActivityReservasBinding
 import com.example.gestionreservas.view.fragment.CalendarioFragmentDiario
+import com.example.gestionreservas.view.fragment.ConfiguracionFragment
 import com.example.gestionreservas.view.fragment.HomeFragment
 import com.example.gestionreservas.view.fragment.ListadoFragment
 import com.example.gestionreservas.view.fragment.MailingFragment
@@ -20,6 +23,7 @@ class ReservasActivity : AppCompatActivity() {
     private lateinit var binding: ActivityReservasBinding
     private lateinit var toggle: ActionBarDrawerToggle
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityReservasBinding.inflate(layoutInflater)
@@ -65,7 +69,9 @@ class ReservasActivity : AppCompatActivity() {
                 R.id.mailing -> {
                     replaceFragment(MailingFragment())
                 }
-
+                R.id.configuracion ->{
+                    replaceFragment(ConfiguracionFragment())
+                }
                 R.id.cerrar_sesion -> {
                     cerrarSesion(this)
                     return@setNavigationItemSelectedListener true

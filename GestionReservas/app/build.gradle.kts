@@ -16,6 +16,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "GMAIL_CLIENT_ID", "\"${project.property("GMAIL_CLIENT_ID")}\"")
+        buildConfigField("String", "GMAIL_CLIENT_SECRET", "\"${project.property("GMAIL_CLIENT_SECRET")}\"")
+
     }
 
     buildTypes {
@@ -39,6 +42,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 

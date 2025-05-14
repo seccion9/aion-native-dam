@@ -139,15 +139,40 @@ server.get('/api/paymentsCajaChicaDia/:fecha', (req, res) => {
 server.post('/api/purchases', (req, res) => {
   const nuevaCompra = req.body;
 
-  // Validación básica (puedes extenderla)
+  const auth = req.headers.authorization || '';
+  const token = auth.replace('Bearer ', '');
+  const user = router.db.get('users').find({ token }).value();
+
+  if (!user) {
+    return res.status(403).json({ error: 'Token inválido' });
+  }
+
   if (!nuevaCompra || !nuevaCompra.id) {
     return res.status(400).json({ error: 'Compra inválida. Falta ID u otros campos.' });
   }
 
-  // Guardar la compra en la colección 'purchases'
+  // Añadir ID del usuario autenticado
+  nuevaCompra.userId = user.id; // o user.email
+
   router.db.get('purchases').push(nuevaCompra).write();
 
   res.status(201).json(nuevaCompra);
+});
+
+server.get('/api/purchases', (req, res) => {
+  const auth = req.headers.authorization || '';
+  const token = auth.replace('Bearer ', '');
+  const user = router.db.get('users').find({ token }).value();
+
+  if (!user) {
+    return res.status(403).json({ error: 'Token inválido' });
+  }
+
+  const comprasUsuario = router.db.get('purchases')
+    .filter({ userId: user.id }) // ← Asegúrate de incluir este campo al registrar
+    .value();
+
+  res.status(200).json(comprasUsuario);
 });
 
 server.use(router);     // todas las colecciones con prefijo /api

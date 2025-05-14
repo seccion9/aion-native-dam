@@ -1,6 +1,7 @@
 package com.example.gestionreservas.models.repository
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.Sesion
@@ -22,7 +23,7 @@ class CompraRepository(private val api: ApiServiceFake) {
     }
     @RequiresApi(Build.VERSION_CODES.O)
     suspend fun obtenerSesionesDelDia(token: String, fecha: LocalDate): List<SesionConCompra> {
-        val compras = api.getPurchases(token)
+        val compras = api.getPurchases("Bearer $token")
         return transformarComprasASesiones(compras, fecha)
     }
 
@@ -62,9 +63,13 @@ class CompraRepository(private val api: ApiServiceFake) {
         fechaSeleccionada: LocalDate
     ): List<SesionConCompra> {
         val sesiones = mutableListOf<SesionConCompra>()
+        Log.d("SESIONES", "Fecha seleccionada: $fechaSeleccionada")
         compras.forEach { compra ->
             compra.items.forEach { item ->
                 val fechaItem = LocalDate.parse(item.start.substring(0, 10))
+                Log.d("SESIONES", "Evaluando compra de ${compra.name}")
+                Log.d("SESIONES", "Fecha del item: $fechaItem vs seleccionada: $fechaSeleccionada")
+
                 if (fechaItem == fechaSeleccionada) {
                     val sesion = Sesion(
                         hora = item.start.substring(11, 16),
@@ -76,13 +81,17 @@ class CompraRepository(private val api: ApiServiceFake) {
                         idiomas = compra.language
                     )
                     sesiones.add(SesionConCompra(sesion, compra))
+                    Log.d("SESIONES", "Añadida sesión de ${compra.name} a las $fechaItem")
+                } else {
+                    Log.d("SESIONES", "No coincide la fecha del item con la seleccionada")
                 }
             }
         }
         return sesiones
     }
     suspend fun obtenerCompras(token: String): List<Compra> {
-        return api.getPurchases(token)
+            return api.getPurchases("Bearer $token")
+
     }
     suspend fun registrarCompra(token: String, compra: Compra): Response<Compra> {
         return api.registrarCompra("Bearer $token", compra)

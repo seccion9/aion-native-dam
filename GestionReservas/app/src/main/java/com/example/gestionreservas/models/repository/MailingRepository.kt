@@ -1,13 +1,17 @@
 package com.example.gestionreservas.repository
 
+import android.content.Context
 import android.util.Base64
 import android.util.Log
+import com.example.gestionreservas.BuildConfig
 import com.example.gestionreservas.model.CorreoItem
 import com.example.gestionreservas.models.entity.GmailMessageDetailResponse
 import com.example.gestionreservas.models.entity.GmailMessagesResponse
 import com.example.gestionreservas.models.entity.TokenResponse
 import com.example.gestionreservas.network.GmailRetrofitInstance
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import retrofit2.Response
@@ -15,10 +19,17 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 object MailingRepository {
+    /**
+     * ID de cliente y clave secreta generados en Google Cloud Console para OAuth 2.0.
+     */
+    private const val CLIENT_ID = BuildConfig.GMAIL_CLIENT_ID
+    private const val CLIENT_SECRET = BuildConfig.GMAIL_CLIENT_SECRET
 
-    private const val CLIENT_ID = ""
-    private const val CLIENT_SECRET = ""
-
+    /**
+     * Funcion para obtener el token de acceso al gmail e iniciar sesion,conectamos con la url de la API
+     * usamos nuestro codigo de autenticacion,nuestros clienteId y clave de cliente secreta(configurada en Auth 2.0),
+     * Intentamos hacer la conexion con POST y devolvemos el tokenResponse que devuelve la API
+     */
     suspend fun getAccessToken(authCode: String): TokenResponse? = withContext(Dispatchers.IO) {
         try {
             val url = URL("https://oauth2.googleapis.com/token")
@@ -55,6 +66,10 @@ object MailingRepository {
         }
     }
 
+    /**
+     * Con nuestro token response obtenemos los mensajes de ese usuario de GMAIL,si es exitoso devolvemos
+     * el body de la respuesta.
+     */
     suspend fun getMensajes(token: TokenResponse): GmailMessagesResponse? = withContext(Dispatchers.IO) {
         try {
             val authHeader = "Bearer ${token.access_token}"
@@ -72,6 +87,10 @@ object MailingRepository {
         }
     }
 
+    /**
+     * Obtiene el detalle de cada mensaje con el token y el id del mensaje y si es exitoso responde con el
+     * body del mensaje(asunto,remitente,cuerpo)
+     */
     suspend fun getMensajeDetalle(token: TokenResponse, id: String): GmailMessageDetailResponse? = withContext(Dispatchers.IO) {
         try {
             val authHeader = "Bearer ${token.access_token}"
@@ -89,40 +108,124 @@ object MailingRepository {
         }
     }
 
+    /**
+     * Con el body que devuelve getMessages depuramos la informacion del correo en una lista de tipo
+     * CorreoItem que luego cargaremos en nustro recyclerView.
+     * Usamos async para realizar llamadas independientes a la API y ser mas eficientes y awwaitall
+     * para esperar a todas las llamadas antes de mostrar los mensajes
+     */
     suspend fun obtenerMensajes(token: TokenResponse): MutableList<CorreoItem> {
         val mensajes = getMensajes(token)
-        val listaCorreos = mutableListOf<CorreoItem>()
+        // Ejecutamos las peticiones a detalle en paralelo con async
+        val listaCorreos = withContext(Dispatchers.IO) {
+            mensajes?.messages?.take(10)?.map { mensaje ->
+                async {
+                    val detalle = getMensajeDetalle(token, mensaje.id)
+                    /**
+                     * Limpiamos cabeceras de los mensajes para mostrar la info que queremos y si es mucho texto
+                     * nos quedamos solo con una parte a mostrar en el recycler.
+                     */
+                    val cabeceras = detalle?.payload?.headers ?: emptyList()
+                    val subjectRaw = cabeceras.find { it.name == "Subject" }?.value ?: "(Sin asunto)"
+                    val asunto = if (subjectRaw.length > 40) subjectRaw.take(25) + "..." else subjectRaw
 
-        mensajes?.messages?.take(10)?.forEach { mensaje ->
-            val detalle = getMensajeDetalle(token, mensaje.id)
+                    val fromRaw = cabeceras.find { it.name == "From" }?.value ?: "(Desconocido)"
+                    val remitente = if (fromRaw.length > 30) fromRaw.take(20) else fromRaw
+                    val nombreRemitente = remitente.substringBefore("<").trim()
+                    val from = nombreRemitente
 
-            val cabeceras = detalle?.payload?.headers ?: emptyList()
-            val subjectRaw = cabeceras.find { it.name == "Subject" }?.value ?: "(Sin asunto)"
-            val asunto = if (subjectRaw.length > 40) subjectRaw.take(30) + "..." else subjectRaw
+                    val partTextoPlano = detalle?.payload?.parts
+                        ?.firstOrNull { it.mimeType.equals("text/plain", true) }
+                        ?.body?.data
 
-            val fromRaw = cabeceras.find { it.name == "From" }?.value ?: "(Desconocido)"
-            val remitente = if (fromRaw.length > 30) fromRaw.take(20) else fromRaw
-            val nombreRemitente = remitente.substringBefore("<").trim()
-            val from = nombreRemitente
+                    val bodyEncoded = detalle?.payload?.body?.data ?: partTextoPlano
 
-            val partTextoPlano = detalle?.payload?.parts
-                ?.firstOrNull { it.mimeType.equals("text/plain", true) }
-                ?.body?.data
+                    /**
+                     * Decodificar mensaje de como nos lo da google a nuestro formato y limpieza del mensaje.
+                     */
+                    val preview = bodyEncoded?.let {
+                        val decoded = it.replace("-", "+").replace("_", "/")
+                        val cuerpoPlano = String(Base64.decode(decoded, Base64.DEFAULT))
+                        org.jsoup.Jsoup.parse(cuerpoPlano).text()
+                            .replace(Regex("\\[image:.*?\\]", RegexOption.IGNORE_CASE), "")
+                            .replace("\n", " ").replace("\r", " ")
+                            .take(50) + "..."
+                    } ?: "(Sin contenido)"
 
-            val bodyEncoded = detalle?.payload?.body?.data ?: partTextoPlano
-
-            val preview = bodyEncoded?.let {
-                val decoded = it.replace("-", "+").replace("_", "/")
-                val cuerpoPlano = String(Base64.decode(decoded, Base64.DEFAULT))
-                org.jsoup.Jsoup.parse(cuerpoPlano).text()
-                    .replace(Regex("\\[image:.*?\\]", RegexOption.IGNORE_CASE), "")
-                    .replace("\n", " ").replace("\r", " ")
-                    .take(50) + "..."
-            } ?: "(Sin contenido)"
-
-            listaCorreos.add(CorreoItem(mensaje.id, asunto, from, preview))
+                    CorreoItem(mensaje.id, asunto, from, preview)
+                }
+            }?.awaitAll() ?: emptyList()
         }
 
-        return listaCorreos
+        return listaCorreos.toMutableList()
+    }
+
+    /**
+     *  Obtiene el token desde get preferences e itenta iniciar sesion en gmail con nuestro codigo
+     *  de identificacion
+     */
+    suspend fun loginYObtenerCorreos(authCode: String, context: Context): List<CorreoItem> {
+        val tokenResponse = getAccessToken(authCode) ?: throw Exception("Token nulo")
+
+        val prefs = context.getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
+        prefs.edit()
+            .putString("access_token", tokenResponse.access_token)
+            .putString("refresh_token", tokenResponse.refresh_token.toString())
+            .apply()
+
+        return obtenerMensajes(tokenResponse)
+    }
+
+    /**
+     * Funcion identica a obtenerMensajes pero con paginacion para que nos vaya devolviendo los mensajes
+     * segun hacemos scroll en el recycler view
+     * Usamos async para realizar llamadas independientes a la API y ser mas eficientes y awwaitall
+     * para esperar a todas las llamadas antes de mostrar los mensajes
+     */
+    suspend fun obtenerMensajesPagina(token: TokenResponse, pageToken: String? = null): Pair<List<CorreoItem>, String?> {
+        return withContext(Dispatchers.IO) {
+            val authHeader = "Bearer ${token.access_token}"
+            val response = GmailRetrofitInstance.api.getMessages(authHeader, pageToken)
+
+            if (response.isSuccessful) {
+                val body = response.body()
+
+                val lista = body?.messages?.map { mensaje ->
+                    async {
+                        val detalle = getMensajeDetalle(token, mensaje.id)
+
+                        val cabeceras = detalle?.payload?.headers ?: emptyList()
+                        val subjectRaw = cabeceras.find { it.name == "Subject" }?.value ?: "(Sin asunto)"
+                        val asunto = if (subjectRaw.length > 40) subjectRaw.take(30) + "..." else subjectRaw
+
+                        val fromRaw = cabeceras.find { it.name == "From" }?.value ?: "(Desconocido)"
+                        val remitente = if (fromRaw.length > 30) fromRaw.take(20) else fromRaw
+                        val nombreRemitente = remitente.substringBefore("<").trim()
+                        val from = nombreRemitente
+
+                        val partTextoPlano = detalle?.payload?.parts
+                            ?.firstOrNull { it.mimeType.equals("text/plain", true) }
+                            ?.body?.data
+
+                        val bodyEncoded = detalle?.payload?.body?.data ?: partTextoPlano
+
+                        val preview = bodyEncoded?.let {
+                            val decoded = it.replace("-", "+").replace("_", "/")
+                            val cuerpoPlano = String(Base64.decode(decoded, Base64.DEFAULT))
+                            org.jsoup.Jsoup.parse(cuerpoPlano).text()
+                                .replace(Regex("\\[image:.*?\\]", RegexOption.IGNORE_CASE), "")
+                                .replace("\n", " ").replace("\r", " ")
+                                .take(50) + "..."
+                        } ?: "(Sin contenido)"
+
+                        CorreoItem(mensaje.id, asunto, from, preview)
+                    }
+                }?.awaitAll() ?: emptyList()
+
+                Pair(lista, body?.nextPageToken)
+            } else {
+                throw Exception("Error en paginación: ${response.code()}")
+            }
+        }
     }
 }

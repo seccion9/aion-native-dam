@@ -1,5 +1,6 @@
 package com.example.gestionreservas.view.fragment
 
+import android.R
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -72,12 +74,18 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
                         "Compra con id : ${compra.id} registrada correctamente",
                         Toast.LENGTH_LONG
                     ).show()
+                    vaciarEdits()
+                    val fragment=CalendarioFragmentDiario()
+                    cambiarFragment(fragment)
                 } else {
                     Toast.makeText(
                         requireContext(),
                         "Hubo un error al registrar la compra ${response.message()}",
                         Toast.LENGTH_LONG
+
                     ).show()
+
+
                 }
             } catch (e: Exception) {
                 Log.e("PostPurchaseFragment", "Error al registrar compra ${e.message}")
@@ -95,17 +103,8 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
         val fechaFin = binding.tvFechaFin.text.toString()
         val calendario = binding.tvSala.selectedItem.toString()
         val experiencia = binding.tvExperiencia.selectedItem.toString()
-        val seleccion = binding.tvParticipantes.selectedItem.toString()
-        val participantes = if (seleccion.matches(Regex("\\d+"))) {
-            seleccion.toInt()
-        } else {
-            Toast.makeText(
-                requireContext(),
-                "Selecciona número de participantes válido",
-                Toast.LENGTH_SHORT
-            ).show()
-            return
-        }
+        val participantes = binding.tvParticipantes.selectedItem.toString().toInt()
+
         val idioma = binding.tvIdioma.selectedItem.toString()
         val estado = binding.tvEstado.text.toString()
         val precio = binding.tvPrecio.text.toString().toDouble()
@@ -188,8 +187,7 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
     private fun getTokenFromSharedPreferences(): String? {
         val sharedPreferences =
             requireActivity().getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
-        val token = sharedPreferences.getString("auth_token", null)
-        return token?.let { "Bearer $it" }
+        return sharedPreferences.getString("auth_token", null)
     }
 
     private fun validarCamposObligatorios(): Boolean {
@@ -216,7 +214,50 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
                 return false
             }
         }
+        // Validación de spinners
+        val idioma = binding.tvIdioma.selectedItem
+        if (idioma == null || idioma.toString() == "--Idioma--") {
+            Toast.makeText(requireContext(), "Selecciona un idioma", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        val participantes = binding.tvParticipantes.selectedItem
+        if (participantes == null || participantes.toString() == "--Participantes--") {
+            Toast.makeText(requireContext(), "Selecciona número de participantes", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        val calendario = binding.tvSala.selectedItem
+        if (calendario == null || calendario.toString() == "--Calendario--") {
+            Toast.makeText(requireContext(), "Selecciona un calendario", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        val experiencia = binding.tvExperiencia.selectedItem
+        if (experiencia == null || experiencia.toString() == "--Experiencia--") {
+            Toast.makeText(requireContext(), "Selecciona una experiencia", Toast.LENGTH_SHORT).show()
+            return false
+        }
 
         return true
     }
+    private fun vaciarEdits(){
+        binding.tvNombre.text.clear()
+        binding.tvEmail.text.clear()
+        binding.tvTelefono.text.clear()
+        binding.tvDNI.text.clear()
+        binding.tvDireccion.text.clear()
+        binding.tvFechaInicio.text.clear()
+        binding.tvFechaFin.text.clear()
+        binding.tvPrecio.text.clear()
+        binding.tvTotalPagado.text.clear()
+        binding.tvMetodoPago.text.clear()
+    }
+    private fun cambiarFragment(fragment:Fragment){
+        val transacion=parentFragmentManager.beginTransaction()
+        transacion.replace(com.example.gestionreservas.R.id.fragment_principal,fragment)
+        transacion.addToBackStack(null)
+        transacion.commit()
+    }
+
 }

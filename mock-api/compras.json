@@ -1,204 +1,5 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "email": "admin@aether.com",
-      "password": "1234",
-      "token": "fake-token-abc123"
-    }
-  ],
-  "_sanctum_token_placeholder": [],
-  "_sanctum_check_token_placeholder": [],
-  "monthlyOccupancy": [
-    {
-      "30/04/2025": {
-        "occupied": 2,
-        "total": 12,
-        "blocked": 0
-      },
-      "01/05/2025": {
-        "occupied": 2,
-        "total": 12,
-        "blocked": 0
-      },
-      "02/05/2025": {
-        "occupied": 4,
-        "total": 12,
-        "blocked": 0
-      },
-      "03/05/2025": {
-        "occupied": 4,
-        "total": 12,
-        "blocked": 0
-      },
-      "04/05/2025": {
-        "occupied": 2,
-        "total": 12,
-        "blocked": 0
-      },
-      "05/05/2025": {
-        "occupied": 3,
-        "total": 12,
-        "blocked": 0
-      },
-      "06/05/2025": {
-        "occupied": 4,
-        "total": 12,
-        "blocked": 0
-      },
-      "07/05/2025": {
-        "occupied": 5,
-        "total": 12,
-        "blocked": 0
-      },
-      "08/05/2025": {
-        "occupied": 1,
-        "total": 12,
-        "blocked": 0
-      },
-      "09/05/2025": {
-        "occupied": 1,
-        "total": 12,
-        "blocked": 0
-      },
-      "10/05/2025": {
-        "occupied": 2,
-        "total": 12,
-        "blocked": 0
-      },
-      "11/05/2025": {
-        "occupied": 2,
-        "total": 12,
-        "blocked": 0
-      },
-      "12/05/2025": {
-        "occupied": 3,
-        "total": 12,
-        "blocked": 0
-      },
-      "13/05/2025": {
-        "occupied": 2,
-        "total": 12,
-        "blocked": 0
-      },
-      "14/05/2025": {
-        "occupied": 4,
-        "total": 12,
-        "blocked": 0
-      },
-      "15/05/2025": {
-        "occupied": 2,
-        "total": 12,
-        "blocked": 0
-      },
-      "16/05/2025": {
-        "occupied": 2,
-        "total": 12,
-        "blocked": 0
-      },
-      "17/05/2025": {
-        "occupied": 2,
-        "total": 12,
-        "blocked": 0
-      },
-      "18/05/2025": {
-        "occupied": 2,
-        "total": 12,
-        "blocked": 0
-      },
-      "19/05/2025": {
-        "occupied": 2,
-        "total": 12,
-        "blocked": 0
-      },
-      "20/05/2025": {
-        "occupied": 2,
-        "total": 12,
-        "blocked": 0
-      },
-      "21/05/2025": {
-        "occupied": 2,
-        "total": 12,
-        "blocked": 0
-      },
-      "22/05/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "23/05/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "24/05/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "25/05/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "26/05/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "27/05/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "28/05/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "29/05/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "30/05/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "31/05/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "01/06/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "02/06/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "03/06/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "04/06/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      },
-      "05/06/2025": {
-        "occupied": 0,
-        "total": 12,
-        "blocked": 0
-      }
-    }
-  ],
-  "purchases": [
+    "purchases": [
     {
       "id": "52b5a379-7875-4c2a-a369-809e84be44cc",
       "uuid": "52b5a379-7875-4c2a-a369-809e84be44cc",
@@ -272,8 +73,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "52b5a379-7875-4c2a-a369-809e84be44cc"
+      ]
     },
     {
       "id": "cb34f45f-e3a2-48d6-b2f2-b9deea24445a",
@@ -348,8 +148,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "cb34f45f-e3a2-48d6-b2f2-b9deea24445a"
+      ]
     },
     {
       "id": "b436ce52-27b7-4648-91e5-72d8845d48b8",
@@ -424,8 +223,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "b436ce52-27b7-4648-91e5-72d8845d48b8"
+      ]
     },
     {
       "id": "8ca928d9-e3a7-4ce1-b5ae-94ed8b5b6064",
@@ -500,8 +298,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "8ca928d9-e3a7-4ce1-b5ae-94ed8b5b6064"
+      ]
     },
     {
       "id": "75118c14-ea97-4196-8c5c-a15231cb1431",
@@ -576,8 +373,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "75118c14-ea97-4196-8c5c-a15231cb1431"
+      ]
     },
     {
       "id": "8795ecd8-6db6-48fc-a26a-a2a0fd4f258c",
@@ -652,8 +448,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "8795ecd8-6db6-48fc-a26a-a2a0fd4f258c"
+      ]
     },
     {
       "id": "40be1352-3be7-47f4-bc67-f799dba421e4",
@@ -728,8 +523,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "40be1352-3be7-47f4-bc67-f799dba421e4"
+      ]
     },
     {
       "id": "f9a243d7-017a-4f25-9f7d-d7f333362a87",
@@ -804,8 +598,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "f9a243d7-017a-4f25-9f7d-d7f333362a87"
+      ]
     },
     {
       "id": "65a08bd0-2ae2-4695-8817-17dcb0f02530",
@@ -880,8 +673,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "65a08bd0-2ae2-4695-8817-17dcb0f02530"
+      ]
     },
     {
       "id": "e02edc11-6c43-4d81-8290-608f20f59ab1",
@@ -956,8 +748,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "e02edc11-6c43-4d81-8290-608f20f59ab1"
+      ]
     },
     {
       "id": "c2b08082-38bc-4435-bbd7-cef4b89de7ee",
@@ -1032,8 +823,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "c2b08082-38bc-4435-bbd7-cef4b89de7ee"
+      ]
     },
     {
       "id": "224deed0-7264-4b1a-8f8e-997f6d7249d2",
@@ -1108,8 +898,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "224deed0-7264-4b1a-8f8e-997f6d7249d2"
+      ]
     },
     {
       "id": "888dc56c-32e9-4944-bc96-239e389a875b",
@@ -1184,8 +973,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "888dc56c-32e9-4944-bc96-239e389a875b"
+      ]
     },
     {
       "id": "eb0055df-fcdf-4a7d-afb4-0b31c3d2ba20",
@@ -1260,8 +1048,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "eb0055df-fcdf-4a7d-afb4-0b31c3d2ba20"
+      ]
     },
     {
       "id": "b2b0cd52-126c-4ffe-994c-052bfb45806f",
@@ -1336,8 +1123,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "b2b0cd52-126c-4ffe-994c-052bfb45806f"
+      ]
     },
     {
       "id": "dcda881f-4f27-4955-98a9-bebce2dc9a33",
@@ -1412,8 +1198,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "dcda881f-4f27-4955-98a9-bebce2dc9a33"
+      ]
     },
     {
       "id": "0b954b47-5478-4711-b42f-4f40b316082a",
@@ -1488,8 +1273,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "0b954b47-5478-4711-b42f-4f40b316082a"
+      ]
     },
     {
       "id": "62bb6518-337b-459d-a654-0c6e886f9662",
@@ -1564,8 +1348,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "62bb6518-337b-459d-a654-0c6e886f9662"
+      ]
     },
     {
       "id": "fd0ed7ea-313d-4f7a-ac15-4c2407d73533",
@@ -1640,8 +1423,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "fd0ed7ea-313d-4f7a-ac15-4c2407d73533"
+      ]
     },
     {
       "id": "0483eeac-4c24-48e3-921f-8a65eef38175",
@@ -1716,8 +1498,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "0483eeac-4c24-48e3-921f-8a65eef38175"
+      ]
     },
     {
       "id": "0f377b12-8d37-4727-b157-08469bd859d6",
@@ -1792,8 +1573,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "0f377b12-8d37-4727-b157-08469bd859d6"
+      ]
     },
     {
       "id": "6acadef8-c454-4673-99e8-dc02efce1533",
@@ -1868,8 +1648,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "6acadef8-c454-4673-99e8-dc02efce1533"
+      ]
     },
     {
       "id": "71e3342c-6522-4150-8d22-e43920f54af5",
@@ -1944,8 +1723,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "71e3342c-6522-4150-8d22-e43920f54af5"
+      ]
     },
     {
       "id": "7559a4dd-285f-469e-81fb-d358d988d22d",
@@ -2020,8 +1798,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "7559a4dd-285f-469e-81fb-d358d988d22d"
+      ]
     },
     {
       "id": "a5937366-03fa-4acb-8a13-0e62daddfcd8",
@@ -2096,8 +1873,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "a5937366-03fa-4acb-8a13-0e62daddfcd8"
+      ]
     },
     {
       "id": "e77e6463-935b-4ea6-8fcc-ba659898212d",
@@ -2172,8 +1948,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "e77e6463-935b-4ea6-8fcc-ba659898212d"
+      ]
     },
     {
       "id": "aec8bcaa-29b3-4500-94fd-0fc51bf96ef5",
@@ -2248,8 +2023,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "aec8bcaa-29b3-4500-94fd-0fc51bf96ef5"
+      ]
     },
     {
       "id": "480e64a3-85ec-4e28-88ae-ce40d6143b8e",
@@ -2324,8 +2098,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "480e64a3-85ec-4e28-88ae-ce40d6143b8e"
+      ]
     },
     {
       "id": "072dfd6d-564a-43c3-a34c-d8233ae54c4c",
@@ -2400,8 +2173,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "072dfd6d-564a-43c3-a34c-d8233ae54c4c"
+      ]
     },
     {
       "id": "27e93d28-f288-444f-bdb3-a0ad3eca0286",
@@ -2476,8 +2248,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "27e93d28-f288-444f-bdb3-a0ad3eca0286"
+      ]
     },
     {
       "id": "b6d040af-9fc0-4328-9f35-408a519e62b0",
@@ -2552,8 +2323,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "b6d040af-9fc0-4328-9f35-408a519e62b0"
+      ]
     },
     {
       "id": "64e11b99-1fc8-4296-9923-388ee56669eb",
@@ -2628,8 +2398,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "64e11b99-1fc8-4296-9923-388ee56669eb"
+      ]
     },
     {
       "id": "35ea2582-c579-4383-bbb7-f5b4f628c920",
@@ -2704,8 +2473,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "35ea2582-c579-4383-bbb7-f5b4f628c920"
+      ]
     },
     {
       "id": "a743b53d-0029-457d-9c7c-101aad8e63a1",
@@ -2780,8 +2548,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "a743b53d-0029-457d-9c7c-101aad8e63a1"
+      ]
     },
     {
       "id": "0c5820d4-76ca-48b5-8d01-1a8725a5d931",
@@ -2856,8 +2623,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "0c5820d4-76ca-48b5-8d01-1a8725a5d931"
+      ]
     },
     {
       "id": "4de42f97-03a9-4d34-911d-2ab74b237735",
@@ -2932,8 +2698,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "4de42f97-03a9-4d34-911d-2ab74b237735"
+      ]
     },
     {
       "id": "2eed3533-b191-4cd7-b01d-c251e33e1a01",
@@ -3008,8 +2773,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "2eed3533-b191-4cd7-b01d-c251e33e1a01"
+      ]
     },
     {
       "id": "86adbc34-3847-4fee-9297-bed78a61464f",
@@ -3084,8 +2848,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "86adbc34-3847-4fee-9297-bed78a61464f"
+      ]
     },
     {
       "id": "512906e7-cc5a-4bbc-962f-86fd9261c8b0",
@@ -3160,8 +2923,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "512906e7-cc5a-4bbc-962f-86fd9261c8b0"
+      ]
     },
     {
       "id": "2240d422-4da0-4451-a379-c811b97c6d58",
@@ -3236,8 +2998,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "2240d422-4da0-4451-a379-c811b97c6d58"
+      ]
     },
     {
       "id": "e3eb6f4c-d22f-42e6-813f-1b8d63d03dd9",
@@ -3312,8 +3073,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "e3eb6f4c-d22f-42e6-813f-1b8d63d03dd9"
+      ]
     },
     {
       "id": "e6cc08d8-5ed1-434a-9cb1-2329cd8d3800",
@@ -3388,8 +3148,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "e6cc08d8-5ed1-434a-9cb1-2329cd8d3800"
+      ]
     },
     {
       "id": "e6463abe-d777-49a4-a8d9-98ac931eb9c3",
@@ -3464,8 +3223,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "e6463abe-d777-49a4-a8d9-98ac931eb9c3"
+      ]
     },
     {
       "id": "fc08192c-b5d8-4089-977d-4b56757aa5de",
@@ -3540,8 +3298,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "fc08192c-b5d8-4089-977d-4b56757aa5de"
+      ]
     },
     {
       "id": "adbe0c3e-aa5c-420f-999c-1d7cc237c83a",
@@ -3616,8 +3373,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "adbe0c3e-aa5c-420f-999c-1d7cc237c83a"
+      ]
     },
     {
       "id": "cff4682e-936c-40b2-82e6-7b71ba656d3b",
@@ -3692,8 +3448,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "cff4682e-936c-40b2-82e6-7b71ba656d3b"
+      ]
     },
     {
       "id": "fa61e1ac-46af-4ed6-8a15-314d2df97d82",
@@ -3768,8 +3523,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "fa61e1ac-46af-4ed6-8a15-314d2df97d82"
+      ]
     },
     {
       "id": "3b45b347-6fb5-4b06-8afe-8cfb3f53b476",
@@ -3844,8 +3598,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "3b45b347-6fb5-4b06-8afe-8cfb3f53b476"
+      ]
     },
     {
       "id": "c3d7428e-2b4f-4a46-bf34-a0fdb80bf027",
@@ -3920,8 +3673,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "c3d7428e-2b4f-4a46-bf34-a0fdb80bf027"
+      ]
     },
     {
       "id": "7ce5d6ee-4a4e-43ff-b319-1b2d90da7988",
@@ -3996,8 +3748,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "7ce5d6ee-4a4e-43ff-b319-1b2d90da7988"
+      ]
     },
     {
       "id": "a8b4601d-18f8-484d-b98b-4c86a6cfceeb",
@@ -4072,8 +3823,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "a8b4601d-18f8-484d-b98b-4c86a6cfceeb"
+      ]
     },
     {
       "id": "b2e36b34-bfb5-4480-b807-dba0116af50a",
@@ -4148,8 +3898,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "b2e36b34-bfb5-4480-b807-dba0116af50a"
+      ]
     },
     {
       "id": "555c733e-98ce-40b8-87db-6b429320950b",
@@ -4224,8 +3973,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "555c733e-98ce-40b8-87db-6b429320950b"
+      ]
     },
     {
       "id": "1113603c-2876-494a-8097-2cff5a6c2883",
@@ -4300,8 +4048,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "1113603c-2876-494a-8097-2cff5a6c2883"
+      ]
     },
     {
       "id": "cbd9c2b9-a58e-4c00-b187-740c78afd995",
@@ -4376,8 +4123,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "cbd9c2b9-a58e-4c00-b187-740c78afd995"
+      ]
     },
     {
       "id": "d9deb47b-0b64-47ce-91ec-a4ee1cc5e49e",
@@ -4452,8 +4198,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "d9deb47b-0b64-47ce-91ec-a4ee1cc5e49e"
+      ]
     },
     {
       "id": "7d7aee66-81eb-4cc5-b718-be7a6bbf3260",
@@ -4528,8 +4273,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "7d7aee66-81eb-4cc5-b718-be7a6bbf3260"
+      ]
     },
     {
       "id": "ffbec91e-e6ee-4105-b660-55bf87f139d7",
@@ -4604,8 +4348,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "ffbec91e-e6ee-4105-b660-55bf87f139d7"
+      ]
     },
     {
       "id": "6fe6f64a-3e7b-4115-9a03-7bc952731dfe",
@@ -4680,8 +4423,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "6fe6f64a-3e7b-4115-9a03-7bc952731dfe"
+      ]
     },
     {
       "id": "39e1c1a7-997a-4bf9-938b-339342463a33",
@@ -4756,8 +4498,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "39e1c1a7-997a-4bf9-938b-339342463a33"
+      ]
     },
     {
       "id": "f78c312b-d2a6-4a6b-96a6-c84f8534f5ad",
@@ -4832,8 +4573,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "f78c312b-d2a6-4a6b-96a6-c84f8534f5ad"
+      ]
     },
     {
       "id": "b954357b-cf7c-4896-8aca-6597ad8248ea",
@@ -4908,8 +4648,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "b954357b-cf7c-4896-8aca-6597ad8248ea"
+      ]
     },
     {
       "id": "03371b2b-6c2a-42cc-a751-ca8cbf2551d5",
@@ -4984,8 +4723,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "03371b2b-6c2a-42cc-a751-ca8cbf2551d5"
+      ]
     },
     {
       "id": "85c15bf9-c3b6-41a1-b0c1-1264c807db0a",
@@ -5060,8 +4798,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "85c15bf9-c3b6-41a1-b0c1-1264c807db0a"
+      ]
     },
     {
       "id": "6c5ae30e-bc06-4ef7-ab62-f245d47eed7f",
@@ -5136,8 +4873,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "6c5ae30e-bc06-4ef7-ab62-f245d47eed7f"
+      ]
     },
     {
       "id": "b5be5fa0-19b6-4b8a-b2c3-534c4e588e9d",
@@ -5212,8 +4948,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "b5be5fa0-19b6-4b8a-b2c3-534c4e588e9d"
+      ]
     },
     {
       "id": "09923a49-946d-421d-98bd-c2f21ade9376",
@@ -5288,8 +5023,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "09923a49-946d-421d-98bd-c2f21ade9376"
+      ]
     },
     {
       "id": "52ec144d-42c4-4e97-a14c-71af05ac7168",
@@ -5364,8 +5098,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "52ec144d-42c4-4e97-a14c-71af05ac7168"
+      ]
     },
     {
       "id": "8a40e3c7-f5ac-46df-9142-80436c4f1842",
@@ -5440,8 +5173,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "8a40e3c7-f5ac-46df-9142-80436c4f1842"
+      ]
     },
     {
       "id": "9ace8e6d-eb90-46c4-9e59-1117b360aa6a",
@@ -5516,8 +5248,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "9ace8e6d-eb90-46c4-9e59-1117b360aa6a"
+      ]
     },
     {
       "id": "9f9d351d-a76e-4f85-82fc-18702c99a48f",
@@ -5592,8 +5323,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "9f9d351d-a76e-4f85-82fc-18702c99a48f"
+      ]
     },
     {
       "id": "9e24966d-5de6-42d2-8a93-9bae585179e0",
@@ -5668,8 +5398,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "9e24966d-5de6-42d2-8a93-9bae585179e0"
+      ]
     },
     {
       "id": "e7213748-75b2-4c93-9afb-1f977b52c59b",
@@ -5744,8 +5473,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "e7213748-75b2-4c93-9afb-1f977b52c59b"
+      ]
     },
     {
       "id": "1481a116-389e-4dc2-abae-557fa77ee674",
@@ -5820,8 +5548,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "1481a116-389e-4dc2-abae-557fa77ee674"
+      ]
     },
     {
       "id": "03ce9a20-3f73-4e54-a2c2-177ead4c6aec",
@@ -5896,8 +5623,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "03ce9a20-3f73-4e54-a2c2-177ead4c6aec"
+      ]
     },
     {
       "id": "59d83b45-c5c0-42a0-9d6b-9370c42ed9b3",
@@ -5971,8 +5697,7 @@
           "price_original": 120,
           "start": "2025-05-06 10:00:00"
         }
-      ],
-      "userId": "59d83b45-c5c0-42a0-9d6b-9370c42ed9b3"
+      ]
     },
     {
       "id": "3d10f2c9-f726-4250-a202-077dead5a2cf",
@@ -6046,8 +5771,7 @@
           "price_original": 50,
           "start": "2025-05-07 10:00:00"
         }
-      ],
-      "userId": "3d10f2c9-f726-4250-a202-077dead5a2cf"
+      ]
     },
     {
       "id": "e51eecbf-5984-41d8-b3f2-74efab44712f",
@@ -6121,8 +5845,7 @@
           "price_original": 50,
           "start": "2025-05-07 11:00:00"
         }
-      ],
-      "userId": "e51eecbf-5984-41d8-b3f2-74efab44712f"
+      ]
     },
     {
       "id": "4c7a12a4-08cb-4d59-bd06-ff74a24768b0",
@@ -6197,8 +5920,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "4c7a12a4-08cb-4d59-bd06-ff74a24768b0"
+      ]
     },
     {
       "id": "6b848673-cddf-4845-bbd5-4e5dfefc8271",
@@ -6272,8 +5994,7 @@
           "price_original": 75,
           "start": "2025-05-08 10:00:00"
         }
-      ],
-      "userId": "6b848673-cddf-4845-bbd5-4e5dfefc8271"
+      ]
     },
     {
       "id": "3e3fe39e-f124-4776-84f8-2ae096153813",
@@ -6347,8 +6068,7 @@
           "price_original": 75,
           "start": "2025-05-09 10:00:00"
         }
-      ],
-      "userId": "3e3fe39e-f124-4776-84f8-2ae096153813"
+      ]
     },
     {
       "id": "28492d5e-da80-47bd-be2b-cb70e1d92d70",
@@ -6423,8 +6143,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "28492d5e-da80-47bd-be2b-cb70e1d92d70"
+      ]
     },
     {
       "id": "3b40cf0b-3bfa-4ce0-b552-5e1a185734bc",
@@ -6499,8 +6218,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "3b40cf0b-3bfa-4ce0-b552-5e1a185734bc"
+      ]
     },
     {
       "id": "eff613ab-a32b-4068-9b34-42b54389beb0",
@@ -6575,8 +6293,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "eff613ab-a32b-4068-9b34-42b54389beb0"
+      ]
     },
     {
       "id": "d792e95d-8a8c-4c11-acfa-ae0f06b83676",
@@ -6651,8 +6368,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "d792e95d-8a8c-4c11-acfa-ae0f06b83676"
+      ]
     },
     {
       "id": "2a44dd9d-8eae-442e-8a7f-51ab8a27fd8d",
@@ -6727,8 +6443,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "2a44dd9d-8eae-442e-8a7f-51ab8a27fd8d"
+      ]
     },
     {
       "id": "f8ac482d-f8ec-4785-bce5-1cb4d1fb8ff7",
@@ -6803,8 +6518,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "f8ac482d-f8ec-4785-bce5-1cb4d1fb8ff7"
+      ]
     },
     {
       "id": "924e66ff-2986-4dde-95e6-de968c954057",
@@ -6879,8 +6593,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "924e66ff-2986-4dde-95e6-de968c954057"
+      ]
     },
     {
       "id": "958bd3c6-e331-4e81-b92a-b857f6229eab",
@@ -6955,8 +6668,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "958bd3c6-e331-4e81-b92a-b857f6229eab"
+      ]
     },
     {
       "id": "808ac2ee-d8a7-4250-92dc-c91e7f438960",
@@ -7031,8 +6743,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "808ac2ee-d8a7-4250-92dc-c91e7f438960"
+      ]
     },
     {
       "id": "76d3bb28-67d3-4295-b023-e32d233b45ef",
@@ -7106,8 +6817,7 @@
           "price_original": 90,
           "start": "2025-05-13 10:00:00"
         }
-      ],
-      "userId": "76d3bb28-67d3-4295-b023-e32d233b45ef"
+      ]
     },
     {
       "id": "b523428f-6eaa-47b2-81cd-57cbc14cdfe0",
@@ -7182,8 +6892,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "b523428f-6eaa-47b2-81cd-57cbc14cdfe0"
+      ]
     },
     {
       "id": "9c75a0ee-d20a-4349-a2d4-1f84f9dc0536",
@@ -7258,8 +6967,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "9c75a0ee-d20a-4349-a2d4-1f84f9dc0536"
+      ]
     },
     {
       "id": "300128ac-9288-41a9-9dc3-4f37f01d5770",
@@ -7333,8 +7041,7 @@
           "price_original": 90,
           "start": "2025-05-14 10:00:00"
         }
-      ],
-      "userId": "300128ac-9288-41a9-9dc3-4f37f01d5770"
+      ]
     },
     {
       "id": "70516359-0eab-4d9d-97d1-562803525304",
@@ -7409,8 +7116,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "70516359-0eab-4d9d-97d1-562803525304"
+      ]
     },
     {
       "id": "843c0c1b-fa1d-4c2f-878b-7a32ef72a897",
@@ -7485,8 +7191,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "843c0c1b-fa1d-4c2f-878b-7a32ef72a897"
+      ]
     },
     {
       "id": "63b25ead-2ebf-4569-937c-b957f7b418dc",
@@ -7561,8 +7266,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "63b25ead-2ebf-4569-937c-b957f7b418dc"
+      ]
     },
     {
       "id": "27d5a995-7675-44f6-a288-d1ef3eff17c6",
@@ -7637,8 +7341,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "27d5a995-7675-44f6-a288-d1ef3eff17c6"
+      ]
     },
     {
       "id": "ba671cbd-3180-48fc-9501-b1a851a49c02",
@@ -7713,8 +7416,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "ba671cbd-3180-48fc-9501-b1a851a49c02"
+      ]
     },
     {
       "id": "d9c1ef57-2299-4ef5-9ce0-83703fa79ea7",
@@ -7789,8 +7491,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "d9c1ef57-2299-4ef5-9ce0-83703fa79ea7"
+      ]
     },
     {
       "id": "67642df6-9f20-40f7-ad34-71e149947dc9",
@@ -7865,8 +7566,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "67642df6-9f20-40f7-ad34-71e149947dc9"
+      ]
     },
     {
       "id": "0063a44b-fdb6-4717-ab7e-a9bd4b9dbd6d",
@@ -7941,8 +7641,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "0063a44b-fdb6-4717-ab7e-a9bd4b9dbd6d"
+      ]
     },
     {
       "id": "0de4a8ac-4272-4a45-a83e-c2ec14db0a6d",
@@ -8017,8 +7716,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "0de4a8ac-4272-4a45-a83e-c2ec14db0a6d"
+      ]
     },
     {
       "id": "5f10ee5f-b6d9-4083-9e26-660026469c4b",
@@ -8093,8 +7791,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "5f10ee5f-b6d9-4083-9e26-660026469c4b"
+      ]
     },
     {
       "id": "d7684d4e-8d1e-4723-bd3c-006f4988729a",
@@ -8169,8 +7866,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "d7684d4e-8d1e-4723-bd3c-006f4988729a"
+      ]
     },
     {
       "id": "27ca4b36-8e97-4ff7-9e45-0871deb81b0b",
@@ -8245,8 +7941,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "27ca4b36-8e97-4ff7-9e45-0871deb81b0b"
+      ]
     },
     {
       "id": "81d3727e-e5f4-47d0-8326-31af096d37c9",
@@ -8321,8 +8016,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "81d3727e-e5f4-47d0-8326-31af096d37c9"
+      ]
     },
     {
       "id": "9618014b-69d1-4a46-bb2f-85c0d3177b8f",
@@ -8397,8 +8091,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "9618014b-69d1-4a46-bb2f-85c0d3177b8f"
+      ]
     },
     {
       "id": "959f68af-f2cd-41ff-a73d-c35ffc73d32a",
@@ -8473,8 +8166,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "959f68af-f2cd-41ff-a73d-c35ffc73d32a"
+      ]
     },
     {
       "id": "1cdbbee7-f372-4c6c-bb7d-d5b14f992344",
@@ -8549,8 +8241,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "1cdbbee7-f372-4c6c-bb7d-d5b14f992344"
+      ]
     },
     {
       "id": "c646f108-e2b7-46f4-bdce-f893a3562d57",
@@ -8625,8 +8316,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "c646f108-e2b7-46f4-bdce-f893a3562d57"
+      ]
     },
     {
       "id": "fcd2c80c-09db-48fb-b7c4-f5a3c0f9da66",
@@ -8701,8 +8391,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "fcd2c80c-09db-48fb-b7c4-f5a3c0f9da66"
+      ]
     },
     {
       "id": "4f82b1d6-6738-44de-bfee-331b850a58a7",
@@ -8777,8 +8466,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "4f82b1d6-6738-44de-bfee-331b850a58a7"
+      ]
     },
     {
       "id": "2072976a-5a0a-4f98-a1a1-42f93712279e",
@@ -8853,8 +8541,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "2072976a-5a0a-4f98-a1a1-42f93712279e"
+      ]
     },
     {
       "id": "23dba0f1-ef4f-4eac-b5cb-0a8a759d0920",
@@ -8929,8 +8616,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "23dba0f1-ef4f-4eac-b5cb-0a8a759d0920"
+      ]
     },
     {
       "id": "5db60e1b-776a-4b7e-9f8d-3735a4439eba",
@@ -9005,8 +8691,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "5db60e1b-776a-4b7e-9f8d-3735a4439eba"
+      ]
     },
     {
       "id": "cba20cd4-9fde-45f1-9e90-521605348b32",
@@ -9081,8 +8766,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "cba20cd4-9fde-45f1-9e90-521605348b32"
+      ]
     },
     {
       "id": "91123e51-ee0f-4dfa-b759-ddd8fef5532f",
@@ -9157,8 +8841,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "91123e51-ee0f-4dfa-b759-ddd8fef5532f"
+      ]
     },
     {
       "id": "3de1e44b-1656-49a3-a2c6-7dc2547e0751",
@@ -9233,8 +8916,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "3de1e44b-1656-49a3-a2c6-7dc2547e0751"
+      ]
     },
     {
       "id": "c6f77442-7cd5-41fb-80d9-bd8638a6f217",
@@ -9309,8 +8991,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "c6f77442-7cd5-41fb-80d9-bd8638a6f217"
+      ]
     },
     {
       "id": "65faa8a7-4e85-4e48-8f2f-3bcd8cdb1874",
@@ -9385,8 +9066,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "65faa8a7-4e85-4e48-8f2f-3bcd8cdb1874"
+      ]
     },
     {
       "id": "18dc1a75-8376-4e3c-a931-185d09ed47ee",
@@ -9461,8 +9141,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "18dc1a75-8376-4e3c-a931-185d09ed47ee"
+      ]
     },
     {
       "id": "be8d477d-9bfc-47a0-99cf-ca78e3a9cff6",
@@ -9537,8 +9216,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "be8d477d-9bfc-47a0-99cf-ca78e3a9cff6"
+      ]
     },
     {
       "id": "f496cfcd-8452-42e0-93e2-e4c69891331f",
@@ -9613,8 +9291,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "f496cfcd-8452-42e0-93e2-e4c69891331f"
+      ]
     },
     {
       "id": "5c57d9b5-4fca-4bf2-b21b-74ed4c67e7bf",
@@ -9689,8 +9366,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "5c57d9b5-4fca-4bf2-b21b-74ed4c67e7bf"
+      ]
     },
     {
       "id": "ba8d8e83-6859-4eef-8754-0654c7a742cb",
@@ -9765,8 +9441,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "ba8d8e83-6859-4eef-8754-0654c7a742cb"
+      ]
     },
     {
       "id": "0406144d-cf42-4737-b3bf-f9800636e30d",
@@ -9841,8 +9516,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "0406144d-cf42-4737-b3bf-f9800636e30d"
+      ]
     },
     {
       "id": "b5e7a72c-5c27-4f50-8d93-f5907785f382",
@@ -9917,8 +9591,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "b5e7a72c-5c27-4f50-8d93-f5907785f382"
+      ]
     },
     {
       "id": "12dee8f6-72b9-4f8c-bde9-e0ec4bb1215a",
@@ -9993,8 +9666,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "12dee8f6-72b9-4f8c-bde9-e0ec4bb1215a"
+      ]
     },
     {
       "id": "cb34eab9-892c-4a5f-8dc3-6edbf9a7ebbb",
@@ -10069,8 +9741,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "cb34eab9-892c-4a5f-8dc3-6edbf9a7ebbb"
+      ]
     },
     {
       "id": "05787528-f4e7-41e7-b7b0-cc87db525027",
@@ -10145,8 +9816,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "05787528-f4e7-41e7-b7b0-cc87db525027"
+      ]
     },
     {
       "id": "37cf2453-88b5-4421-b57a-031ac17c541c",
@@ -10221,8 +9891,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "37cf2453-88b5-4421-b57a-031ac17c541c"
+      ]
     },
     {
       "id": "86d3b095-f560-4923-a153-1b32d3caab9a",
@@ -10297,8 +9966,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "86d3b095-f560-4923-a153-1b32d3caab9a"
+      ]
     },
     {
       "id": "46e2ea17-7cd5-41ef-a531-cbdf58dd2d76",
@@ -10373,8 +10041,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "46e2ea17-7cd5-41ef-a531-cbdf58dd2d76"
+      ]
     },
     {
       "id": "61e7e681-b004-4bb5-a097-9f16ad713b0a",
@@ -10449,8 +10116,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "61e7e681-b004-4bb5-a097-9f16ad713b0a"
+      ]
     },
     {
       "id": "e14b901c-5614-49db-8daa-eadce418cb00",
@@ -10525,8 +10191,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "e14b901c-5614-49db-8daa-eadce418cb00"
+      ]
     },
     {
       "id": "67a1606b-1c6b-4ab4-8169-2fe5475f095e",
@@ -10601,8 +10266,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "67a1606b-1c6b-4ab4-8169-2fe5475f095e"
+      ]
     },
     {
       "id": "b352a53e-4c7c-4ff0-ac60-4f28a9dc7544",
@@ -10677,8 +10341,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "b352a53e-4c7c-4ff0-ac60-4f28a9dc7544"
+      ]
     },
     {
       "id": "e8988357-73f4-4cb3-b54a-13defbba8f51",
@@ -10753,8 +10416,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "e8988357-73f4-4cb3-b54a-13defbba8f51"
+      ]
     },
     {
       "id": "be2bac45-a5c6-443c-a57e-5f9a63ed7cca",
@@ -10829,8 +10491,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "be2bac45-a5c6-443c-a57e-5f9a63ed7cca"
+      ]
     },
     {
       "id": "001b8c88-52ec-4263-b763-e9ef64f74235",
@@ -10905,8 +10566,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "001b8c88-52ec-4263-b763-e9ef64f74235"
+      ]
     },
     {
       "id": "c63a0a0e-94e6-42d2-92b2-8d01ee33b1d0",
@@ -10981,8 +10641,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "c63a0a0e-94e6-42d2-92b2-8d01ee33b1d0"
+      ]
     },
     {
       "id": "16210219-4ed5-4fc0-86cd-bbdbaf1c4081",
@@ -11057,8 +10716,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "16210219-4ed5-4fc0-86cd-bbdbaf1c4081"
+      ]
     },
     {
       "id": "7e555644-dced-41ab-b014-2bea194b064b",
@@ -11133,8 +10791,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "7e555644-dced-41ab-b014-2bea194b064b"
+      ]
     },
     {
       "id": "5428bcb5-c486-4357-914c-d1f3691a932a",
@@ -11209,8 +10866,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "5428bcb5-c486-4357-914c-d1f3691a932a"
+      ]
     },
     {
       "id": "fab7f445-100e-44a8-99ad-7d523f27e404",
@@ -11285,8 +10941,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "fab7f445-100e-44a8-99ad-7d523f27e404"
+      ]
     },
     {
       "id": "b93c866a-28e2-4fce-a1a7-e14a6d2fd453",
@@ -11361,8 +11016,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "b93c866a-28e2-4fce-a1a7-e14a6d2fd453"
+      ]
     },
     {
       "id": "d20ee9c7-1c3b-4d6b-a885-ffb42224165e",
@@ -11437,8 +11091,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "d20ee9c7-1c3b-4d6b-a885-ffb42224165e"
+      ]
     },
     {
       "id": "6d1274dd-3ac2-4c5c-95a0-ee3e26d77626",
@@ -11513,8 +11166,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "6d1274dd-3ac2-4c5c-95a0-ee3e26d77626"
+      ]
     },
     {
       "id": "cee2d901-1d4b-4a83-8b5d-453091ae9687",
@@ -11589,8 +11241,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "cee2d901-1d4b-4a83-8b5d-453091ae9687"
+      ]
     },
     {
       "id": "1edcd03e-1ccf-45e8-9562-36b00416494f",
@@ -11665,8 +11316,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "1edcd03e-1ccf-45e8-9562-36b00416494f"
+      ]
     },
     {
       "id": "ce34c084-26d5-4963-a705-f8dea0a8e0ea",
@@ -11741,8 +11391,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "ce34c084-26d5-4963-a705-f8dea0a8e0ea"
+      ]
     },
     {
       "id": "a9885b53-727d-4a83-bede-c9c2f8150947",
@@ -11817,8 +11466,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "a9885b53-727d-4a83-bede-c9c2f8150947"
+      ]
     },
     {
       "id": "8dae542f-53f1-4110-bd82-28c6832d96c3",
@@ -11893,8 +11541,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "8dae542f-53f1-4110-bd82-28c6832d96c3"
+      ]
     },
     {
       "id": "d178f455-7eb9-422a-ab68-f5d150d389c5",
@@ -11969,8 +11616,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "d178f455-7eb9-422a-ab68-f5d150d389c5"
+      ]
     },
     {
       "id": "21329b95-2d53-4944-a6cc-67e08be54b72",
@@ -12045,8 +11691,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "21329b95-2d53-4944-a6cc-67e08be54b72"
+      ]
     },
     {
       "id": "fb6efb9b-e665-448b-be81-780ec3b83785",
@@ -12121,8 +11766,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "fb6efb9b-e665-448b-be81-780ec3b83785"
+      ]
     },
     {
       "id": "42812342-5d45-4c61-a04d-8b7b4dcb596f",
@@ -12197,8 +11841,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "42812342-5d45-4c61-a04d-8b7b4dcb596f"
+      ]
     },
     {
       "id": "2fbfb492-4fd2-4a85-a517-a7a3de887df6",
@@ -12273,8 +11916,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "2fbfb492-4fd2-4a85-a517-a7a3de887df6"
+      ]
     },
     {
       "id": "aaed8a41-14bb-4f41-9744-db84e72fe0d0",
@@ -12349,8 +11991,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "aaed8a41-14bb-4f41-9744-db84e72fe0d0"
+      ]
     },
     {
       "id": "bff913e3-e88c-4b41-9d33-8aa4f5103415",
@@ -12425,8 +12066,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "bff913e3-e88c-4b41-9d33-8aa4f5103415"
+      ]
     },
     {
       "id": "8779f793-d405-407c-b126-fa48eded18de",
@@ -12501,8 +12141,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "8779f793-d405-407c-b126-fa48eded18de"
+      ]
     },
     {
       "id": "89d2e39b-00e0-48b6-a241-2ed21234d9bd",
@@ -12577,8 +12216,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "89d2e39b-00e0-48b6-a241-2ed21234d9bd"
+      ]
     },
     {
       "id": "02ca7418-c00a-4a25-b555-b81fd31448d5",
@@ -12653,8 +12291,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "02ca7418-c00a-4a25-b555-b81fd31448d5"
+      ]
     },
     {
       "id": "a37e489d-1946-4da7-a46b-c9589e0db500",
@@ -12729,8 +12366,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "a37e489d-1946-4da7-a46b-c9589e0db500"
+      ]
     },
     {
       "id": "fc3f3aa3-2ed9-42ce-83f2-97cb9c1ce5e2",
@@ -12805,8 +12441,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "fc3f3aa3-2ed9-42ce-83f2-97cb9c1ce5e2"
+      ]
     },
     {
       "id": "790fd642-3945-4540-b32f-368dcfcacf72",
@@ -12881,8 +12516,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "790fd642-3945-4540-b32f-368dcfcacf72"
+      ]
     },
     {
       "id": "4ed95c9d-93c3-4119-b8e8-ccf46cf43b2a",
@@ -12957,8 +12591,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "4ed95c9d-93c3-4119-b8e8-ccf46cf43b2a"
+      ]
     },
     {
       "id": "6f57e6af-41ec-490a-807e-48b00319d891",
@@ -13033,8 +12666,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "6f57e6af-41ec-490a-807e-48b00319d891"
+      ]
     },
     {
       "id": "0a16dc10-beb4-4937-a98a-e6bdde3a2b7a",
@@ -13109,8 +12741,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "0a16dc10-beb4-4937-a98a-e6bdde3a2b7a"
+      ]
     },
     {
       "id": "1e6cb8a6-0ab8-46e4-9148-5f4aa639afc3",
@@ -13185,8 +12816,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "1e6cb8a6-0ab8-46e4-9148-5f4aa639afc3"
+      ]
     },
     {
       "id": "4bdb66e6-03f6-46a9-8f25-7bbdfe7c781e",
@@ -13261,8 +12891,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "4bdb66e6-03f6-46a9-8f25-7bbdfe7c781e"
+      ]
     },
     {
       "id": "c0f7979c-9e5f-4876-94fa-92955e312d9f",
@@ -13337,8 +12966,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "c0f7979c-9e5f-4876-94fa-92955e312d9f"
+      ]
     },
     {
       "id": "69c3d33b-ad60-452f-9f25-d80e8d2b3368",
@@ -13413,8 +13041,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "69c3d33b-ad60-452f-9f25-d80e8d2b3368"
+      ]
     },
     {
       "id": "a703d048-e884-46e6-b2ff-7b980d6e1018",
@@ -13489,8 +13116,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "a703d048-e884-46e6-b2ff-7b980d6e1018"
+      ]
     },
     {
       "id": "09d769bc-3b2f-460c-b5f8-6e1b3856e91f",
@@ -13565,8 +13191,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "09d769bc-3b2f-460c-b5f8-6e1b3856e91f"
+      ]
     },
     {
       "id": "b5a4dd4e-19d5-4b20-9102-13b0c171963d",
@@ -13641,8 +13266,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "b5a4dd4e-19d5-4b20-9102-13b0c171963d"
+      ]
     },
     {
       "id": "192dc9bd-f8e6-48c3-929b-721fe0b55835",
@@ -13717,8 +13341,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "192dc9bd-f8e6-48c3-929b-721fe0b55835"
+      ]
     },
     {
       "id": "cd90f966-0a04-469b-bcf2-f510ff9f45db",
@@ -13793,8 +13416,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "cd90f966-0a04-469b-bcf2-f510ff9f45db"
+      ]
     },
     {
       "id": "c8c0a0a8-3d41-48cf-ad9a-9d33e316b7fe",
@@ -13869,8 +13491,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "c8c0a0a8-3d41-48cf-ad9a-9d33e316b7fe"
+      ]
     },
     {
       "id": "af3ef9d0-15c4-4132-b42f-f0e3f7878fe0",
@@ -13945,8 +13566,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "af3ef9d0-15c4-4132-b42f-f0e3f7878fe0"
+      ]
     },
     {
       "id": "bf3db0ab-2853-49a2-99a5-c3e3c6d520bb",
@@ -14021,8 +13641,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "bf3db0ab-2853-49a2-99a5-c3e3c6d520bb"
+      ]
     },
     {
       "id": "278004b6-abe3-4eed-b2c9-0f9adb5dff26",
@@ -14097,8 +13716,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "278004b6-abe3-4eed-b2c9-0f9adb5dff26"
+      ]
     },
     {
       "id": "2b90e3ac-e265-43c8-abaa-e5867c487688",
@@ -14173,8 +13791,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "2b90e3ac-e265-43c8-abaa-e5867c487688"
+      ]
     },
     {
       "id": "1f7c0c33-ad01-475d-a53d-4de73e875688",
@@ -14249,8 +13866,7 @@
           "price_original": 75,
           "price_fractioned": 37.5
         }
-      ],
-      "userId": "1f7c0c33-ad01-475d-a53d-4de73e875688"
+      ]
     },
     {
       "id": "58a8efd9-00a4-485b-b362-18abc4e54e5c",
@@ -14325,8 +13941,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "58a8efd9-00a4-485b-b362-18abc4e54e5c"
+      ]
     },
     {
       "id": "e2e7843f-98fc-47a7-ac53-84582bfab13e",
@@ -14401,8 +14016,7 @@
           "price_original": 90,
           "price_fractioned": 45
         }
-      ],
-      "userId": "e2e7843f-98fc-47a7-ac53-84582bfab13e"
+      ]
     },
     {
       "id": "22996aa7-51c3-41a9-96cc-eff5914b7df8",
@@ -14477,8 +14091,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "22996aa7-51c3-41a9-96cc-eff5914b7df8"
+      ]
     },
     {
       "id": "80d5ed92-ac2d-4d63-9a08-aac36841b604",
@@ -14553,8 +14166,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "80d5ed92-ac2d-4d63-9a08-aac36841b604"
+      ]
     },
     {
       "id": "ea756e2c-4c30-46a6-a02d-0bd978845327",
@@ -14629,8 +14241,7 @@
           "price_original": 50,
           "price_fractioned": 25
         }
-      ],
-      "userId": "ea756e2c-4c30-46a6-a02d-0bd978845327"
+      ]
     },
     {
       "id": "95bdd137-c1c1-4e9d-902f-17c5e689ef79",
@@ -14705,8 +14316,7 @@
           "price_original": 120,
           "price_fractioned": 60
         }
-      ],
-      "userId": "95bdd137-c1c1-4e9d-902f-17c5e689ef79"
+      ]
     },
     {
       "automaticActions": "",
@@ -14771,8 +14381,7 @@
         }
       ],
       "status": "pendiente",
-      "uuid": "833e0c39-b4f0-4a74-ae34-71a3fcdeefda",
-      "userId": "833e0c39-b4f0-4a74-ae34-71a3fcdeefda"
+      "uuid": "833e0c39-b4f0-4a74-ae34-71a3fcdeefda"
     },
     {
       "automaticActions": "",
@@ -14837,3246 +14446,7 @@
         }
       ],
       "status": "pendiente",
-      "uuid": "df80e7e8-8b9d-49db-a5b4-ff47c624ee89",
-      "userId": "df80e7e8-8b9d-49db-a5b4-ff47c624ee89"
-    }
-  ],
-  "experiencesByDate": [
-    {
-      "id": "d6e17015-263e-4730-a390-aa0d1dac4dde",
-      "minPlayers": 2,
-      "maxPlayers": 5,
-      "duration": 60,
-      "TTC": 60,
-      "phone": null,
-      "mail": null,
-      "groupType": "closed",
-      "type": "permanent",
-      "name": "Experience 1",
-      "image": "experience_1.jpg",
-      "description": "Descripción de prueba para la experiencia.",
-      "prices": [
-        {
-          "day_of_week_iso": 1,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 2,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 3,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 4,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 5,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 6,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 7,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        }
-      ],
-      "calendars": {
-        "0": {
-          "name": "Sala 1",
-          "icon": "",
-          "color": "#A93226",
-          "schedules_by_dow": [
-            {
-              "day_of_week_iso": 1,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 2,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 3,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 4,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 5,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 6,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 7,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            }
-          ],
-          "schedules_by_date": []
-        },
-        "fields": [
-          {
-            "id": 1,
-            "name": "Nombre",
-            "type": "input",
-            "isRequired": true,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 2,
-            "name": "Correo",
-            "type": "input",
-            "isRequired": true,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 3,
-            "name": "DNI",
-            "type": "input",
-            "isRequired": false,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 4,
-            "name": "Telefono",
-            "type": "input",
-            "isRequired": false,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 5,
-            "name": "Input test",
-            "type": "input",
-            "isRequired": false,
-            "isBasic": false,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 6,
-            "name": "Select test",
-            "type": "select",
-            "isRequired": false,
-            "isBasic": false,
-            "isActive": true,
-            "isLanguage": false,
-            "options": [
-              {
-                "id": 6,
-                "name": "Edad",
-                "value": "Edad",
-                "price": 0
-              },
-              {
-                "id": 7,
-                "name": "Telefono privado",
-                "value": "Telefono privado",
-                "price": 0
-              },
-              {
-                "id": 8,
-                "name": "Profe +20€",
-                "value": "Profe +20€",
-                "price": 20
-              }
-            ]
-          },
-          {
-            "id": 7,
-            "name": "Idioma",
-            "type": "select",
-            "isRequired": true,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": true,
-            "options": [
-              {
-                "id": 4,
-                "name": "Spanish",
-                "value": "Spanish",
-                "price": 0
-              },
-              {
-                "id": 5,
-                "name": "English",
-                "value": "English",
-                "price": 0
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "f6632185-4644-4ade-8377-1a22657afa58",
-      "minPlayers": 2,
-      "maxPlayers": 5,
-      "duration": 60,
-      "TTC": 60,
-      "phone": null,
-      "mail": null,
-      "groupType": "closed",
-      "type": "permanent",
-      "name": "Experience 2",
-      "image": "experience_2.jpg",
-      "description": "Descripción de prueba para la experiencia.",
-      "prices": [
-        {
-          "day_of_week_iso": 1,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 2,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 3,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 4,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 5,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 6,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 7,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        }
-      ],
-      "calendars": {
-        "0": {
-          "name": "Sala 2",
-          "icon": "",
-          "color": "#A93226",
-          "schedules_by_dow": [
-            {
-              "day_of_week_iso": 1,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 2,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 3,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 4,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 5,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 6,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 7,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            }
-          ],
-          "schedules_by_date": []
-        },
-        "fields": [
-          {
-            "id": 1,
-            "name": "Nombre",
-            "type": "input",
-            "isRequired": true,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 2,
-            "name": "Correo",
-            "type": "input",
-            "isRequired": true,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 3,
-            "name": "DNI",
-            "type": "input",
-            "isRequired": false,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 4,
-            "name": "Telefono",
-            "type": "input",
-            "isRequired": false,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 5,
-            "name": "Input test",
-            "type": "input",
-            "isRequired": false,
-            "isBasic": false,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 6,
-            "name": "Select test",
-            "type": "select",
-            "isRequired": false,
-            "isBasic": false,
-            "isActive": true,
-            "isLanguage": false,
-            "options": [
-              {
-                "id": 6,
-                "name": "Edad",
-                "value": "Edad",
-                "price": 0
-              },
-              {
-                "id": 7,
-                "name": "Telefono privado",
-                "value": "Telefono privado",
-                "price": 0
-              },
-              {
-                "id": 8,
-                "name": "Profe +20€",
-                "value": "Profe +20€",
-                "price": 20
-              }
-            ]
-          },
-          {
-            "id": 7,
-            "name": "Idioma",
-            "type": "select",
-            "isRequired": true,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": true,
-            "options": [
-              {
-                "id": 4,
-                "name": "Spanish",
-                "value": "Spanish",
-                "price": 0
-              },
-              {
-                "id": 5,
-                "name": "English",
-                "value": "English",
-                "price": 0
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "be578b20-0055-44b3-9a22-5800ea38a46b",
-      "minPlayers": 2,
-      "maxPlayers": 5,
-      "duration": 60,
-      "TTC": 60,
-      "phone": null,
-      "mail": null,
-      "groupType": "closed",
-      "type": "permanent",
-      "name": "Experience 3",
-      "image": "experience_3.jpg",
-      "description": "Descripción de prueba para la experiencia.",
-      "prices": [
-        {
-          "day_of_week_iso": 1,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 2,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 3,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 4,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 5,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 6,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        },
-        {
-          "day_of_week_iso": 7,
-          "partial_price": 22,
-          "force_partial": false,
-          "prices": [
-            {
-              "id": 8,
-              "full_price": 50,
-              "people": 2,
-              "text": null
-            },
-            {
-              "id": 9,
-              "full_price": 50,
-              "people": 3,
-              "text": null
-            },
-            {
-              "id": 10,
-              "full_price": 50,
-              "people": 4,
-              "text": null
-            },
-            {
-              "id": 11,
-              "full_price": 50,
-              "people": 5,
-              "text": null
-            }
-          ]
-        }
-      ],
-      "calendars": {
-        "0": {
-          "name": "Sala 3",
-          "icon": "",
-          "color": "#A93226",
-          "schedules_by_dow": [
-            {
-              "day_of_week_iso": 1,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 2,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 3,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 4,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 5,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 6,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 7,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:10:00",
-                  "end_session": "12:10:00"
-                },
-                {
-                  "start_session": "12:20:00",
-                  "end_session": "13:20:00"
-                }
-              ]
-            }
-          ],
-          "schedules_by_date": []
-        },
-        "fields": [
-          {
-            "id": 1,
-            "name": "Nombre",
-            "type": "input",
-            "isRequired": true,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 2,
-            "name": "Correo",
-            "type": "input",
-            "isRequired": true,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 3,
-            "name": "DNI",
-            "type": "input",
-            "isRequired": false,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 4,
-            "name": "Telefono",
-            "type": "input",
-            "isRequired": false,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 5,
-            "name": "Input test",
-            "type": "input",
-            "isRequired": false,
-            "isBasic": false,
-            "isActive": true,
-            "isLanguage": false,
-            "options": []
-          },
-          {
-            "id": 6,
-            "name": "Select test",
-            "type": "select",
-            "isRequired": false,
-            "isBasic": false,
-            "isActive": true,
-            "isLanguage": false,
-            "options": [
-              {
-                "id": 6,
-                "name": "Edad",
-                "value": "Edad",
-                "price": 0
-              },
-              {
-                "id": 7,
-                "name": "Telefono privado",
-                "value": "Telefono privado",
-                "price": 0
-              },
-              {
-                "id": 8,
-                "name": "Profe +20€",
-                "value": "Profe +20€",
-                "price": 20
-              }
-            ]
-          },
-          {
-            "id": 7,
-            "name": "Idioma",
-            "type": "select",
-            "isRequired": true,
-            "isBasic": true,
-            "isActive": true,
-            "isLanguage": true,
-            "options": [
-              {
-                "id": 4,
-                "name": "Spanish",
-                "value": "Spanish",
-                "price": 0
-              },
-              {
-                "id": 5,
-                "name": "English",
-                "value": "English",
-                "price": 0
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ],
-  "experiencesByIds": [
-    {
-      "id": 1,
-      "minPlayers": 2,
-      "maxPlayers": 5,
-      "duration": 60,
-      "TTC": 60,
-      "phone": null,
-      "mail": null,
-      "groupType": "closed",
-      "type": "permanent",
-      "name": "Escape Jungle",
-      "image": "escape_jungle.jpg",
-      "description": "Descripción para la experiencia Escape Jungle.",
-      "prices": [],
-      "calendars": {
-        "0": {
-          "name": "Sala B",
-          "icon": "",
-          "color": "#1F618D",
-          "schedules_by_dow": [
-            {
-              "day_of_week_iso": 1,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 2,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 3,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 4,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 5,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 6,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 7,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            }
-          ],
-          "schedules_by_date": []
-        },
-        "fields": []
-      }
-    },
-    {
-      "id": 2,
-      "minPlayers": 2,
-      "maxPlayers": 5,
-      "duration": 60,
-      "TTC": 60,
-      "phone": null,
-      "mail": null,
-      "groupType": "closed",
-      "type": "permanent",
-      "name": "Zombie Room",
-      "image": "zombie_room.jpg",
-      "description": "Descripción para la experiencia Zombie Room.",
-      "prices": [],
-      "calendars": {
-        "0": {
-          "name": "Sala C",
-          "icon": "",
-          "color": "#229954",
-          "schedules_by_dow": [
-            {
-              "day_of_week_iso": 1,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 2,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 3,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 4,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 5,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 6,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            },
-            {
-              "day_of_week_iso": 7,
-              "schedules": [
-                {
-                  "start_session": "10:00:00",
-                  "end_session": "11:00:00"
-                },
-                {
-                  "start_session": "11:15:00",
-                  "end_session": "12:15:00"
-                },
-                {
-                  "start_session": "12:30:00",
-                  "end_session": "13:30:00"
-                }
-              ]
-            }
-          ],
-          "schedules_by_date": []
-        },
-        "fields": []
-      }
-    }
-  ],
-  "occupancyER": [
-    {
-      "date": "2025/04/29",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "52b5a379-7875-4c2a-a369-809e84be44cc"
-    },
-    {
-      "date": "2025/04/29",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "cb34f45f-e3a2-48d6-b2f2-b9deea24445a"
-    },
-    {
-      "date": "2025/03/30",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "b436ce52-27b7-4648-91e5-72d8845d48b8"
-    },
-    {
-      "date": "2025/03/31",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "8ca928d9-e3a7-4ce1-b5ae-94ed8b5b6064"
-    },
-    {
-      "date": "2025/03/31",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "75118c14-ea97-4196-8c5c-a15231cb1431"
-    },
-    {
-      "date": "2025/03/31",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "8795ecd8-6db6-48fc-a26a-a2a0fd4f258c"
-    },
-    {
-      "date": "2025/04/01",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "40be1352-3be7-47f4-bc67-f799dba421e4"
-    },
-    {
-      "date": "2025/04/02",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "f9a243d7-017a-4f25-9f7d-d7f333362a87"
-    },
-    {
-      "date": "2025/04/02",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "65a08bd0-2ae2-4695-8817-17dcb0f02530"
-    },
-    {
-      "date": "2025/04/02",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "e02edc11-6c43-4d81-8290-608f20f59ab1"
-    },
-    {
-      "date": "2025/04/03",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "c2b08082-38bc-4435-bbd7-cef4b89de7ee"
-    },
-    {
-      "date": "2025/04/04",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "224deed0-7264-4b1a-8f8e-997f6d7249d2"
-    },
-    {
-      "date": "2025/04/05",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "888dc56c-32e9-4944-bc96-239e389a875b"
-    },
-    {
-      "date": "2025/04/05",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "eb0055df-fcdf-4a7d-afb4-0b31c3d2ba20"
-    },
-    {
-      "date": "2025/04/05",
-      "start": "12:00",
-      "end": "13:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "b2b0cd52-126c-4ffe-994c-052bfb45806f"
-    },
-    {
-      "date": "2025/04/06",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "dcda881f-4f27-4955-98a9-bebce2dc9a33"
-    },
-    {
-      "date": "2025/04/06",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "0b954b47-5478-4711-b42f-4f40b316082a"
-    },
-    {
-      "date": "2025/04/06",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "62bb6518-337b-459d-a654-0c6e886f9662"
-    },
-    {
-      "date": "2025/04/07",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "fd0ed7ea-313d-4f7a-ac15-4c2407d73533"
-    },
-    {
-      "date": "2025/04/07",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "0483eeac-4c24-48e3-921f-8a65eef38175"
-    },
-    {
-      "date": "2025/04/07",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "0f377b12-8d37-4727-b157-08469bd859d6"
-    },
-    {
-      "date": "2025/04/08",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "6acadef8-c454-4673-99e8-dc02efce1533"
-    },
-    {
-      "date": "2025/04/09",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "71e3342c-6522-4150-8d22-e43920f54af5"
-    },
-    {
-      "date": "2025/04/10",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "7559a4dd-285f-469e-81fb-d358d988d22d"
-    },
-    {
-      "date": "2025/04/10",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "a5937366-03fa-4acb-8a13-0e62daddfcd8"
-    },
-    {
-      "date": "2025/04/10",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "e77e6463-935b-4ea6-8fcc-ba659898212d"
-    },
-    {
-      "date": "2025/04/11",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "aec8bcaa-29b3-4500-94fd-0fc51bf96ef5"
-    },
-    {
-      "date": "2025/04/12",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "480e64a3-85ec-4e28-88ae-ce40d6143b8e"
-    },
-    {
-      "date": "2025/04/12",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "072dfd6d-564a-43c3-a34c-d8233ae54c4c"
-    },
-    {
-      "date": "2025/04/12",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "27e93d28-f288-444f-bdb3-a0ad3eca0286"
-    },
-    {
-      "date": "2025/04/13",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "b6d040af-9fc0-4328-9f35-408a519e62b0"
-    },
-    {
-      "date": "2025/04/13",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "64e11b99-1fc8-4296-9923-388ee56669eb"
-    },
-    {
-      "date": "2025/04/14",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "35ea2582-c579-4383-bbb7-f5b4f628c920"
-    },
-    {
-      "date": "2025/04/14",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "a743b53d-0029-457d-9c7c-101aad8e63a1"
-    },
-    {
-      "date": "2025/04/14",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "0c5820d4-76ca-48b5-8d01-1a8725a5d931"
-    },
-    {
-      "date": "2025/04/15",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "4de42f97-03a9-4d34-911d-2ab74b237735"
-    },
-    {
-      "date": "2025/04/15",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "2eed3533-b191-4cd7-b01d-c251e33e1a01"
-    },
-    {
-      "date": "2025/04/16",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "86adbc34-3847-4fee-9297-bed78a61464f"
-    },
-    {
-      "date": "2025/04/17",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "512906e7-cc5a-4bbc-962f-86fd9261c8b0"
-    },
-    {
-      "date": "2025/04/18",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "2240d422-4da0-4451-a379-c811b97c6d58"
-    },
-    {
-      "date": "2025/04/18",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "e3eb6f4c-d22f-42e6-813f-1b8d63d03dd9"
-    },
-    {
-      "date": "2025/04/19",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "e6cc08d8-5ed1-434a-9cb1-2329cd8d3800"
-    },
-    {
-      "date": "2025/04/19",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "e6463abe-d777-49a4-a8d9-98ac931eb9c3"
-    },
-    {
-      "date": "2025/04/19",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "fc08192c-b5d8-4089-977d-4b56757aa5de"
-    },
-    {
-      "date": "2025/04/20",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "adbe0c3e-aa5c-420f-999c-1d7cc237c83a"
-    },
-    {
-      "date": "2025/04/21",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "cff4682e-936c-40b2-82e6-7b71ba656d3b"
-    },
-    {
-      "date": "2025/04/22",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "fa61e1ac-46af-4ed6-8a15-314d2df97d82"
-    },
-    {
-      "date": "2025/04/23",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "3b45b347-6fb5-4b06-8afe-8cfb3f53b476"
-    },
-    {
-      "date": "2025/04/23",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "c3d7428e-2b4f-4a46-bf34-a0fdb80bf027"
-    },
-    {
-      "date": "2025/04/23",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "7ce5d6ee-4a4e-43ff-b319-1b2d90da7988"
-    },
-    {
-      "date": "2025/04/24",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "a8b4601d-18f8-484d-b98b-4c86a6cfceeb"
-    },
-    {
-      "date": "2025/04/25",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "b2e36b34-bfb5-4480-b807-dba0116af50a"
-    },
-    {
-      "date": "2025/04/25",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "555c733e-98ce-40b8-87db-6b429320950b"
-    },
-    {
-      "date": "2025/04/26",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "1113603c-2876-494a-8097-2cff5a6c2883"
-    },
-    {
-      "date": "2025/04/27",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "cbd9c2b9-a58e-4c00-b187-740c78afd995"
-    },
-    {
-      "date": "2025/04/28",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "d9deb47b-0b64-47ce-91ec-a4ee1cc5e49e"
-    },
-    {
-      "date": "2025/04/28",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "7d7aee66-81eb-4cc5-b718-be7a6bbf3260"
-    },
-    {
-      "date": "2025/04/29",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "ffbec91e-e6ee-4105-b660-55bf87f139d7"
-    },
-    {
-      "date": "2025/04/29",
-      "start": "12:00",
-      "end": "13:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "6fe6f64a-3e7b-4115-9a03-7bc952731dfe"
-    },
-    {
-      "date": "2025/04/30",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "39e1c1a7-997a-4bf9-938b-339342463a33"
-    },
-    {
-      "date": "2025/05/01",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "f78c312b-d2a6-4a6b-96a6-c84f8534f5ad"
-    },
-    {
-      "date": "2025/05/01",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "b954357b-cf7c-4896-8aca-6597ad8248ea"
-    },
-    {
-      "date": "2025/05/01",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "03371b2b-6c2a-42cc-a751-ca8cbf2551d5"
-    },
-    {
-      "date": "2025/05/02",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "85c15bf9-c3b6-41a1-b0c1-1264c807db0a"
-    },
-    {
-      "date": "2025/05/02",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "6c5ae30e-bc06-4ef7-ab62-f245d47eed7f"
-    },
-    {
-      "date": "2025/05/02",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "b5be5fa0-19b6-4b8a-b2c3-534c4e588e9d"
-    },
-    {
-      "date": "2025/05/03",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "09923a49-946d-421d-98bd-c2f21ade9376"
-    },
-    {
-      "date": "2025/05/03",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "52ec144d-42c4-4e97-a14c-71af05ac7168"
-    },
-    {
-      "date": "2025/05/03",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "8a40e3c7-f5ac-46df-9142-80436c4f1842"
-    },
-    {
-      "date": "2025/05/04",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "9ace8e6d-eb90-46c4-9e59-1117b360aa6a"
-    },
-    {
-      "date": "2025/05/04",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "9f9d351d-a76e-4f85-82fc-18702c99a48f"
-    },
-    {
-      "date": "2025/05/04",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "9e24966d-5de6-42d2-8a93-9bae585179e0"
-    },
-    {
-      "date": "2025/05/05",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "e7213748-75b2-4c93-9afb-1f977b52c59b"
-    },
-    {
-      "date": "2025/05/05",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "1481a116-389e-4dc2-abae-557fa77ee674"
-    },
-    {
-      "date": "2025/05/05",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "03ce9a20-3f73-4e54-a2c2-177ead4c6aec"
-    },
-    {
-      "date": "2025/05/06",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "59d83b45-c5c0-42a0-9d6b-9370c42ed9b3"
-    },
-    {
-      "date": "2025/05/07",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "3d10f2c9-f726-4250-a202-077dead5a2cf"
-    },
-    {
-      "date": "2025/05/07",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "e51eecbf-5984-41d8-b3f2-74efab44712f"
-    },
-    {
-      "date": "2025/05/07",
-      "start": "12:00",
-      "end": "13:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "4c7a12a4-08cb-4d59-bd06-ff74a24768b0"
-    },
-    {
-      "date": "2025/05/08",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "6b848673-cddf-4845-bbd5-4e5dfefc8271"
-    },
-    {
-      "date": "2025/05/09",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "3e3fe39e-f124-4776-84f8-2ae096153813"
-    },
-    {
-      "date": "2025/05/09",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "28492d5e-da80-47bd-be2b-cb70e1d92d70"
-    },
-    {
-      "date": "2025/05/10",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "3b40cf0b-3bfa-4ce0-b552-5e1a185734bc"
-    },
-    {
-      "date": "2025/05/10",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "eff613ab-a32b-4068-9b34-42b54389beb0"
-    },
-    {
-      "date": "2025/05/11",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "d792e95d-8a8c-4c11-acfa-ae0f06b83676"
-    },
-    {
-      "date": "2025/05/11",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "2a44dd9d-8eae-442e-8a7f-51ab8a27fd8d"
-    },
-    {
-      "date": "2025/05/11",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "f8ac482d-f8ec-4785-bce5-1cb4d1fb8ff7"
-    },
-    {
-      "date": "2025/05/12",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "924e66ff-2986-4dde-95e6-de968c954057"
-    },
-    {
-      "date": "2025/05/12",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "958bd3c6-e331-4e81-b92a-b857f6229eab"
-    },
-    {
-      "date": "2025/05/12",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "808ac2ee-d8a7-4250-92dc-c91e7f438960"
-    },
-    {
-      "date": "2025/05/13",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "76d3bb28-67d3-4295-b023-e32d233b45ef"
-    },
-    {
-      "date": "2025/05/13",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "b523428f-6eaa-47b2-81cd-57cbc14cdfe0"
-    },
-    {
-      "date": "2025/05/13",
-      "start": "12:00",
-      "end": "13:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "9c75a0ee-d20a-4349-a2d4-1f84f9dc0536"
-    },
-    {
-      "date": "2025/05/14",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "300128ac-9288-41a9-9dc3-4f37f01d5770"
-    },
-    {
-      "date": "2025/05/15",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "70516359-0eab-4d9d-97d1-562803525304"
-    },
-    {
-      "date": "2025/05/16",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "843c0c1b-fa1d-4c2f-878b-7a32ef72a897"
-    },
-    {
-      "date": "2025/05/17",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "63b25ead-2ebf-4569-937c-b957f7b418dc"
-    },
-    {
-      "date": "2025/05/17",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "27d5a995-7675-44f6-a288-d1ef3eff17c6"
-    },
-    {
-      "date": "2025/05/17",
-      "start": "12:00",
-      "end": "13:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "ba671cbd-3180-48fc-9501-b1a851a49c02"
-    },
-    {
-      "date": "2025/05/18",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "d9c1ef57-2299-4ef5-9ce0-83703fa79ea7"
-    },
-    {
-      "date": "2025/05/19",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "67642df6-9f20-40f7-ad34-71e149947dc9"
-    },
-    {
-      "date": "2025/05/19",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "0063a44b-fdb6-4717-ab7e-a9bd4b9dbd6d"
-    },
-    {
-      "date": "2025/05/19",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "0de4a8ac-4272-4a45-a83e-c2ec14db0a6d"
-    },
-    {
-      "date": "2025/05/20",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "5f10ee5f-b6d9-4083-9e26-660026469c4b"
-    },
-    {
-      "date": "2025/05/20",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "d7684d4e-8d1e-4723-bd3c-006f4988729a"
-    },
-    {
-      "date": "2025/05/21",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "27ca4b36-8e97-4ff7-9e45-0871deb81b0b"
-    },
-    {
-      "date": "2025/05/21",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "81d3727e-e5f4-47d0-8326-31af096d37c9"
-    },
-    {
-      "date": "2025/05/21",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "9618014b-69d1-4a46-bb2f-85c0d3177b8f"
-    },
-    {
-      "date": "2025/05/22",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "959f68af-f2cd-41ff-a73d-c35ffc73d32a"
-    },
-    {
-      "date": "2025/05/23",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "1cdbbee7-f372-4c6c-bb7d-d5b14f992344"
-    },
-    {
-      "date": "2025/05/23",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "c646f108-e2b7-46f4-bdce-f893a3562d57"
-    },
-    {
-      "date": "2025/05/24",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "fcd2c80c-09db-48fb-b7c4-f5a3c0f9da66"
-    },
-    {
-      "date": "2025/05/24",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "4f82b1d6-6738-44de-bfee-331b850a58a7"
-    },
-    {
-      "date": "2025/05/24",
-      "start": "12:00",
-      "end": "13:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "2072976a-5a0a-4f98-a1a1-42f93712279e"
-    },
-    {
-      "date": "2025/05/25",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "23dba0f1-ef4f-4eac-b5cb-0a8a759d0920"
-    },
-    {
-      "date": "2025/05/25",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "5db60e1b-776a-4b7e-9f8d-3735a4439eba"
-    },
-    {
-      "date": "2025/05/26",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "cba20cd4-9fde-45f1-9e90-521605348b32"
-    },
-    {
-      "date": "2025/05/26",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "91123e51-ee0f-4dfa-b759-ddd8fef5532f"
-    },
-    {
-      "date": "2025/05/26",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "3de1e44b-1656-49a3-a2c6-7dc2547e0751"
-    },
-    {
-      "date": "2025/05/27",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "c6f77442-7cd5-41fb-80d9-bd8638a6f217"
-    },
-    {
-      "date": "2025/05/28",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "65faa8a7-4e85-4e48-8f2f-3bcd8cdb1874"
-    },
-    {
-      "date": "2025/05/28",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "18dc1a75-8376-4e3c-a931-185d09ed47ee"
-    },
-    {
-      "date": "2025/05/29",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "be8d477d-9bfc-47a0-99cf-ca78e3a9cff6"
-    },
-    {
-      "date": "2025/05/29",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "f496cfcd-8452-42e0-93e2-e4c69891331f"
-    },
-    {
-      "date": "2025/05/29",
-      "start": "12:00",
-      "end": "13:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "5c57d9b5-4fca-4bf2-b21b-74ed4c67e7bf"
-    },
-    {
-      "date": "2025/05/30",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "ba8d8e83-6859-4eef-8754-0654c7a742cb"
-    },
-    {
-      "date": "2025/05/31",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "0406144d-cf42-4737-b3bf-f9800636e30d"
-    },
-    {
-      "date": "2025/05/31",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "b5e7a72c-5c27-4f50-8d93-f5907785f382"
-    },
-    {
-      "date": "2025/05/31",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "12dee8f6-72b9-4f8c-bde9-e0ec4bb1215a"
-    },
-    {
-      "date": "2025/06/01",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "cb34eab9-892c-4a5f-8dc3-6edbf9a7ebbb"
-    },
-    {
-      "date": "2025/06/01",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "05787528-f4e7-41e7-b7b0-cc87db525027"
-    },
-    {
-      "date": "2025/06/01",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "37cf2453-88b5-4421-b57a-031ac17c541c"
-    },
-    {
-      "date": "2025/06/02",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "86d3b095-f560-4923-a153-1b32d3caab9a"
-    },
-    {
-      "date": "2025/06/03",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "46e2ea17-7cd5-41ef-a531-cbdf58dd2d76"
-    },
-    {
-      "date": "2025/06/04",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "61e7e681-b004-4bb5-a097-9f16ad713b0a"
-    },
-    {
-      "date": "2025/06/04",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "e14b901c-5614-49db-8daa-eadce418cb00"
-    },
-    {
-      "date": "2025/06/04",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "67a1606b-1c6b-4ab4-8169-2fe5475f095e"
-    },
-    {
-      "date": "2025/06/05",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "b352a53e-4c7c-4ff0-ac60-4f28a9dc7544"
-    },
-    {
-      "date": "2025/06/05",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "e8988357-73f4-4cb3-b54a-13defbba8f51"
-    },
-    {
-      "date": "2025/06/05",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "be2bac45-a5c6-443c-a57e-5f9a63ed7cca"
-    },
-    {
-      "date": "2025/06/06",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "001b8c88-52ec-4263-b763-e9ef64f74235"
-    },
-    {
-      "date": "2025/06/06",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "c63a0a0e-94e6-42d2-92b2-8d01ee33b1d0"
-    },
-    {
-      "date": "2025/06/06",
-      "start": "12:00",
-      "end": "13:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "16210219-4ed5-4fc0-86cd-bbdbaf1c4081"
-    },
-    {
-      "date": "2025/06/07",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "7e555644-dced-41ab-b014-2bea194b064b"
-    },
-    {
-      "date": "2025/06/07",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "5428bcb5-c486-4357-914c-d1f3691a932a"
-    },
-    {
-      "date": "2025/06/07",
-      "start": "12:00",
-      "end": "13:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "fab7f445-100e-44a8-99ad-7d523f27e404"
-    },
-    {
-      "date": "2025/06/08",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "b93c866a-28e2-4fce-a1a7-e14a6d2fd453"
-    },
-    {
-      "date": "2025/06/08",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "d20ee9c7-1c3b-4d6b-a885-ffb42224165e"
-    },
-    {
-      "date": "2025/06/09",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "6d1274dd-3ac2-4c5c-95a0-ee3e26d77626"
-    },
-    {
-      "date": "2025/06/09",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "cee2d901-1d4b-4a83-8b5d-453091ae9687"
-    },
-    {
-      "date": "2025/06/10",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "1edcd03e-1ccf-45e8-9562-36b00416494f"
-    },
-    {
-      "date": "2025/06/10",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "ce34c084-26d5-4963-a705-f8dea0a8e0ea"
-    },
-    {
-      "date": "2025/06/10",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "a9885b53-727d-4a83-bede-c9c2f8150947"
-    },
-    {
-      "date": "2025/06/11",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "8dae542f-53f1-4110-bd82-28c6832d96c3"
-    },
-    {
-      "date": "2025/06/11",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "d178f455-7eb9-422a-ab68-f5d150d389c5"
-    },
-    {
-      "date": "2025/06/12",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "21329b95-2d53-4944-a6cc-67e08be54b72"
-    },
-    {
-      "date": "2025/06/12",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "fb6efb9b-e665-448b-be81-780ec3b83785"
-    },
-    {
-      "date": "2025/06/13",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "42812342-5d45-4c61-a04d-8b7b4dcb596f"
-    },
-    {
-      "date": "2025/06/14",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "2fbfb492-4fd2-4a85-a517-a7a3de887df6"
-    },
-    {
-      "date": "2025/06/15",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "aaed8a41-14bb-4f41-9744-db84e72fe0d0"
-    },
-    {
-      "date": "2025/06/15",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "bff913e3-e88c-4b41-9d33-8aa4f5103415"
-    },
-    {
-      "date": "2025/06/16",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "8779f793-d405-407c-b126-fa48eded18de"
-    },
-    {
-      "date": "2025/06/16",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "89d2e39b-00e0-48b6-a241-2ed21234d9bd"
-    },
-    {
-      "date": "2025/06/17",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "02ca7418-c00a-4a25-b555-b81fd31448d5"
-    },
-    {
-      "date": "2025/06/17",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "a37e489d-1946-4da7-a46b-c9589e0db500"
-    },
-    {
-      "date": "2025/06/17",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "fc3f3aa3-2ed9-42ce-83f2-97cb9c1ce5e2"
-    },
-    {
-      "date": "2025/06/18",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "790fd642-3945-4540-b32f-368dcfcacf72"
-    },
-    {
-      "date": "2025/06/18",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "4ed95c9d-93c3-4119-b8e8-ccf46cf43b2a"
-    },
-    {
-      "date": "2025/06/19",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "6f57e6af-41ec-490a-807e-48b00319d891"
-    },
-    {
-      "date": "2025/06/19",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "0a16dc10-beb4-4937-a98a-e6bdde3a2b7a"
-    },
-    {
-      "date": "2025/06/20",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "1e6cb8a6-0ab8-46e4-9148-5f4aa639afc3"
-    },
-    {
-      "date": "2025/06/20",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "4bdb66e6-03f6-46a9-8f25-7bbdfe7c781e"
-    },
-    {
-      "date": "2025/06/21",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "c0f7979c-9e5f-4876-94fa-92955e312d9f"
-    },
-    {
-      "date": "2025/06/21",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "69c3d33b-ad60-452f-9f25-d80e8d2b3368"
-    },
-    {
-      "date": "2025/06/22",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "a703d048-e884-46e6-b2ff-7b980d6e1018"
-    },
-    {
-      "date": "2025/06/22",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "09d769bc-3b2f-460c-b5f8-6e1b3856e91f"
-    },
-    {
-      "date": "2025/06/22",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "b5a4dd4e-19d5-4b20-9102-13b0c171963d"
-    },
-    {
-      "date": "2025/06/23",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "192dc9bd-f8e6-48c3-929b-721fe0b55835"
-    },
-    {
-      "date": "2025/06/23",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "cd90f966-0a04-469b-bcf2-f510ff9f45db"
-    },
-    {
-      "date": "2025/06/24",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "c8c0a0a8-3d41-48cf-ad9a-9d33e316b7fe"
-    },
-    {
-      "date": "2025/06/24",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "af3ef9d0-15c4-4132-b42f-f0e3f7878fe0"
-    },
-    {
-      "date": "2025/06/24",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "bf3db0ab-2853-49a2-99a5-c3e3c6d520bb"
-    },
-    {
-      "date": "2025/06/25",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "278004b6-abe3-4eed-b2c9-0f9adb5dff26"
-    },
-    {
-      "date": "2025/06/26",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "2b90e3ac-e265-43c8-abaa-e5867c487688"
-    },
-    {
-      "date": "2025/06/26",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "1f7c0c33-ad01-475d-a53d-4de73e875688"
-    },
-    {
-      "date": "2025/06/26",
-      "start": "12:00",
-      "end": "13:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "58a8efd9-00a4-485b-b362-18abc4e54e5c"
-    },
-    {
-      "date": "2025/06/27",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "e2e7843f-98fc-47a7-ac53-84582bfab13e"
-    },
-    {
-      "date": "2025/06/27",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "22996aa7-51c3-41a9-96cc-eff5914b7df8"
-    },
-    {
-      "date": "2025/06/28",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "80d5ed92-ac2d-4d63-9a08-aac36841b604"
-    },
-    {
-      "date": "2025/06/28",
-      "start": "10:00",
-      "end": "11:00",
-      "calendar_id": "cal1",
-      "experience_id": "1",
-      "id_purchase": "ea756e2c-4c30-46a6-a02d-0bd978845327"
-    },
-    {
-      "date": "2025/06/28",
-      "start": "11:00",
-      "end": "12:00",
-      "calendar_id": "cal2",
-      "experience_id": "2",
-      "id_purchase": "95bdd137-c1c1-4e9d-902f-17c5e689ef79"
-    }
-  ],
-  "paymentsCajaChica": [
-    {
-      "id": "1",
-      "fecha": "2025-05-09",
-      "concepto": "Reembolso de cambio monitor",
-      "cantidad": 20,
-      "tipo": "Ingreso"
-    },
-    {
-      "id": "2",
-      "fecha": "2025-05-09",
-      "concepto": "Caja manual",
-      "cantidad": 15,
-      "tipo": "Ingreso"
+      "uuid": "df80e7e8-8b9d-49db-a5b4-ff47c624ee89"
     }
   ]
 }
