@@ -4,6 +4,10 @@
     android:layout_height="120dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp"
+    android:id="@+id/contenedorMensaje"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
     app:cardElevation="10dp"
     app:cardCornerRadius="10dp">
     <LinearLayout

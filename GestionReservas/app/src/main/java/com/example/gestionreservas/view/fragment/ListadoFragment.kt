@@ -59,7 +59,7 @@ class ListadoFragment: Fragment(),OnClickListener {
             requireContext(),
             mutableListOf()
         ) { sesion: SesionConCompra ->
-            val fragment=DetalleSesionFragment()
+            val fragment=DetallesCorreoFragment()
             val bundle=Bundle()
             bundle.putSerializable("sesionConCompra",sesion)
             fragment.arguments=bundle

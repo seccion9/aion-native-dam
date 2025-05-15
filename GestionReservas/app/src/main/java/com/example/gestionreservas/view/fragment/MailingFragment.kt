@@ -1,20 +1,29 @@
 package com.example.gestionreservas.view.fragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.Visibility
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentMailingBinding
 import com.example.gestionreservas.model.CorreoItem
@@ -35,14 +44,39 @@ class MailingFragment : Fragment(), View.OnClickListener {
     private val RC_SIGN_IN = 1234
     private var nextPageToken: String? = null
     private var isLoading = false
+    private lateinit var menu:Menu
     private lateinit var token: TokenResponse
     private val listaTotalCorreos = mutableListOf<CorreoItem>()
     private lateinit var adaptadorCorreo: AdaptadorCorreo
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_busqueda, menu)
+
+        val cuenta = GoogleSignIn.getLastSignedInAccount(requireContext())
+        val item = menu.findItem(R.id.action_search)
+        item.isVisible = cuenta != null && ::binding.isInitialized && binding.recyclerCorreos.visibility == View.VISIBLE
+
+        // Recupera tu SearchView custom
+        val searchView = item.actionView as androidx.appcompat.widget.SearchView
+
+        // Y le pones tu listener de filtrado
+        searchView.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?) = true
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adaptadorCorreo.filtrar(newText.orEmpty())
+                return true
+            }
+        })
+    }
+
+    @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+
     ): View {
         binding = FragmentMailingBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Mailing"
         instancias()
         return binding.root
@@ -51,12 +85,14 @@ class MailingFragment : Fragment(), View.OnClickListener {
 
     //Funcion para instanciar listeners,adaptadores,funciones de inicio
     private fun instancias() {
+        binding.recyclerCorreos.visibility = View.GONE
+
         binding.btnLogin.setOnClickListener(this)
         binding.btnCerrarSesion.setOnClickListener(this)
 
         configurarGoogleSignIn()
 
-        adaptadorCorreo = AdaptadorCorreo(requireContext(), listaTotalCorreos)
+        adaptadorCorreo = irFragmentDetalles()
         binding.recyclerCorreos.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerCorreos.adapter = adaptadorCorreo
 
@@ -66,7 +102,21 @@ class MailingFragment : Fragment(), View.OnClickListener {
         }
     }
 
+    private fun irFragmentDetalles(): AdaptadorCorreo {
+        val adapter=AdaptadorCorreo(requireContext(), listaTotalCorreos){ mensaje:CorreoItem->
+            val fragment=DetallesCorreoFragment()
+            val bundle=Bundle()
+            bundle.putSerializable("mensaje",mensaje)
+            fragment.arguments=bundle
+            val transacion=parentFragmentManager
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.fragment_principal,fragment)
+            transacion.commit()
 
+        }
+        return adapter
+    }
     //Configuracion del inicio de sesion de gmail con nuestro id de cliente y la ruta a la api
     private fun configurarGoogleSignIn() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -101,16 +151,23 @@ class MailingFragment : Fragment(), View.OnClickListener {
             if (task.isSuccessful) {
                 task.result?.serverAuthCode?.let { authCode ->
                     binding.progressBar.visibility = View.VISIBLE
+                    binding.recyclerCorreos.visibility=View.GONE
                     lifecycleScope.launch {
                         try {
                             // Guarda tokens en SharedPreferences
                             MailingRepository.loginYObtenerCorreos(authCode, requireContext())
 
                             inicializarCorreoConCuentaGuardada()
+                            binding.btnLogin.visibility=View.GONE
+                            binding.btnCerrarSesion.visibility=View.VISIBLE
+                            binding.recyclerCorreos.visibility=View.VISIBLE
+                            requireActivity().invalidateOptionsMenu()
                             Toast.makeText(requireContext(), "Login y correos OK", Toast.LENGTH_SHORT).show()
                         } catch (e: Exception) {
                             Log.e("MailingFragment", "Error login: ${e.message}")
                             Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                            binding.btnLogin.visibility=View.VISIBLE
+                            binding.btnCerrarSesion.visibility=View.GONE
                             binding.progressBar.visibility = View.GONE
                         }
                     }
@@ -128,6 +185,7 @@ class MailingFragment : Fragment(), View.OnClickListener {
 
         listaTotalCorreos.clear()
         listaTotalCorreos.addAll(nuevaLista)
+        adaptadorCorreo.actualizarListaCompleta(nuevaLista)
         adaptadorCorreo.notifyDataSetChanged()
         Log.d("DEBUG", "Mostrando lista con ${nuevaLista.size} correos")
     }
@@ -173,13 +231,15 @@ class MailingFragment : Fragment(), View.OnClickListener {
         binding.btnLogin.visibility = View.GONE
         binding.btnCerrarSesion.visibility = View.VISIBLE
         binding.progressBar.visibility = View.VISIBLE
-
+        binding.recyclerCorreos.visibility=View.VISIBLE
+        requireActivity().invalidateOptionsMenu()
         lifecycleScope.launch {
             try {
                 obtenerCorreosAlHacerScroll()
             } catch (e: Exception) {
                 Log.e("MailingFragment", "Error cargando correos: ${e.message}")
                 binding.btnLogin.visibility = View.VISIBLE
+                binding.recyclerCorreos.visibility=View.GONE
                 binding.btnCerrarSesion.visibility = View.GONE
                 Toast.makeText(requireContext(), "Fallo cargando correos", Toast.LENGTH_SHORT).show()
             } finally {
@@ -209,23 +269,16 @@ class MailingFragment : Fragment(), View.OnClickListener {
         })
     }
     private fun cerrarSesion() {
-        googleSignInClient.signOut().addOnCompleteListener {
-            // Si quieres impedir que vuelva a iniciar sesión automática-
-            // mente en este dispositivo, usa también revokeAccess():
-            googleSignInClient.revokeAccess().addOnCompleteListener {
-                Log.d("MailingFragment", "Cuenta desconectada")
-            }
+        MailingRepository.cerrarSesion(requireContext()) {
+            listaTotalCorreos.clear()
+            adaptadorCorreo.notifyDataSetChanged()
+            binding.btnLogin.visibility = View.VISIBLE
+            binding.btnCerrarSesion.visibility = View.GONE
+            binding.recyclerCorreos.visibility = View.GONE
+            nextPageToken = null
+            Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()
+            requireActivity().invalidateOptionsMenu()
         }
-
-        requireContext().getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
-            .edit()
-            .clear()
-            .apply()
-
-        listaTotalCorreos.clear()
-        adaptadorCorreo.notifyDataSetChanged()
-        binding.btnLogin.visibility = View.VISIBLE
-        nextPageToken = null
-        Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()
     }
+
 }

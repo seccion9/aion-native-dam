@@ -4,11 +4,15 @@ import android.content.Context
 import android.util.Base64
 import android.util.Log
 import com.example.gestionreservas.BuildConfig
+import com.example.gestionreservas.R
 import com.example.gestionreservas.model.CorreoItem
 import com.example.gestionreservas.models.entity.GmailMessageDetailResponse
 import com.example.gestionreservas.models.entity.GmailMessagesResponse
 import com.example.gestionreservas.models.entity.TokenResponse
 import com.example.gestionreservas.network.GmailRetrofitInstance
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.Scope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -127,10 +131,10 @@ object MailingRepository {
                      */
                     val cabeceras = detalle?.payload?.headers ?: emptyList()
                     val subjectRaw = cabeceras.find { it.name == "Subject" }?.value ?: "(Sin asunto)"
-                    val asunto = if (subjectRaw.length > 40) subjectRaw.take(25) + "..." else subjectRaw
+                    val asunto = if (subjectRaw.length > 21) subjectRaw.take(20) + "..." else subjectRaw
 
                     val fromRaw = cabeceras.find { it.name == "From" }?.value ?: "(Desconocido)"
-                    val remitente = if (fromRaw.length > 30) fromRaw.take(20) else fromRaw
+                    val remitente = if (fromRaw.length > 21) fromRaw.take(20) else fromRaw
                     val nombreRemitente = remitente.substringBefore("<").trim()
                     val from = nombreRemitente
 
@@ -149,7 +153,7 @@ object MailingRepository {
                         org.jsoup.Jsoup.parse(cuerpoPlano).text()
                             .replace(Regex("\\[image:.*?\\]", RegexOption.IGNORE_CASE), "")
                             .replace("\n", " ").replace("\r", " ")
-                            .take(50) + "..."
+                            .take(35) + "..."
                     } ?: "(Sin contenido)"
 
                     CorreoItem(mensaje.id, asunto, from, preview)
@@ -196,10 +200,10 @@ object MailingRepository {
 
                         val cabeceras = detalle?.payload?.headers ?: emptyList()
                         val subjectRaw = cabeceras.find { it.name == "Subject" }?.value ?: "(Sin asunto)"
-                        val asunto = if (subjectRaw.length > 40) subjectRaw.take(30) + "..." else subjectRaw
+                        val asunto = if (subjectRaw.length > 21) subjectRaw.take(20) + "..." else subjectRaw
 
                         val fromRaw = cabeceras.find { it.name == "From" }?.value ?: "(Desconocido)"
-                        val remitente = if (fromRaw.length > 30) fromRaw.take(20) else fromRaw
+                        val remitente = if (fromRaw.length > 21) fromRaw.take(20) else fromRaw
                         val nombreRemitente = remitente.substringBefore("<").trim()
                         val from = nombreRemitente
 
@@ -215,7 +219,7 @@ object MailingRepository {
                             org.jsoup.Jsoup.parse(cuerpoPlano).text()
                                 .replace(Regex("\\[image:.*?\\]", RegexOption.IGNORE_CASE), "")
                                 .replace("\n", " ").replace("\r", " ")
-                                .take(50) + "..."
+                                .take(35) + "..."
                         } ?: "(Sin contenido)"
 
                         CorreoItem(mensaje.id, asunto, from, preview)
@@ -225,6 +229,34 @@ object MailingRepository {
                 Pair(lista, body?.nextPageToken)
             } else {
                 throw Exception("Error en paginación: ${response.code()}")
+            }
+        }
+    }
+    fun obtenerEmailUsuario(context: Context): String? {
+        val cuenta = GoogleSignIn.getLastSignedInAccount(context)
+        return cuenta?.email
+    }
+    fun cerrarSesion(context: Context, onComplete: (() -> Unit)? = null) {
+        val googleSignInClient = GoogleSignIn.getClient(
+            context,
+            GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .requestScopes(Scope("https://www.googleapis.com/auth/gmail.readonly"))
+                .requestServerAuthCode(context.getString(R.string.default_web_client_id), true)
+                .build()
+        )
+
+        googleSignInClient.signOut().addOnCompleteListener {
+            googleSignInClient.revokeAccess().addOnCompleteListener {
+                Log.d("MailingRepository", "Cuenta desconectada y permisos revocados")
+
+                // Borrar tokens
+                context.getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
+                    .edit()
+                    .clear()
+                    .apply()
+
+                onComplete?.invoke()
             }
         }
     }

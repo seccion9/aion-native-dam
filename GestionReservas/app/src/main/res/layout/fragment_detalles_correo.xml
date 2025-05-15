@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="10dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="8dp"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvCalendario"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/vector_letra_correo"
+            android:gravity="center_horizontal"
+            android:text="L"
+            android:textColor="@color/black"
+            android:textSize="44sp"
+            android:textStyle="bold"
+            android:padding="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/linearCabecera"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <!-- Cabecera con título -->
+        <LinearLayout
+            android:paddingStart="5dp"
+            android:gravity="left"
+            android:id="@+id/linearCabecera"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvCalendario"
+            app:layout_constraintEnd_toStartOf="@id/tvMailing"
+            app:layout_constraintWidth_percent="0.5">
+
+            <TextView
+                android:id="@+id/tvReservas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Luis López"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/tvCorreo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="alice@example.con"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <!-- Fecha -->
+        <TextView
+
+            android:id="@+id/tvMailing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:text="24 Abr 2025"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/linearCabecera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/linearCabecera"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.25" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="1dp"
+        android:id="@+id/cuerpoMensaje"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:padding="8dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/linearMenu"
+        app:layout_constraintStart_toStartOf="@+id/linearMenu"
+        app:layout_constraintTop_toBottomOf="@+id/linearMenu">
+
+        <TextView
+            android:id="@+id/tvCuerpoMensaje"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Hola Luis,
+
+Te escribimos para confirmarte que tu reserva ha sido registrada correctamente en el sistema. El día asignado es el jueves 25 de abril a las 19:00 h, en la Sala 2.
+
+Por favor, asegúrate de llegar con al menos 10 minutos de antelación. Si necesitas modificar tu reserva o tienes cualquier duda, puedes responder directamente a este correo o llamarnos al 900 123 456.
+
+¡Gracias por confiar en nosotros!
+
+Atentamente,
+El equipo de Aether Escape Room
+"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_responder"
+        android:text="Reply"
+        android:textColor="@color/white"
+        android:drawablePadding="10dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/reponder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.SearchView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/search_view_custom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:iconifiedByDefault="false"
+    android:background="@drawable/barra_busqueda"
+    android:queryHint="Buscar correo…"
+    android:textColor="@android:color/black"
+    android:textColorHint="@android:color/darker_gray" />

@@ -8,20 +8,20 @@
     android:padding="10dp">
 
     <TextView
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:background="@drawable/boton_bloqueo"
         android:id="@+id/btnLogin"
-        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:text="Login Correo"
-        android:textSize="20sp"
-        android:paddingStart="10dp"
+        android:background="@drawable/boton_bloqueo"
+        android:clickable="true"
         android:drawableStart="@drawable/mail"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:padding="8dp"
+        android:paddingStart="10dp"
+        android:text="Login Correo"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,21 +41,22 @@
         android:text="Cerrar Sesion"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerCorreos"
-        app:layout_constraintStart_toStartOf="@+id/recyclerCorreos" />
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCorreos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"
-        app:layout_constraintBottom_toTopOf="@id/btnCerrarSesion"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/barraBoton"
+        app:layout_constraintTop_toBottomOf="@+id/barraBoton" />
 
 
     <ProgressBar
@@ -63,8 +64,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+
+        android:id="@+id/barraBoton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="btnLogin,btnCerrarSesion" />
 </androidx.constraintlayout.widget.ConstraintLayout>

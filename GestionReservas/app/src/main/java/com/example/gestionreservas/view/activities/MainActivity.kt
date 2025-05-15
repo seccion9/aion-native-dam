@@ -1,7 +1,11 @@
 package com.example.gestionreservas.view.activities
 
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import kotlinx.coroutines.launch
@@ -36,6 +40,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.btnReset?.setOnClickListener(this)
         binding.editCorreo.setText("admin@aether.com")
         binding.editPass.setText("1234")
+
+        crearCanalNotificaciones(applicationContext)
 
     }
     override fun onClick(v: View?) {
@@ -121,6 +127,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }else{
             Log.e("LoginFake", "HTTP ${response.code()}  ${response.errorBody()?.string()}")
+        }
+    }
+    fun crearCanalNotificaciones(context: Context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val canal = NotificationChannel(
+                "canal_reservas",
+                "Reservas",
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
+                description = "Notificaciones de nuevas reservas"
+            }
+
+            val manager = context.getSystemService(NotificationManager::class.java)
+            manager.createNotificationChannel(canal)
         }
     }
 }
