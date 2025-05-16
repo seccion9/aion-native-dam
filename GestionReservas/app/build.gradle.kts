@@ -52,6 +52,8 @@ dependencies {
     //Auth correo
     implementation ("com.google.android.gms:play-services-auth:20.7.0")
 
+
+
     implementation("org.jsoup:jsoup:1.15.4")
 
     implementation(libs.kotlinx.coroutines.android)
@@ -68,6 +70,7 @@ dependencies {
     implementation(libs.androidx.drawerlayout)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.swiperefreshlayout)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

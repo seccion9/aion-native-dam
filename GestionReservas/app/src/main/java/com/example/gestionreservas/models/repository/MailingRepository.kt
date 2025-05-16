@@ -21,6 +21,9 @@ import org.json.JSONObject
 import retrofit2.Response
 import java.net.HttpURLConnection
 import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 object MailingRepository {
     /**
@@ -129,10 +132,13 @@ object MailingRepository {
                      * Limpiamos cabeceras de los mensajes para mostrar la info que queremos y si es mucho texto
                      * nos quedamos solo con una parte a mostrar en el recycler.
                      */
+                    val fechaEnvio = detalle?.internalDate
+                        ?.toLongOrNull()
+                        ?.let { obtenerFechaLegible(it) }
+                        ?: "Sin fecha"
                     val cabeceras = detalle?.payload?.headers ?: emptyList()
                     val subjectRaw = cabeceras.find { it.name == "Subject" }?.value ?: "(Sin asunto)"
                     val asunto = if (subjectRaw.length > 21) subjectRaw.take(20) + "..." else subjectRaw
-
                     val fromRaw = cabeceras.find { it.name == "From" }?.value ?: "(Desconocido)"
                     val remitente = if (fromRaw.length > 21) fromRaw.take(20) else fromRaw
                     val nombreRemitente = remitente.substringBefore("<").trim()
@@ -156,7 +162,7 @@ object MailingRepository {
                             .take(35) + "..."
                     } ?: "(Sin contenido)"
 
-                    CorreoItem(mensaje.id, asunto, from, preview)
+                    CorreoItem(mensaje.id, asunto, from, preview,fechaEnvio)
                 }
             }?.awaitAll() ?: emptyList()
         }
@@ -201,7 +207,10 @@ object MailingRepository {
                         val cabeceras = detalle?.payload?.headers ?: emptyList()
                         val subjectRaw = cabeceras.find { it.name == "Subject" }?.value ?: "(Sin asunto)"
                         val asunto = if (subjectRaw.length > 21) subjectRaw.take(20) + "..." else subjectRaw
-
+                        val fechaEnvio = detalle?.internalDate
+                            ?.toLongOrNull()
+                            ?.let { obtenerFechaLegible(it) }
+                            ?: "Sin fecha"
                         val fromRaw = cabeceras.find { it.name == "From" }?.value ?: "(Desconocido)"
                         val remitente = if (fromRaw.length > 21) fromRaw.take(20) else fromRaw
                         val nombreRemitente = remitente.substringBefore("<").trim()
@@ -222,7 +231,7 @@ object MailingRepository {
                                 .take(35) + "..."
                         } ?: "(Sin contenido)"
 
-                        CorreoItem(mensaje.id, asunto, from, preview)
+                        CorreoItem(mensaje.id, asunto, from, preview,fechaEnvio)
                     }
                 }?.awaitAll() ?: emptyList()
 
@@ -231,6 +240,33 @@ object MailingRepository {
                 throw Exception("Error en paginación: ${response.code()}")
             }
         }
+    }
+     fun depurarMensajeParaObtenerDetalles(mensaje: GmailMessageDetailResponse?):CorreoItem{
+         Log.e("fecha mensaje","${mensaje?.internalDate}")
+         val fechaEnvio = mensaje?.internalDate
+             ?.toLongOrNull()
+             ?.let { obtenerFechaLegible(it) }
+             ?: "Sin fecha"
+
+         val cabeceras = mensaje?.payload?.headers ?: emptyList()
+         val asunto = cabeceras.find { it.name == "Subject" }?.value ?: "(Sin asunto)"
+
+         val remitente = cabeceras.find { it.name == "From" }?.value ?: "(Desconocido)"
+
+         val partTextoPlano = mensaje?.payload?.parts
+             ?.firstOrNull { it.mimeType.equals("text/plain", true) }
+             ?.body?.data
+
+         val bodyEncoded = mensaje?.payload?.body?.data ?: partTextoPlano
+
+         val preview = bodyEncoded?.let {
+             val decoded = it.replace("-", "+").replace("_", "/")
+             val cuerpoPlano = String(Base64.decode(decoded, Base64.DEFAULT))
+             org.jsoup.Jsoup.parse(cuerpoPlano).wholeText()
+                 .replace(Regex("\\[image:.*?\\]", RegexOption.IGNORE_CASE), "")
+         } ?: "(Sin contenido)"
+
+         return CorreoItem(mensaje?.id ?: "", asunto, remitente, preview,fechaEnvio)
     }
     fun obtenerEmailUsuario(context: Context): String? {
         val cuenta = GoogleSignIn.getLastSignedInAccount(context)
@@ -259,5 +295,9 @@ object MailingRepository {
                 onComplete?.invoke()
             }
         }
+    }
+    fun obtenerFechaLegible(millis: Long): String {
+        val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+        return sdf.format(Date(millis))
     }
 }

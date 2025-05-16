@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_config"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_marginStart="10dp"
+        android:id="@+id/tvPersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Personalizar"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/gray"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:layout_marginTop="10dp"
+        android:id="@+id/switchModoOscuro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/items_config"
+        android:padding="8dp"
+        android:paddingStart="20dp"
+        android:text="Modo oscuro"
+        android:textColor="@color/gray"
+        app:layout_constraintEnd_toEndOf="@+id/tvPersonalizar"
+        app:layout_constraintStart_toStartOf="@+id/tvPersonalizar"
+        app:layout_constraintTop_toBottomOf="@+id/tvPersonalizar" />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/tvNotificaciones"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Notificaciones"
+        android:textColor="@color/gray"
+        app:layout_constraintStart_toStartOf="@+id/switchModoOscuro"
+        app:layout_constraintTop_toBottomOf="@+id/switchModoOscuro" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchNotificaciones"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/items_config"
+        android:padding="8dp"
+        android:text="Recibir notificaciones"
+        android:textColor="@color/gray"
+        app:layout_constraintEnd_toEndOf="@+id/switchModoOscuro"
+        app:layout_constraintStart_toStartOf="@+id/tvNotificaciones"
+        app:layout_constraintTop_toBottomOf="@+id/tvNotificaciones" />
+
+
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:id="@+id/tvCuentas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Cuentas"
+        android:textColor="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCorreoGmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/items_config"
+        android:gravity="center"
+        android:padding="10dp"
+        android:paddingStart="20dp"
+        android:text="musclemind@gmail.com"
+        android:textColor="@color/gray"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/switchModoOscuro"
+        app:layout_constraintEnd_toEndOf="@+id/tvCuentas"
+        app:layout_constraintStart_toStartOf="@+id/tvCuentas"
+        app:layout_constraintTop_toBottomOf="@+id/tvCuentas" />
+
+    <TextView
+        android:id="@+id/tvCerrarSesionGmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="1dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="@+id/tvCorreoGmail"
+        app:layout_constraintTop_toBottomOf="@+id/tvCorreoGmail" />
+
+    <TextView
+        android:id="@+id/tvCorreoAPI"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/items_config"
+        android:gravity="center"
+        android:padding="10dp"
+        android:paddingStart="20dp"
+        android:text="admin@aether.com"
+        android:textColor="@color/gray"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/switchNotificaciones"
+        app:layout_constraintEnd_toEndOf="@+id/tvCorreoGmail"
+        app:layout_constraintStart_toStartOf="@+id/tvCorreoGmail"
+        app:layout_constraintTop_toTopOf="@+id/switchNotificaciones" />
+    <TextView
+        android:layout_marginTop="1dp"
+        android:id="@+id/tvCerrarSesionGlobal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="@+id/tvCorreoAPI"
+        app:layout_constraintTop_toBottomOf="@+id/tvCorreoAPI"
+        />
+
+    <TextView
+        android:id="@+id/tvVersionApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Versión 1.0.0"
+        android:textColor="@color/gray"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="10dp"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+</androidx.constraintlayout.widget.ConstraintLayout>

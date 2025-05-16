@@ -6,6 +6,7 @@
 /*    ▸ endpoint calculado:                                                  */
 /*        /api/getMonthlyOccupancyByExperienceIdsAndDates                    */
 /*      (mismo contrato que la API real)                                     */
+/*    ▸ Notificaciones Push (Firebase Admin SDK)                             */
 /* ────────────────────────────────────────────────────────────────────────── */
 
 const jsonServer = require('json-server');
@@ -16,6 +17,38 @@ const rewriter  = jsonServer.rewriter(require('./routes.json'));
 
 server.use(middle);
 server.use(jsonServer.bodyParser);
+
+/* ─────────────── INICIO: Firebase Admin para Push ─────────────── */
+const admin = require('firebase-admin');
+const serviceAccount = require('./service-account.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
+
+/**
+ * Enviar push notification con FCM (Firebase Admin SDK)
+ * @param {string} tokenUsuario registration token del usuario
+ * @param {string} titulo título de la notificación
+ * @param {string} mensaje cuerpo del mensaje
+ */
+async function enviarPushFCM(tokenUsuario, titulo, mensaje) {
+  const payload = {
+    token: tokenUsuario,
+    notification: {
+      title: titulo,
+      body: mensaje,
+    }
+  };
+  try {
+    const response = await admin.messaging().send(payload);
+    console.log('Push enviada:', response);
+  } catch (error) {
+    console.error('Error enviando push:', error);
+  }
+}
+/* ─────────────── FIN: Firebase Admin para Push ─────────────── */
+
 /* ─────────────────────────── LOGIN fake ──────────────────────────── */
 server.post('/api/sanctum/token', (req, res) => {
   const { email, password } = req.body;
@@ -135,11 +168,27 @@ server.get('/api/paymentsCajaChicaDia/:fecha', (req, res) => {
   res.status(200).json(pagosDelDia);
 });
 
-/* ────────── Endpoint POST /pucrhases ────────── */
-server.post('/api/purchases', (req, res) => {
+/* ────────── Endpoint PATCH para guardar el FCM token de un usuario ────────── */
+server.patch('/api/users/:id/fcmToken', (req, res) => {
+  const { id } = req.params;
+  const { fcmToken } = req.body;
+  if (!fcmToken) {
+    return res.status(400).json({ error: 'Falta el FCM token' });
+  }
+  const user = router.db.get('users').find({ id }).value();
+  if (!user) {
+    return res.status(404).json({ error: 'Usuario no encontrado' });
+  }
+  router.db.get('users').find({ id }).assign({ fcmToken }).write();
+  res.status(200).json({ ok: true });
+});
+
+/* ────────── Endpoint POST /purchases ────────── */
+server.post('/api/purchases', async (req, res) => {
   const nuevaCompra = req.body;
 
   const auth = req.headers.authorization || '';
+
   const token = auth.replace('Bearer ', '');
   const user = router.db.get('users').find({ token }).value();
 
@@ -155,6 +204,14 @@ server.post('/api/purchases', (req, res) => {
   nuevaCompra.userId = user.id; // o user.email
 
   router.db.get('purchases').push(nuevaCompra).write();
+  // Si el usuario tiene un fcmToken, se le manda push
+  if (user.fcmToken) {
+    await enviarPushFCM(
+      user.fcmToken,
+      'Nueva reserva',
+      `Tu reserva ${nuevaCompra.id} ha sido registrada`
+    );
+  }
 
   res.status(201).json(nuevaCompra);
 });

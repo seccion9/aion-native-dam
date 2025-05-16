@@ -3,8 +3,8 @@
     android:shape="rectangle">
     <solid android:color="@color/azul_btn_responder" />
     <corners android:radius="25dp" />
-    <padding android:left="20dp"
-        android:top="10dp"
-        android:right="20dp"
-        android:bottom="10dp" />
+    <padding android:left="15dp"
+        android:top="5dp"
+        android:right="15dp"
+        android:bottom="5dp" />
 </shape>

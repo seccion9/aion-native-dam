@@ -2,8 +2,7 @@
   "/api/getMonthlyOccupancyByExperienceIdsAndDates": "/monthlyOccupancy",
   "/api/getPurchaseById": "/purchasesById",
   "/api/getExperiencesByIdsAndDate": "/experiencesByDate",
-  "/api/getExperiencesByIds": "/experiencesByIds",
-  "/api/purchases": "/purchases",              
+  "/api/getExperiencesByIds": "/experiencesByIds",             
   "/api/sanctum/token": "/_sanctum_token_placeholder",      
   "/api/sanctum/check_token": "/_sanctum_check_token_placeholder",
   "/api/paymentsCajaChicaDia": "/paymentsCajaChica"

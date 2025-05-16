@@ -28,6 +28,7 @@ class AdaptadorCorreo(
         var remitente: TextView = itemView.findViewById(R.id.tvRemitente)
         var cuerpoPreview: TextView = itemView.findViewById(R.id.tvCuerpoMensaje)
         val contenedor = itemView.findViewById<CardView>(R.id.contenedorMensaje)
+        val fecha: TextView = itemView.findViewById(R.id.tvFecha)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
@@ -44,6 +45,7 @@ class AdaptadorCorreo(
         holder.asunto.text=mensaje.asunto
         holder.remitente.text=mensaje.remitente
         holder.cuerpoPreview.text=mensaje.cuerpoPreview
+        holder.fecha.text=mensaje.fecha
         holder.contenedor.setOnClickListener{
             onItemClick(mensaje)
         }

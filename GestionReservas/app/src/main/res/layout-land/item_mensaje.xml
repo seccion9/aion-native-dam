@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp"
     android:id="@+id/contenedorMensaje"
@@ -20,8 +20,8 @@
         android:orientation="horizontal">
         <ImageView
 
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:id="@+id/imagenCorreo"
             android:src="@drawable/vector_imagen_correo"
             />
@@ -44,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvRemitente"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:text="Pinterest"
                     android:textStyle="bold"/>
                 <TextView
@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvAsuntoCorreo"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 android:text="Ideas de corte de cabello para sergio"
                 />
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvCuerpoMensaje"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 android:text="Ver mas¿Te interesa este tema? Ideas de corte de pelo"
                 />
         </LinearLayout>

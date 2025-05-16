@@ -3,7 +3,8 @@ package com.example.gestionreservas.models.entity
 data class GmailMessageDetailResponse(
     val id: String,
     val threadId: String,
-    val payload: Payload
+    val payload: Payload,
+    val internalDate: String?
 )
 
 data class Payload(

@@ -5,72 +5,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:padding="10dp">
+    android:padding="5dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:id="@+id/linearMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:elevation="8dp"
-        android:padding="3dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/contraintCuerpo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
+        <!-- Cabecera con título -->
         <TextView
-            android:paddingBottom="6dp"
             android:id="@+id/tvIcono"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:background="@drawable/vector_letra_correo"
-            android:gravity="center"
-            android:text="L"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"
+            android:paddingBottom="7dp"
+            android:text="L"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/linearCabecera"
-            app:layout_constraintWidth_percent="0.18" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.444"
+            app:layout_constraintWidth_percent="0.25" />
 
-        <!-- Cabecera con título -->
         <LinearLayout
-            android:paddingStart="5dp"
-            android:gravity="left"
+
             android:id="@+id/linearCabecera"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tvIcono"
             app:layout_constraintEnd_toStartOf="@id/tvFecha"
-            app:layout_constraintWidth_percent="0.46">
+            app:layout_constraintStart_toEndOf="@id/tvIcono"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5">
 
             <TextView
                 android:id="@+id/tvNombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Luis López"
+                android:textColor="@color/black"
                 android:textSize="15sp"
-                android:textStyle="bold"
-                android:textColor="@color/black" />
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tvCorreo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="alice@example.con"
-                android:textSize="12sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <!-- Fecha -->
@@ -83,10 +82,10 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/linearCabecera"
-            app:layout_constraintWidth_percent="0.22" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.25" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -97,7 +96,6 @@
         android:layout_marginTop="1dp"
         android:background="@color/white"
         android:padding="8dp"
-        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/btnReply"
         app:layout_constraintEnd_toEndOf="@+id/linearMenu"
         app:layout_constraintStart_toStartOf="@+id/linearMenu"
@@ -118,7 +116,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -128,11 +127,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/btn_responder"
+        android:background="@drawable/btn_responder_land"
         android:text="Reply"
         android:textColor="@color/white"
         android:drawablePadding="10dp"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:drawableLeft="@drawable/reponder"
         app:layout_constraintBottom_toBottomOf="parent"

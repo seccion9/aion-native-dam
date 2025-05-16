@@ -4,7 +4,8 @@
       "id": 1,
       "email": "admin@aether.com",
       "password": "1234",
-      "token": "fake-token-abc123"
+      "token": "fake-token-abc123",
+      "fcmToken": "prueba123"
     }
   ],
   "_sanctum_token_placeholder": [],
@@ -14839,6 +14840,620 @@
       "status": "pendiente",
       "uuid": "df80e7e8-8b9d-49db-a5b4-ff47c624ee89",
       "userId": "df80e7e8-8b9d-49db-a5b4-ff47c624ee89"
+    },
+    {
+      "id": "5e4e92a9-7c15-4e54-bf19-10be93a21ea2",
+      "uuid": "5e4e92a9-7c15-4e54-bf19-10be93a21ea2",
+      "status": "pendiente",
+      "mailStatus": "none",
+      "internaPermanent": false,
+      "idDiscount": null,
+      "idBono": null,
+      "priceFinal": 80,
+      "priceAfterDiscount": 80,
+      "priceFractioned": 40,
+      "isFractioned": false,
+      "name": "Lucía Hernández",
+      "mail": "lucia.hernandez@example.com",
+      "dni": "12345678Y",
+      "phone": "612345678",
+      "direction": "Avenida Real 45",
+      "language": "es",
+      "ip": "192.168.1.18",
+      "comment": "",
+      "automaticActions": "",
+      "items": [
+        {
+          "id": "acbd1234-55be-4d78-b70a-8a9123fa9b9b",
+          "idExperience": "3",
+          "idCalendario": "cal1",
+          "idBusinessUnit": null,
+          "status": "pendiente",
+          "internaPermanent": false,
+          "start": "2025-05-16 17:00:00",
+          "end": "2025-05-16 18:00:00",
+          "duration": 60,
+          "peopleNumber": 4,
+          "priceOriginal": 80,
+          "priceTotal": 80,
+          "priceFractioned": 40,
+          "discountAmount": 0,
+          "fields": [
+            {
+              "id": "e8a67fba-6e0b-4f1a-83e3-30a1df7ec8cc",
+              "title": "Idioma",
+              "name": "language",
+              "value": "Spanish",
+              "amount": 0
+            },
+            {
+              "id": "a7b84fa9-2d3a-4a3d-b3cd-3ac43f7b1ae2",
+              "title": "Monitor",
+              "name": "monitor",
+              "value": "2 pax",
+              "amount": 12
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "id": "0a6c984c-0d5d-4277-841f-1bb86b6b15d5",
+          "amount": 80,
+          "method": "Tarjeta"
+        }
+      ],
+      "resumenItems": [
+        {
+          "id": "acbd1234-55be-4d78-b70a-8a9123fa9b9b",
+          "id_experience": "3",
+          "id_calendario": "cal1",
+          "start": "2025-05-16 17:00:00",
+          "end": "2025-05-16 18:00:00",
+          "people_number": 4,
+          "price_original": 80,
+          "price_fractioned": 40
+        }
+      ],
+      "userId": "5e4e92a9-7c15-4e54-bf19-10be93a21ea2"
+    },
+    {
+      "id": "c9e1b5e7-4d3a-4b7d-8e2f-963b7ddbaaaa",
+      "uuid": "c9e1b5e7-4d3a-4b7d-8e2f-963b7ddbaaaa",
+      "status": "pendiente",
+      "mailStatus": "none",
+      "internaPermanent": false,
+      "idDiscount": null,
+      "idBono": null,
+      "priceFinal": 70,
+      "priceAfterDiscount": 70,
+      "priceFractioned": 35,
+      "isFractioned": false,
+      "name": "Carlos Díaz",
+      "mail": "carlos.diaz@example.com",
+      "dni": "98765432L",
+      "phone": "611223344",
+      "direction": "Av. Central 45",
+      "language": "es",
+      "ip": "192.168.1.20",
+      "comment": "",
+      "automaticActions": "",
+      "items": [
+        {
+          "id": "item-123",
+          "idExperience": "1",
+          "idCalendario": "cal1",
+          "idBusinessUnit": null,
+          "status": "pendiente",
+          "internaPermanent": false,
+          "start": "2025-05-16 18:00:00",
+          "end": "2025-05-16 19:00:00",
+          "duration": 60,
+          "peopleNumber": 2,
+          "priceOriginal": 70,
+          "priceTotal": 70,
+          "priceFractioned": 35,
+          "discountAmount": 0,
+          "fields": [
+            {
+              "id": "lang-01",
+              "title": "Idioma",
+              "name": "language",
+              "value": "Spanish",
+              "amount": 0
+            },
+            {
+              "id": "mon-01",
+              "title": "Monitor",
+              "name": "monitor",
+              "value": "Sí",
+              "amount": 10
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "id": "pay-123",
+          "amount": 70,
+          "method": "Tarjeta"
+        }
+      ],
+      "resumenItems": [
+        {
+          "id": "item-123",
+          "id_experience": "1",
+          "id_calendario": "cal1",
+          "start": "2025-05-16 18:00:00",
+          "end": "2025-05-16 19:00:00",
+          "people_number": 2,
+          "price_original": 70,
+          "price_fractioned": 35
+        }
+      ],
+      "userId": 1
+    },
+    {
+      "id": "c9e1b5e7-4d3a-4b7d-8e2f-963b7ddbaaa",
+      "uuid": "c9e1b5e7-4d3a-4b7d-8e2f-963b7ddbaaa",
+      "status": "pendiente",
+      "mailStatus": "none",
+      "internaPermanent": false,
+      "idDiscount": null,
+      "idBono": null,
+      "priceFinal": 70,
+      "priceAfterDiscount": 70,
+      "priceFractioned": 35,
+      "isFractioned": false,
+      "name": "Carlos Díaz",
+      "mail": "carlos.diaz@example.com",
+      "dni": "98765432L",
+      "phone": "611223344",
+      "direction": "Av. Central 45",
+      "language": "es",
+      "ip": "192.168.1.20",
+      "comment": "",
+      "automaticActions": "",
+      "fcmToken": "prueba123",
+      "items": [
+        {
+          "id": "item-123",
+          "idExperience": "1",
+          "idCalendario": "cal1",
+          "idBusinessUnit": null,
+          "status": "pendiente",
+          "internaPermanent": false,
+          "start": "2025-05-16 18:00:00",
+          "end": "2025-05-16 19:00:00",
+          "duration": 60,
+          "peopleNumber": 2,
+          "priceOriginal": 70,
+          "priceTotal": 70,
+          "priceFractioned": 35,
+          "discountAmount": 0,
+          "fields": [
+            {
+              "id": "lang-01",
+              "title": "Idioma",
+              "name": "language",
+              "value": "Spanish",
+              "amount": 0
+            },
+            {
+              "id": "mon-01",
+              "title": "Monitor",
+              "name": "monitor",
+              "value": "Sí",
+              "amount": 10
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "id": "pay-123",
+          "amount": 70,
+          "method": "Tarjeta"
+        }
+      ],
+      "resumenItems": [
+        {
+          "id": "item-123",
+          "id_experience": "1",
+          "id_calendario": "cal1",
+          "start": "2025-05-16 18:00:00",
+          "end": "2025-05-16 19:00:00",
+          "people_number": 2,
+          "price_original": 70,
+          "price_fractioned": 35
+        }
+      ],
+      "userId": 1
+    },
+    {
+      "id": "c9e1b5e7-4d3a-4b7d-8e2f-963b7dbaaa",
+      "uuid": "c9e1b5e7-4d3a-4b7d-8e2f-963b7dbaaa",
+      "status": "pendiente",
+      "mailStatus": "none",
+      "internaPermanent": false,
+      "idDiscount": null,
+      "idBono": null,
+      "priceFinal": 70,
+      "priceAfterDiscount": 70,
+      "priceFractioned": 35,
+      "isFractioned": false,
+      "name": "Carlos Díaz",
+      "mail": "carlos.diaz@example.com",
+      "dni": "98765432L",
+      "phone": "611223344",
+      "direction": "Av. Central 45",
+      "language": "es",
+      "ip": "192.168.1.20",
+      "comment": "",
+      "automaticActions": "",
+      "fcmToken": "prueba123",
+      "items": [
+        {
+          "id": "item-123",
+          "idExperience": "1",
+          "idCalendario": "cal1",
+          "idBusinessUnit": null,
+          "status": "pendiente",
+          "internaPermanent": false,
+          "start": "2025-05-16 18:00:00",
+          "end": "2025-05-16 19:00:00",
+          "duration": 60,
+          "peopleNumber": 2,
+          "priceOriginal": 70,
+          "priceTotal": 70,
+          "priceFractioned": 35,
+          "discountAmount": 0,
+          "fields": [
+            {
+              "id": "lang-01",
+              "title": "Idioma",
+              "name": "language",
+              "value": "Spanish",
+              "amount": 0
+            },
+            {
+              "id": "mon-01",
+              "title": "Monitor",
+              "name": "monitor",
+              "value": "Sí",
+              "amount": 10
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "id": "pay-123",
+          "amount": 70,
+          "method": "Tarjeta"
+        }
+      ],
+      "resumenItems": [
+        {
+          "id": "item-123",
+          "id_experience": "1",
+          "id_calendario": "cal1",
+          "start": "2025-05-16 18:00:00",
+          "end": "2025-05-16 19:00:00",
+          "people_number": 2,
+          "price_original": 70,
+          "price_fractioned": 35
+        }
+      ],
+      "userId": 1
+    },
+    {
+      "id": "c9e1b5e7-4d3a-4b7d-8e2f-963b7baaa",
+      "uuid": "c9e1b5e7-4d3a-4b7d-8e2f-9637dbaaa",
+      "status": "pendiente",
+      "mailStatus": "none",
+      "internaPermanent": false,
+      "idDiscount": null,
+      "idBono": null,
+      "priceFinal": 70,
+      "priceAfterDiscount": 70,
+      "priceFractioned": 35,
+      "isFractioned": false,
+      "name": "Carlos Díaz",
+      "mail": "carlos.diaz@example.com",
+      "dni": "98765432L",
+      "phone": "611223344",
+      "direction": "Av. Central 45",
+      "language": "es",
+      "ip": "192.168.1.20",
+      "comment": "",
+      "automaticActions": "",
+      "fcmToken": "prueba123",
+      "items": [
+        {
+          "id": "item-123",
+          "idExperience": "1",
+          "idCalendario": "cal1",
+          "idBusinessUnit": null,
+          "status": "pendiente",
+          "internaPermanent": false,
+          "start": "2025-05-16 18:00:00",
+          "end": "2025-05-16 19:00:00",
+          "duration": 60,
+          "peopleNumber": 2,
+          "priceOriginal": 70,
+          "priceTotal": 70,
+          "priceFractioned": 35,
+          "discountAmount": 0,
+          "fields": [
+            {
+              "id": "lang-01",
+              "title": "Idioma",
+              "name": "language",
+              "value": "Spanish",
+              "amount": 0
+            },
+            {
+              "id": "mon-01",
+              "title": "Monitor",
+              "name": "monitor",
+              "value": "Sí",
+              "amount": 10
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "id": "pay-123",
+          "amount": 70,
+          "method": "Tarjeta"
+        }
+      ],
+      "resumenItems": [
+        {
+          "id": "item-123",
+          "id_experience": "1",
+          "id_calendario": "cal1",
+          "start": "2025-05-16 18:00:00",
+          "end": "2025-05-16 19:00:00",
+          "people_number": 2,
+          "price_original": 70,
+          "price_fractioned": 35
+        }
+      ],
+      "userId": 1
+    },
+    {
+      "id": "c9e1b5e7-4d3a-4b7d-8e2f-963bbaaa",
+      "uuid": "c9e1b5e7-4d3a-4b7d-8e2f-937dbaaa",
+      "status": "pendiente",
+      "mailStatus": "none",
+      "internaPermanent": false,
+      "idDiscount": null,
+      "idBono": null,
+      "priceFinal": 70,
+      "priceAfterDiscount": 70,
+      "priceFractioned": 35,
+      "isFractioned": false,
+      "name": "Carlos Díaz",
+      "mail": "carlos.diaz@example.com",
+      "dni": "98765432L",
+      "phone": "611223344",
+      "direction": "Av. Central 45",
+      "language": "es",
+      "ip": "192.168.1.20",
+      "comment": "",
+      "automaticActions": "",
+      "fcmToken": "prueba123",
+      "items": [
+        {
+          "id": "item-123",
+          "idExperience": "1",
+          "idCalendario": "cal1",
+          "idBusinessUnit": null,
+          "status": "pendiente",
+          "internaPermanent": false,
+          "start": "2025-05-17 18:00:00",
+          "end": "2025-05-17 19:00:00",
+          "duration": 60,
+          "peopleNumber": 2,
+          "priceOriginal": 70,
+          "priceTotal": 70,
+          "priceFractioned": 35,
+          "discountAmount": 0,
+          "fields": [
+            {
+              "id": "lang-01",
+              "title": "Idioma",
+              "name": "language",
+              "value": "Spanish",
+              "amount": 0
+            },
+            {
+              "id": "mon-01",
+              "title": "Monitor",
+              "name": "monitor",
+              "value": "Sí",
+              "amount": 10
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "id": "pay-123",
+          "amount": 70,
+          "method": "Tarjeta"
+        }
+      ],
+      "resumenItems": [
+        {
+          "id": "item-123",
+          "id_experience": "1",
+          "id_calendario": "cal1",
+          "start": "2025-05-17 18:00:00",
+          "end": "2025-05-17 19:00:00",
+          "people_number": 2,
+          "price_original": 70,
+          "price_fractioned": 35
+        }
+      ],
+      "userId": 1
+    },
+    {
+      "id": "c9e1b5e7-4d3a-4b7d-8e2f-963baaa",
+      "uuid": "c9e1b5e7-4d3a-4b7d-8e2f-937baaa",
+      "status": "pendiente",
+      "mailStatus": "none",
+      "internaPermanent": false,
+      "idDiscount": null,
+      "idBono": null,
+      "priceFinal": 70,
+      "priceAfterDiscount": 70,
+      "priceFractioned": 35,
+      "isFractioned": false,
+      "name": "Carlos Díaz",
+      "mail": "carlos.diaz@example.com",
+      "dni": "98765432L",
+      "phone": "611223344",
+      "direction": "Av. Central 45",
+      "language": "es",
+      "ip": "192.168.1.20",
+      "comment": "",
+      "automaticActions": "",
+      "fcmToken": "prueba123",
+      "items": [
+        {
+          "id": "item-123",
+          "idExperience": "1",
+          "idCalendario": "cal1",
+          "idBusinessUnit": null,
+          "status": "pendiente",
+          "internaPermanent": false,
+          "start": "2025-05-17 18:00:00",
+          "end": "2025-05-17 19:00:00",
+          "duration": 60,
+          "peopleNumber": 2,
+          "priceOriginal": 70,
+          "priceTotal": 70,
+          "priceFractioned": 35,
+          "discountAmount": 0,
+          "fields": [
+            {
+              "id": "lang-01",
+              "title": "Idioma",
+              "name": "language",
+              "value": "Spanish",
+              "amount": 0
+            },
+            {
+              "id": "mon-01",
+              "title": "Monitor",
+              "name": "monitor",
+              "value": "Sí",
+              "amount": 10
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "id": "pay-123",
+          "amount": 70,
+          "method": "Tarjeta"
+        }
+      ],
+      "resumenItems": [
+        {
+          "id": "item-123",
+          "id_experience": "1",
+          "id_calendario": "cal1",
+          "start": "2025-05-17 18:00:00",
+          "end": "2025-05-17 19:00:00",
+          "people_number": 2,
+          "price_original": 70,
+          "price_fractioned": 35
+        }
+      ],
+      "userId": 1
+    },
+    {
+      "id": "c9e1b5e7-4d3a-4b7d-8e2f-963aaa",
+      "uuid": "c9e1b5e7-4d3a-4b7d-8ef-937baaa",
+      "status": "pendiente",
+      "mailStatus": "none",
+      "internaPermanent": false,
+      "idDiscount": null,
+      "idBono": null,
+      "priceFinal": 70,
+      "priceAfterDiscount": 70,
+      "priceFractioned": 35,
+      "isFractioned": false,
+      "name": "Carlos Díaz",
+      "mail": "carlos.diaz@example.com",
+      "dni": "98765432L",
+      "phone": "611223344",
+      "direction": "Av. Central 45",
+      "language": "es",
+      "ip": "192.168.1.20",
+      "comment": "",
+      "automaticActions": "",
+      "fcmToken": "prueba123",
+      "items": [
+        {
+          "id": "item-123",
+          "idExperience": "1",
+          "idCalendario": "cal1",
+          "idBusinessUnit": null,
+          "status": "pendiente",
+          "internaPermanent": false,
+          "start": "2025-05-17 18:00:00",
+          "end": "2025-05-17 19:00:00",
+          "duration": 60,
+          "peopleNumber": 2,
+          "priceOriginal": 70,
+          "priceTotal": 70,
+          "priceFractioned": 35,
+          "discountAmount": 0,
+          "fields": [
+            {
+              "id": "lang-01",
+              "title": "Idioma",
+              "name": "language",
+              "value": "Spanish",
+              "amount": 0
+            },
+            {
+              "id": "mon-01",
+              "title": "Monitor",
+              "name": "monitor",
+              "value": "Sí",
+              "amount": 10
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "id": "pay-123",
+          "amount": 70,
+          "method": "Tarjeta"
+        }
+      ],
+      "resumenItems": [
+        {
+          "id": "item-123",
+          "id_experience": "1",
+          "id_calendario": "cal1",
+          "start": "2025-05-17 18:00:00",
+          "end": "2025-05-17 19:00:00",
+          "people_number": 2,
+          "price_original": 70,
+          "price_fractioned": 35
+        }
+      ],
+      "userId": 1
     }
   ],
   "experiencesByDate": [

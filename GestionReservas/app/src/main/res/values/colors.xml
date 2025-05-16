@@ -10,9 +10,11 @@
     <color name="botones_bloqueo">#555555</color>
     <color name="cerrar_sesion">#FF0000</color>
     <color name="azul_btn_responder">#1162c8</color>
+    <color name="fondo_card_correo">#f2f2f2</color>
 
-    <color name="fondo_config">#FAFAFA</color>
+    <color name="fondo_config">#F5F5F5</color>
     <color name="items_config">#EEEEEE</color>
+    <color name="color_botones_gmail">#B2A6A5A6</color>
 
     <!-- Colores recycler listado-->
     <color name="verde_confirmado">#91C282</color>
