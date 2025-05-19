@@ -16,8 +16,7 @@
 /captures
 .externalNativeBuild
 .cxx
-# Archivos sensibles de configuración de Gradle
-**/gradle.properties
+
 # --- CONFIG SENSIBLE DEL MOCK API ---
 /mock-api/service-account.json
 

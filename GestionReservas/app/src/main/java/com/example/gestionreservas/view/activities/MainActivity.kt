@@ -10,11 +10,16 @@ import android.os.Bundle
 import android.util.Log
 import kotlinx.coroutines.launch
 import android.view.View
+import android.widget.CompoundButton
+import android.widget.CompoundButton.OnCheckedChangeListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.example.gestionreservas.models.repository.AuthRepository
 import com.example.gestionreservas.databinding.ActivityMainBinding
+import com.example.gestionreservas.models.entity.CheckReservasWorker
 import com.example.gestionreservas.models.entity.LoginRequest
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.network.RetrofitInstance
@@ -26,10 +31,20 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeListener {
     private lateinit var binding: ActivityMainBinding
+    private var recordarCuenta=false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val prefs = getSharedPreferences("my_prefs", MODE_PRIVATE)
+        val token = prefs.getString("auth_token", null)
+        val mantenerSesion = prefs.getBoolean("mantener_sesion", false)
+
+        if (token != null && mantenerSesion) {
+            startActivity(Intent(this, ReservasActivity::class.java))
+            finish()
+            return
+        }
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         instancias()
@@ -38,10 +53,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //Aqui van las instancias de nuestra activity
         binding.btnLogin?.setOnClickListener(this)
         binding.btnReset?.setOnClickListener(this)
+        binding.checkboxCuenta.setOnCheckedChangeListener(this)
+
         binding.editCorreo.setText("admin@aether.com")
         binding.editPass.setText("1234")
 
-        crearCanalNotificaciones(applicationContext)
 
     }
     override fun onClick(v: View?) {
@@ -67,11 +83,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
     //Metodo que se encarga de hacer el login del usuario con la API
 
-    // Funcion que guarda el token en local
+    // Funcion que guarda el token y preferencias en local
     private fun saveTokenToSharedPreferences(token: String) {
         val sharedPreferences = getSharedPreferences("my_prefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("auth_token", token)
+        editor.putBoolean("mantener_sesion", recordarCuenta)
         editor.apply()
     }
 
@@ -88,21 +105,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val authRepository = AuthRepository(RetrofitInstance.api)
         lifecycleScope.launch {
             try{
-
-                val response = authRepository.login(email, password)
-                if (response.isSuccessful && false) {
-                    val token = response.body()
-                    saveTokenToSharedPreferences(token.toString())
-
-                    // Sacamos el intent y el start activity fuera del contexto para evitar errores
-                    withContext(Dispatchers.Main) {
-                        delay(2000)
-                        startActivity(Intent(applicationContext, ReservasActivity::class.java))
-                        finish()
-                    }
-                }else{
                     loginApiFake()
-                }
             }catch (e: Exception) {
                 Log.e("MainActivity", "Error en la API real: ${e.message}")
 
@@ -115,9 +118,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             binding.editPass.text.toString()
         ))
         if(response.isSuccessful){
-            val loginResponse = response.body() ?: return          // LoginResponse
-            val token      = loginResponse.token                // "fake-token-abc123"
+            val prefs = getSharedPreferences("ajustes", MODE_PRIVATE)
+            prefs.edit().putBoolean("notificaciones_activadas", true).apply()
+            crearCanalNotificacionesGlobal()
+            programarWorkerNotificacionesGlobal()
+            val loginResponse = response.body() ?: return
+            val token      = loginResponse.token
             saveTokenToSharedPreferences(token)
+            val oneTime = OneTimeWorkRequestBuilder<CheckReservasWorker>().build()
+            WorkManager.getInstance(this).enqueue(oneTime)
             Log.e("login Activity","Token : ${token}")
             // Sacamos el intent y el start activity fuera del contexto para evitar errores
             withContext(Dispatchers.Main) {
@@ -129,18 +138,34 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             Log.e("LoginFake", "HTTP ${response.code()}  ${response.errorBody()?.string()}")
         }
     }
-    fun crearCanalNotificaciones(context: Context) {
+
+    private fun crearCanalNotificacionesGlobal() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val canal = NotificationChannel(
                 "canal_reservas",
                 "Reservas",
-                NotificationManager.IMPORTANCE_DEFAULT
+                NotificationManager.IMPORTANCE_HIGH
             ).apply {
                 description = "Notificaciones de nuevas reservas"
             }
-
-            val manager = context.getSystemService(NotificationManager::class.java)
+            val manager = getSystemService(NotificationManager::class.java)
             manager.createNotificationChannel(canal)
+        }
+    }
+
+    private fun programarWorkerNotificacionesGlobal() {
+        val prefs = getSharedPreferences("ajustes", Context.MODE_PRIVATE)
+        val notificacionesActivas = prefs.getBoolean("notificaciones_activadas", false)
+
+        if (notificacionesActivas) {
+            val workRequest = OneTimeWorkRequestBuilder<CheckReservasWorker>().build()
+            WorkManager.getInstance(this).enqueue(workRequest)
+        }
+    }
+
+    override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
+        if(binding.checkboxCuenta.isChecked){
+            recordarCuenta=isChecked
         }
     }
 }

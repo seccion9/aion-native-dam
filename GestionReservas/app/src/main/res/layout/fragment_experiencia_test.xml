@@ -33,6 +33,14 @@
         app:layout_constraintStart_toStartOf="@+id/tvExpTitulo"
         app:layout_constraintTop_toBottomOf="@+id/tvExpTitulo" />
 
+    <Button
+        android:id="@+id/btnTestNotificacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Notificación"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@+id/tvJugadores"
+        app:layout_constraintTop_toBottomOf="@+id/tvJugadores" />
 
 
 

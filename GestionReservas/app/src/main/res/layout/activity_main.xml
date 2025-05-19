@@ -68,13 +68,29 @@
         app:layout_constraintStart_toStartOf="@id/editCorreo"
         app:layout_constraintEnd_toEndOf="@id/editCorreo" />
 
+
+    <CheckBox
+        android:id="@+id/checkboxCuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/editPass"
+        app:layout_constraintTop_toBottomOf="@+id/editPass" />
+
+    <TextView
+        android:id="@+id/tvRecordarme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recordar cuenta"
+        app:layout_constraintBottom_toBottomOf="@+id/checkboxCuenta"
+        app:layout_constraintStart_toEndOf="@+id/checkboxCuenta"
+        app:layout_constraintTop_toBottomOf="@+id/editPass" />
     <!-- Botón Login -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
         android:layout_marginEnd="10dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/boton_personalizado"
         android:foreground="?attr/selectableItemBackground"
         android:text="Login"
@@ -83,14 +99,14 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/editPass"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@id/editPass" />
+        app:layout_constraintTop_toBottomOf="@id/checkboxCuenta" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginStart="10dp"
         android:id="@+id/btnReset"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/boton_personalizado"
         android:foreground="?attr/selectableItemBackground"
         android:text="Reset"
@@ -99,7 +115,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/editPass"
         app:layout_constraintStart_toEndOf="@id/guideline3"
-        app:layout_constraintTop_toBottomOf="@id/editPass" />
+        app:layout_constraintTop_toBottomOf="@id/checkboxCuenta" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

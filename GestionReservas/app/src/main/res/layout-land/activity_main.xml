@@ -64,9 +64,25 @@
         app:layout_constraintEnd_toEndOf="@+id/editCorreo"
         app:layout_constraintStart_toStartOf="@+id/editCorreo"
         app:layout_constraintTop_toBottomOf="@+id/editCorreo" />
+    <CheckBox
+        android:id="@+id/checkboxCuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/editPass"
+        app:layout_constraintTop_toBottomOf="@+id/editPass" />
+
+    <TextView
+        android:id="@+id/tvRecordarme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recordar cuenta"
+        app:layout_constraintBottom_toBottomOf="@+id/checkboxCuenta"
+        app:layout_constraintStart_toEndOf="@+id/checkboxCuenta"
+        app:layout_constraintTop_toBottomOf="@+id/editPass" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/appCompatButton"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/boton_personalizado"
@@ -75,13 +91,14 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/editPass"
-        app:layout_constraintTop_toBottomOf="@+id/editPass" />
+        app:layout_constraintTop_toBottomOf="@+id/checkboxCuenta" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
+        android:id="@+id/btnReset"
         android:layout_height="wrap_content"
         android:background="@drawable/boton_personalizado"
         android:foreground="?attr/selectableItemBackground"
@@ -89,10 +106,9 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editPass"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/editPass" />
+        app:layout_constraintTop_toBottomOf="@+id/checkboxCuenta" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

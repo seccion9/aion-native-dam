@@ -1,7 +1,10 @@
 package com.example.gestionreservas.view.activities
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -11,13 +14,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.work.Constraints
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.ActivityReservasBinding
+import com.example.gestionreservas.models.entity.CheckReservasWorker
 import com.example.gestionreservas.view.fragment.CalendarioFragmentDiario
 import com.example.gestionreservas.view.fragment.ConfiguracionFragment
 import com.example.gestionreservas.view.fragment.HomeFragment
 import com.example.gestionreservas.view.fragment.ListadoFragment
 import com.example.gestionreservas.view.fragment.MailingFragment
+import java.util.concurrent.TimeUnit
 
 class ReservasActivity : AppCompatActivity() {
     private lateinit var binding: ActivityReservasBinding
@@ -28,6 +38,10 @@ class ReservasActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityReservasBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        crearCanalNotificacionesSiNoExiste()
+        pedirPermisoNotificaciones()
+        lanzarWorkerSiNotificacionesActivas()
 
         //Establecemos el toolbar en la activity
         setSupportActionBar(binding.toolbar)
@@ -112,9 +126,62 @@ class ReservasActivity : AppCompatActivity() {
      */
     private fun cerrarSesion(context: Context) {
         val preferencias = context.getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
-        preferencias.edit().remove("auth_token").apply()
+        preferencias.edit()
+            .remove("auth_token")
+            .remove("mantener_sesion")
+            .apply()
         val intent = Intent(context, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         context.startActivity(intent)
     }
+    private fun lanzarWorkerSiNotificacionesActivas() {
+        val prefs = getSharedPreferences("ajustes", Context.MODE_PRIVATE)
+        val notificacionesActivas = prefs.getBoolean("notificaciones_activadas", false)
+
+        if (notificacionesActivas) {
+            // Se lanza una vez al iniciar
+            val oneTime = OneTimeWorkRequestBuilder<CheckReservasWorker>().build()
+            WorkManager.getInstance(this).enqueue(oneTime)
+
+            // Se programa también periódico cada 15 minutos
+            val constraints = Constraints.Builder()
+                .setRequiresBatteryNotLow(false) // opcional, pero puedes dejarlo así
+                .build()
+
+            val periodicWorkRequest = PeriodicWorkRequestBuilder<CheckReservasWorker>(
+                15, TimeUnit.MINUTES
+            )
+                .setConstraints(constraints)
+                .build()
+
+            WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+                "CheckReservasWorker",
+                ExistingPeriodicWorkPolicy.KEEP,
+                periodicWorkRequest
+            )
+        }
+    }
+    private fun crearCanalNotificacionesSiNoExiste() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val canal = NotificationChannel(
+                "canal_reservas",
+                "Reservas",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "Notificaciones de nuevas reservas"
+            }
+
+            val manager = getSystemService(NotificationManager::class.java)
+            manager.createNotificationChannel(canal)
+        }
+    }
+    private fun pedirPermisoNotificaciones() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val yaConcedido = checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED
+            if (!yaConcedido) {
+                requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 100)
+            }
+        }
+    }
+
 }

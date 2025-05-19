@@ -226,8 +226,9 @@ server.get('/api/purchases', (req, res) => {
   }
 
   const comprasUsuario = router.db.get('purchases')
-    .filter({ userId: user.id }) // ← Asegúrate de incluir este campo al registrar
-    .value();
+  .filter(compra => String(compra.userId) === String(user.id))
+  .value();
+
 
   res.status(200).json(comprasUsuario);
 });

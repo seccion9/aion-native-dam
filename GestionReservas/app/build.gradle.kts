@@ -52,7 +52,7 @@ dependencies {
     //Auth correo
     implementation ("com.google.android.gms:play-services-auth:20.7.0")
 
-
+    implementation ("androidx.work:work-runtime-ktx:2.9.0")
 
     implementation("org.jsoup:jsoup:1.15.4")
 

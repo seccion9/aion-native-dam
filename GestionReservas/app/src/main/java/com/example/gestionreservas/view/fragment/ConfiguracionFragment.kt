@@ -21,15 +21,19 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentConfiguracionBinding
+import com.example.gestionreservas.models.entity.CheckReservasWorker
 import com.example.gestionreservas.repository.MailingRepository
 import com.example.gestionreservas.view.activities.MainActivity
-import com.google.android.gms.auth.api.signin.GoogleSignIn
+import java.util.concurrent.TimeUnit
 
 class ConfiguracionFragment:Fragment(),OnClickListener {
     private lateinit var binding:FragmentConfiguracionBinding
@@ -38,8 +42,10 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding=FragmentConfiguracionBinding.inflate(layoutInflater)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Configuracion"
+        programarWorkerNotificaciones()
         instancias()
 
         return binding.root
@@ -55,6 +61,7 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
         }
     }
     private fun instancias(){
+
         //Comprobacion correo
         val email = MailingRepository.obtenerEmailUsuario(requireContext())
         binding.tvCorreoGmail.text = email ?: "No conectado"
@@ -62,6 +69,7 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
         configurarNotificaciones()
         cambiarAModoOscuro()
         btnSpannable()
+        crearCanalNotificaciones()
 
         //Instancias listener
         if (email != null && email != "No conectado") {
@@ -106,14 +114,41 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
         val prefs = requireContext().getSharedPreferences("ajustes", Context.MODE_PRIVATE)
         val notificacionesActivas = prefs.getBoolean("notificaciones_activadas", false)
 
-        binding.switchNotificaciones.setOnCheckedChangeListener(null) // evitar listeners duplicados
+        binding.switchNotificaciones.setOnCheckedChangeListener(null)
         binding.switchNotificaciones.isChecked = notificacionesActivas
 
         binding.switchNotificaciones.setOnCheckedChangeListener { _, isChecked ->
             prefs.edit().putBoolean("notificaciones_activadas", isChecked).apply()
+
+            if (isChecked) {
+                pedirPermisoNotificaciones()
+                programarWorkerNotificaciones()
+                Toast.makeText(requireContext(), "Notificaciones activadas", Toast.LENGTH_SHORT).show()
+            } else {
+                cancelarWorkerNotificaciones()
+                Toast.makeText(requireContext(), "Notificaciones desactivadas", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // Activar automáticamente si estaba ya activado
+        if (notificacionesActivas) {
+            programarWorkerNotificaciones()
         }
     }
-
+    private fun pedirPermisoNotificaciones() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1001)
+            }
+        }
+    }
+    private fun cancelarWorkerNotificaciones() {
+        WorkManager.getInstance(requireContext()).cancelUniqueWork("CheckReservasWorker")
+    }
     override fun onClick(v: View?) {
         when(v?.id){
             binding.tvCerrarSesionGmail.id->{
@@ -135,5 +170,33 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
         val intent = Intent(context, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         context.startActivity(intent)
+    }
+    private fun crearCanalNotificaciones() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "Reservas"
+            val descriptionText = "Canal para notificaciones de nuevas reservas"
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel("canal_reservas", name, importance)
+
+
+            val notificationManager =
+                requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+    private fun programarWorkerNotificaciones() {
+        /*val workRequest = PeriodicWorkRequestBuilder<CheckReservasWorker>(
+            15, TimeUnit.MINUTES
+        ).build()*/
+
+        val workRequest = OneTimeWorkRequestBuilder<CheckReservasWorker>().build()
+        WorkManager.getInstance(requireContext()).enqueue(workRequest)
+
+        /*WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(
+            "CheckReservasWorker",
+            ExistingPeriodicWorkPolicy.KEEP,
+            workRequest
+        )*/
     }
 }
