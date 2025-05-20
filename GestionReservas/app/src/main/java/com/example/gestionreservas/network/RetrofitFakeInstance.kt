@@ -7,12 +7,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitFakeInstance {
 
-    private val logging = HttpLoggingInterceptor().apply {
+    /*private val logging = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
-    }
+    }*/
 
     private val okHttp = OkHttpClient.Builder()
-        .addInterceptor(logging)
+        //.addInterceptor(logging)
         .build()
 
     //Cambiar IP segun la IP que tengamos en nuestro ordenador

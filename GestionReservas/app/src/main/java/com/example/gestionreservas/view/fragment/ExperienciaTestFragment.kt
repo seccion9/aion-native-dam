@@ -10,9 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentExperienciaTestBinding
-import com.example.gestionreservas.models.entity.CheckReservasWorker
+import com.example.gestionreservas.background.CheckReservasWorker
 
 class ExperienciaTestFragment:Fragment(),OnClickListener {
     private lateinit var binding:FragmentExperienciaTestBinding

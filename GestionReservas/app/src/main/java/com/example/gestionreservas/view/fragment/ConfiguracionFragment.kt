@@ -1,13 +1,11 @@
 package com.example.gestionreservas.view.fragment
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.text.Spannable
@@ -22,18 +20,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
-import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentConfiguracionBinding
-import com.example.gestionreservas.models.entity.CheckReservasWorker
+import com.example.gestionreservas.background.CheckReservasWorker
 import com.example.gestionreservas.repository.MailingRepository
 import com.example.gestionreservas.view.activities.MainActivity
-import java.util.concurrent.TimeUnit
 
 class ConfiguracionFragment:Fragment(),OnClickListener {
     private lateinit var binding:FragmentConfiguracionBinding
@@ -45,7 +39,11 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
 
         binding=FragmentConfiguracionBinding.inflate(layoutInflater)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Configuracion"
-        programarWorkerNotificaciones()
+        val prefs = requireContext().getSharedPreferences("ajustes", Context.MODE_PRIVATE)
+        val notificacionesActivas = prefs.getBoolean("notificaciones_activadas", false)
+        if (notificacionesActivas) {
+            pedirPermisoNotificaciones()
+        }
         instancias()
 
         return binding.root

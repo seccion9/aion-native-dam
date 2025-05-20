@@ -3,7 +3,6 @@ package com.example.gestionreservas.view.activities
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -15,21 +14,14 @@ import android.widget.CompoundButton.OnCheckedChangeListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
 import com.example.gestionreservas.models.repository.AuthRepository
 import com.example.gestionreservas.databinding.ActivityMainBinding
-import com.example.gestionreservas.models.entity.CheckReservasWorker
 import com.example.gestionreservas.models.entity.LoginRequest
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.network.RetrofitInstance
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeListener {
     private lateinit var binding: ActivityMainBinding
@@ -51,8 +43,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeLi
     }
     private fun instancias(){
         //Aqui van las instancias de nuestra activity
-        binding.btnLogin?.setOnClickListener(this)
-        binding.btnReset?.setOnClickListener(this)
+        binding.btnLogin.setOnClickListener(this)
+        binding.btnReset.setOnClickListener(this)
         binding.checkboxCuenta.setOnCheckedChangeListener(this)
 
         binding.editCorreo.setText("admin@aether.com")
@@ -120,15 +112,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeLi
         if(response.isSuccessful){
             val prefs = getSharedPreferences("ajustes", MODE_PRIVATE)
             prefs.edit().putBoolean("notificaciones_activadas", true).apply()
-            crearCanalNotificacionesGlobal()
-            programarWorkerNotificacionesGlobal()
             val loginResponse = response.body() ?: return
-            val token      = loginResponse.token
+            val token = loginResponse.token
             saveTokenToSharedPreferences(token)
-            val oneTime = OneTimeWorkRequestBuilder<CheckReservasWorker>().build()
-            WorkManager.getInstance(this).enqueue(oneTime)
             Log.e("login Activity","Token : ${token}")
-            // Sacamos el intent y el start activity fuera del contexto para evitar errores
             withContext(Dispatchers.Main) {
                 delay(2000)
                 startActivity(Intent(applicationContext, ReservasActivity::class.java))
@@ -150,16 +137,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeLi
             }
             val manager = getSystemService(NotificationManager::class.java)
             manager.createNotificationChannel(canal)
-        }
-    }
-
-    private fun programarWorkerNotificacionesGlobal() {
-        val prefs = getSharedPreferences("ajustes", Context.MODE_PRIVATE)
-        val notificacionesActivas = prefs.getBoolean("notificaciones_activadas", false)
-
-        if (notificacionesActivas) {
-            val workRequest = OneTimeWorkRequestBuilder<CheckReservasWorker>().build()
-            WorkManager.getInstance(this).enqueue(workRequest)
         }
     }
 

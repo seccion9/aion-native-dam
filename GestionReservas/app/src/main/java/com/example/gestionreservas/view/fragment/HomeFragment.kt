@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -13,9 +15,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -24,12 +28,16 @@ import androidx.lifecycle.lifecycleScope
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentHomeBinding
 import com.example.gestionreservas.models.entity.Compra
+import com.example.gestionreservas.models.entity.ItemReserva
 import com.example.gestionreservas.models.entity.PagoCaja
 import com.example.gestionreservas.models.entity.Sesion
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.models.repository.CajaChicaRepository
+import com.example.gestionreservas.models.repository.CompraRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.network.RetrofitInstance
+import com.example.gestionreservas.utils.TablaBuilder
+import com.example.gestionreservas.utils.TablaBuilder.crearCelda
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -43,7 +51,9 @@ class HomeFragment: Fragment(),OnClickListener {
     private lateinit var binding: FragmentHomeBinding
     private var pagosCajaChicaYReservas: MutableList<PagoCaja> = mutableListOf()
     private val cajaChicaRepository = CajaChicaRepository(RetrofitFakeInstance)
-
+    private val compraRepository = CompraRepository(RetrofitFakeInstance.apiFake)
+    private var listaReservasSpinner= mutableListOf("- - Seleccione Reserva - -")
+    private lateinit var listaCompras : MutableList<Compra>
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -62,6 +72,7 @@ class HomeFragment: Fragment(),OnClickListener {
         actualizarFecha()
         detectarScroll()
         //Instancias Click
+        binding.btnEnviarComentarios.setOnClickListener(this)
         binding.tvCalendario.setOnClickListener(this)
         binding.tvReservas.setOnClickListener(this)
         binding.selectFecha.setOnClickListener(this)
@@ -109,10 +120,16 @@ class HomeFragment: Fragment(),OnClickListener {
         val token = getTokenFromSharedPreferences()
         try {
             val compras = cajaChicaRepository.obtenerCompras(token!!)
+            listaCompras=compras as MutableList<Compra>
             val sesiones = withContext(Dispatchers.Default) {
-                transformarComprasASesiones(compras, fechaActual)
+                compraRepository.transformarComprasASesiones(compras, fechaActual)
             }
-
+            sesiones.forEach{sesion ->
+                listaReservasSpinner.add(
+                    "${sesion.sesion.hora}|${sesion.sesion.nombre}|${sesion.sesion.calendario}|${sesion.compra?.id}"
+                )
+            }
+            rellenarSpinnerReservas()
             val pagosReservas = withContext(Dispatchers.Default) {
                 cajaChicaRepository.transformarComprasAPagos(compras, fechaActual)
             }
@@ -128,8 +145,10 @@ class HomeFragment: Fragment(),OnClickListener {
 
             // Mostrar en interfaz
             Log.e("Sesiones día: $fechaActual", sesiones.toString())
-            cargarSesiones(binding.tablaSesiones, sesiones, requireContext())
-            cargarPagosCajaChica(binding.tablaCajaChica, pagosCajaChicaYReservas, requireContext())
+            TablaBuilder.construirTablaSesiones(binding.tablaSesiones, sesiones, requireContext()) { sesionConCompra ->
+                irADetalleDeSesion(sesionConCompra)
+            }
+            TablaBuilder.construirTablaPagos(binding.tablaCajaChica, pagosCajaChicaYReservas, requireContext())
 
             binding.tablaSesiones.visibility = View.VISIBLE
             binding.tablaCajaChica.visibility = View.VISIBLE
@@ -138,102 +157,20 @@ class HomeFragment: Fragment(),OnClickListener {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun transformarComprasASesiones(
-        compras: List<Compra>,
-        fechaSeleccionada: LocalDate
-    ): List<SesionConCompra> {
-        val sesiones = mutableListOf<SesionConCompra>()
+    /**
+     * Rellena el spinner de reservas con los datos de las reservas de hoy.
+     */
+    private fun rellenarSpinnerReservas(){
 
-        compras.forEach { compra ->
-            compra.items.forEach { item ->
-                val fechaItem = LocalDate.parse(item.start.substring(0, 10))
-
-                if (fechaItem == fechaSeleccionada) {
-                    val sesion = Sesion(
-                        hora = item.start.substring(11, 16),
-                        calendario = item.idCalendario,
-                        nombre = compra.name,
-                        participantes = item.peopleNumber,
-                        totalPagado = item.priceTotal,
-                        estado = compra.status,
-                        idiomas = compra.language
-                    )
-                    sesiones.add(SesionConCompra(sesion, compra))
-                }
-            }
+        val adapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_item,
+            listaReservasSpinner
+        ).also {
+            it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         }
 
-        return sesiones
-    }
-
-    private fun cargarPagosCajaChica(tabla:TableLayout, pagos:List<PagoCaja>, context:Context) {
-        tabla.removeAllViews()
-        var totalParcial=0
-        val filaCabecera = TableRow(context)
-
-        val titulos = listOf("Fecha", "Concepto", "Cantidad", "Tipo", "Total Parcial")
-        for (titulo in titulos) {
-            filaCabecera.addView(crearCelda(context, titulo))
-        }
-        tabla.addView(filaCabecera)
-        for (pago in pagos) {
-            val fila = TableRow(context)
-            val cantidadNumerica = pago.cantidad.replace("€", "").trim().replace(",", ".").toDouble()
-            totalParcial += cantidadNumerica.toInt()
-            var totalString="$totalParcial €"
-            fila.addView(crearCelda(context, pago.fecha))
-            fila.addView(crearCelda(context,pago.concepto))
-            fila.addView(crearCelda(context, pago.cantidad))
-            fila.addView(crearCelda(context, pago.tipo))
-            fila.addView(crearCelda(context, totalString))
-
-            val outValue = TypedValue()
-            context.theme.resolveAttribute(android.R.attr.selectableItemBackground, outValue, true)
-            fila.foreground = ContextCompat.getDrawable(context, outValue.resourceId)
-
-            fila.isClickable = true
-            fila.isFocusable = true
-            tabla.addView(fila)
-
-        }
-    }
-    private fun cargarSesiones(tabla:TableLayout, sesiones: List<SesionConCompra>, context:Context){
-        tabla.removeAllViews()
-
-        val filaCabecera = TableRow(context)
-        val titulos = listOf("Hora", "Calendario", "Nombre", "Participantes", "Total Pagado", "Estado", "Idiomas")
-        for (titulo in titulos) {
-            filaCabecera.addView(crearCelda(context, titulo))
-        }
-        tabla.addView(filaCabecera)
-
-        for (sesionConCompra in sesiones) {
-            val fila = TableRow(context)
-            val sesion = sesionConCompra.sesion
-
-            fila.addView(crearCelda(context, sesion.hora))
-            fila.addView(crearCelda(context, sesion.calendario))
-            fila.addView(crearCelda(context, sesion.nombre))
-            fila.addView(crearCelda(context, sesion.participantes.toString()))
-            fila.addView(crearCelda(context, "%.2f€".format(sesion.totalPagado)))
-            fila.addView(crearCelda(context, sesion.estado))
-            fila.addView(crearCelda(context, sesion.idiomas))
-
-            val outValue = TypedValue()
-            context.theme.resolveAttribute(android.R.attr.selectableItemBackground, outValue, true)
-            fila.foreground = ContextCompat.getDrawable(context, outValue.resourceId)
-
-            fila.isClickable = true
-            fila.isFocusable = true
-
-            fila.setOnClickListener {
-                irADetalleDeSesion(sesionConCompra)
-            }
-
-            tabla.addView(fila)
-
-        }
+        binding.spinnerReservas.adapter = adapter
     }
     //Esta funcion te lleva al detalle de la sesion personalizada y sus datos
     private fun irADetalleDeSesion(sesionConCompra:SesionConCompra){
@@ -242,16 +179,6 @@ class HomeFragment: Fragment(),OnClickListener {
         bundle.putSerializable("sesionConCompra",sesionConCompra)
         fragment.arguments=bundle
         cambiarFragmento(fragment)
-    }
-    private fun crearCelda(context: Context, texto: String): TextView {
-        return TextView(context).apply {
-            text = texto
-            textSize = 13f
-            gravity = Gravity.CENTER
-            setPadding(8, 8, 8, 8)
-            minimumHeight=96
-            setBackgroundResource(R.drawable.tabla_home)
-        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -280,7 +207,6 @@ class HomeFragment: Fragment(),OnClickListener {
                 fechaActual=fechaActual.minusDays(1)
                 actualizarFecha()
                 cargarDatosSesionesHoy()
-
             }
             binding.tvFlechaDerechaHoy.id->{
                 fechaActual=fechaActual.plusDays(1)
@@ -293,8 +219,64 @@ class HomeFragment: Fragment(),OnClickListener {
             binding.btnEnviarCaja.id->{
                 agregarDineroCajaChica()
             }
+            binding.btnEnviarComentarios.id->{
+                obtenerReservaParaPatch()
+            }
         }
     }
+
+    /**
+     * Obtiene las partes de las reservas del dia y las compara con las compras,a través de los bucles comparamos
+     * los campos id,nombre y fecha y si encuentrta coincidencia obtiene la compra. Después obtenemos el comentario
+     * y hacemos el patch de la compra modificandola.
+     */
+    private fun obtenerReservaParaPatch() {
+        if (binding.spinnerReservas.selectedItemPosition == 0) {
+            Toast.makeText(requireContext(), "Por favor seleccione una reserva ", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val lineaSeleccionada = binding.spinnerReservas.selectedItem.toString()
+        val motivo = binding.spinnerComentarios.selectedItem.toString()
+        val comentario = binding.editComentario.text.toString().trim()
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            val compraModificada = compraRepository.enviarComentarioACompra(token = getTokenFromSharedPreferences()!!,
+                listaCompras = listaCompras, lineaSeleccionada = lineaSeleccionada,
+                comentario = comentario, motivo = motivo)
+
+            if (compraModificada != null) {
+                Toast.makeText(requireContext(), "Comentario añadido correctamente", Toast.LENGTH_SHORT).show()
+                binding.editComentario.text.clear()
+
+                // Enviar correo con los datos de la compra modificada
+                val subject = Uri.encode(motivo + " reserva con id ${compraModificada.id}")
+                val body = Uri.encode(
+                    "Hola ${compraModificada.name},\n\n" +
+                            "Hemos añadido el siguiente comentario a su reserva ${compraModificada.id}\n\n" +
+                            "$motivo : $comentario\n\n" +
+                            "Puede ponerse en contacto con nosotros a través de :\n\n" +
+                            "Email: gestorReservas@gmail.com\n\n" +
+                            "Teléfono : 633449393\n\n" +
+                            "Gracias."
+                )
+
+                val intent = Intent(Intent.ACTION_SENDTO).apply {
+                    data = Uri.parse("mailto:${compraModificada.mail}?subject=$subject&body=$body")
+                }
+
+                try {
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    Toast.makeText(requireContext(), "No se pudo abrir una app de correo", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(requireContext(), "Error al actualizar la compra", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun agregarDineroCajaChica(){
         val dia = fechaActual.dayOfMonth
@@ -305,7 +287,7 @@ class HomeFragment: Fragment(),OnClickListener {
         var cantidad=binding.editCantidad.text.toString()
         var pagoNuevo=PagoCaja(fechaFormateada,concepto,cantidad,"","")
         pagosCajaChicaYReservas.add(pagoNuevo)
-        cargarPagosCajaChica(binding.tablaCajaChica,pagosCajaChicaYReservas,requireContext())
+        TablaBuilder.construirTablaPagos(binding.tablaCajaChica, pagosCajaChicaYReservas, requireContext())
         binding.editCopcepto.text.clear()
         binding.editCantidad.text.clear()
     }
@@ -364,4 +346,5 @@ class HomeFragment: Fragment(),OnClickListener {
             }
         }
     }
+
 }

@@ -21,14 +21,15 @@
         android:theme="@style/Theme.GestionReservas"
         tools:targetApi="31">
         <receiver
-            android:name=".BootReceiver"
+            android:name=".background.BootReceiver"
             android:enabled="true"
-            android:exported="true"
-            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="com.example.LANZAR_WORKER" />
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".view.activities.ReservasActivity"
             android:exported="false"

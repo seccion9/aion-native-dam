@@ -17,3 +17,5 @@ FUNCIONALIDADES
 -Comprobacion de datos vacios(correcto)
 -Funcionamiento correcto widgets(correcto)
 -Pasar parametros a siguiente pantalla(sharedpreferences,hecho)
+-Posibilidad de recordar cuenta para no tener que hacer login y recibir notificaciones al no
+cerrar sesión.

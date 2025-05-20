@@ -443,6 +443,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scrollCajaChica" />
 
+            <Spinner
+                android:padding="10dp"
+                android:id="@+id/spinnerReservas"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/tvIncidencias"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/tvIncidencias"
+                app:layout_constraintTop_toBottomOf="@id/tvIncidencias" />
+
             <LinearLayout
                 android:id="@+id/linearComentario"
                 android:layout_width="0dp"
@@ -450,9 +461,9 @@
                 android:background="@color/white"
                 android:orientation="horizontal"
                 android:padding="5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvIncidencias"
-                app:layout_constraintTop_toBottomOf="@+id/tvIncidencias">
+                app:layout_constraintEnd_toEndOf="@+id/spinnerReservas"
+                app:layout_constraintStart_toStartOf="@+id/spinnerReservas"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerReservas">
 
                 <EditText
                     android:id="@+id/editComentario"
@@ -489,7 +500,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvTipo">
 
                 <Spinner
-                    android:id="@+id/spinnerComentario"
+                    android:id="@+id/spinnerComentarios"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -520,8 +531,8 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="70dp"
         android:background="@drawable/fab_borde_azul"
         android:src="@drawable/flecha_btn"
         android:scaleType="center"

@@ -11,18 +11,19 @@ ERRORES
 
 MEJORAS DE UX
 -Mismo diseño general para ciertos widgets(spinners,edits,etc)
--Diseñar layout landscape para cada vista(en ello,los landscape de listados estan pero no me convencen en la tablet)
 -Ceñirse lo maximo posible a los ejemplos de imagenes proporcionados
 -Hacer la UX intuitiva(al pinchar en reservas y sesiones te lleva a ella,colores intutitivos y basados en diseño)
 -Añadimos un ripple en todos los elementos clickables para mejorar la experiencia de usuario
--Landscape Detalles y calendariosemanal y mensual no realizados
 -Borrar interceptores cuando se este finalizando la app(hace que vaya mas lento)
 -Se añade titulo de la toolbar cambiante segun el fragment que el usuario este para saber donde se encuentra y mejorar asi la UX
+-Realizar flujos parecidos a apps actuales para que el usuario entienda el flujo de la app.
+
 FUNCIONALIDADES
--Configuracion(poder cambiar algun aspecto de la app)
+-Configuracion(hecho,se puede hacer algo más)
 -Hacer logout(hecho)
--Se deja opcion mailing creada con su fragment(investigar como implementarlo)
--Ver claramente reservas(hecho,falta saber info que mostrar y dejar editar)
--Conexion con API y sus diferentes llamadas a cabeceras(se estan haciendo y tambien en api mock simulada)
+-Se deja opcion mailing creada con su fragment(hecho y con animacion refresh y filtrado de correos)
+-Ver claramente reservas(hecho,se puede editar y realizar reservas manuales(a falta de correciones))
+-Conexion con API y sus diferentes llamadas a cabeceras(todas desde api mock simulando la api real)
 -Diseñar aspecto reserva dos dias(hecho de un dia en un telefono no cabe mas y no aportaria UX)
 -Se añade boton recargar(se pide)
+-Notificaciones con app cerrada,segun plano y abierta.

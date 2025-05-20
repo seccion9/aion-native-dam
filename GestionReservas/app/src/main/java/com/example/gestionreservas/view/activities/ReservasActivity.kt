@@ -11,7 +11,6 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.work.Constraints
@@ -21,7 +20,7 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.ActivityReservasBinding
-import com.example.gestionreservas.models.entity.CheckReservasWorker
+import com.example.gestionreservas.background.CheckReservasWorker
 import com.example.gestionreservas.view.fragment.CalendarioFragmentDiario
 import com.example.gestionreservas.view.fragment.ConfiguracionFragment
 import com.example.gestionreservas.view.fragment.HomeFragment

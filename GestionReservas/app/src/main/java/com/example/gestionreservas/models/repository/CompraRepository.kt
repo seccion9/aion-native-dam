@@ -1,7 +1,10 @@
 package com.example.gestionreservas.models.repository
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.Sesion
@@ -58,7 +61,7 @@ class CompraRepository(private val api: ApiServiceFake) {
 
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun transformarComprasASesiones(
+    fun transformarComprasASesiones(
         compras: List<Compra>,
         fechaSeleccionada: LocalDate
     ): List<SesionConCompra> {
@@ -96,4 +99,40 @@ class CompraRepository(private val api: ApiServiceFake) {
     suspend fun registrarCompra(token: String, compra: Compra): Response<Compra> {
         return api.registrarCompra("Bearer $token", compra)
     }
+    suspend fun enviarComentarioACompra(
+        token: String,
+        listaCompras: List<Compra>,
+        lineaSeleccionada: String,
+        comentario: String,
+        motivo: String
+    ): Compra? {
+        val partes = lineaSeleccionada.split("|")
+        val fecha = partes[0]
+        val nombre = partes[1]
+        val calendario = partes[2]
+        val id = partes[3]
+
+        var compraEncontrada: Compra? = null
+
+        listaCompras.forEach { compra ->
+            if (compra.id == id && compra.name == nombre) {
+                compra.items.forEach { item ->
+                    val horaItem = item.start.substring(11, 16)
+                    if (horaItem == fecha && item.idCalendario == calendario) {
+                        compraEncontrada = compra
+                    }
+                }
+            }
+        }
+
+        compraEncontrada?.let {
+            it.comment = "$motivo : $comentario"
+            val exito = modificarCompra(token, it)
+            return if (exito) it else null
+        }
+
+        return null
+    }
+
+
 }

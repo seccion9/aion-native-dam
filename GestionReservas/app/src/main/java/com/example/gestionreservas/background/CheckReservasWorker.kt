@@ -1,4 +1,4 @@
-package com.example.gestionreservas.models.entity
+package com.example.gestionreservas.background
 
 import android.Manifest
 import android.app.NotificationChannel

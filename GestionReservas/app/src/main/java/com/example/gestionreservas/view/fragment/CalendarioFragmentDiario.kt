@@ -24,6 +24,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
 import androidx.lifecycle.lifecycleScope
+import com.example.gestionreservas.databinding.FragmentPostPurchaseBinding
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.Ocupacion
 import com.example.gestionreservas.models.entity.Sesion
@@ -81,12 +82,8 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
 
          //Instancias nuestro adaptador y recycler
          listaReservaHoras = arrayListOf()
-         adaptadorHoraReserva = AdaptadorHoraReserva(
-             requireContext(),
-             listaReservaHoras
-
+         adaptadorHoraReserva = AdaptadorHoraReserva(requireContext(), listaReservaHoras
          ) { hora: HoraReserva, calendarioId: String ->
-
 
              /*Buscamos en nuestra lista ocupaciones si nuetro item coincide en hora y calendario
                 con el seleccionado.
@@ -95,26 +92,24 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
                  it.start == hora.horaInicio && it.calendarioId == calendarioId
 
              }
-
-
              val token = getTokenFromSharedPreferences()
              viewLifecycleOwner.lifecycleScope.launch {
                  try {
                      var compra: Compra? = null
                      val sesion: Sesion
+                     val fragment: Fragment
 
                      if (ocupacion != null && token != null) {
 
-                         //Buscamos la compra en la API y buscamos por su id para obtenerla
+                         // Buscamos la compra en la API y buscamos por su id para obtenerla
                          val listaCompras = compraRepository.obtenerCompras(token)
                          compra = listaCompras.find { it.id == ocupacion.idCompra }
 
-
-                         //Si hay compra se trnasfor,a sesion para usarlo en sesionConCompra
+                         // Si hay compra se transforma sesión para usarlo en sesionConCompra
                          sesion = if (compra != null) {
                              transformarItemASesion(compra, ocupacion)
                          } else {
-                             // Si no hay compra se pasan datos "vacios"
+                             // Si no hay compra se pasan datos "vacíos"
                              Sesion(
                                  hora = hora.horaInicio,
                                  calendario = calendarioId,
@@ -125,10 +120,14 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
                                  idiomas = ""
                              )
                          }
+
+                         fragment = DetalleSesionFragment()
+
                      } else {
                          Log.d("DEBUG_COMPRAS", "se paso al else")
                          // No hay ocupación: crear sesión vacía para pasarla a detalles
-                         sesion = Sesion(hora = hora.horaInicio,
+                         sesion = Sesion(
+                             hora = hora.horaInicio,
                              calendario = calendarioId,
                              nombre = "",
                              participantes = 0,
@@ -136,24 +135,26 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
                              estado = "sin_reserva",
                              idiomas = ""
                          )
+
+                         fragment = PostPurchaseFragment()
                      }
 
+                     // Creamos el objeto que combina la sesión y la compra (puede ser null)
                      val compraSesion = SesionConCompra(sesion, compra)
+
+                     // Lo metemos en el bundle y se lo pasamos al fragmento
                      val bundle = Bundle()
                      bundle.putSerializable("sesionConCompra", compraSesion)
-
-                     val fragment = DetalleSesionFragment()
                      fragment.arguments = bundle
 
-                     parentFragmentManager.beginTransaction()
-                         .replace(R.id.fragment_principal, fragment)
-                         .addToBackStack(null)
-                         .commit()
+                     // Cambiamos al fragmento correspondiente
+                     cambiarFragment(fragment)
 
                  } catch (e: Exception) {
                      Log.e("CalendarioDiarioFragment", "Error navegando: ${e.message}")
                  }
              }
+
 
          }
          binding.recyclerHorasSalas.apply {
