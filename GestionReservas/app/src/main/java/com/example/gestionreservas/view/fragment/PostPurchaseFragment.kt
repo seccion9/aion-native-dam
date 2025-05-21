@@ -1,16 +1,22 @@
 package com.example.gestionreservas.view.fragment
 
 import android.R
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.gestionreservas.databinding.FragmentPostPurchaseBinding
@@ -21,7 +27,11 @@ import com.example.gestionreservas.models.entity.Pago
 import com.example.gestionreservas.models.entity.ResumenItem
 import com.example.gestionreservas.models.repository.CompraRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 import java.util.UUID
 
 class PostPurchaseFragment : Fragment(), OnClickListener {
@@ -38,6 +48,8 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
 
     private fun instancias() {
         binding.tvGuardar.setOnClickListener(this)
+        binding.tvFechaInicio.setOnClickListener(this)
+        binding.tvFechaFin.setOnClickListener(this)
         binding.tvParticipantes.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val seleccion = parent.getItemAtPosition(position).toString()
@@ -55,11 +67,79 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
 
             binding.tvGuardar.id -> {
                 registrarCompras()
+            }
+            binding.tvFechaInicio.id->{
 
+                mostrarDateTimePicker(requireContext(),binding.tvFechaInicio)
+            }
+            binding.tvFechaFin.id->{
+                mostrarDateTimePicker(requireContext(),binding.tvFechaFin)
             }
         }
     }
 
+    /**
+     * Muestra un selector de fecha y hora para que sea mas sencillo elegir una hora al usuario,
+     * al seleccionar se insertara en el editTex la fecha en formato de nuestra API para
+     * despreocuparse de insertarla correctamente.
+     */
+    private fun mostrarDateTimePicker(context: Context, editText: EditText) {
+        val calendario = Calendar.getInstance()
+
+        val datePicker = DatePickerDialog(context, { _, year, month, day ->
+            val timePicker = TimePickerDialog(context, { _, hour, minute ->
+                if (hour in 10..20) {
+                    calendario.set(year, month, day, hour, minute, 0)
+                    val formato = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+                    val fechaSeleccionada = formato.format(calendario.time)
+                    editText.setText(fechaSeleccionada)
+                    //Comparamos las fechas para asegurarnos de que selecciona horas correctas
+                    if (editText.id == binding.tvFechaFin.id) {
+                        val fechaInicio = binding.tvFechaInicio.text.toString()
+
+                        if (!compararFechas(fechaInicio, fechaSeleccionada)) {
+                            Snackbar.make(requireView(), "La fecha fin debe ser posterior y del mismo día", Snackbar.LENGTH_LONG)
+                                .setBackgroundTint(Color.RED)
+                                .setTextColor(Color.WHITE)
+                                .setAction("OK", null)
+                                .setActionTextColor(Color.YELLOW)
+                                .show()
+                            binding.tvFechaFin.text.clear()
+                        }
+                    }
+                    //Mostramos snackbar en rojo si las horas no son válidas
+                } else {
+                    Snackbar.make(requireView(), "Elige una hora entre 10:00 y 20:00", Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(Color.RED)
+                        .setTextColor(Color.WHITE)
+                        .setAction("OK", null)
+                        .setActionTextColor(Color.YELLOW)
+                        .show()
+                }
+            }, calendario.get(Calendar.HOUR_OF_DAY), calendario.get(Calendar.MINUTE), true)
+
+            timePicker.show()
+        }, calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DAY_OF_MONTH))
+
+        datePicker.show()
+    }
+
+    private fun compararFechas(fechaInicioStr:String,fechaFinStr:String):Boolean{
+
+        val formatoCompleto = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val formatoFecha = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+        return try {
+            val fechaInicio = formatoCompleto.parse(fechaInicioStr)
+            val fechaFin = formatoCompleto.parse(fechaFinStr)
+
+            val mismoDia = formatoFecha.format(fechaInicio) == formatoFecha.format(fechaFin)
+
+            mismoDia && fechaFin.after(fechaInicio)
+        } catch (e: Exception) {
+            false
+        }
+    }
     private fun registrarCompras() {
         if (!validarCamposObligatorios()) return
         rellenarCompra()
@@ -238,6 +318,7 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
             Toast.makeText(requireContext(), "Selecciona una experiencia", Toast.LENGTH_SHORT).show()
             return false
         }
+
 
         return true
     }

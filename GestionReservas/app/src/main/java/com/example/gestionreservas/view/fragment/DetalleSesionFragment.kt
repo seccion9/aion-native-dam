@@ -1,10 +1,8 @@
 package com.example.gestionreservas.view.fragment
 
 import android.annotation.SuppressLint
-import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -12,282 +10,246 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.ViewModelProvider
 import com.example.gestionreservas.databinding.FragmentDetalleSesionBinding
-import com.example.gestionreservas.databinding.FragmentHomeBinding
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.ItemReserva
 import com.example.gestionreservas.models.entity.Pago
-import com.example.gestionreservas.models.entity.Sesion
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.models.repository.CompraRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
-import kotlinx.coroutines.launch
+import com.example.gestionreservas.viewModel.listado.DetalleSesion.DetalleSesionViewModel
+import com.example.gestionreservas.viewModel.listado.DetalleSesion.DetalleSesionViewModelFactory
 import java.net.URLEncoder
 
 class DetalleSesionFragment: Fragment(),OnClickListener {
-    private lateinit var binding:FragmentDetalleSesionBinding
-    private lateinit var sesion: Sesion
-    private lateinit var compraRecuperada: Compra
-    private lateinit var reserva:ItemReserva
-    private lateinit var pago:Pago
+    private lateinit var binding: FragmentDetalleSesionBinding
+    private lateinit var viewModel: DetalleSesionViewModel
+
+    private var compra: Compra? = null
+    private var reserva: ItemReserva? = null
+    private var pago: Pago? = null
+    /**
+     * Este fragmento muestra los detalles de una sesión vinculada a una compra. Utiliza un ViewModel
+     * para separar la lógica de datos (compra, reserva, pago), observar sus cambios y actualizar la vista.
+     */
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetalleSesionBinding.inflate(inflater, container, false)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Detalles Sesion"
+
+        val compraRepository = CompraRepository(RetrofitFakeInstance.apiFake)
+        viewModel = ViewModelProvider(this, DetalleSesionViewModelFactory(compraRepository))
+            .get(DetalleSesionViewModel::class.java)
+
         val sesionConCompra = arguments?.getSerializable("sesionConCompra") as? SesionConCompra
-        /*
-        Si los datos no son nulos se cargan en la interfaz y si son nulos no se carga nada y se depura
-        por el log.
-         */
-        if (sesionConCompra != null) {
-            sesion = sesionConCompra.sesion
+        viewModel.cargarSesion(sesionConCompra)
 
-            if (sesionConCompra.compra != null) {
-                compraRecuperada = sesionConCompra.compra
-                reserva = compraRecuperada.items.lastOrNull()!!
-                pago = compraRecuperada.payments.lastOrNull()!!
-                instancias()
-            } else {
-                Log.w("DetalleSesionFragment", "Sesión sin compra: modo nuevo")
-                mostrarFormularioVacio()
-            }
-
-        } else {
-            Log.w("DetalleSesionFragment", "No se recibió sesión con compra")
-        }
-        configurarBotones()
+        observarDatos()
+        instancias()
         return binding.root
     }
     @SuppressLint("SetTextI18n")
     private fun instancias(){
-        cargarDatosCompra()
+        observarDatos()
+        configurarBotones()
         detectarScroll()
-        //Instancias edits
-        binding.btnScrollSubir?.setOnClickListener(this)
-        configurarEditConEtiqueta(binding.tvNombre, "Nombre")
-        configurarEditConEtiqueta(binding.tvTelefono, "Teléfono")
-        configurarEditConEtiqueta(binding.tvEmail, "Email")
-        configurarEditConEtiqueta(binding.tvEstado, "Estado")
-        configurarEditConEtiqueta(binding.tvFechaInicio, "Inicio")
-        configurarEditConEtiqueta(binding.tvFechaFin, "Fin")
-        configurarEditConEtiqueta(binding.tvSala, "Sala")
-        configurarEditConEtiqueta(binding.tvParticipantes, "Participantes")
-        configurarEditConEtiqueta(binding.tvExperiencia, "Experiencia")
-        configurarEditConEtiqueta(binding.tvIdioma, "Idioma")
-        configurarEditConEtiqueta(binding.tvTotalPagado, "Total pagado", " €")
-        configurarEditConEtiqueta(binding.tvMetodoPago, "Método de pago")
-        configurarEditConEtiqueta(binding.tvDNI, "DNI")
 
     }
-    /*Obtiene el foco del edit y con split sacamos el valor del edit cuando pierde el foco se guarda
-    * obteniendo la etiqueta y el valor nuevo del edit
-    * */
-    private fun configurarEditConEtiqueta(editText: EditText, etiqueta: String, sufijo: String = "") {
-        editText.onFocusChangeListener = View.OnFocusChangeListener { view, editFoco ->
-            val campo = view as EditText
-            if (editFoco) {
-                val partes = campo.text.toString().split(": ", limit = 2)
-                if (partes.size == 2) campo.setText(partes[1].removeSuffix(sufijo).trim())
+
+    /**
+     * Observa los datos del ViewModel (compra, reserva y pago) y actualiza la interfaz
+     * de usuario cada vez que cambien. Dependiendo del contenido, se muestra un formulario
+     * vacío o se cargan los datos correspondientes en la vista.
+     */
+    private fun observarDatos() {
+        viewModel.compra.observe(viewLifecycleOwner) {
+            compra = it
+            if (compra == null) {
+                mostrarFormularioVacio()
             } else {
-                val nuevoTexto = campo.text.toString().trim()
-                campo.setText("$etiqueta: $nuevoTexto$sufijo")
+                cargarDatosCompra()
             }
         }
+        viewModel.reserva.observe(viewLifecycleOwner) {
+            reserva = it
+            cargarDatosCompra()
+        }
+        viewModel.pago.observe(viewLifecycleOwner) {
+            pago = it
+            cargarDatosCompra()
+        }
     }
+
+    /**
+     * Si los datos de la compra no son nulos los carga en los edits para modificarlos.
+     */
     @SuppressLint("SetTextI18n")
-    private fun cargarDatosCompra(){
-        binding.tvNombre.setText("Nombre: ${compraRecuperada.name}")
-        binding.tvTelefono.setText("Teléfono: ${compraRecuperada.phone}")
-        binding.tvEmail.setText("Email: ${compraRecuperada.mail}")
-        binding.tvEstado.setText("Estado: ${reserva.status}")
-        binding.tvFechaInicio.setText("Inicio: ${reserva.start}")
-        binding.tvFechaFin.setText("Fin: ${reserva.end}")
-        binding.tvSala.setText("Sala: ${reserva.idCalendario}")
-        binding.tvParticipantes.setText("Participantes: ${reserva.peopleNumber}")
-        binding.tvExperiencia.setText("Experiencia: ${reserva.idExperience}")
-        binding.tvIdioma.setText("Idioma: ${compraRecuperada.language}")
-        binding.tvTotalPagado.setText("Total pagado: ${pago.amount} €")
-        binding.tvMetodoPago.setText("Método de pago: ${pago.method}")
-        binding.tvDNI.setText("DNI: ${compraRecuperada.dni}")
+    private fun cargarDatosCompra() {
+        if (compra == null || reserva == null || pago == null) return
 
-    }
-    private fun modificarDatosCompra(){
-        viewLifecycleOwner.lifecycleScope.launch {
-            try {
-                val token = getTokenFromSharedPreferences() ?: return@launch
-                val repo = CompraRepository(RetrofitFakeInstance.apiFake)
-                val success = repo.modificarCompra(token, compraRecuperada)
-
-                if (success) {
-                    Log.d("DetalleSesionFragment", "Compra modificada correctamente")
-                }
-
-            }catch (e: Exception) {
-                Log.e("DetalleSesionFragment", "Error al modificar compra: ${e.message}")
-            }
-        }
-
+        binding.tvNombre.setText("Nombre: ${compra!!.name}")
+        binding.tvTelefono.setText("Teléfono: ${compra!!.phone}")
+        binding.tvEmail.setText("Email: ${compra!!.mail}")
+        binding.tvEstado.setText("Estado: ${reserva!!.status}")
+        binding.tvFechaInicio.setText("Inicio: ${reserva!!.start}")
+        binding.tvFechaFin.setText("Fin: ${reserva!!.end}")
+        binding.tvSala.setText("Sala: ${reserva!!.idCalendario}")
+        binding.tvParticipantes.setText("Participantes: ${reserva!!.peopleNumber}")
+        binding.tvExperiencia.setText("Experiencia: ${reserva!!.idExperience}")
+        binding.tvIdioma.setText("Idioma: ${compra!!.language}")
+        binding.tvTotalPagado.setText("Total pagado: ${pago!!.amount} €")
+        binding.tvMetodoPago.setText("Método de pago: ${pago!!.method}")
+        binding.tvDNI.setText("DNI: ${compra!!.dni}")
     }
 
-    private fun activarEdits(){
-        binding.tvNombre.isEnabled=true
-        binding.tvTelefono.isEnabled=true
-        binding.tvEmail.isEnabled=true
-        binding.tvEstado.isEnabled=true
-        binding.tvFechaInicio.isEnabled=true
-        binding.tvFechaFin.isEnabled=true
-        binding.tvSala.isEnabled=true
-        binding.tvParticipantes.isEnabled=true
-        binding.tvExperiencia.isEnabled=true
-        binding.tvIdioma.isEnabled=true
-        binding.tvTotalPagado.isEnabled=true
-        binding.tvMetodoPago.isEnabled=true
-        binding.tvDNI.isEnabled=true
+    /**
+     * Recorre los edits uno a uno activandolos,oculta boton editar y muestra el boton guardar.
+     */
+    private fun activarEdits() {
+        listOf(
+            binding.tvNombre, binding.tvTelefono, binding.tvEmail, binding.tvEstado,
+            binding.tvFechaInicio, binding.tvFechaFin, binding.tvSala, binding.tvParticipantes,
+            binding.tvExperiencia, binding.tvIdioma, binding.tvTotalPagado,
+            binding.tvMetodoPago, binding.tvDNI
+        ).forEach { it.isEnabled = true }
+
         binding.tvEditar.visibility = View.GONE
         binding.tvGuardar.visibility = View.VISIBLE
     }
-    private fun desactivarEdits(){
+    /**
+     * Valida que los campos no esten vacios y actualiza la compra y sesion..
+     */
+    private fun desactivarEdits() {
         if (!validarCamposObligatorios()) {
-            Toast.makeText(requireContext(), "Por favor, completa todos los campos obligatorios", Toast.LENGTH_SHORT).show()
-            actualizarEditsAFalse()
+            Toast.makeText(requireContext(), "Rellena todos los campos", Toast.LENGTH_SHORT).show()
             return
-        }else{
-            actualizarEditsAFalse()
-            actualizarCompra()
         }
 
+        actualizarCompra()
+        //Actualiza los campos en el viewModel para mostrarlos en la vista(compra,reserva,sesion)
+        viewModel.actualizarSesion(compra, reserva, pago)
+        actualizarEditsAFalse()
+
     }
+    /**
+     * Recorre los edits uno a uno desactivandolos,oculta boton guardar y muestra el boton editar
+     */
     private fun actualizarEditsAFalse(){
-        binding.tvNombre.isEnabled=false
-        binding.tvTelefono.isEnabled=false
-        binding.tvEmail.isEnabled=false
-        binding.tvEstado.isEnabled=false
-        binding.tvFechaInicio.isEnabled=false
-        binding.tvFechaFin.isEnabled=false
-        binding.tvSala.isEnabled=false
-        binding.tvParticipantes.isEnabled=false
-        binding.tvExperiencia.isEnabled=false
-        binding.tvIdioma.isEnabled=false
-        binding.tvTotalPagado.isEnabled=false
-        binding.tvMetodoPago.isEnabled=false
-        binding.tvDNI.isEnabled=false
+        listOf(
+            binding.tvNombre, binding.tvTelefono, binding.tvEmail, binding.tvEstado,
+            binding.tvFechaInicio, binding.tvFechaFin, binding.tvSala, binding.tvParticipantes,
+            binding.tvExperiencia, binding.tvIdioma, binding.tvTotalPagado,
+            binding.tvMetodoPago, binding.tvDNI
+        ).forEach { it.isEnabled = false }
+
         binding.tvGuardar.visibility = View.GONE
         binding.tvEditar.visibility = View.VISIBLE
     }
-    private fun validarCamposObligatorios(): Boolean {
-        val campos = listOf(
-            binding.tvNombre,
-            binding.tvTelefono,
-            binding.tvEmail,
-            binding.tvEstado,
-            binding.tvFechaInicio,
-            binding.tvFechaFin,
-            binding.tvSala,
-            binding.tvParticipantes,
-            binding.tvExperiencia,
-            binding.tvIdioma,
-            binding.tvTotalPagado,
-            binding.tvMetodoPago,
-            binding.tvDNI
-        )
 
-        return campos.all { editText ->
-            val texto = editText.text.toString().substringAfter(":").trim()
-            texto.isNotEmpty()
+    /**
+     * Valida que todos llos campos no sean vacios.
+     */
+    private fun validarCamposObligatorios(): Boolean {
+        return listOf(
+            binding.tvNombre, binding.tvTelefono, binding.tvEmail, binding.tvEstado,
+            binding.tvFechaInicio, binding.tvFechaFin, binding.tvSala, binding.tvParticipantes,
+            binding.tvExperiencia, binding.tvIdioma, binding.tvTotalPagado,
+            binding.tvMetodoPago, binding.tvDNI
+        ).all { it.text.toString().substringAfter(":").trim().isNotEmpty() }
+    }
+
+    /**
+     * Actualiza los datos de nuestra compra una vez editados quitandole prefijos y espacios.
+     * Después modifica la compra a través de nuestro viewModel.
+     */
+    private fun actualizarCompra() {
+        compra?.apply {
+            name = binding.tvNombre.text.toString().removePrefix("Nombre: ").trim()
+            phone = binding.tvTelefono.text.toString().removePrefix("Teléfono: ").trim()
+            mail = binding.tvEmail.text.toString().removePrefix("Email: ").trim()
+            language = binding.tvIdioma.text.toString().removePrefix("Idioma: ").trim()
+            dni = binding.tvDNI.text.toString().removePrefix("DNI: ").trim()
+        }
+
+        reserva?.apply {
+            status = binding.tvEstado.text.toString().removePrefix("Estado: ").trim()
+            start = binding.tvFechaInicio.text.toString().removePrefix("Inicio: ").trim()
+            end = binding.tvFechaFin.text.toString().removePrefix("Fin: ").trim()
+            idCalendario = binding.tvSala.text.toString().removePrefix("Sala: ").trim()
+            peopleNumber = binding.tvParticipantes.text.toString().removePrefix("Participantes: ").trim().toInt()
+            idExperience = binding.tvExperiencia.text.toString().removePrefix("Experiencia: ").trim()
+        }
+
+        pago?.apply {
+            amount = binding.tvTotalPagado.text.toString().removePrefix("Total pagado: ").removeSuffix(" €").trim().toDouble()
+            method = binding.tvMetodoPago.text.toString().removePrefix("Método de pago: ").trim()
+        }
+
+        val token = getTokenFromSharedPreferences() ?: return
+        Log.e("TOKEN",token)
+        //Modifica la compra en la API al pinchar en guardar
+        compra?.let {
+            viewModel.modificarCompra(token, it,
+                onSuccess = { Toast.makeText(requireContext(), "Guardado correctamente", Toast.LENGTH_SHORT).show() },
+                onError = { msg -> Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show() }
+            )
         }
     }
-    private fun actualizarCompra(){
-        compraRecuperada.name = binding.tvNombre.text.toString().removePrefix("Nombre: ").trim()
-        compraRecuperada.phone = binding.tvTelefono.text.toString().removePrefix("Teléfono: ").trim()
-        compraRecuperada.mail = binding.tvEmail.text.toString().removePrefix("Email: ").trim()
-        compraRecuperada.language = binding.tvIdioma.text.toString().removePrefix("Idioma: ").trim()
-        compraRecuperada.dni = binding.tvDNI.text.toString().removePrefix("DNI: ").trim()
 
-        // Actualizar reserva
-        reserva.status = binding.tvEstado.text.toString().removePrefix("Estado: ").trim()
-        reserva.start = binding.tvFechaInicio.text.toString().removePrefix("Inicio: ").trim()
-        reserva.end = binding.tvFechaFin.text.toString().removePrefix("Fin: ").trim()
-        reserva.idCalendario = binding.tvSala.text.toString().removePrefix("Sala: ").trim()
-        reserva.peopleNumber = binding.tvParticipantes.text.toString()
-            .removePrefix("Participantes: ").trim().toIntOrNull() ?: reserva.peopleNumber
-        reserva.idExperience = binding.tvExperiencia.text.toString().removePrefix("Experiencia: ").trim()
-
-        // Actualizar pago
-        pago.amount = binding.tvTotalPagado.text.toString()
-            .removePrefix("Total pagado: ").removeSuffix(" €")
-            .trim().toDoubleOrNull() ?: pago.amount
-        pago.method = binding.tvMetodoPago.text.toString().removePrefix("Método de pago: ").trim()
-    }
-    private fun enviarConfirmacion(){
-        //Obtenemos mail y rellenamos asunto y cuerpo de prueba
-        val destinatario=compraRecuperada.mail
-        val asunto="Confirmación reservas"
-        val cuerpo= "Hola, esta es la confirmación de su reserva. ¡Gracias por confiar en nosotros!"
-        //Uri de apps de correos del movil(nos mostrara nuestras app instaladas)
-        val uri= Uri.parse("mailto:$destinatario")
-        //Intentamos mandar el correo
+    /**
+     * Redirige al GMAIL para enviar correo de confirmación al usuario.
+     */
+    private fun enviarConfirmacion() {
+        val destinatario = compra?.mail ?: return
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "message/rfc822"
             putExtra(Intent.EXTRA_EMAIL, arrayOf(destinatario))
-            putExtra(Intent.EXTRA_SUBJECT, asunto)
-            putExtra(Intent.EXTRA_TEXT, cuerpo)
+            putExtra(Intent.EXTRA_SUBJECT, "Confirmación reservas")
+            putExtra(Intent.EXTRA_TEXT, "Hola, esta es la confirmación de su reserva.")
         }
-
-        if (intent.resolveActivity(requireActivity().packageManager) != null) {
-            startActivity(Intent.createChooser(intent, "Enviar correo con..."))
-        } else {
-            Toast.makeText(requireContext(), "No hay apps de correo instaladas", Toast.LENGTH_SHORT).show()
-        }
-
+        startActivity(Intent.createChooser(intent, "Enviar correo con..."))
     }
-    private fun enviarMensaje(){
-        //Recuperamos telefono y hacemos un mensaje de prueba
-        val numero = "34${compraRecuperada.phone}"
-        val mensaje = "Hola! Esto es un mensaje de prueba"
 
-        try {//Usamos la uri de Whatsapp y se pasan el numero y mensaje
-            val uri = Uri.parse("https://wa.me/$numero?text=${URLEncoder.encode(mensaje, "UTF-8")}")
-            //Intentamos lanzar Whatsapp
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            Toast.makeText(requireContext(), "WhatsApp no está instalado", Toast.LENGTH_SHORT).show()
-        } catch (e: Exception) {
-            Toast.makeText(requireContext(), "Error al abrir WhatsApp", Toast.LENGTH_SHORT).show()
-        }
+    /**
+     * Redirige a whatsapp para enviar mensaje al usuario.
+     */
+    private fun enviarMensaje() {
+        val numero = "34${compra?.phone}"
+        val mensaje = "Hola! Esto es un mensaje de confirmación"
+        val uri = Uri.parse("https://wa.me/$numero?text=${URLEncoder.encode(mensaje, "UTF-8")}")
+        startActivity(Intent(Intent.ACTION_VIEW, uri))
     }
+
+    /**
+     * Métodos on click del fragment
+     */
     override fun onClick(v: View?) {
-        when(v?.id){
-            binding.btnScrollSubir?.id->{
-                binding.nestedScroll?.smoothScrollTo(0, 0)
-            }
-            binding.tvEditar.id->{
-                activarEdits()
-            }
-            binding.tvGuardar.id-> {
-                desactivarEdits()
-                modificarDatosCompra()
-            }
-            binding.tvConfirmacion.id->{
-                enviarConfirmacion()
-            }
-            binding.tvWhatsapp.id->{
-                enviarMensaje()
-            }
+        when (v?.id) {
+            binding.tvEditar.id -> activarEdits()
+            binding.tvGuardar.id -> desactivarEdits()
+            binding.tvConfirmacion.id -> enviarConfirmacion()
+            binding.tvWhatsapp.id -> enviarMensaje()
         }
     }
+
+    /**
+     * Obtiene el token de preferencias locales.
+     */
     private fun getTokenFromSharedPreferences(): String? {
         val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("auth_token", null)
         return token?.let { "Bearer $it" }
     }
     @SuppressLint("SetTextI18n")
+    /**
+     * Si no hay compra se muestra este formulario vacio
+     */
     private fun mostrarFormularioVacio() {
         binding.tvNombre.setText("Nombre: ")
         binding.tvTelefono.setText("Teléfono: ")
@@ -295,7 +257,7 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         binding.tvEstado.setText("Estado: ")
         binding.tvFechaInicio.setText("Inicio: ")
         binding.tvFechaFin.setText("Fin: ")
-        binding.tvSala.setText("Sala: ${sesion.calendario}")
+        binding.tvSala.setText("Sala:")
         binding.tvParticipantes.setText("Participantes: ")
         binding.tvExperiencia.setText("Experiencia: ")
         binding.tvIdioma.setText("Idioma: ")
@@ -304,12 +266,21 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         binding.tvDNI.setText("DNI: ")
 
     }
+
+    /**
+     * Configuracion de listeners de los botones
+     */
     private fun configurarBotones() {
         binding.tvEditar.setOnClickListener(this)
         binding.tvGuardar.setOnClickListener(this)
         binding.tvConfirmacion.setOnClickListener(this)
         binding.tvWhatsapp.setOnClickListener(this)
+        binding.btnScrollSubir?.setOnClickListener(this)
     }
+
+    /**
+     * Detecta si se hace scroll en la pantalla para mostrar botón de subir
+     */
     private fun detectarScroll(){
         binding.nestedScroll?.setOnScrollChangeListener { _, _, scrollY, _, _ ->
             if (scrollY > 200) {

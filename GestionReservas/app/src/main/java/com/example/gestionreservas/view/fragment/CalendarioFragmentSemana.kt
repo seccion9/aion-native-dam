@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +24,8 @@ import com.example.gestionreservas.models.repository.CalendarioRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.view.adapter.AdaptadorDiaSemana
 import com.example.gestionreservas.view.adapter.OnDiaSemanaClickListener
+import com.example.gestionreservas.viewModel.listado.CalendarioSemana.CalendarioSemanaViewModel
+import com.example.gestionreservas.viewModel.listado.CalendarioSemana.CalendarioSemanaViewModelFactory
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -33,9 +36,7 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
     private lateinit var binding:FragmentCalendarioSemanaBinding
     private lateinit var adaptadorDiaSemana:AdaptadorDiaSemana
     private var listaCalendarioSemana: ArrayList<DiaSemana> = arrayListOf()
-    @RequiresApi(Build.VERSION_CODES.O)
-    private var fechaLunesActual: LocalDate = calcularLunesDeHoy()
-    private val calendarioRepository = CalendarioRepository(RetrofitFakeInstance.apiFake)
+    private lateinit var viewModel: CalendarioSemanaViewModel
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -57,6 +58,10 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
         binding.ImgFlechaDer.setOnClickListener(this)
         binding.ImgFlechaIzq.setOnClickListener(this)
 
+        val calendarioRepository = CalendarioRepository(RetrofitFakeInstance.apiFake)
+        val factory = CalendarioSemanaViewModelFactory(calendarioRepository)
+        viewModel = ViewModelProvider(this, factory).get(CalendarioSemanaViewModel::class.java)
+
         adaptadorDiaSemana= AdaptadorDiaSemana(requireContext(),listaCalendarioSemana,this)
         binding.recyclerDiasSemana.adapter=adaptadorDiaSemana
         val orientation = resources.configuration.orientation
@@ -66,70 +71,19 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         }
         binding.recyclerDiasSemana.layoutManager = layoutManager
-        calcularSemana()
-        generarDiasSemana()
+
+        viewModel.inicializarSemana()
+
+        observarDatos()
     }
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun generarDiasSemana() {
-        //Obtenemos nuestro token y la fecha de inicio y fin de la busqueda semanal de ocupaciones
-        val lunes = fechaLunesActual
-        val domingo = lunes.plusDays(6)
-        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-        val fechaInicio = lunes.format(formatter)
-        val fechaFin = domingo.format(formatter)
-        val token = getTokenFromSharedPreferences()
-        val ids = listOf(1, 2)
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            try {
-                val mapaOcupacionSemanal = calendarioRepository.obtenerOcupacionSemanalFake(
-                    token ?: return@launch, ids, fechaInicio, fechaFin)
-
-                listaCalendarioSemana = calendarioRepository.transformarMapaADiasSemana(
-                    mapaOcupacionSemanal,
-                    fechaLunesActual
-                )
-
-                adaptadorDiaSemana.actualizarLista(listaCalendarioSemana)
-
-            } catch (e: Exception) {
-                Log.e("calendarioFragmentSemana", "Error en la API falsa: ${e.message}")
-            }
+    private fun observarDatos() {
+        viewModel.textoResumenSemana.observe(viewLifecycleOwner) {
+            binding.tvFechaSemana.text = it
         }
-    }
-    @SuppressLint("SetTextI18n")
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun calcularLunesDeHoy(): LocalDate {
-        fechaLunesActual = LocalDate.now()
-        val diaSemana = fechaLunesActual.dayOfWeek.value
-        return fechaLunesActual.minusDays((diaSemana - 1).toLong())
-    }
 
-    /*Cambia el text de las fechas segun vayan avanzando o disminuyendo las semanas y
-        llamara a una funcion que cargue los datos de la API de esa semana
-     */
-    @SuppressLint("SetTextI18n")
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun calcularSemana(){
-        val fechaActual=fechaLunesActual
-        val diaSemanaNumero=fechaActual.dayOfWeek.value
-
-        val lunes = fechaActual.minusDays((diaSemanaNumero - 1).toLong())
-        val domingo = lunes.plusDays(6)
-
-        fechaLunesActual = lunes
-
-        val mesLunes = lunes.month.getDisplayName(TextStyle.FULL, Locale("es", "ES")).replaceFirstChar { it.uppercase() }
-        val mesDomingo = domingo.month.getDisplayName(TextStyle.FULL, Locale("es", "ES")).replaceFirstChar { it.uppercase() }
-
-        // Si están en el mismo mes, mostramos uno solo
-        if (mesLunes == mesDomingo) {
-            binding.tvFechaSemana.text = "${lunes.dayOfMonth} - ${domingo.dayOfMonth} $mesLunes"
-        } else {
-            // Si caen en meses distintos, lo mostramos completo
-            binding.tvFechaSemana.text = "${lunes.dayOfMonth} $mesLunes - ${domingo.dayOfMonth} $mesDomingo"
+        viewModel.diasSemana.observe(viewLifecycleOwner) {
+            adaptadorDiaSemana.actualizarLista(ArrayList(it))
         }
-        adaptadorDiaSemana.actualizarLista(listaCalendarioSemana)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -143,7 +97,6 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
                     .commit()
             }
             binding.tvSemana.id->{
-                calcularLunesDeHoy()
                 actualizarSemana()
             }
             binding.tvMes.id->{
@@ -154,19 +107,20 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
                     .commit()
             }
             binding.ImgFlechaIzq.id->{
-                fechaLunesActual = fechaLunesActual.minusDays(7)
+                viewModel.retrocederSemana()
                 actualizarSemana()
             }
             binding.ImgFlechaDer.id->{
-                fechaLunesActual = fechaLunesActual.plusDays(7)
+                viewModel.avanzarSemana()
                 actualizarSemana()
             }
         }
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun actualizarSemana(){
-        calcularSemana()
-        generarDiasSemana()
+        val token = getTokenFromSharedPreferences() ?: return
+        val ids = listOf(1, 2)
+        viewModel.cargarDiasSemana(token, ids)
     }
     override fun onDiaClick(dia: DiaSemana) {
         /*Implementamos la interfaz de nuestro adaptador para que al pincchar en el dia de la semana

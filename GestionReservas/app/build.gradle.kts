@@ -56,6 +56,7 @@ dependencies {
 
     implementation("org.jsoup:jsoup:1.15.4")
 
+
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

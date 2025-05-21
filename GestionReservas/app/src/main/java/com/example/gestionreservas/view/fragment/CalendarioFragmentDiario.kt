@@ -6,6 +6,7 @@ import android.app.DatePickerDialog
 import android.content.Context.MODE_PRIVATE
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings.Global.putString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -171,8 +172,8 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
          binding.tvFlechaDerechaHoy.setOnClickListener(this)
          binding.tvFlechaIzquierdaHoy.setOnClickListener(this)
          binding.tvMes.setOnClickListener(this)
-         binding.btnTestExp.setOnClickListener(this)
-         binding.btnTodasExp.setOnClickListener(this)
+         binding.btnZombieRoom.setOnClickListener(this)
+         binding.btnEscapeJungle.setOnClickListener(this)
          binding.selectFecha.setOnClickListener(this)
          binding.tvHoy.setOnClickListener(this)
          binding.tvDiario.setOnClickListener(this)
@@ -274,12 +275,20 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
                 val fragment=CalendarioFragment()
                 cambiarFragment(fragment)
             }
-            binding.btnTestExp.id->{
-                val fragment=ExperienciaTestFragment()
+            binding.btnZombieRoom.id->{
+                val bundle=Bundle()
+                bundle.putString("idExperience","exp_zombie_2")
+                bundle.putString("nombreExperience", "Zombie Room")
+                val fragment=ListadoFragment()
+                fragment.arguments=bundle
                 cambiarFragment(fragment)
             }
-            binding.btnTodasExp.id->{
-                val fragment=ExperienciaTestFragment()
+            binding.btnEscapeJungle.id->{
+                val bundle=Bundle()
+                bundle.putString("idExperience", "exp_jungle_1")
+                bundle.putString("nombreExperience", "Escape Jungle")
+                val fragment=ListadoFragment()
+                fragment.arguments=bundle
                 cambiarFragment(fragment)
             }
             binding.selectFecha.id->{

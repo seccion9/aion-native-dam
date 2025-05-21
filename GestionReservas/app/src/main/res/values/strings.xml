@@ -15,6 +15,7 @@
         <item>Consulta</item>
         <item>Cancelacion</item>
     </array>
+
     <array name="idioma_array">
         <item>--Idioma--</item>
         <item>Spanish</item>

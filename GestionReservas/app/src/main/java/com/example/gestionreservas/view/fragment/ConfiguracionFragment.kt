@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.gestionreservas.R
@@ -28,9 +29,14 @@ import com.example.gestionreservas.databinding.FragmentConfiguracionBinding
 import com.example.gestionreservas.background.CheckReservasWorker
 import com.example.gestionreservas.repository.MailingRepository
 import com.example.gestionreservas.view.activities.MainActivity
+import com.example.gestionreservas.viewModel.listado.Configuracion.ConfiguracionViewModel
+import com.example.gestionreservas.viewModel.listado.Configuracion.ConfiguracionViewModelFactory
+import com.example.gestionreservas.viewModel.listado.DetalleSesion.DetalleSesionViewModel
+import com.example.gestionreservas.viewModel.listado.DetalleSesion.DetalleSesionViewModelFactory
 
 class ConfiguracionFragment:Fragment(),OnClickListener {
     private lateinit var binding:FragmentConfiguracionBinding
+    private lateinit var viewModel: ConfiguracionViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,6 +50,11 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
         if (notificacionesActivas) {
             pedirPermisoNotificaciones()
         }
+        val mailingRepository = MailingRepository
+        val factory = ConfiguracionViewModelFactory(mailingRepository)
+        viewModel = ViewModelProvider(this, factory).get(ConfiguracionViewModel::class.java)
+
+
         instancias()
 
         return binding.root
@@ -60,19 +71,26 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
     }
     private fun instancias(){
 
-        //Comprobacion correo
-        val email = MailingRepository.obtenerEmailUsuario(requireContext())
-        binding.tvCorreoGmail.text = email ?: "No conectado"
+        // Pedir el email al ViewModel (se almacenará en LiveData)
+        viewModel.obtenerEmailUsuario(requireContext())
+
+        // Observar cambios en el correo y actualizar la UI
+        viewModel.email.observe(viewLifecycleOwner) { email ->
+            binding.tvCorreoGmail.text = email ?: "No conectado"
+
+            // Solo habilitar botón de cerrar sesión si está conectado
+            if (!email.isNullOrEmpty() && email != "No conectado") {
+                binding.tvCerrarSesionGmail.setOnClickListener(this)
+            } else {
+                binding.tvCerrarSesionGmail.setOnClickListener(null)
+            }
+        }
         //Instancia funciones inicilaes
         configurarNotificaciones()
         cambiarAModoOscuro()
         btnSpannable()
         crearCanalNotificaciones()
 
-        //Instancias listener
-        if (email != null && email != "No conectado") {
-            binding.tvCerrarSesionGmail.setOnClickListener(this)
-        }
         binding.tvCerrarSesionGlobal.setOnClickListener(this)
 
     }
