@@ -43,40 +43,56 @@ class AdaptadorHoraReserva(
         return holder
     }
 
-    override fun onBindViewHolder(holder: AdaptadorHoraReserva.MyHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyHolder, position: Int) {
         val reserva = listaReservas[position]
 
         holder.horaInicio.text = reserva.horaInicio
         holder.horaFinal.text = reserva.horaFin
-        // Texto + color para Sala 1
-        if (reserva.sala1Libre == true) {
+
+        if (reserva.sala1Bloqueada == true) {
+            holder.sala1.text = "Bloqueado"
+            holder.sala1.backgroundTintList =
+                ColorStateList.valueOf(Color.parseColor("#FFDF81"))
+            holder.sala1Layout.setOnClickListener(null)
+        } else if (reserva.sala1Libre == true) {
             holder.sala1.text = "Libre"
             holder.sala1.backgroundTintList =
-                ColorStateList.valueOf(Color.parseColor("#8032CD32")) // Verde suave
+                ColorStateList.valueOf(Color.parseColor("#8032CD32"))
+            holder.sala1Layout.setOnClickListener {
+                onItemClick(reserva, "cal1")
+            }
         } else {
             holder.sala1.text = "Reservado"
             holder.sala1.backgroundTintList =
-                ColorStateList.valueOf(Color.parseColor("#80FF0000")) // Rojo suave
+                ColorStateList.valueOf(Color.parseColor("#80FF0000"))
+            holder.sala1Layout.setOnClickListener {
+                onItemClick(reserva, "cal1")
+            }
         }
 
-        // Texto + color para Sala 2
-        if (reserva.sala2Libre == true) {
+
+        if (reserva.sala2Bloqueada == true) {
+            holder.sala2.text = "Bloqueado"
+            holder.sala2.backgroundTintList =
+                ColorStateList.valueOf(Color.parseColor("#FFDF81"))
+            holder.sala2Layout.setOnClickListener(null)
+        } else if (reserva.sala2Libre == true) {
             holder.sala2.text = "Libre"
             holder.sala2.backgroundTintList =
-                ColorStateList.valueOf(Color.parseColor("#8032CD32")) // Verde suave
+                ColorStateList.valueOf(Color.parseColor("#8032CD32"))
+            holder.sala2Layout.setOnClickListener {
+                onItemClick(reserva, "cal2")
+            }
         } else {
             holder.sala2.text = "Reservado"
             holder.sala2.backgroundTintList =
-                ColorStateList.valueOf(Color.parseColor("#80FF0000")) // Rojo suave
-        }
-        holder.sala1Layout.setOnClickListener {
-            onItemClick(reserva, "cal1")
-        }
-
-        holder.sala2Layout.setOnClickListener {
-            onItemClick(reserva, "cal2")
+                ColorStateList.valueOf(Color.parseColor("#80FF0000"))
+            holder.sala2Layout.setOnClickListener {
+                onItemClick(reserva, "cal2")
+            }
         }
     }
+
 
     override fun getItemCount(): Int {
         return listaReservas.size

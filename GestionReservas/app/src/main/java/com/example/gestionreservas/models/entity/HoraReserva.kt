@@ -5,6 +5,8 @@ import java.io.Serializable
 data class HoraReserva(
     val horaInicio: String,
     val horaFin: String,
-    val sala1Libre: Boolean?,
-    val sala2Libre: Boolean?
+    var sala1Libre: Boolean?,
+    var sala2Libre: Boolean?,
+    var sala1Bloqueada: Boolean? = false,
+    var sala2Bloqueada: Boolean? = false
 ):Serializable

@@ -17,6 +17,8 @@ const rewriter  = jsonServer.rewriter(require('./routes.json'));
 
 server.use(middle);
 server.use(jsonServer.bodyParser);
+server.use(rewriter);
+
 
 /* ─────────────── INICIO: Firebase Admin para Push ─────────────── */
 const admin = require('firebase-admin');
@@ -48,12 +50,14 @@ async function enviarPushFCM(tokenUsuario, titulo, mensaje) {
   }
 }
 /* ─────────────── FIN: Firebase Admin para Push ─────────────── */
+server.use(jsonServer.bodyParser);
 
 /* ─────────────────────────── LOGIN fake ──────────────────────────── */
 server.post('/api/sanctum/token', (req, res) => {
+  console.log("📥 req.body recibido:", req.body);
   const { email, password } = req.body;
   const user = router.db.get('users').find({ email, password }).value();
-
+  console.log("🔍 Usuario encontrado:", user);
   return user
     ? res.status(200).json({ token: user.token })
     : res.status(401).json({ error: 'Credenciales incorrectas' });
@@ -84,18 +88,24 @@ server.get('/api/getMonthlyOccupancyByExperienceIdsAndDates', (req, res) => {
     return res.status(400).json({ error: 'date_start y date_end son requeridos' });
   }
 
-  const parseDMY = s => {
-    const [d, m, y] = s.split('/');
-    return new Date(`${y}-${m}-${d}T00:00:00`);
+  const parseDate = s => {
+    if (s.includes('-')) {
+      const [y, m, d] = s.split('-');
+      return new Date(`${y}-${m}-${d}T00:00:00`);
+    } else {
+      const [d, m, y] = s.split('/');
+      return new Date(`${y}-${m}-${d}T00:00:00`);
+    }
   };
-  const dStart = parseDMY(dateStartStr);
-  const dEnd   = parseDMY(dateEndStr);
 
-  const allData = router.db.get('monthlyOccupancy').value()[0]; // solo 1 objeto en el array
+  const dStart = parseDate(dateStartStr);
+  const dEnd   = parseDate(dateEndStr);
+
+  const allData = router.db.get('monthlyOccupancy').value()[0]; // solo 1 objeto
   const result = {};
 
   for (const [fecha, datos] of Object.entries(allData)) {
-    const d = parseDMY(fecha);
+    const d = parseDate(fecha); // ✅ usar parseDate aquí también
     if (d >= dStart && d <= dEnd) {
       result[fecha] = datos;
     }
@@ -103,6 +113,7 @@ server.get('/api/getMonthlyOccupancyByExperienceIdsAndDates', (req, res) => {
 
   res.json(result);
 });
+
 server.get('/occupancyER', (req, res) => {
   const start = req.query.date_start;
   const end   = req.query.date_end;
@@ -113,8 +124,7 @@ server.get('/occupancyER', (req, res) => {
 
   res.json(data);
 });
-/* ──────────── Rewriter + resto de colecciones (/api/*) ───────────── */
-server.use(rewriter);           // mantiene rutas de routes.json (purchases, etc.)
+/* ──────────── Rewriter + resto de colecciones (/api/*) ───────────── */           
 
 /* ────────── Endpoint filtrado /api/escaperadar/getOccupancyBetweenDates ────────── */
 server.get('/api/escaperadar/getOccupancyBetweenDates', (req, res) => {
@@ -232,6 +242,80 @@ server.get('/api/purchases', (req, res) => {
 
   res.status(200).json(comprasUsuario);
 });
+
+/* ────────── Endpoint GET /api/bloqueos ────────── */
+server.get('/api/bloqueos', (req, res) => {
+  const auth = req.headers.authorization || '';
+  const token = auth.replace('Bearer ', '');
+  const user = router.db.get('users').find({ token }).value();
+
+  if (!user) return res.status(403).json({ error: 'Token inválido' });
+
+  const bloqueos = router.db.get('bloqueos').value();
+  res.status(200).json(bloqueos);
+});
+
+/* ────────── Endpoint GET /api/bloqueos?fecha=YYYY-MM-DD ────────── */
+server.get('/api/bloqueosPorFecha', (req, res) => {
+  const { fecha } = req.query;
+
+  if (!fecha) {
+    return res.status(400).json({ error: 'Se requiere el parámetro "fecha"' });
+  }
+
+  const bloqueos = router.db
+    .get('bloqueos')
+    .filter(b => b.fecha === fecha)
+    .value();
+
+  res.status(200).json(bloqueos);
+});
+
+/* ────────── Endpoint POST /api/bloqueos ────────── */
+server.post('/api/bloqueos', (req, res) => {
+  console.log("🔥 Entra en el POST /api/bloqueos");
+  const auth = req.headers.authorization || '';
+  const token = auth.replace('Bearer ', '');
+  const user = router.db.get('users').find({ token }).value();
+  if (!user) return res.status(403).json({ error: 'Token inválido' });
+
+  const nuevoBloqueo = req.body;
+  console.log('🟢 BLOQUEO RECIBIDO:', nuevoBloqueo);
+  if (!nuevoBloqueo || !nuevoBloqueo.id || !nuevoBloqueo.fecha || !nuevoBloqueo.calendarioId) {
+    return res.status(400).json({ error: 'Faltan campos obligatorios: id, fecha o calendarioId' });
+  }
+
+  router.db.get('bloqueos').push(nuevoBloqueo).write();
+
+  res.status(201).json(nuevoBloqueo);
+});
+
+/* ────────── Endpoint DELETE /api/purchases/:id ────────── */
+server.delete('/api/purchases/:id', (req, res) => {
+  const { id } = req.params;
+
+  const auth = req.headers.authorization || '';
+  const token = auth.replace('Bearer ', '');
+  const user = router.db.get('users').find({ token }).value();
+
+  if (!user) return res.status(403).json({ error: 'Token inválido' });
+
+  const compra = router.db.get('purchases').find({ id }).value();
+
+  if (!compra) {
+    return res.status(404).json({ error: 'Compra no encontrada' });
+  }
+
+  if (String(compra.userId) !== String(user.id)) {
+    return res.status(403).json({ error: 'No tienes permiso para borrar esta compra' });
+  }
+
+  router.db.get('purchases').remove({ id }).write();
+
+  res.status(200).json({ mensaje: `Compra ${id} eliminada correctamente` });
+});
+
+
 
 server.use(router);     // todas las colecciones con prefijo /api
 /* ───────────────────────── Lanzar servidor ───────────────────────── */

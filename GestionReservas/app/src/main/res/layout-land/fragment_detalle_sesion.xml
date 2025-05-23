@@ -252,39 +252,79 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/tvMetodoPago"
+                app:layout_constraintTop_toBottomOf="@+id/tvMetodoPago"
                 app:layout_constraintStart_toStartOf="@+id/tvMetodoPago"
-                app:layout_constraintTop_toBottomOf="@+id/tvMetodoPago">
+                app:layout_constraintEnd_toEndOf="@+id/tvMetodoPago">
 
-                <TextView
-                    android:id="@+id/tvEditar"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/boton_experiencia_azul"
-                    android:drawableLeft="@drawable/edit"
-                    android:drawablePadding="12dp"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="Editar"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:visibility="visible" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tvGuardar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/boton_experiencia_azul"
-                    android:drawableLeft="@drawable/edit"
-                    android:drawablePadding="12dp"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="Guardar"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:visibility="gone" />
+
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:id="@+id/tvCancelar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/boton_experiencia_azul"
+                        android:drawableLeft="@drawable/calcelar"
+                        android:drawablePadding="12dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="Cancelar"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        android:onClick="onCancelarClick"
+                        app:layout_constraintEnd_toStartOf="@+id/tvEditar"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:id="@+id/tvEditar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/boton_experiencia_azul"
+                        android:drawableLeft="@drawable/edit"
+                        android:drawablePadding="12dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="Editar"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        android:onClick="onEditarClick"
+                        app:layout_constraintEnd_toStartOf="@+id/tvGuardar"
+                        app:layout_constraintStart_toEndOf="@+id/tvCancelar"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:id="@+id/tvGuardar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/boton_experiencia_azul"
+                        android:drawableLeft="@drawable/edit"
+                        android:drawablePadding="12dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="Guardar"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:visibility="gone"
+                        android:onClick="onGuardarClick"
+                        app:layout_constraintStart_toEndOf="@+id/tvEditar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </FrameLayout>
-
 
             <TextView
                 android:id="@+id/tvConfirmacion"

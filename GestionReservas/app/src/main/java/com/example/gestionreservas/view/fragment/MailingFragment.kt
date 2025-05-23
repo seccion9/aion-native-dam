@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +27,8 @@ import com.example.gestionreservas.model.CorreoItem
 import com.example.gestionreservas.models.entity.TokenResponse
 import com.example.gestionreservas.repository.MailingRepository
 import com.example.gestionreservas.view.adapter.AdaptadorCorreo
+import com.example.gestionreservas.viewModel.listado.Mailing.MailingViewModel
+import com.example.gestionreservas.viewModel.listado.Mailing.MailingViewModelFactory
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -43,6 +46,7 @@ class MailingFragment : Fragment(), View.OnClickListener {
     private lateinit var token: TokenResponse
     private val listaTotalCorreos = mutableListOf<CorreoItem>()
     private lateinit var adaptadorCorreo: AdaptadorCorreo
+    private lateinit var mailingViewModel: MailingViewModel
 
     /**
      * Configuracion del menu para poder filtrar correos al iniciar sesión en tiempo real
@@ -76,6 +80,9 @@ class MailingFragment : Fragment(), View.OnClickListener {
         binding = FragmentMailingBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Mailing"
+        val factory = MailingViewModelFactory(MailingRepository)
+        mailingViewModel = ViewModelProvider(this, factory).get(MailingViewModel::class.java)
+
         instancias()
         return binding.root
     }
@@ -104,8 +111,17 @@ class MailingFragment : Fragment(), View.OnClickListener {
         //Llamada a funciones de refrescar y activar animación
         refrescarCorreos()
         activarAnimacionStretch()
-    }
 
+        observersViewModel()
+    }
+    private fun observersViewModel(){
+        mailingViewModel.sesionCerrada.observe(viewLifecycleOwner) { cerrada ->
+            if (cerrada) {
+                cerrarSesion()
+                mailingViewModel.resetearEstadoSesionCerrada()
+            }
+        }
+    }
     /**
      * Detecta si se hace click en el item del adaptador y le pasa por argumentos al siguiente fragment
      * los datos completos del mensaje para poder mostrarlos en el.
@@ -160,7 +176,7 @@ class MailingFragment : Fragment(), View.OnClickListener {
             }
 
             binding.btnCerrarSesion.id -> {
-                cerrarSesion()
+               cerrarSesion()
             }
         }
     }
@@ -180,13 +196,16 @@ class MailingFragment : Fragment(), View.OnClickListener {
                     binding.recyclerCorreos.visibility = View.GONE
                     lifecycleScope.launch {
                         try {
-                            MailingRepository.loginYObtenerCorreos(authCode, requireContext())
+                            val listaCorreos = MailingRepository.loginYObtenerCorreos(authCode, requireContext())
 
-                            inicializarCorreoConCuentaGuardada()
+                            // Obtenemos el token después de haberlo guardado
+                            token = obtenerTokenGuardado()
+                            nextPageToken = null
+                            mostrarListaCorreos(listaCorreos)
                             binding.btnLogin.visibility = View.GONE
                             binding.btnCerrarSesion.visibility = View.VISIBLE
                             binding.recyclerCorreos.visibility = View.VISIBLE
-                            requireActivity().invalidateOptionsMenu()
+                            binding.progressBar.visibility = View.GONE
                             Toast.makeText(
                                 requireContext(),
                                 "Login y correos OK",
@@ -239,10 +258,7 @@ class MailingFragment : Fragment(), View.OnClickListener {
         binding.recyclerCorreos.visibility = View.VISIBLE
         lifecycleScope.launch {
             try {
-                val (nuevosCorreos, nuevaToken) = MailingRepository.obtenerMensajesPagina(
-                    token,
-                    nextPageToken
-                )
+                val (nuevosCorreos, nuevaToken) = MailingRepository.obtenerMensajesPagina(token, pageToken = null)
                 nextPageToken = nuevaToken
                 mostrarListaCorreos(nuevosCorreos)
             } catch (e: Exception) {
@@ -330,8 +346,8 @@ class MailingFragment : Fragment(), View.OnClickListener {
      * Refresca el menú tambien para que no aparezca la opción de buscar.
      */
     private fun cerrarSesion() {
-        MailingRepository.cerrarSesion(requireContext()) {
-            listaTotalCorreos.clear()
+        mailingViewModel.logout(requireContext())
+        listaTotalCorreos.clear()
             adaptadorCorreo.notifyDataSetChanged()
             binding.btnLogin.visibility = View.VISIBLE
             binding.btnCerrarSesion.visibility = View.GONE
@@ -339,7 +355,7 @@ class MailingFragment : Fragment(), View.OnClickListener {
             nextPageToken = null
             Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()
             requireActivity().invalidateOptionsMenu()
-        }
+
     }
 
     /**

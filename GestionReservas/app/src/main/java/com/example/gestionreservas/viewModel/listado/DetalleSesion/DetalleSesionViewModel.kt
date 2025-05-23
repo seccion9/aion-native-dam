@@ -1,5 +1,6 @@
 package com.example.gestionreservas.viewModel.listado.DetalleSesion
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,6 +26,10 @@ class DetalleSesionViewModel(
 
     private val _pago = MutableLiveData<Pago?>()
     val pago: LiveData<Pago?> = _pago
+
+    private val _estadoCancelacion = MutableLiveData<String?>()
+    val estadoCancelacion: LiveData<String?> = _estadoCancelacion
+
     /**
      * Obtiene los datos pasados por parámetros al fragment de una SesionConCompra y rellena las
      * variables del viewmodel
@@ -64,6 +69,29 @@ class DetalleSesionViewModel(
         _compra.value = compra
         _reserva.value = reserva
         _pago.value = pago
+    }
+
+    /**
+     * Lanzamos una corrutina e intentamos eliminar compra a través e repository que realizará la eliminación
+     * a través del ApiServiceFake,si es exitoso cambiamos estado de cancelación a éxito,si no a fallo o error.
+     */
+    fun cancelarReserva(token:String,idCompra:String,onSuccess: () -> Unit, onError: (String) -> Unit){
+        Log.e("TOKEN EN CANCELAR RESERVA:",token)
+        viewModelScope.launch {
+            try{
+                val success=compraRepository.eliminarCompra(token,idCompra)
+                if (success) {
+                    _estadoCancelacion.value = "Reserva cancelada con éxito"
+                    onSuccess()
+                } else {
+                    _estadoCancelacion.value = "Fallo al cancelar la reserva"
+                    onError("Fallo al cancelar")
+                }
+            }catch (e:Exception){
+                _estadoCancelacion.value = "Error al cancelar la compra/reserva"
+                onError(e.message ?: "Error desconocido")
+            }
+        }
     }
 
 }

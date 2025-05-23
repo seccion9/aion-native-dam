@@ -1,6 +1,7 @@
 package com.example.gestionreservas.viewModel.listado.CalendarioSemana
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.gestionreservas.models.entity.DiaSemana
 import com.example.gestionreservas.models.entity.HoraReserva
 import com.example.gestionreservas.models.entity.Ocupacion
+import com.example.gestionreservas.models.entity.OcupacionCalendarioSemanal
 import com.example.gestionreservas.models.repository.CalendarioRepository
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -66,17 +68,22 @@ class CalendarioSemanaViewModel(
     }
     @RequiresApi(Build.VERSION_CODES.O)
     fun cargarDiasSemana(token: String, idsSalas: List<Int>){
-        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-        val fechaInicio = _fechaLunesActual.value?.format(formatter) ?: return
-        val fechaFin = _fechaLunesActual.value?.plusDays(6)?.format(formatter) ?: return
+        val fechaInicio = _fechaLunesActual.value?.toString()
+        val fechaFin    = _fechaLunesActual.value?.plusDays(6)?.toString()
+        if (fechaInicio == null || fechaFin == null) return
 
         viewModelScope.launch {
             try{
-                val mapa=calendarioRepository.obtenerOcupacionSemanalFake(token,idsSalas,fechaInicio, fechaFin)
-                val dias=calendarioRepository.transformarMapaADiasSemana(mapa,_fechaLunesActual.value!!)
+                val mapa = calendarioRepository.obtenerOcupacionSemanalFake(token, idsSalas, fechaInicio, fechaFin)
+                Log.d("MAPA_ORIGINAL", "Claves recibidas: ${mapa.keys}")
+                val dias = calendarioRepository.transformarMapaADiasSemana(mapa, _fechaLunesActual.value!!)
+
                 _diasSemana.value=dias
             }catch (e:Exception){
+                Log.e("SEMANA", "Error al cargar semana: ${e.message}")
             }
         }
     }
+
+
 }

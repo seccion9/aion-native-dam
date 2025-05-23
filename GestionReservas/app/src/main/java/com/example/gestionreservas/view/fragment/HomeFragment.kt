@@ -329,6 +329,7 @@ class HomeFragment: Fragment(),OnClickListener {
     private fun getTokenFromSharedPreferences(): String? {
         val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", MODE_PRIVATE)
         val token = sharedPreferences.getString("auth_token", null)
+        Log.e("TOKEN DEVUELTO","TOKEN : $token")
         return token?.let { "Bearer $it" }
     }
     private fun cambiarFragmento(fragment:Fragment){

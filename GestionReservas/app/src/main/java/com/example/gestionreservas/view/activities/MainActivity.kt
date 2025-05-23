@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeLi
     }
     override fun onClick(v: View?) {
         when(v?.id){
-            binding.btnLogin?.id ->{
+            binding.btnLogin.id ->{
                 if(binding.editCorreo.text.isEmpty() || binding.editPass.text.isEmpty()){
                     Toast.makeText(applicationContext,"Los campos deben estar rellenos",Toast.LENGTH_SHORT).show()
                 }else{
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeLi
                     hacerLogin()
                 }
             }
-            binding.btnReset?.id ->{
+            binding.btnReset.id ->{
                 binding.editCorreo.text.clear()
                 binding.editPass.text.clear()
             }
@@ -113,9 +113,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeLi
             val prefs = getSharedPreferences("ajustes", MODE_PRIVATE)
             prefs.edit().putBoolean("notificaciones_activadas", true).apply()
             val loginResponse = response.body() ?: return
-            val token = loginResponse.token
+            Log.e("LoginResponse", "Código: ${response.code()}, Body: ${response.body()}, Error: ${response.errorBody()?.string()}")
+
+            val token =loginResponse.token
             saveTokenToSharedPreferences(token)
-            Log.e("login Activity","Token : ${token}")
+            Log.e("TOKEN GUARDADO","TOKEN: $token")
+
             withContext(Dispatchers.Main) {
                 delay(2000)
                 startActivity(Intent(applicationContext, ReservasActivity::class.java))
@@ -123,20 +126,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeLi
             }
         }else{
             Log.e("LoginFake", "HTTP ${response.code()}  ${response.errorBody()?.string()}")
-        }
-    }
-
-    private fun crearCanalNotificacionesGlobal() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val canal = NotificationChannel(
-                "canal_reservas",
-                "Reservas",
-                NotificationManager.IMPORTANCE_HIGH
-            ).apply {
-                description = "Notificaciones de nuevas reservas"
-            }
-            val manager = getSystemService(NotificationManager::class.java)
-            manager.createNotificationChannel(canal)
         }
     }
 

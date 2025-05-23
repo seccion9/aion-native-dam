@@ -1,10 +1,7 @@
 package com.example.gestionreservas.models.repository
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.util.Log
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.Sesion
@@ -16,6 +13,10 @@ import java.time.LocalDate
 import java.time.temporal.TemporalAdjusters
 
 class CompraRepository(private val api: ApiServiceFake) {
+
+    /**
+     * Modifica los datos de una compra con el token y la compra haciendo un patch en la API.
+     */
     suspend fun modificarCompra(token: String, compra: Compra): Boolean {
         val response = api.patchCompra(token, compra.id, compra)
         if (response.isSuccessful) {
@@ -24,14 +25,36 @@ class CompraRepository(private val api: ApiServiceFake) {
             throw Exception("Error modificando compra: ${response.code()} - ${response.message()}")
         }
     }
+
+    /**
+     * Obtiene las compras del dia(sesiones) a través del token de shared preferences y el dia seleccionado.
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     suspend fun obtenerSesionesDelDia(token: String, fecha: LocalDate): List<SesionConCompra> {
         val compras = api.getPurchases("Bearer $token")
+
         return transformarComprasASesiones(compras, fecha)
     }
 
-    /*Esta funcion nos devolvera una lista de todas las sesiones de la semana que se mostraran en
-    nuestro recyclerview
+
+    /**
+     * Llama a la api para eliminar compra de esta con el token y el id de compra,devolvemos true o falso
+     * dependiendo de si es exitosa o no.
+     */
+    suspend fun eliminarCompra(token:String, idCompra:String): Boolean {
+        val response = api.eliminarCompra(token, idCompra)
+        Log.d("DEBUG_BORRADO", "token:$token")
+        return if (response.isSuccessful) {
+            true
+        } else {
+            Log.e("BORRAR COMPRA", "Error al borrar compra ${response.message()}")
+            false
+        }
+    }
+
+
+    /**Esta funcion nos devolvera una lista de todas las sesiones de la semana que se mostraran en
+    *nuestro recyclerview
     */
     @RequiresApi(Build.VERSION_CODES.O)
     fun obtenerSesionesDeSemana(compras: List<Compra>, fechaActual: LocalDate): List<SesionConCompra> {
@@ -60,11 +83,12 @@ class CompraRepository(private val api: ApiServiceFake) {
     }
 
 
+    /**
+     * Transforma las compras en sesiones para mostrarlas en la app recorriendo la compra y sus items,
+     * con ello creamos un objeto sesión y lo añadimos a la lista,despues devolvemos esta lista.
+     */
     @RequiresApi(Build.VERSION_CODES.O)
-    fun transformarComprasASesiones(
-        compras: List<Compra>,
-        fechaSeleccionada: LocalDate
-    ): List<SesionConCompra> {
+    fun transformarComprasASesiones(compras: List<Compra>, fechaSeleccionada: LocalDate): List<SesionConCompra> {
         val sesiones = mutableListOf<SesionConCompra>()
         Log.d("SESIONES", "Fecha seleccionada: $fechaSeleccionada")
         compras.forEach { compra ->
@@ -92,20 +116,31 @@ class CompraRepository(private val api: ApiServiceFake) {
         }
         return sesiones
     }
+
+
+    /**
+     * Obtiene todas las compras de la API con el token guardado en shared preferences.
+     */
     suspend fun obtenerCompras(token: String): List<Compra> {
             return api.getPurchases("Bearer $token")
 
     }
+
+
+    /**
+     * Registra en la API un objeto compra con el token guardado en shared preferences y devuelve
+     * la respuesta.
+     */
     suspend fun registrarCompra(token: String, compra: Compra): Response<Compra> {
         return api.registrarCompra("Bearer $token", compra)
     }
-    suspend fun enviarComentarioACompra(
-        token: String,
-        listaCompras: List<Compra>,
-        lineaSeleccionada: String,
-        comentario: String,
-        motivo: String
-    ): Compra? {
+
+
+    /**
+     * Permite enviar añadir un comentario a la compra(reserva) del cliente para posteriormente en otro método
+     * enviarle un mensaje con los cambios en su compra.
+     */
+    suspend fun enviarComentarioACompra(token: String, listaCompras: List<Compra>, lineaSeleccionada: String, comentario: String, motivo: String): Compra? {
         val partes = lineaSeleccionada.split("|")
         val fecha = partes[0]
         val nombre = partes[1]

@@ -10,4 +10,5 @@ data class Ocupacion(
     val start: String,
     val end: String,
     @SerializedName("id_purchase")   val idCompra: String
+
 ):Serializable

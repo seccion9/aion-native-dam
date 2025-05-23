@@ -73,7 +73,7 @@ class CalendarioFragmentSemana:Fragment(),OnClickListener,OnDiaSemanaClickListen
         binding.recyclerDiasSemana.layoutManager = layoutManager
 
         viewModel.inicializarSemana()
-
+        actualizarSemana()
         observarDatos()
     }
     private fun observarDatos() {

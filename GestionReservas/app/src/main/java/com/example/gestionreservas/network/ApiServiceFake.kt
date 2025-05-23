@@ -1,13 +1,16 @@
 package com.example.gestionreservas.network
 
+import com.example.gestionreservas.models.entity.Bloqueo
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.LoginRequest
 import com.example.gestionreservas.models.entity.LoginResponse
+import com.example.gestionreservas.models.entity.MonthlyOccupancyResponse
 import com.example.gestionreservas.models.entity.Ocupacion
 import com.example.gestionreservas.models.entity.OcupacionCalendarioSemanal
 import com.example.gestionreservas.models.entity.PagoCajaChica
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.PATCH
@@ -67,7 +70,34 @@ interface ApiServiceFake {
     //Registrar compra en la API
     @POST("purchases")
     suspend fun registrarCompra(
-        @Header("Authorization") toekn:String,
+        @Header("Authorization") token:String,
         @Body compra:Compra
     ):Response<Compra>
+
+    //Obtener bloqueos de API.
+    @GET("bloqueos")
+    suspend fun obtenerBloqueos(
+        @Header("Authorization") token:String,
+    ):Response<List<Bloqueo>>
+
+    //Crea bloqueo de días en la API
+    @POST("bloqueos")
+    suspend fun crearBloqueo(
+        @Header("Authorization") token:String,
+        @Body bloqueo: Bloqueo
+    ):Response<Bloqueo>
+
+    //Obtener bloqueos por fecha
+    @GET("bloqueos")
+    suspend fun obtenerBloqueosPorFecha(
+        @Header("Authorization") token: String,
+        @Query("fecha") fecha: String
+    ): Response<List<Bloqueo>>
+
+    //Borra compras de la API
+    @DELETE("purchases/{id}")
+    suspend fun eliminarCompra(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Response<Unit>
 }

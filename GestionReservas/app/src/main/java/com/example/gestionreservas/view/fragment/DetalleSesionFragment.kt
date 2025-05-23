@@ -11,10 +11,13 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentDetalleSesionBinding
+import com.example.gestionreservas.databinding.FragmentHomeBinding
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.ItemReserva
 import com.example.gestionreservas.models.entity.Pago
@@ -25,13 +28,14 @@ import com.example.gestionreservas.viewModel.listado.DetalleSesion.DetalleSesion
 import com.example.gestionreservas.viewModel.listado.DetalleSesion.DetalleSesionViewModelFactory
 import java.net.URLEncoder
 
-class DetalleSesionFragment: Fragment(),OnClickListener {
+class DetalleSesionFragment : Fragment(), OnClickListener {
     private lateinit var binding: FragmentDetalleSesionBinding
     private lateinit var viewModel: DetalleSesionViewModel
 
     private var compra: Compra? = null
     private var reserva: ItemReserva? = null
     private var pago: Pago? = null
+
     /**
      * Este fragmento muestra los detalles de una sesión vinculada a una compra. Utiliza un ViewModel
      * para separar la lógica de datos (compra, reserva, pago), observar sus cambios y actualizar la vista.
@@ -54,13 +58,19 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         instancias()
         return binding.root
     }
+
+
+    /**
+     * Instancias necesarias del fragment
+     */
     @SuppressLint("SetTextI18n")
-    private fun instancias(){
+    private fun instancias() {
         observarDatos()
         configurarBotones()
         detectarScroll()
 
     }
+
 
     /**
      * Observa los datos del ViewModel (compra, reserva y pago) y actualiza la interfaz
@@ -86,6 +96,7 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         }
     }
 
+
     /**
      * Si los datos de la compra no son nulos los carga en los edits para modificarlos.
      */
@@ -108,6 +119,7 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         binding.tvDNI.setText("DNI: ${compra!!.dni}")
     }
 
+
     /**
      * Recorre los edits uno a uno activandolos,oculta boton editar y muestra el boton guardar.
      */
@@ -122,6 +134,7 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         binding.tvEditar.visibility = View.GONE
         binding.tvGuardar.visibility = View.VISIBLE
     }
+
     /**
      * Valida que los campos no esten vacios y actualiza la compra y sesion..
      */
@@ -137,10 +150,11 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         actualizarEditsAFalse()
 
     }
+
     /**
      * Recorre los edits uno a uno desactivandolos,oculta boton guardar y muestra el boton editar
      */
-    private fun actualizarEditsAFalse(){
+    private fun actualizarEditsAFalse() {
         listOf(
             binding.tvNombre, binding.tvTelefono, binding.tvEmail, binding.tvEstado,
             binding.tvFechaInicio, binding.tvFechaFin, binding.tvSala, binding.tvParticipantes,
@@ -182,22 +196,56 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
             start = binding.tvFechaInicio.text.toString().removePrefix("Inicio: ").trim()
             end = binding.tvFechaFin.text.toString().removePrefix("Fin: ").trim()
             idCalendario = binding.tvSala.text.toString().removePrefix("Sala: ").trim()
-            peopleNumber = binding.tvParticipantes.text.toString().removePrefix("Participantes: ").trim().toInt()
-            idExperience = binding.tvExperiencia.text.toString().removePrefix("Experiencia: ").trim()
+            peopleNumber =
+                binding.tvParticipantes.text.toString().removePrefix("Participantes: ").trim()
+                    .toInt()
+            idExperience =
+                binding.tvExperiencia.text.toString().removePrefix("Experiencia: ").trim()
         }
 
         pago?.apply {
-            amount = binding.tvTotalPagado.text.toString().removePrefix("Total pagado: ").removeSuffix(" €").trim().toDouble()
+            amount = binding.tvTotalPagado.text.toString().removePrefix("Total pagado: ")
+                .removeSuffix(" €").trim().toDouble()
             method = binding.tvMetodoPago.text.toString().removePrefix("Método de pago: ").trim()
         }
 
         val token = getTokenFromSharedPreferences() ?: return
-        Log.e("TOKEN",token)
+        Log.e("TOKEN", token)
         //Modifica la compra en la API al pinchar en guardar
         compra?.let {
             viewModel.modificarCompra(token, it,
-                onSuccess = { Toast.makeText(requireContext(), "Guardado correctamente", Toast.LENGTH_SHORT).show() },
-                onError = { msg -> Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show() }
+                onSuccess = {
+                    Toast.makeText(
+                        requireContext(),
+                        "Guardado correctamente",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                },
+                onError = { msg ->
+                    Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+                }
+            )
+        }
+    }
+
+    /**
+     * Obtiene el token,comprueba si la compra es nula y si no lo es llama al viewModel para cancelar la reserva,
+     * mostrará un mensaje de confirmación o error al realizarlo.
+     */
+    private fun cancelarReserva() {
+        val token = getTokenFromSharedPreferences() ?: return
+        compra?.let {
+            viewModel.cancelarReserva(token, it.id,
+                onSuccess = {
+                    Toast.makeText(
+                        requireContext(),
+                        "Reserva eliminada correctamente",
+                        Toast.LENGTH_LONG
+                    ).show()
+                },
+                onError = { msg ->
+                    Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+                }
             )
         }
     }
@@ -235,17 +283,61 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
             binding.tvGuardar.id -> desactivarEdits()
             binding.tvConfirmacion.id -> enviarConfirmacion()
             binding.tvWhatsapp.id -> enviarMensaje()
+            binding.tvCancelar.id -> mostrarDialogoCancelar()
         }
     }
+
+
+    /**
+     * Mostrar dialogo antes de cancelar reserva para asegurar más el borrado de datos de la API.
+     */
+    private fun mostrarDialogoCancelar() {
+
+        if (compra == null || reserva == null) {
+            Toast.makeText(requireContext(), "Error: No se puede cancelar la reserva. Datos incompletos.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Confirmación de cancelación de reserva")
+        builder.setMessage(
+            """¿Está seguro de que quiere cancelar la reserva? Se borrará el registro de la base de datos y no podrá recuperarlo.
+        
+        Nombre: ${compra?.name}
+        Teléfono: ${compra?.phone}
+        Email: ${compra?.mail}
+        DNI: ${compra?.dni}
+        Fecha Inicio: ${reserva?.start}
+        Fecha Fin: ${reserva?.end}
+        Id Compra: ${compra?.id}
+        """
+        )
+
+
+        builder.setPositiveButton("Sí") { _, _ ->
+            cancelarReserva()
+            volverHome()
+        }
+
+
+        builder.setNegativeButton("No") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        builder.create().show()
+    }
+
 
     /**
      * Obtiene el token de preferencias locales.
      */
     private fun getTokenFromSharedPreferences(): String? {
-        val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
+        val sharedPreferences =
+            requireActivity().getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("auth_token", null)
         return token?.let { "Bearer $it" }
     }
+
     @SuppressLint("SetTextI18n")
     /**
      * Si no hay compra se muestra este formulario vacio
@@ -276,12 +368,13 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
         binding.tvConfirmacion.setOnClickListener(this)
         binding.tvWhatsapp.setOnClickListener(this)
         binding.btnScrollSubir?.setOnClickListener(this)
+        binding.tvCancelar.setOnClickListener(this)
     }
 
     /**
      * Detecta si se hace scroll en la pantalla para mostrar botón de subir
      */
-    private fun detectarScroll(){
+    private fun detectarScroll() {
         binding.nestedScroll?.setOnScrollChangeListener { _, _, scrollY, _, _ ->
             if (scrollY > 200) {
                 binding.btnScrollSubir?.visibility = View.VISIBLE
@@ -289,5 +382,17 @@ class DetalleSesionFragment: Fragment(),OnClickListener {
                 binding.btnScrollSubir?.visibility = View.GONE
             }
         }
+    }
+
+    /**
+     * Vuelve al fragment home despues de eliminar la reserva
+     */
+    private fun volverHome(){
+        val fragment=HomeFragment()
+        val transaccion=parentFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_principal,fragment)
+        transaccion.commit()
+
     }
 }

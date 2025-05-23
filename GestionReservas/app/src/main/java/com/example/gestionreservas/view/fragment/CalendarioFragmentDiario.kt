@@ -6,15 +6,18 @@ import android.app.DatePickerDialog
 import android.content.Context.MODE_PRIVATE
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings.Global.putString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentCalendarioDiarioBinding
@@ -25,7 +28,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
 import androidx.lifecycle.lifecycleScope
-import com.example.gestionreservas.databinding.FragmentPostPurchaseBinding
+import com.example.gestionreservas.models.entity.Bloqueo
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.Ocupacion
 import com.example.gestionreservas.models.entity.Sesion
@@ -33,20 +36,23 @@ import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.models.repository.CalendarioRepository
 import com.example.gestionreservas.models.repository.CompraRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
+import com.example.gestionreservas.viewModel.listado.CalendarioDiario.CalendarioDiarioViewModel
+import com.example.gestionreservas.viewModel.listado.CalendarioDiario.CalendarioDiarioViewModelFactory
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 
-
-class CalendarioFragmentDiario: Fragment() ,OnClickListener{
+class CalendarioFragmentDiario : Fragment(), OnClickListener {
     private lateinit var binding: FragmentCalendarioDiarioBinding
     private val reservasPorDia: MutableMap<LocalDate, List<HoraReserva>> = mutableMapOf()
-    private lateinit var listaReservaHoras:ArrayList<HoraReserva>
+    private lateinit var listaReservaHoras: ArrayList<HoraReserva>
     private lateinit var adaptadorHoraReserva: AdaptadorHoraReserva
-    private var listaOcupaciones:List<Ocupacion> = mutableListOf()
     private val compraRepository = CompraRepository(RetrofitFakeInstance.apiFake)
     private val calendarioRepository = CalendarioRepository(RetrofitFakeInstance.apiFake)
-    @RequiresApi(Build.VERSION_CODES.O)
-    private var fechaActual: LocalDate = LocalDate.now()
+    private val fechasSeleccionadas = mutableListOf<LocalDate>()
+    private lateinit var viewModel: CalendarioDiarioViewModel
+
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -54,6 +60,11 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
         // Inflamos el layout del fragmento para que cargue la vista correctamente
         binding = FragmentCalendarioDiarioBinding.inflate(inflater, container, false)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Calendario Diario"
+
+        val factory = CalendarioDiarioViewModelFactory(compraRepository, calendarioRepository)
+        viewModel = ViewModelProvider(this, factory)[CalendarioDiarioViewModel::class.java]
+
+
         instancias()
         /*recibimos por argumentos de nuestro fragment semanal y mensual la fecha seleccionada
           si no es nula llamamos a la funcion actualizar fecha para obtener la
@@ -62,278 +73,325 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
          */
         val fechaString = arguments?.getString("fechaSeleccionada") ?: arguments?.getString("fecha")
         if (fechaString != null) {
-            fechaActual = LocalDate.parse(fechaString)
-            actualizarFecha()
+            val fecha = LocalDate.parse(fechaString)
+            viewModel.seleccionarFecha(fecha)
         } else {
-            obtenerFechaHoy()
+            viewModel.irAHoy()
         }
 
-        /* Lanza la mock para la fecha mostrada */
-        val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
-
-        cargarDesdeMock(fechaStr)
-
+        cargarObservers()
         return binding.root
     }
-
-     @RequiresApi(Build.VERSION_CODES.O)
-     fun instancias(){
-         //Obtenemos la fecha de hoy
-         obtenerFechaHoy()
-
-         //Instancias nuestro adaptador y recycler
-         listaReservaHoras = arrayListOf()
-         adaptadorHoraReserva = AdaptadorHoraReserva(requireContext(), listaReservaHoras
-         ) { hora: HoraReserva, calendarioId: String ->
-
-             /*Buscamos en nuestra lista ocupaciones si nuetro item coincide en hora y calendario
-                con el seleccionado.
-              */
-             val ocupacion = listaOcupaciones.find {
-                 it.start == hora.horaInicio && it.calendarioId == calendarioId
-
-             }
-             val token = getTokenFromSharedPreferences()
-             viewLifecycleOwner.lifecycleScope.launch {
-                 try {
-                     var compra: Compra? = null
-                     val sesion: Sesion
-                     val fragment: Fragment
-
-                     if (ocupacion != null && token != null) {
-
-                         // Buscamos la compra en la API y buscamos por su id para obtenerla
-                         val listaCompras = compraRepository.obtenerCompras(token)
-                         compra = listaCompras.find { it.id == ocupacion.idCompra }
-
-                         // Si hay compra se transforma sesión para usarlo en sesionConCompra
-                         sesion = if (compra != null) {
-                             transformarItemASesion(compra, ocupacion)
-                         } else {
-                             // Si no hay compra se pasan datos "vacíos"
-                             Sesion(
-                                 hora = hora.horaInicio,
-                                 calendario = calendarioId,
-                                 nombre = "",
-                                 participantes = 0,
-                                 totalPagado = 0.0,
-                                 estado = "sin_reserva",
-                                 idiomas = ""
-                             )
-                         }
-
-                         fragment = DetalleSesionFragment()
-
-                     } else {
-                         Log.d("DEBUG_COMPRAS", "se paso al else")
-                         // No hay ocupación: crear sesión vacía para pasarla a detalles
-                         sesion = Sesion(
-                             hora = hora.horaInicio,
-                             calendario = calendarioId,
-                             nombre = "",
-                             participantes = 0,
-                             totalPagado = 0.0,
-                             estado = "sin_reserva",
-                             idiomas = ""
-                         )
-
-                         fragment = PostPurchaseFragment()
-                     }
-
-                     // Creamos el objeto que combina la sesión y la compra (puede ser null)
-                     val compraSesion = SesionConCompra(sesion, compra)
-
-                     // Lo metemos en el bundle y se lo pasamos al fragmento
-                     val bundle = Bundle()
-                     bundle.putSerializable("sesionConCompra", compraSesion)
-                     fragment.arguments = bundle
-
-                     // Cambiamos al fragmento correspondiente
-                     cambiarFragment(fragment)
-
-                 } catch (e: Exception) {
-                     Log.e("CalendarioDiarioFragment", "Error navegando: ${e.message}")
-                 }
-             }
-
-
-         }
-         binding.recyclerHorasSalas.apply {
-             adapter = adaptadorHoraReserva
-             layoutManager = LinearLayoutManager(requireContext())
-         }
-
-         //Cargamos datos desde nuestro mock API
-         val hoyStr = fechaActual.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
-
-         cargarDesdeMock(hoyStr)
-
-         //Instancias click
-         binding.tvFlechaDerechaHoy.setOnClickListener(this)
-         binding.tvFlechaIzquierdaHoy.setOnClickListener(this)
-         binding.tvMes.setOnClickListener(this)
-         binding.btnZombieRoom.setOnClickListener(this)
-         binding.btnEscapeJungle.setOnClickListener(this)
-         binding.selectFecha.setOnClickListener(this)
-         binding.tvHoy.setOnClickListener(this)
-         binding.tvDiario.setOnClickListener(this)
-         binding.tvRecargar.setOnClickListener(this)
-         binding.tvSemana.setOnClickListener(this)
-         binding.btnBloquear.setOnClickListener(this)
-    }
-
-    /*Obtenemos nuestro token y con la fecha obtenida por parametros cargamos los datos del dia
-     despues actualizamos nuestro adaptador para notificarle que cambiaron los datos,esta funcion nos
-     vale cada vez que cambiemos de fecha
-    */
-    @SuppressLint("NewApi")
-    private fun cargarDesdeMock(fechaDDMM: String) {
-        val tkn = getTokenFromSharedPreferences() ?: return
-
-        val fechaAPI = try {
-            LocalDate.parse(fechaDDMM, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-        } catch (e: Exception) {
-            LocalDate.parse(fechaDDMM, DateTimeFormatter.ofPattern("yyyy/MM/dd"))
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun cargarObservers(){
+        viewModel.horas.observe(viewLifecycleOwner) {
+            adaptadorHoraReserva.actualizarLista(it)
         }
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            try {
-                val sesiones = compraRepository.obtenerSesionesDelDia(tkn, fechaAPI)
-
-                listaOcupaciones = sesiones.map {
-                    Ocupacion(
-                        experienciaId = it.compra?.items?.first()!!.idExperience,
-                        calendarioId = it.sesion.calendario,
-                        date = fechaAPI.toString(), // ISO: yyyy-MM-dd
-                        start = it.sesion.hora,
-                        end = calcularHoraFin(it.sesion.hora), // ahora lo vemos abajo
-                        idCompra = it.compra!!.id
-                    )
-                }
-
-                val listaHoras = calendarioRepository.transformarOcupacionesAHoraReserva(listaOcupaciones)
-                adaptadorHoraReserva.actualizarLista(listaHoras)
-
-            } catch (e: Exception) {
-                Log.e("CalendarioDiario", "Error en getSesionesDelDia: ${e.message}, usando fallback")
-
-                val fallback = calendarioRepository.obtenerOcupacionesDelDia(tkn, fechaAPI.format(DateTimeFormatter.ofPattern("yyyy/MM/dd")))
-                listaOcupaciones = fallback
-                val listaHoras = calendarioRepository.transformarOcupacionesAHoraReserva(listaOcupaciones)
-                adaptadorHoraReserva.actualizarLista(listaHoras)
+        viewModel.sesiones.observe(viewLifecycleOwner) {
+            // Si necesitas usarlas para algo, por ejemplo debug o lógica de detalle
+            Log.d("SesionesViewModel", "Cargadas ${it.size} sesiones")
+        }
+        viewModel.fechaActual.observe(viewLifecycleOwner) { fecha ->
+            actualizarFecha(fecha)
+            val token = getTokenFromSharedPreferences() ?: return@observe
+            viewModel.cargarSesionesDesdeMock(token, fecha)
+        }
+        viewModel.bloqueoExitoso.observe(viewLifecycleOwner) {
+            if (it) {
+                Toast.makeText(requireContext(), "Bloqueos guardados correctamente", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
-    //Este metodo obtiene la fecha actual y la asigna al textview tvFecha
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun obtenerFechaHoy(){
-        val fechaHoy = LocalDate.now()
-        val dia = fechaHoy.dayOfMonth
-        val mes = fechaHoy.month.getDisplayName(TextStyle.FULL, Locale("es", "ES"))
-        val anio = fechaHoy.year
-        val diaSemana = fechaHoy.dayOfWeek.getDisplayName(TextStyle.FULL, Locale("es", "ES"))
-        val fechaDiaSemana="${diaSemana.replaceFirstChar { it.titlecase(Locale("es", "ES")) }} $dia $mes $anio"
+    fun instancias() {
+        //Instancias nuestro adaptador y recycler
+        adaptadorYlogicaDetalles()
+        //Instancias click
+        instanciasListeners()
+    }
 
-        binding.tvFecha.text = fechaDiaSemana
+    /**
+     * Muestra un dialogo en donde el usuario decidirá si bloquear varios dias o solo uno.
+     * Se da la opción de cancelar el dialogo.
+     */
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun mostrarDialogoBloqueo() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("¿Cúantos días quieres bloquear?")
+            .setItems(arrayOf("Un solo día", "Varios días")) { _, which ->
+                when (which) {
+                    0 -> mostrarSelectorFecha(bloqueoUnico = true)
+                    1 -> mostrarSelectorFecha(bloqueoUnico = false)
+                }
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
+    }
+    private fun mostrarDialogoSalaYMotivo(onConfirmar: (List<String>, String?) -> Unit){
 
+    val salas = arrayOf("cal1", "cal2")
+        val seleccionadas = booleanArrayOf(true, true)
+
+        val layout = LinearLayout(requireContext()).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(50, 40, 50, 10)
+        }
+
+        val inputMotivo = EditText(requireContext()).apply {
+            hint = "Motivo (opcional)"
+        }
+
+        layout.addView(inputMotivo)
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Selecciona salas a bloquear")
+            .setMultiChoiceItems(salas, seleccionadas) { _, which, isChecked ->
+                seleccionadas[which] = isChecked
+            }
+            .setView(layout)
+            .setPositiveButton("Confirmar") { _, _ ->
+                val salasElegidas = salas.filterIndexed { index, _ -> seleccionadas[index] }
+                if (salasElegidas.isEmpty()) {
+                    // Evita continuar si no se selecciona ninguna sala
+                    Toast.makeText(requireContext(), "Debes seleccionar al menos una sala", Toast.LENGTH_SHORT).show()
+                    return@setPositiveButton
+                }
+                val motivo = inputMotivo.text.toString().ifBlank { null }
+                onConfirmar(salasElegidas, motivo)
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
+    }
+
+    /**
+     * Muestra el datePickerDialog para seleccionar fecha,si selecciono bloqueo de un ida muestra un resumen
+     * de las fechas seleccionadas,si no muestra otro dialogo hasta que decida no añadir mas fechas.
+     */
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun mostrarSelectorFecha(bloqueoUnico: Boolean) {
+        val hoy = LocalDate.now()
+        val picker = DatePickerDialog(requireContext(), { _, year, month, day ->
+            val fecha = LocalDate.of(year, month + 1, day)
+            if (!fechasSeleccionadas.contains(fecha)) {
+                fechasSeleccionadas.add(fecha)
+            }
+
+            if (bloqueoUnico) {
+                mostrarResumenFechasSeleccionadas()
+            } else {
+                mostrarDialogoContinuarSeleccion()
+            }
+
+        }, hoy.year, hoy.monthValue - 1, hoy.dayOfMonth)
+
+        picker.show()
+    }
+
+    /**
+     * Si seleccionó varias fechas se le muestra dialogo para continuar seleccionando o no,si pincha en no
+     * muestra resumen de fechas seleccionadas,si es si muestra otro datepicker para seleccionar otra fecha.
+     */
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun mostrarDialogoContinuarSeleccion() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("¿Seleccionar otra fecha?")
+            .setMessage("¿Quieres añadir otra fecha al bloqueo?")
+            .setPositiveButton("Sí") { _, _ -> mostrarSelectorFecha(bloqueoUnico = false) }
+            .setNegativeButton("No") { _, _ -> mostrarResumenFechasSeleccionadas() }
+            .show()
+    }
+
+    /**
+     * Dialogo que muestra las fechas seleccionadas para bloquear por el usuario,puede decidir si aceptar
+     * y las bloqueara o si decide cancelarlo.
+     */
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun mostrarResumenFechasSeleccionadas() {
+        if (fechasSeleccionadas.isEmpty()) return
+
+        mostrarDialogoSalaYMotivo { salasSeleccionadas, motivo ->
+            val mensaje = fechasSeleccionadas.joinToString("\n") { it.toString() }
+            val salasTexto = salasSeleccionadas.joinToString(", ")
+
+            AlertDialog.Builder(requireContext())
+                .setTitle("Confirmar bloqueo")
+                .setMessage("¿Quieres bloquear los siguientes días?\n\n$mensaje\n\nSalas: $salasTexto\nMotivo: ${motivo ?: "Sin especificar"}")
+                .setPositiveButton("Confirmar") { _, _ ->
+
+                    val listaBloqueos = mutableListOf<Bloqueo>()
+
+                    salasSeleccionadas.forEach { sala ->
+                        fechasSeleccionadas.forEach { fecha ->
+                            val bloqueo = Bloqueo(
+                                id = UUID.randomUUID().toString(),
+                                calendarioId = sala,
+                                fecha = fecha.toString(), // yyyy-MM-dd
+                                motivo = motivo
+                            )
+                            listaBloqueos.add(bloqueo)
+                        }
+                    }
+
+                    bloquearFechasSeleccionadas(listaBloqueos)
+                }
+                .setNegativeButton("Cancelar", null)
+                .show()
+        }
+    }
+
+    /**Obtenemos nuestro token y con la fecha obtenida por parametros cargamos los datos del dia
+     *despues actualizamos nuestro adaptador para notificarle que cambiaron los datos,esta funcion nos
+     *vale cada vez que cambiemos de fecha
+     */
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun adaptadorYlogicaDetalles() {
+        listaReservaHoras = arrayListOf()
+        adaptadorHoraReserva = AdaptadorHoraReserva(
+            requireContext(), listaReservaHoras
+        ) { hora: HoraReserva, calendarioId: String ->
+
+            /*Buscamos en nuestra lista ocupaciones si nuetro item coincide en hora y calendario
+               con el seleccionado.
+             */
+            val ocupacion = viewModel.obtenerOcupacion(hora.horaInicio, calendarioId)
+
+            val token = getTokenFromSharedPreferences()
+            if (token != null) {
+                viewModel.obtenerSesionConCompraDesdeOcupacion(token, hora.horaInicio, calendarioId, ocupacion)
+                    .observe(viewLifecycleOwner) { sesionConCompra ->
+                        val fragment: Fragment = if (sesionConCompra.compra != null) {
+                            DetalleSesionFragment()
+                        } else {
+                            PostPurchaseFragment()
+                        }
+
+                        val bundle = Bundle()
+                        bundle.putSerializable("sesionConCompra", sesionConCompra)
+                        fragment.arguments = bundle
+                        cambiarFragment(fragment)
+                    }
+            }
+        }
+        binding.recyclerHorasSalas.apply {
+            adapter = adaptadorHoraReserva
+            layoutManager = LinearLayoutManager(requireContext())
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun actualizarFecha(){
-        val diaSemana = fechaActual.dayOfWeek.getDisplayName(TextStyle.FULL, Locale("es", "ES"))
-        val dia = fechaActual.dayOfMonth
-        val mes = fechaActual.month.getDisplayName(TextStyle.FULL, Locale("es", "ES"))
-        val anio = fechaActual.year
+    private fun bloquearFechasSeleccionadas(bloqueos: List<Bloqueo>) {
+        val token = getTokenFromSharedPreferences() ?: return
 
+        val ocupaciones = viewModel.ocupaciones.value.orEmpty()
+        val bloqueosPorSala = bloqueos.groupBy { it.calendarioId }
+
+        val ocupacionesAEliminar = ocupaciones.filter { o ->
+            bloqueos.any { b -> b.fecha == o.date && b.calendarioId == o.calendarioId }
+        }
+
+        if (ocupacionesAEliminar.isNotEmpty()) {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Confirmar eliminación")
+                .setMessage("Se eliminarán ${ocupacionesAEliminar.size} reservas por conflicto con bloqueos. ¿Deseas continuar?")
+                .setPositiveButton("Sí") { _, _ ->
+                    lifecycleScope.launch {
+                        val ok = viewModel.bloquearYEliminar(requireContext(), token, bloqueos)
+                        if (ok) {
+                            Toast.makeText(requireContext(), "Bloqueos y eliminaciones aplicados", Toast.LENGTH_SHORT).show()
+                            val fechaActual = viewModel.fechaActual.value
+                            if (fechaActual != null) {
+                                viewModel.cargarSesionesDesdeMock(token, fechaActual)
+                            }
+                        }
+                    }
+                }
+                .setNegativeButton("Cancelar", null)
+                .show()
+        } else {
+            lifecycleScope.launch {
+                val ok = viewModel.bloquearYEliminar(requireContext(), token, bloqueos)
+                if (ok) {
+                    Toast.makeText(requireContext(), "Bloqueos aplicados sin conflictos", Toast.LENGTH_SHORT).show()
+                    val fechaActual = viewModel.fechaActual.value
+                    if (fechaActual != null) {
+                        viewModel.cargarSesionesDesdeMock(token, fechaActual)
+                    }
+                }
+            }
+        }
+
+        fechasSeleccionadas.clear()
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun actualizarFecha(fecha: LocalDate) {
+        val diaSemana = fecha.dayOfWeek.getDisplayName(TextStyle.FULL, Locale("es", "ES"))
+        val dia = fecha.dayOfMonth
+        val mes = fecha.month.getDisplayName(TextStyle.FULL, Locale("es", "ES"))
+        val anio = fecha.year
         val fechaFormateada = "${diaSemana.replaceFirstChar { it.titlecase(Locale("es", "ES")) }} $dia $mes $anio"
         binding.tvFecha.text = fechaFormateada
 
-        //Actualizamos reservas para dia seleccionado
-        val reservasDelDia = reservasPorDia[fechaActual] ?: emptyList()
+        val reservasDelDia = reservasPorDia[fecha] ?: emptyList()
         adaptadorHoraReserva.actualizarLista(reservasDelDia)
     }
+
     //Funciones on click de nuestro fragment
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onClick(v: View?) {
-
-        when(v?.id){
-
-            binding.tvFlechaIzquierdaHoy.id->{
-                fechaActual = fechaActual.minusDays(1)
-                actualizarFecha()
-                val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-                cargarDesdeMock(fechaStr)
-            }
-            binding.tvFlechaDerechaHoy.id->{
-                fechaActual = fechaActual.plusDays(1)
-                actualizarFecha()
-                val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-                cargarDesdeMock(fechaStr)
-            }
-            binding.tvMes.id->{
-                val fragment=CalendarioFragment()
-                cambiarFragment(fragment)
-            }
-            binding.btnZombieRoom.id->{
-                val bundle=Bundle()
-                bundle.putString("idExperience","exp_zombie_2")
+        when (v?.id) {
+            binding.tvFlechaIzquierdaHoy.id -> viewModel.retrocederDia()
+            binding.tvFlechaDerechaHoy.id -> viewModel.avanzarDia()
+            binding.tvHoy.id, binding.tvDiario.id -> viewModel.irAHoy()
+            binding.tvSemana.id -> cambiarFragment(CalendarioFragmentSemana())
+            binding.btnBloquear.id -> cambiarFragment(PostPurchaseFragment())
+            binding.btnBloqueoMasivo.id -> mostrarDialogoBloqueo()
+            binding.tvMes.id ->  cambiarFragment(CalendarioFragment())
+            binding.selectFecha.id ->  mostrarSeleccionFecha()
+            binding.btnZombieRoom.id -> {
+                val bundle = Bundle()
+                bundle.putString("idExperience", "exp_zombie_2")
                 bundle.putString("nombreExperience", "Zombie Room")
-                val fragment=ListadoFragment()
-                fragment.arguments=bundle
+                val fragment = ListadoFragment()
+                fragment.arguments = bundle
                 cambiarFragment(fragment)
             }
-            binding.btnEscapeJungle.id->{
-                val bundle=Bundle()
+            binding.btnEscapeJungle.id -> {
+                val bundle = Bundle()
                 bundle.putString("idExperience", "exp_jungle_1")
                 bundle.putString("nombreExperience", "Escape Jungle")
-                val fragment=ListadoFragment()
-                fragment.arguments=bundle
+                val fragment = ListadoFragment()
+                fragment.arguments = bundle
                 cambiarFragment(fragment)
             }
-            binding.selectFecha.id->{
+            binding.tvRecargar.id -> {
+                val token = getTokenFromSharedPreferences()
+                val fecha = viewModel.fechaActual.value
 
-                mostrarSeleccionFecha()
-            }
-            binding.tvHoy.id->{
-                volverDiaActual()
-            }
-            binding.tvDiario.id->{
-                volverDiaActual()
-            }
-            binding.tvSemana.id->{
-                val fragment=CalendarioFragmentSemana()
-                cambiarFragment(fragment)
-            }
-            binding.tvRecargar.id->{
-                val fechaStr = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-                cargarDesdeMock(fechaStr)
-            }
-            binding.btnBloquear.id->{
-                val fragment=PostPurchaseFragment()
-                cambiarFragment(fragment)
+                if (token != null && fecha != null) {
+                    viewModel.cargarSesionesDesdeMock(token, fecha)
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "No se pudo recargar. Token o fecha no disponibles.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
     }
-    //Volvemos al dia actual y se cargan los datos de ese dia
-    @SuppressLint("NewApi")
-    private fun volverDiaActual(){
-        fechaActual = LocalDate.now()
-        actualizarFecha()
-        val hoy = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-        cargarDesdeMock(hoy)
-    }
+
     //Muestra calendario en boton seleccionar fecha para elegir cualquier fecha
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("NewApi")
     private fun mostrarSeleccionFecha() {
         val hoy = LocalDate.now()
         DatePickerDialog(
             requireContext(),
             { _, y, m, d ->
-                fechaActual = LocalDate.of(y, m + 1, d)
-                actualizarFecha()
-                val diaSel = fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-                cargarDesdeMock(diaSel)         // ← solo mock
+                val seleccionada = LocalDate.of(y, m + 1, d)
+                viewModel.seleccionarFecha(seleccionada)
             },
             hoy.year, hoy.monthValue - 1, hoy.dayOfMonth
         ).show()
@@ -344,29 +402,26 @@ class CalendarioFragmentDiario: Fragment() ,OnClickListener{
         val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", MODE_PRIVATE)
         return sharedPreferences.getString("auth_token", null)
     }
-    fun transformarItemASesion(compra: Compra, ocupacion: Ocupacion): Sesion {
-        val item = compra.items.firstOrNull { it.id == ocupacion.idCompra } ?: compra.items.first()
-        return Sesion(
-            hora = item.start.substring(11, 16),
-            calendario = item.idCalendario,
-            nombre = compra.name,
-            participantes = item.peopleNumber,
-            totalPagado = item.priceTotal,
-            estado = compra.status,
-            idiomas = compra.language
-        )
-    }
-    private fun cambiarFragment(fragment:Fragment){
-        val transacion=parentFragmentManager.beginTransaction()
-        transacion.replace(R.id.fragment_principal,fragment)
+
+    private fun cambiarFragment(fragment: Fragment) {
+        val transacion = parentFragmentManager.beginTransaction()
+        transacion.replace(R.id.fragment_principal, fragment)
         transacion.addToBackStack(null)
         transacion.commit()
     }
-    fun calcularHoraFin(horaInicio: String): String {
-        val partes = horaInicio.split(":")
-        val hora = partes[0].toInt()
-        val minutos = partes[1].toInt()
-        val nuevaHora = String.format("%02d:%02d", (hora + 1) % 24, minutos)
-        return nuevaHora
+
+    private fun instanciasListeners() {
+        binding.tvFlechaDerechaHoy.setOnClickListener(this)
+        binding.tvFlechaIzquierdaHoy.setOnClickListener(this)
+        binding.tvMes.setOnClickListener(this)
+        binding.btnZombieRoom.setOnClickListener(this)
+        binding.btnEscapeJungle.setOnClickListener(this)
+        binding.selectFecha.setOnClickListener(this)
+        binding.tvHoy.setOnClickListener(this)
+        binding.tvDiario.setOnClickListener(this)
+        binding.tvRecargar.setOnClickListener(this)
+        binding.tvSemana.setOnClickListener(this)
+        binding.btnBloquear.setOnClickListener(this)
+        binding.btnBloqueoMasivo.setOnClickListener(this)
     }
 }
