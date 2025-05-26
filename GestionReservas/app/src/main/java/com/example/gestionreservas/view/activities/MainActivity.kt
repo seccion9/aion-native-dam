@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeLi
     /*Credenciales validas para obtener token,cambiar por llamar a funcion login comentada para insertar datos en edittest
      */
     fun hacerLogin() {
-        val intent: Intent = Intent(applicationContext, ReservasActivity::class.java)
+        val intent: Intent = Intent(this, ReservasActivity::class.java)
         //Credenciales validas para conexion con API
         val email = "75d3be3a6b0dc3c6770273c56c6f4bdb5cb8b426be9ac4044a0b377@aether.com"
         val password = "122f1bb7be0436316311bdd20367102e79ce6d954ef8f44bc95ae"
@@ -118,7 +118,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeLi
             val token =loginResponse.token
             saveTokenToSharedPreferences(token)
             Log.e("TOKEN GUARDADO","TOKEN: $token")
-
             withContext(Dispatchers.Main) {
                 delay(2000)
                 startActivity(Intent(applicationContext, ReservasActivity::class.java))

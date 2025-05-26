@@ -133,6 +133,7 @@ class ReservasActivity : AppCompatActivity() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         context.startActivity(intent)
     }
+
     private fun lanzarWorkerSiNotificacionesActivas() {
         val prefs = getSharedPreferences("ajustes", Context.MODE_PRIVATE)
         val notificacionesActivas = prefs.getBoolean("notificaciones_activadas", false)

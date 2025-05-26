@@ -300,4 +300,17 @@ object MailingRepository {
         val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
         return sdf.format(Date(millis))
     }
+    fun obtenerTokenGuardado(context: Context): TokenResponse {
+        val prefs = context.getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
+        val access = prefs.getString("access_token", null) ?: throw Exception("No hay token")
+        val refresh = prefs.getString("refresh_token", null)
+        return TokenResponse(
+            access,
+            3600,
+            refresh,
+            "Bearer",
+            "https://www.googleapis.com/auth/gmail.readonly"
+        )
+    }
+
 }

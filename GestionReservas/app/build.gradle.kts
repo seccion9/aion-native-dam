@@ -73,6 +73,14 @@ dependencies {
     implementation(libs.androidx.navigation.ui)
     implementation(libs.androidx.swiperefreshlayout)
 
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation ("io.mockk:mockk:1.13.5")
+    androidTestImplementation ("androidx.test.espresso:espresso-intents:3.6.1")
+    testImplementation ("com.squareup.okhttp3:mockwebserver:4.9.0")
+    androidTestImplementation("com.squareup.okhttp3:mockwebserver:4.9.0")
+    androidTestImplementation ("androidx.test.espresso:espresso-contrib:3.5.1")
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
@@ -26,6 +25,7 @@ import com.example.gestionreservas.databinding.FragmentMailingBinding
 import com.example.gestionreservas.model.CorreoItem
 import com.example.gestionreservas.models.entity.TokenResponse
 import com.example.gestionreservas.repository.MailingRepository
+import com.example.gestionreservas.repository.MailingRepository.obtenerTokenGuardado
 import com.example.gestionreservas.view.adapter.AdaptadorCorreo
 import com.example.gestionreservas.viewModel.listado.Mailing.MailingViewModel
 import com.example.gestionreservas.viewModel.listado.Mailing.MailingViewModelFactory
@@ -105,7 +105,8 @@ class MailingFragment : Fragment(), View.OnClickListener {
         binding.recyclerCorreos.adapter = adaptadorCorreo
 
         // Comprobar si ya hay cuenta conectada
-        GoogleSignIn.getLastSignedInAccount(requireContext())?.let {
+        val prefs = requireContext().getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
+        if (prefs.getBoolean("sesion_activa", false)) {
             inicializarCorreoConCuentaGuardada()
         }
         //Llamada a funciones de refrescar y activar animación
@@ -114,44 +115,58 @@ class MailingFragment : Fragment(), View.OnClickListener {
 
         observersViewModel()
     }
-    private fun observersViewModel(){
+
+    private fun observersViewModel() {
         mailingViewModel.sesionCerrada.observe(viewLifecycleOwner) { cerrada ->
             if (cerrada) {
                 cerrarSesion()
-                mailingViewModel.resetearEstadoSesionCerrada()
             }
         }
+        mailingViewModel.listaCorreos.observe(viewLifecycleOwner) { lista ->
+            if (lista != null) {
+                mostrarListaCorreos(lista)
+                binding.btnLogin.visibility = View.GONE
+                binding.btnCerrarSesion.visibility = View.VISIBLE
+                binding.recyclerCorreos.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.GONE
+            }
+        }
+        mailingViewModel.tokenResponse.observe(viewLifecycleOwner) { nuevoToken ->
+            if (nuevoToken != null) {
+                token = nuevoToken
+                mailingViewModel.recargarCorreosDesdeToken(token)
+            } else {
+                Log.d("MailingFragment", "Token reseteado a null")
+            }
+        }
+        mailingViewModel.cargando.observe(viewLifecycleOwner) { cargando ->
+            val esInicial = mailingViewModel.modoCargaInicial.value ?: false
+            binding.progressBar.visibility = if (cargando && esInicial) View.VISIBLE else View.GONE
+            isLoading = cargando
+        }
+        mailingViewModel.mensajeSeleccionado.observe(viewLifecycleOwner) { mensaje ->
+            val fragment = DetallesCorreoFragment().apply {
+                arguments = Bundle().apply {
+                    putSerializable("mensaje", mensaje)
+                }
+            }
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_principal, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
+
     }
+
     /**
      * Detecta si se hace click en el item del adaptador y le pasa por argumentos al siguiente fragment
      * los datos completos del mensaje para poder mostrarlos en el.
      */
     private fun irFragmentDetalles(): AdaptadorCorreo {
-        val adapter = AdaptadorCorreo(requireContext(), listaTotalCorreos) { mensaje: CorreoItem ->
-            lifecycleScope.launch {
-                try {
-
-                    val mensajeDetallado = MailingRepository.getMensajeDetalle(token, mensaje.id)
-                    val mensajeDepurado =
-                        MailingRepository.depurarMensajeParaObtenerDetalles(mensajeDetallado)
-
-                    val fragment = DetallesCorreoFragment()
-                    val bundle = Bundle()
-                    bundle.putSerializable("mensaje", mensajeDepurado)
-                    fragment.arguments = bundle
-                    val transacion = parentFragmentManager
-                        .beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.fragment_principal, fragment)
-                    transacion.commit()
-
-                } catch (e: Exception) {
-                    Log.e("MailingFragment", "Error al obtener los detalles completos del mensaje ${e.message}")
-                }
-            }
-
+        return AdaptadorCorreo(requireContext(), listaTotalCorreos) { mensaje ->
+            mailingViewModel.obtenerDetalleCorreo(mensaje.id,requireContext())
         }
-        return adapter
     }
 
     //Configuracion del inicio de sesion de gmail con nuestro id de cliente y la ruta a la api
@@ -176,7 +191,7 @@ class MailingFragment : Fragment(), View.OnClickListener {
             }
 
             binding.btnCerrarSesion.id -> {
-               cerrarSesion()
+                mailingViewModel.logout(requireContext())
             }
         }
     }
@@ -192,20 +207,10 @@ class MailingFragment : Fragment(), View.OnClickListener {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             if (task.isSuccessful) {
                 task.result?.serverAuthCode?.let { authCode ->
-                    binding.progressBar.visibility = View.VISIBLE
-                    binding.recyclerCorreos.visibility = View.GONE
                     lifecycleScope.launch {
                         try {
-                            val listaCorreos = MailingRepository.loginYObtenerCorreos(authCode, requireContext())
-
-                            // Obtenemos el token después de haberlo guardado
-                            token = obtenerTokenGuardado()
+                            mailingViewModel.hacerLoginYobtenerCorreos(authCode, requireContext())
                             nextPageToken = null
-                            mostrarListaCorreos(listaCorreos)
-                            binding.btnLogin.visibility = View.GONE
-                            binding.btnCerrarSesion.visibility = View.VISIBLE
-                            binding.recyclerCorreos.visibility = View.VISIBLE
-                            binding.progressBar.visibility = View.GONE
                             Toast.makeText(
                                 requireContext(),
                                 "Login y correos OK",
@@ -230,7 +235,6 @@ class MailingFragment : Fragment(), View.OnClickListener {
             }
         }
     }
-
     /**
      * Recibe la nueva lista y se la añade al adaptador para mostrarla,Añadimos animación al recycler para
      * opcion de refresh.
@@ -242,7 +246,8 @@ class MailingFragment : Fragment(), View.OnClickListener {
         adaptadorCorreo.actualizarListaCompleta(nuevaLista)
         adaptadorCorreo.notifyDataSetChanged()
 
-        val controller = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_slide_down)
+        val controller =
+            AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_slide_down)
         binding.recyclerCorreos.layoutAnimation = controller
         binding.recyclerCorreos.scheduleLayoutAnimation()
         Log.d("DEBUG", "Mostrando lista con ${nuevaLista.size} correos")
@@ -253,39 +258,11 @@ class MailingFragment : Fragment(), View.OnClickListener {
      * el fragment.
      */
     private fun cargarPaginaSiguiente() {
-        isLoading = true
-        binding.progressBar.visibility = View.VISIBLE
-        binding.recyclerCorreos.visibility = View.VISIBLE
-        lifecycleScope.launch {
-            try {
-                val (nuevosCorreos, nuevaToken) = MailingRepository.obtenerMensajesPagina(token, pageToken = null)
-                nextPageToken = nuevaToken
-                mostrarListaCorreos(nuevosCorreos)
-            } catch (e: Exception) {
-                Log.e("MailingFragment", "Error en paginación: ${e.message}")
-            } finally {
-                isLoading = false
-                binding.progressBar.visibility = View.GONE
-            }
-        }
+        mailingViewModel.tokenResponse.value?.let {
+            mailingViewModel.cargarPaginaSiguiente(it)
+        } ?: Log.e("MailingFragment", "Token nulo")
     }
 
-
-    /**Metodo para obtener token gmail guardado de shared preferences,devuelve un token response con
-     * la expiracion,token de acceso  y el resfresh del token
-     */
-    private fun obtenerTokenGuardado(): TokenResponse {
-        val prefs = requireContext().getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
-        val access = prefs.getString("access_token", null) ?: throw Exception("No hay token")
-        val refresh = prefs.getString("refresh_token", null)
-        return TokenResponse(
-            access,
-            3600,
-            refresh,
-            "Bearer",
-            "https://www.googleapis.com/auth/gmail.readonly"
-        )
-    }
 
     /**
      * Metodo que inicia sesion directamente si hay cuenta guardada y muestra los correos,se oculta
@@ -295,10 +272,15 @@ class MailingFragment : Fragment(), View.OnClickListener {
         binding.btnLogin.visibility = View.GONE
         binding.btnCerrarSesion.visibility = View.VISIBLE
         if (showProgressBar) binding.progressBar.visibility = View.VISIBLE
+
         binding.recyclerCorreos.visibility = View.VISIBLE
         requireActivity().invalidateOptionsMenu()
         lifecycleScope.launch {
             try {
+                val tokenGuardado = obtenerTokenGuardado(requireContext())
+                token = tokenGuardado
+                mailingViewModel.recargarCorreosDesdeToken(tokenGuardado, esInicial = true)
+
                 obtenerCorreosAlHacerScroll()
             } catch (e: Exception) {
                 Log.e("MailingFragment", "Error cargando correos: ${e.message}")
@@ -319,14 +301,8 @@ class MailingFragment : Fragment(), View.OnClickListener {
     /**
      * Detecta si hacemos scroll en el listener para llamar a obtener mensajes página y mostrarlos.
      */
-    private suspend fun obtenerCorreosAlHacerScroll() {
-        //Obtenemos token  y cargamos los correos
-        token = obtenerTokenGuardado()
-        val (lista, tokenInicial) = MailingRepository.obtenerMensajesPagina(token)
-        Log.d("DEBUG", "Correos obtenidos en scroll: ${lista.size}")
-        nextPageToken = tokenInicial
-        mostrarListaCorreos(lista)
-        //Detectamos si el usuario hace scroll,si lo hace se carga la siguiente pagina de correos
+    private fun obtenerCorreosAlHacerScroll() {
+        token = mailingViewModel.tokenResponse.value ?: return
         binding.recyclerCorreos.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -334,11 +310,13 @@ class MailingFragment : Fragment(), View.OnClickListener {
                 val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
                 val totalItemCount = layoutManager.itemCount
 
-                if (!isLoading && nextPageToken != null && lastVisibleItem >= totalItemCount - 2) {
+                if (!isLoading && lastVisibleItem >= totalItemCount - 2) {
                     cargarPaginaSiguiente()
                 }
             }
         })
+
+        mailingViewModel.cargarPaginaSiguiente(token)
     }
 
     /**
@@ -346,25 +324,33 @@ class MailingFragment : Fragment(), View.OnClickListener {
      * Refresca el menú tambien para que no aparezca la opción de buscar.
      */
     private fun cerrarSesion() {
-        mailingViewModel.logout(requireContext())
         listaTotalCorreos.clear()
-            adaptadorCorreo.notifyDataSetChanged()
-            binding.btnLogin.visibility = View.VISIBLE
-            binding.btnCerrarSesion.visibility = View.GONE
-            binding.recyclerCorreos.visibility = View.GONE
-            nextPageToken = null
-            Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()
-            requireActivity().invalidateOptionsMenu()
+        adaptadorCorreo.notifyDataSetChanged()
+        binding.btnLogin.visibility = View.VISIBLE
+        binding.btnCerrarSesion.visibility = View.GONE
+        binding.recyclerCorreos.visibility = View.GONE
+        nextPageToken = null
+
+        googleSignInClient.signOut()
+        binding.swipeRefresh.isRefreshing = false
+        binding.recyclerCorreos.clearOnScrollListeners()
+
+        Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()
+        requireActivity().invalidateOptionsMenu()
+
+        mailingViewModel.resetearEstadoSesionCerrada()
+        mailingViewModel.resetToken()
+
 
     }
 
     /**
      * Detecta si se refresco elrecycler view tirando hacia debajo y se cargan los nuevos correos
      */
-    private fun refrescarCorreos(){
+    private fun refrescarCorreos() {
         binding.swipeRefresh.setOnRefreshListener {
-            binding.recyclerCorreos.visibility = View.GONE
-           inicializarCorreoConCuentaGuardada(showProgressBar = false)
+            binding.swipeRefresh.isRefreshing = true
+            inicializarCorreoConCuentaGuardada(showProgressBar = false)
         }
     }
 
@@ -374,58 +360,9 @@ class MailingFragment : Fragment(), View.OnClickListener {
      */
     @SuppressLint("ClickableViewAccessibility")
     private fun activarAnimacionStretch() {
-        val recyclerView = binding.recyclerCorreos
-        val swipeRefresh = binding.swipeRefresh
-
-        var startY = 0f
-        var isDragging = false
-        var isRefreshing = false
-        val refreshThreshold = 120f
-
-        val layoutManager = recyclerView.layoutManager as? LinearLayoutManager
-        val firstVisibleItem = layoutManager?.findFirstCompletelyVisibleItemPosition() ?: -1
-
-        recyclerView.setOnTouchListener { v, event ->
-
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    startY = event.y
-                    isDragging = false
-                    isRefreshing = false
-                }
-                MotionEvent.ACTION_MOVE -> {
-                    val dy = event.y - startY
-                    // SOLO cuando estás arriba del todo (primer item visible == 0)
-                    val canScrollUp = recyclerView.canScrollVertically(-1)
-                    if (dy > 0 && !canScrollUp && firstVisibleItem == 0 && !swipeRefresh.isRefreshing) {
-                        isDragging = true
-                        for (i in 0 until recyclerView.childCount) {
-                            val child = recyclerView.getChildAt(i)
-                            child.translationY = dy / 2
-                        }
-                        if (dy > refreshThreshold) {
-                            isRefreshing = true
-                        }
-                        return@setOnTouchListener true
-                    }
-                }
-                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                    if (isDragging) {
-                        for (i in 0 until recyclerView.childCount) {
-                            val child = recyclerView.getChildAt(i)
-                            child.animate().translationY(0f).setDuration(300).start()
-                        }
-                        if (isRefreshing) {
-                            // Refrescar sólo si arrastraste suficiente y desde arriba
-                            binding.recyclerCorreos.visibility = View.GONE
-                            inicializarCorreoConCuentaGuardada(showProgressBar = false)
-                        }
-                        isDragging = false
-                        isRefreshing = false
-                    }
-                }
-            }
-            false
+        binding.swipeRefresh.setOnRefreshListener {
+            binding.swipeRefresh.isRefreshing = true
+            inicializarCorreoConCuentaGuardada(showProgressBar = false)
         }
     }
 
