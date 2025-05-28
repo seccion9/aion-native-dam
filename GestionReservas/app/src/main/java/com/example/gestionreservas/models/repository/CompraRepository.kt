@@ -3,10 +3,12 @@ package com.example.gestionreservas.models.repository
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.gestionreservas.models.entity.Comentario
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.Sesion
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.network.ApiServiceFake
+import com.example.gestionreservas.network.RetrofitFakeInstance
 import retrofit2.Response
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -25,7 +27,31 @@ class CompraRepository(private val api: ApiServiceFake) {
             throw Exception("Error modificando compra: ${response.code()} - ${response.message()}")
         }
     }
+    suspend fun obtenerComentariosUsuario(token: String): List<Comentario>? {
+        return try {
+            val response = api.obtenerComentarios(token)
+            if (response.isSuccessful) {
+                response.body()
+            } else {
+                Log.e("API_COMENTARIOS", "Error: ${response.code()} - ${response.errorBody()?.string()}")
+                null
+            }
+        } catch (e: Exception) {
+            Log.e("API_COMENTARIOS", "Excepción: ${e.message}")
+            null
+        }
+    }
 
+    suspend fun registrarComentarioAPI(token:String,comentario: Comentario):Boolean{
+        Log.e("TOKEN_COMENTARIO", "Token usado: $token")
+
+        val response=api.registrarComentario(token,comentario)
+        if(response.isSuccessful){
+            return true
+        }else {
+            throw Exception("Error registrando comentario: ${response.code()} - ${response.message()}")
+        }
+    }
     /**
      * Obtiene las compras del dia(sesiones) a través del token de shared preferences y el dia seleccionado.
      */
@@ -91,31 +117,33 @@ class CompraRepository(private val api: ApiServiceFake) {
     fun transformarComprasASesiones(compras: List<Compra>, fechaSeleccionada: LocalDate): List<SesionConCompra> {
         val sesiones = mutableListOf<SesionConCompra>()
         Log.d("SESIONES", "Fecha seleccionada: $fechaSeleccionada")
-        compras.forEach { compra ->
-            compra.items.forEach { item ->
-                val fechaItem = LocalDate.parse(item.start.substring(0, 10))
-                Log.d("SESIONES", "Evaluando compra de ${compra.name}")
-                Log.d("SESIONES", "Fecha del item: $fechaItem vs seleccionada: $fechaSeleccionada")
 
-                if (fechaItem == fechaSeleccionada) {
+        compras.forEach { compra ->
+            compra.items
+                .filter { item ->
+                    val fechaItem = LocalDate.parse(item.start.substring(0, 10))
+                    val confirmada = item.status.equals("confirmada", ignoreCase = true)
+                    val fechaCoincide = fechaItem == fechaSeleccionada
+                    confirmada && fechaCoincide
+                }
+                .forEach { item ->
                     val sesion = Sesion(
                         hora = item.start.substring(11, 16),
                         calendario = item.idCalendario,
                         nombre = compra.name,
                         participantes = item.peopleNumber,
                         totalPagado = item.priceTotal,
-                        estado = compra.status,
+                        estado = item.status,
                         idiomas = compra.language
                     )
                     sesiones.add(SesionConCompra(sesion, compra))
-                    Log.d("SESIONES", "Añadida sesión de ${compra.name} a las $fechaItem")
-                } else {
-                    Log.d("SESIONES", "No coincide la fecha del item con la seleccionada")
+                    Log.d("SESIONES", "Añadida sesión confirmada de ${compra.name} a las ${item.start}")
                 }
-            }
         }
+
         return sesiones
     }
+
 
 
     /**
@@ -133,40 +161,6 @@ class CompraRepository(private val api: ApiServiceFake) {
      */
     suspend fun registrarCompra(token: String, compra: Compra): Response<Compra> {
         return api.registrarCompra("Bearer $token", compra)
-    }
-
-
-    /**
-     * Permite enviar añadir un comentario a la compra(reserva) del cliente para posteriormente en otro método
-     * enviarle un mensaje con los cambios en su compra.
-     */
-    suspend fun enviarComentarioACompra(token: String, listaCompras: List<Compra>, lineaSeleccionada: String, comentario: String, motivo: String): Compra? {
-        val partes = lineaSeleccionada.split("|")
-        val fecha = partes[0]
-        val nombre = partes[1]
-        val calendario = partes[2]
-        val id = partes[3]
-
-        var compraEncontrada: Compra? = null
-
-        listaCompras.forEach { compra ->
-            if (compra.id == id && compra.name == nombre) {
-                compra.items.forEach { item ->
-                    val horaItem = item.start.substring(11, 16)
-                    if (horaItem == fecha && item.idCalendario == calendario) {
-                        compraEncontrada = compra
-                    }
-                }
-            }
-        }
-
-        compraEncontrada?.let {
-            it.comment = "$motivo : $comentario"
-            val exito = modificarCompra(token, it)
-            return if (exito) it else null
-        }
-
-        return null
     }
 
 

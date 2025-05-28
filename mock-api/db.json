@@ -3,6 +3,7 @@
     {
       "id": 1,
       "email": "admin@aether.com",
+      "nombre": "Sergio Gómez",
       "password": "1234",
       "token": "fake-token-abc123",
       "fcmToken": "prueba123"
@@ -8038,59 +8039,58 @@
       "direction": "Calle Ejemplo 123",
       "language": "en",
       "ip": "192.168.1.10",
-      "comment": "",
+      "comment": "Cancelacion : cancelacion",
       "automaticActions": "",
       "items": [
         {
-          "id": "56443d4e-2f1a-47e3-abce-21a4ccdb2355",
-          "idExperience": "2",
-          "idCalendario": "cal2",
-          "idBusinessUnit": null,
-          "status": "pendiente",
-          "internaPermanent": false,
-          "start": "2025-05-26 10:00:00",
-          "end": "2025-05-26 11:00:00",
-          "duration": 60,
-          "peopleNumber": 5,
-          "priceOriginal": 120,
-          "priceTotal": 120,
-          "priceFractioned": 60,
           "discountAmount": 0,
+          "duration": 60,
+          "end": "2025-05-26 11:00:00",
           "fields": [
             {
+              "amount": 0,
               "id": "9253bade-fa8c-4b35-9a85-13d0951d40a9",
-              "title": "Idioma",
               "name": "language",
-              "value": "Spanish",
-              "amount": 0
+              "title": "Idioma",
+              "value": "Spanish"
             },
             {
+              "amount": 10.5,
               "id": "b5e32c89-d147-43e5-9aae-49f299d26377",
-              "title": "Monitor",
               "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
+              "title": "Monitor",
+              "value": "1 pax"
             }
-          ]
+          ],
+          "id": "56443d4e-2f1a-47e3-abce-21a4ccdb2355",
+          "idCalendario": "cal2",
+          "idExperience": "2",
+          "internaPermanent": false,
+          "peopleNumber": 5,
+          "priceFractioned": 60,
+          "priceOriginal": 120,
+          "priceTotal": 120,
+          "start": "2025-05-26 10:00:00",
+          "status": "pendiente"
         }
       ],
       "payments": [
         {
-          "id": "581ad522-37ab-4a82-aeaa-76a9410567ac",
           "amount": 120,
+          "id": "581ad522-37ab-4a82-aeaa-76a9410567ac",
           "method": "Bizum"
         }
       ],
       "resumenItems": [
         {
-          "id": "56443d4e-2f1a-47e3-abce-21a4ccdb2355",
-          "id_experience": "2",
-          "id_calendario": "cal2",
-          "start": "2025-05-26 10:00:00",
           "end": "2025-05-26 11:00:00",
+          "id": "56443d4e-2f1a-47e3-abce-21a4ccdb2355",
+          "id_calendario": "cal2",
+          "id_experience": "2",
           "people_number": 5,
+          "price_fractioned": 60,
           "price_original": 120,
-          "price_fractioned": 60
+          "start": "2025-05-26 10:00:00"
         }
       ],
       "userId": "1"
@@ -8335,7 +8335,7 @@
       "priceAfterDiscount": 90,
       "priceFractioned": 45,
       "isFractioned": false,
-      "name": "Sofía López",
+      "name": "Sofía Perez",
       "mail": "cliente@example.com",
       "dni": "00000000X",
       "phone": "600123456",
@@ -8346,55 +8346,54 @@
       "automaticActions": "",
       "items": [
         {
-          "id": "f74b85f0-483d-4242-b4a0-7fb764e75f4f",
-          "idExperience": "1",
-          "idCalendario": "cal1",
-          "idBusinessUnit": null,
-          "status": "pendiente",
-          "internaPermanent": false,
-          "start": "2025-05-28 10:00:00",
-          "end": "2025-05-28 11:00:00",
-          "duration": 60,
-          "peopleNumber": 4,
-          "priceOriginal": 90,
-          "priceTotal": 90,
-          "priceFractioned": 45,
           "discountAmount": 0,
+          "duration": 60,
+          "end": "2025-05-28 11:00:00",
           "fields": [
             {
+              "amount": 0,
               "id": "9253bade-fa8c-4b35-9a85-13d0951d40a9",
-              "title": "Idioma",
               "name": "language",
-              "value": "Spanish",
-              "amount": 0
+              "title": "Idioma",
+              "value": "Spanish"
             },
             {
+              "amount": 10.5,
               "id": "b5e32c89-d147-43e5-9aae-49f299d26377",
-              "title": "Monitor",
               "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
+              "title": "Monitor",
+              "value": "1 pax"
             }
-          ]
+          ],
+          "id": "f74b85f0-483d-4242-b4a0-7fb764e75f4f",
+          "idCalendario": "cal1",
+          "idExperience": "1",
+          "internaPermanent": false,
+          "peopleNumber": 4,
+          "priceFractioned": 45,
+          "priceOriginal": 90,
+          "priceTotal": 90,
+          "start": "2025-05-28 10:00:00",
+          "status": "pendiente"
         }
       ],
       "payments": [
         {
-          "id": "963f71c6-62c2-45e9-9921-19d7aa68b8dc",
           "amount": 90,
+          "id": "963f71c6-62c2-45e9-9921-19d7aa68b8dc",
           "method": "Bizum"
         }
       ],
       "resumenItems": [
         {
-          "id": "f74b85f0-483d-4242-b4a0-7fb764e75f4f",
-          "id_experience": "1",
-          "id_calendario": "cal1",
-          "start": "2025-05-28 10:00:00",
           "end": "2025-05-28 11:00:00",
+          "id": "f74b85f0-483d-4242-b4a0-7fb764e75f4f",
+          "id_calendario": "cal1",
+          "id_experience": "1",
           "people_number": 4,
+          "price_fractioned": 45,
           "price_original": 90,
-          "price_fractioned": 45
+          "start": "2025-05-28 10:00:00"
         }
       ],
       "userId": "1"
@@ -17787,18 +17786,12 @@
   ],
   "paymentsCajaChica": [
     {
-      "id": "1",
-      "fecha": "2025-05-09",
-      "concepto": "Reembolso de cambio monitor",
-      "cantidad": 20,
-      "tipo": "Ingreso"
-    },
-    {
-      "id": "2",
-      "fecha": "2025-05-09",
-      "concepto": "Caja manual",
-      "cantidad": 15,
-      "tipo": "Ingreso"
+      "cantidad": "120",
+      "concepto": "sofia",
+      "fecha": "2025-05-28",
+      "parcial": "",
+      "tipo": "Manual",
+      "id": 1
     }
   ],
   "bloqueos": [
@@ -17887,6 +17880,142 @@
       "fecha": "2025-05-24",
       "id": "4aebb9b4-ee73-4412-8a00-9c45bc00dd65",
       "motivo": "cancelación "
+    },
+    {
+      "calendarioId": "cal1",
+      "fecha": "2025-05-27",
+      "id": "b3d8fe43-0aae-4cc2-991d-7ad89840161f",
+      "motivo": "obras"
+    }
+  ],
+  "comentarios": [
+    {
+      "descripcion": "prueba",
+      "fecha": "2025-05-28 08:04",
+      "id": "8cf9c10f-131a-4896-916f-a1f4a428c5d1",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 2",
+      "fecha": "2025-05-28 08:06",
+      "id": "7c6838ff-da0a-4adc-9076-f74c6c3636c7",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 3",
+      "fecha": "2025-05-28 08:06",
+      "id": "92ee5067-10ee-4e35-bc91-e0edf95d1921",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "hacha rota sala 1",
+      "fecha": "2025-05-28 10:08",
+      "id": "1a5109f7-ffe1-402b-bc44-05211e272e1c",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 4",
+      "fecha": "2025-05-28 10:09",
+      "id": "b806cc32-7e74-48d2-bfed-ea8a04354039",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 5",
+      "fecha": "2025-05-28 10:09",
+      "id": "96c4179a-73ed-4b60-8dc8-d79e04b1394c",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 1 dia 27",
+      "fecha": "2025-05-28 08:33",
+      "id": "d740e438-2878-41a3-8627-d8fffff4a98d",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 2 dia 27",
+      "fecha": "2025-05-27 08:36",
+      "id": "4c8da3e8-b144-4e43-8814-6a52982c3a51",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "diana rota sala 1",
+      "fecha": "2025-05-24 09:53",
+      "id": "6a0b848b-c90d-4fc1-b8f1-78692fac064a",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "diana arreglada sala 1",
+      "fecha": "2025-05-24 09:54",
+      "id": "7c3a5c27-4948-4927-9fae-170dc4fd2378",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "diana 1 arreglada",
+      "fecha": "2025-05-27 09:56",
+      "id": "1cfbb319-8db0-43be-9ec7-5267cffc66be",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 3",
+      "fecha": "2025-05-27 10:00",
+      "id": "7dfe167b-3a6b-469a-9fbf-2244eddf0348",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba ",
+      "fecha": "2025-05-26 10:02",
+      "id": "0005db5d-0ddd-44fb-819a-c5b6fd33add2",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 2",
+      "fecha": "2025-05-26 10:03",
+      "id": "be4678fc-9304-4176-9d1f-ec55b4918b6b",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 3",
+      "fecha": "2025-05-26 10:18",
+      "id": "7fae0cfb-9dfe-486d-93d9-eb3021e55872",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 4",
+      "fecha": "2025-05-26 10:23",
+      "id": "66558e5b-9386-4282-8791-fb080e0d9594",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
     }
   ]
 }

@@ -33,8 +33,9 @@ class MailingViewModel(
     private val _modoCargaInicial = MutableLiveData<Boolean>()
     val modoCargaInicial: LiveData<Boolean> get() = _modoCargaInicial
 
-    private val _mensajeSeleccionado = MutableLiveData<CorreoItem>()
-    val mensajeSeleccionado: LiveData<CorreoItem> get() = _mensajeSeleccionado
+    private val _mensajeSeleccionado = MutableLiveData<CorreoItem?>()
+    val mensajeSeleccionado: LiveData<CorreoItem?> get() = _mensajeSeleccionado
+
 
     fun obtenerDetalleCorreo(idMensaje: String,context: Context) {
         viewModelScope.launch {
@@ -133,4 +134,8 @@ class MailingViewModel(
     fun resetToken() {
         _tokenResponse.value = null
     }
+    fun limpiarMensajeSeleccionado() {
+        _mensajeSeleccionado.value = null
+    }
+
 }

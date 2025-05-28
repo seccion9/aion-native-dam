@@ -4,56 +4,46 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
-import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.util.TypedValue
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.TableLayout
-import android.widget.TableRow
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentHomeBinding
-import com.example.gestionreservas.models.entity.Compra
-import com.example.gestionreservas.models.entity.ItemReserva
-import com.example.gestionreservas.models.entity.PagoCaja
-import com.example.gestionreservas.models.entity.Sesion
+import com.example.gestionreservas.models.entity.Comentario
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.models.repository.CajaChicaRepository
 import com.example.gestionreservas.models.repository.CompraRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
-import com.example.gestionreservas.network.RetrofitInstance
 import com.example.gestionreservas.utils.TablaBuilder
-import com.example.gestionreservas.utils.TablaBuilder.crearCelda
-import kotlinx.coroutines.Dispatchers
+import com.example.gestionreservas.view.adapter.AdaptadorCompra
+import com.example.gestionreservas.viewModel.listado.Home.HomeViewModel
+import com.example.gestionreservas.viewModel.listado.Home.HomeViewModelFactory
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.UUID
 
 
 class HomeFragment: Fragment(),OnClickListener {
-    @SuppressLint("NewApi")
-    private var fechaActual: LocalDate = LocalDate.now()
-    private var token: String? = null
     private lateinit var binding: FragmentHomeBinding
-    private var pagosCajaChicaYReservas: MutableList<PagoCaja> = mutableListOf()
     private val cajaChicaRepository = CajaChicaRepository(RetrofitFakeInstance)
     private val compraRepository = CompraRepository(RetrofitFakeInstance.apiFake)
-    private var listaReservasSpinner= mutableListOf("- - Seleccione Reserva - -")
-    private lateinit var listaCompras : MutableList<Compra>
+    private lateinit var adaptadorListado: AdaptadorCompra
+    private lateinit var listaSesiones: MutableList<SesionConCompra>
+    private lateinit var homeViewModel: HomeViewModel
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -62,115 +52,131 @@ class HomeFragment: Fragment(),OnClickListener {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Home"
 
-        // // Inflamos el layout del fragmento para que cargue la vista correctamente
+        val factory = HomeViewModelFactory(compraRepository, cajaChicaRepository)
+        homeViewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
+
         instancias()
         return binding.root
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun instancias() {
-        actualizarFecha()
         detectarScroll()
+        detectarScrollRecycler()
         //Instancias Click
         binding.btnEnviarComentarios.setOnClickListener(this)
-        binding.tvCalendario.setOnClickListener(this)
-        binding.tvReservas.setOnClickListener(this)
         binding.selectFecha.setOnClickListener(this)
-        binding.tvMailing.setOnClickListener(this)
         binding.tvHoy.setOnClickListener(this)
         binding.tvFlechaIzquierdaHoy.setOnClickListener(this)
         binding.tvFlechaDerechaHoy.setOnClickListener(this)
         binding.btnScrollSubir.setOnClickListener(this)
         binding.btnEnviarCaja.setOnClickListener(this)
+
+        //ViewModel
+        observersViewModel()
+        //Adaptador recycler
+
+        adaptadorListado = AdaptadorCompra(requireContext(), mutableListOf())
+
+        binding.recyclerSesionesHome.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+
+        binding.recyclerSesionesHome.adapter = adaptadorListado
+
         //Metodos para cargar datos
 
-        cargarDatosSesionesHoy()
     }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun observersViewModel(){
+        homeViewModel.sesiones.observe(viewLifecycleOwner) { sesiones ->
+            listaSesiones = sesiones.toMutableList()
+            adaptadorListado.actualizarLista(listaSesiones)
+            binding.recyclerSesionesHome.visibility = View.VISIBLE
+        }
 
+        homeViewModel.pagos.observe(viewLifecycleOwner) { pagos ->
+            TablaBuilder.construirTablaPagos(binding.tablaCajaChica, pagos, requireContext())
+            binding.tablaCajaChica.visibility = View.VISIBLE
+        }
+        homeViewModel.comentarios.observe(viewLifecycleOwner){ comentarios ->
+            Log.d("OBSERVER", "Actualizando comentarios: ${comentarios.size}")
+            TablaBuilder.construirTablaComentarios(binding.tablaComentarios, comentarios, requireContext())
+        }
+        homeViewModel.fechaActual.observe(viewLifecycleOwner) { fecha ->
+            val dia = fecha.dayOfMonth
+            val mes = fecha.month.value
+            val fechaFormateada = "$dia/$mes"
+            binding.tvFecha.text = fechaFormateada
+            cargarDatosSesionesHoy()
+
+            val token = getTokenFromSharedPreferences()
+            if (token != null) {
+                homeViewModel.obtenerComentarios(token, fecha)
+            }
+        }
+    }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun cargarDatosSesionesHoy() {
-
-        binding.tablaSesiones.visibility = View.GONE
-        binding.tablaCajaChica.visibility=View.GONE
-        viewLifecycleOwner.lifecycleScope.launch {
-            try {
-                val token = getTokenFromSharedPreferences()
-                val fecha = fechaActual.toString()
-
-                val response = RetrofitInstance.api.obtenerReservas(token!!, listOf(1, 2), fecha)
-
-                if (response.isSuccessful && response.body() != null && response.body()!!
-                        .isNotEmpty()
-                ) {
-                    //val sesiones = transformarExperienciasASesiones(response.body()!!)
-                    //cargarSesiones(binding.tablaSesiones, sesiones, requireContext())
-                } else {
-                    cargarDatosDesdeJsonServer()
-
-                }
-            } catch (e: Exception) {
-                Log.e("HomeFragment", "Error en la API real: ${e.message}")
-                cargarDatosDesdeJsonServer()
+        binding.tablaCajaChica.visibility = View.GONE
+        getTokenFromSharedPreferences()?.let { token ->
+            homeViewModel.fechaActual.value?.let { fecha ->
+                homeViewModel.cargarDatosDesdeJsonServer(token, fecha)
             }
-        }
+        } ?: Toast.makeText(requireContext(), "No se pudo recuperar el token", Toast.LENGTH_SHORT).show()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private suspend fun cargarDatosDesdeJsonServer() {
-        val token = getTokenFromSharedPreferences()
-        try {
-            val compras = cajaChicaRepository.obtenerCompras(token!!)
-            listaCompras=compras as MutableList<Compra>
-            val sesiones = withContext(Dispatchers.Default) {
-                compraRepository.transformarComprasASesiones(compras, fechaActual)
-            }
-            sesiones.forEach{sesion ->
-                listaReservasSpinner.add(
-                    "${sesion.sesion.hora}|${sesion.sesion.nombre}|${sesion.sesion.calendario}|${sesion.compra?.id}"
+    private fun enviarComentarios() {
+        if (binding.editComentario.text.isNullOrBlank()) {
+            Toast.makeText(requireContext(), "Escribe algo antes de enviar", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val prefs = requireContext().getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
+        val nombreUsuario = prefs.getString("nombre_usuario", "Usuario")
+        val token = prefs.getString("auth_token", null)
+
+        if (token == null) {
+            Log.e("ENVIAR_COMENTARIO", "Token no encontrado en SharedPreferences")
+            Toast.makeText(requireContext(), "No se puede enviar el comentario: sesión no iniciada", Toast.LENGTH_LONG).show()
+            return
+        }
+        val horaActual = LocalDateTime.now().toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"))
+        val fecha = homeViewModel.fechaActual.value ?: LocalDate.now()
+        val fechaFormateada = "$fecha $horaActual"
+
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val comentario = Comentario(
+                    id = UUID.randomUUID().toString(),
+                    tipo = binding.spinnerComentarios.selectedItem.toString(),
+                    fecha = fechaFormateada,
+                    nombreUsuario = nombreUsuario ?: "Usuario",
+                    descripcion = binding.editComentario.text.toString()
                 )
+
+                val success = compraRepository.registrarComentarioAPI("Bearer $token", comentario)
+
+                Log.e("ENVIO_COMENTARIO", success.toString())
+
+                if (success) {
+
+                    Toast.makeText(requireContext(), "Comentario añadido correctamente", Toast.LENGTH_LONG).show()
+                    binding.editComentario.text.clear()
+                    kotlinx.coroutines.delay(500)
+                    Log.d("RELOAD", "Volviendo a cargar comentarios")
+                    // Fuerza el LiveData para que vuelva a emitir y así se llame observer
+                    homeViewModel.actualizarFecha(homeViewModel.fechaActual.value ?: LocalDate.now())
+
+                    homeViewModel.obtenerComentarios(token, fecha)
+                } else {
+                    Toast.makeText(requireContext(), "Error al enviar comentario", Toast.LENGTH_LONG).show()
+                }
+            } catch (e: Exception) {
+                Log.e("ENVIAR_COMENTARIO", "Error: ${e.message}")
             }
-            rellenarSpinnerReservas()
-            val pagosReservas = withContext(Dispatchers.Default) {
-                cajaChicaRepository.transformarComprasAPagos(compras, fechaActual)
-            }
-
-            val pagosCajaChica = withContext(Dispatchers.IO) {
-                val fechaStr = fechaActual.toString()
-                val pagosApi = cajaChicaRepository.obtenerPagosDelDia(token, fechaStr)
-                cajaChicaRepository.transformarPagosCajaApi(pagosApi)
-            }
-
-            // Combinar y guardar
-            pagosCajaChicaYReservas = (pagosReservas + pagosCajaChica).toMutableList()
-
-            // Mostrar en interfaz
-            Log.e("Sesiones día: $fechaActual", sesiones.toString())
-            TablaBuilder.construirTablaSesiones(binding.tablaSesiones, sesiones, requireContext()) { sesionConCompra ->
-                irADetalleDeSesion(sesionConCompra)
-            }
-            TablaBuilder.construirTablaPagos(binding.tablaCajaChica, pagosCajaChicaYReservas, requireContext())
-
-            binding.tablaSesiones.visibility = View.VISIBLE
-            binding.tablaCajaChica.visibility = View.VISIBLE
-        } catch (e: Exception) {
-            Log.e("HomeFragment", "Error en la API fake: ${e.localizedMessage}")
-        }
-    }
-
-    /**
-     * Rellena el spinner de reservas con los datos de las reservas de hoy.
-     */
-    private fun rellenarSpinnerReservas(){
-
-        val adapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_spinner_item,
-            listaReservasSpinner
-        ).also {
-            it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         }
 
-        binding.spinnerReservas.adapter = adapter
     }
     //Esta funcion te lleva al detalle de la sesion personalizada y sus datos
     private fun irADetalleDeSesion(sesionConCompra:SesionConCompra){
@@ -184,35 +190,25 @@ class HomeFragment: Fragment(),OnClickListener {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onClick(v: View?) {
         when(v?.id){
-            binding.tvCalendario.id->{
-                val fragment=CalendarioFragmentDiario()
-                cambiarFragmento(fragment)
-            }
-            binding.tvReservas.id->{
-                val fragment=ListadoFragment()
-                cambiarFragmento(fragment)
-            }
             binding.selectFecha.id->{
                 mostrarDialogoFecha()
             }
-            binding.tvMailing.id->{
-                val fragment=MailingFragment()
-                cambiarFragmento(fragment)
+            binding.tvHoy.id -> {
+                homeViewModel.actualizarFecha(LocalDate.now())
             }
-            binding.tvHoy.id->{
-                volverDiaActual()
-                cargarDatosSesionesHoy()
+
+            binding.tvFlechaIzquierdaHoy.id -> {
+                homeViewModel.fechaActual.value?.let {
+                    homeViewModel.actualizarFecha(it.minusDays(1))
+                }
             }
-            binding.tvFlechaIzquierdaHoy.id->{
-                fechaActual=fechaActual.minusDays(1)
-                actualizarFecha()
-                cargarDatosSesionesHoy()
+
+            binding.tvFlechaDerechaHoy.id -> {
+                homeViewModel.fechaActual.value?.let {
+                    homeViewModel.actualizarFecha(it.plusDays(1))
+                }
             }
-            binding.tvFlechaDerechaHoy.id->{
-                fechaActual=fechaActual.plusDays(1)
-                actualizarFecha()
-                cargarDatosSesionesHoy()
-            }
+
             binding.btnScrollSubir.id->{
                 binding.nestedScroll.smoothScrollTo(0, 0)
             }
@@ -220,111 +216,44 @@ class HomeFragment: Fragment(),OnClickListener {
                 agregarDineroCajaChica()
             }
             binding.btnEnviarComentarios.id->{
-                obtenerReservaParaPatch()
+                enviarComentarios()
             }
         }
     }
 
-    /**
-     * Obtiene las partes de las reservas del dia y las compara con las compras,a través de los bucles comparamos
-     * los campos id,nombre y fecha y si encuentrta coincidencia obtiene la compra. Después obtenemos el comentario
-     * y hacemos el patch de la compra modificandola.
-     */
-    private fun obtenerReservaParaPatch() {
-        if (binding.spinnerReservas.selectedItemPosition == 0) {
-            Toast.makeText(requireContext(), "Por favor seleccione una reserva ", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val lineaSeleccionada = binding.spinnerReservas.selectedItem.toString()
-        val motivo = binding.spinnerComentarios.selectedItem.toString()
-        val comentario = binding.editComentario.text.toString().trim()
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            val compraModificada = compraRepository.enviarComentarioACompra(token = getTokenFromSharedPreferences()!!,
-                listaCompras = listaCompras, lineaSeleccionada = lineaSeleccionada,
-                comentario = comentario, motivo = motivo)
-
-            if (compraModificada != null) {
-                Toast.makeText(requireContext(), "Comentario añadido correctamente", Toast.LENGTH_SHORT).show()
-                binding.editComentario.text.clear()
-
-                // Enviar correo con los datos de la compra modificada
-                val subject = Uri.encode(motivo + " reserva con id ${compraModificada.id}")
-                val body = Uri.encode(
-                    "Hola ${compraModificada.name},\n\n" +
-                            "Hemos añadido el siguiente comentario a su reserva ${compraModificada.id}\n\n" +
-                            "$motivo : $comentario\n\n" +
-                            "Puede ponerse en contacto con nosotros a través de :\n\n" +
-                            "Email: gestorReservas@gmail.com\n\n" +
-                            "Teléfono : 633449393\n\n" +
-                            "Gracias."
-                )
-
-                val intent = Intent(Intent.ACTION_SENDTO).apply {
-                    data = Uri.parse("mailto:${compraModificada.mail}?subject=$subject&body=$body")
-                }
-
-                try {
-                    startActivity(intent)
-                } catch (e: Exception) {
-                    Toast.makeText(requireContext(), "No se pudo abrir una app de correo", Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                Toast.makeText(requireContext(), "Error al actualizar la compra", Toast.LENGTH_SHORT).show()
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun agregarDineroCajaChica() {
+        val concepto = binding.editCopcepto.text.toString().trim()
+        val cantidad = binding.editCantidad.text.toString().trim()
+        val token=getTokenFromSharedPreferences()
+        homeViewModel.agregarPagoCajaChica(token!!,concepto, cantidad, onSuccess = {
+                binding.editCopcepto.text.clear()
+                binding.editCantidad.text.clear()
+                Toast.makeText(requireContext(), "Pago añadido correctamente", Toast.LENGTH_SHORT).show()
+            },
+            onError = { mensaje ->
+                Toast.makeText(requireContext(), mensaje, Toast.LENGTH_SHORT).show()
             }
-        }
+        )
     }
 
-
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun agregarDineroCajaChica(){
-        val dia = fechaActual.dayOfMonth
-        val mes = fechaActual.month.value
-        val year=fechaActual.year
-        val fechaFormateada = "$year-/$dia-$mes"
-        var concepto=binding.editCopcepto.text.toString()
-        var cantidad=binding.editCantidad.text.toString()
-        var pagoNuevo=PagoCaja(fechaFormateada,concepto,cantidad,"","")
-        pagosCajaChicaYReservas.add(pagoNuevo)
-        TablaBuilder.construirTablaPagos(binding.tablaCajaChica, pagosCajaChicaYReservas, requireContext())
-        binding.editCopcepto.text.clear()
-        binding.editCantidad.text.clear()
-    }
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun volverDiaActual(){
-        fechaActual = LocalDate.now()
-        actualizarFecha()
-    }
-    @SuppressLint("NewApi")
-    private fun mostrarDialogoFecha(){
-        //Obtenemos fecha actual
-        val fechaHoy=LocalDate.now()
-        //Creamos dialogo del calendario
+    private fun mostrarDialogoFecha() {
+        val fechaHoy = LocalDate.now()
         val datePicker = DatePickerDialog(
             requireContext(),
             { _, year, month, dayOfMonth ->
                 val nuevaFecha = LocalDate.of(year, month + 1, dayOfMonth)
-                fechaActual = nuevaFecha
-                actualizarFecha()
-                cargarDatosSesionesHoy()
+                homeViewModel.actualizarFecha(nuevaFecha)
             },
             fechaHoy.year,
             fechaHoy.monthValue - 1,
             fechaHoy.dayOfMonth
         )
-
         datePicker.show()
     }
-    @SuppressLint("SetTextI18n")
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun actualizarFecha(){
-        val dia = fechaActual.dayOfMonth
-        val mes = fechaActual.month.value
 
-        val fechaFormateada = "$dia/$mes"
-        binding.tvFecha.text = fechaFormateada
-    }
+    @SuppressLint("SetTextI18n")
     //Metodo para obtener nuestro token guardado en shared preferences
     private fun getTokenFromSharedPreferences(): String? {
         val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", MODE_PRIVATE)
@@ -347,5 +276,15 @@ class HomeFragment: Fragment(),OnClickListener {
             }
         }
     }
+    private fun detectarScrollRecycler(){
+        binding.recyclerSesionesHome.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                Log.d("SCROLL", "Scroll interno RecyclerView: dy = $dy")
+
+            }
+        })
+    }
+
 
 }

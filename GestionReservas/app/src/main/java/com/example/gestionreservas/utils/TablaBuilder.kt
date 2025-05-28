@@ -8,6 +8,7 @@ import android.widget.TableRow
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.gestionreservas.R
+import com.example.gestionreservas.models.entity.Comentario
 import com.example.gestionreservas.models.entity.PagoCaja
 import com.example.gestionreservas.models.entity.SesionConCompra
 
@@ -21,6 +22,29 @@ object TablaBuilder {
             setPadding(8, 8, 8, 8)
             minimumHeight = 96
             setBackgroundResource(R.drawable.tabla_home)
+        }
+    }
+    fun construirTablaComentarios(tabla: TableLayout, comentarios: List<Comentario>, context: Context) {
+        tabla.removeAllViews()
+
+        // Cabecera
+        val filaCabecera = TableRow(context)
+        val titulos = listOf("Comentario", "Fecha", "Nombre")
+        titulos.forEach { titulo ->
+            filaCabecera.addView(crearCelda(context, titulo))
+        }
+        tabla.addView(filaCabecera)
+
+        // Contenido
+        comentarios.forEach { comentario ->
+            val fila = TableRow(context)
+            fila.addView(crearCelda(context, comentario.descripcion))
+            val soloFecha = comentario.fecha.substringBefore(" ")
+            fila.addView(crearCelda(context, soloFecha))
+            fila.addView(crearCelda(context, comentario.nombreUsuario))
+
+            aplicarFondoClickable(context, fila)
+            tabla.addView(fila)
         }
     }
 

@@ -21,6 +21,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import androidx.test.espresso.contrib.DrawerActions
 import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.work.WorkManager
 
 
 @RunWith(AndroidJUnit4::class)
@@ -93,6 +94,9 @@ class ReservasActivityTest {
 
     @Test
     fun navegationMailing(){
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val prefs = context.getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
+        prefs.edit().clear().apply()
         val textview=R.id.mailing
         val activity=ActivityScenario.launch(ReservasActivity::class.java)
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
@@ -112,6 +116,22 @@ class ReservasActivityTest {
         onView(withId(R.id.switchModoOscuro)).check(matches(isDisplayed()))
 
     }
+    @Test
+    fun worker_lanzado_si_notificaciones_activadas() {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val prefs = context.getSharedPreferences("ajustes", Context.MODE_PRIVATE)
+        prefs.edit().putBoolean("notificaciones_activadas", true).apply()
+
+        val activity = ActivityScenario.launch(ReservasActivity::class.java)
+
+        // El test no puede verificar notificación directamente, pero sí que WorkManager esté activo
+        val workInfos = WorkManager.getInstance(context)
+            .getWorkInfosForUniqueWork("CheckReservasWorker")
+            .get()
+
+        assertFalse("El worker debería estar activo", workInfos.isEmpty())
+    }
+
 
 
 }

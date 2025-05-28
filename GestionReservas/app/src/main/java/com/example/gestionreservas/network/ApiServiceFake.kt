@@ -1,12 +1,14 @@
 package com.example.gestionreservas.network
 
 import com.example.gestionreservas.models.entity.Bloqueo
+import com.example.gestionreservas.models.entity.Comentario
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.LoginRequest
 import com.example.gestionreservas.models.entity.LoginResponse
 import com.example.gestionreservas.models.entity.MonthlyOccupancyResponse
 import com.example.gestionreservas.models.entity.Ocupacion
 import com.example.gestionreservas.models.entity.OcupacionCalendarioSemanal
+import com.example.gestionreservas.models.entity.PagoCaja
 import com.example.gestionreservas.models.entity.PagoCajaChica
 import retrofit2.Response
 import retrofit2.http.Body
@@ -66,6 +68,12 @@ interface ApiServiceFake {
         @Header("Authorization") token: String,
         @Path("fecha") fecha: String
     ): Response<List<PagoCajaChica>>
+    //Guardar pagos manuales caja chica
+    @POST("paymentsCajaChica")
+    suspend fun registrarPagoCajaChica(
+        @Header("Authorization") token:String,
+        @Body pagoCaja: PagoCaja
+    ):Response<PagoCaja>
 
     //Registrar compra en la API
     @POST("purchases")
@@ -73,6 +81,17 @@ interface ApiServiceFake {
         @Header("Authorization") token:String,
         @Body compra:Compra
     ):Response<Compra>
+
+    @POST("comentarios")
+    suspend fun registrarComentario(
+        @Header("Authorization") token:String,
+        @Body comentario: Comentario
+    ):Response<Comentario>
+
+    @GET("comentarios")
+    suspend fun obtenerComentarios(
+        @Header("Authorization") token: String
+    ): Response<List<Comentario>>
 
     //Obtener bloqueos de API.
     @GET("bloqueos")

@@ -1,3 +1,5 @@
+// build.gradle.kts (nivel :app)
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -18,7 +20,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "GMAIL_CLIENT_ID", "\"${project.property("GMAIL_CLIENT_ID")}\"")
         buildConfigField("String", "GMAIL_CLIENT_SECRET", "\"${project.property("GMAIL_CLIENT_SECRET")}\"")
-
     }
 
     buildTypes {
@@ -37,9 +38,6 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    viewBinding{
-        enable=true
-    }
     buildFeatures {
         viewBinding = true
         buildConfig = true
@@ -47,15 +45,10 @@ android {
 }
 
 dependencies {
-    //corrutinas
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    //Auth correo
-    implementation ("com.google.android.gms:play-services-auth:20.7.0")
-
-    implementation ("androidx.work:work-runtime-ktx:2.9.0")
-
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
     implementation("org.jsoup:jsoup:1.15.4")
-
 
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.core.ktx)
@@ -73,17 +66,22 @@ dependencies {
     implementation(libs.androidx.navigation.ui)
     implementation(libs.androidx.swiperefreshlayout)
 
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
-    testImplementation ("io.mockk:mockk:1.13.5")
-    androidTestImplementation ("androidx.test.espresso:espresso-intents:3.6.1")
-    testImplementation ("com.squareup.okhttp3:mockwebserver:4.9.0")
-    androidTestImplementation("com.squareup.okhttp3:mockwebserver:4.9.0")
-    androidTestImplementation ("androidx.test.espresso:espresso-contrib:3.5.1")
-
-
+    // Unit Test
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation("io.mockk:mockk:1.13.5")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.9.0")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+
+    // Instrumentation Test
+    androidTestImplementation("com.squareup.okhttp3:mockwebserver:4.9.0")
+    debugImplementation("androidx.fragment:fragment-testing:1.5.7")
+
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.rules)
+    androidTestImplementation(libs.androidx.test.core)
+    androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
+    androidTestImplementation(libs.androidx.espresso.intents)
+    androidTestImplementation(libs.androidx.espresso.contrib)
 }
-

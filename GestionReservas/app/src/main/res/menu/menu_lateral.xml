@@ -18,10 +18,10 @@
                 android:id="@+id/calendario"
                 android:icon="@drawable/calendario"
                 android:title="Calendario"/>
-            <item
+            <!--<item
                 android:id="@+id/mailing"
                 android:icon="@drawable/email"
-                android:title="Mailing"/>
+                android:title="Mailing"/>-->
         </menu>
     </item>
 

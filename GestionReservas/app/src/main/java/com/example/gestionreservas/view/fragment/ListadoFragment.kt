@@ -142,18 +142,7 @@ class ListadoFragment: Fragment(),OnClickListener, AdapterView.OnItemSelectedLis
                 cargarDatosSesionesFiltradas()
                 actualizarTextoFecha()
             }
-            binding.tvListadoSemanal.id->{
-                val bundle = Bundle().apply {
-                    putString("idExperience", idExperience)
-                    putString("nombreExperience", nombreExperience)
-                }
-                val fragment = ListadoSemanalFragment()
-                fragment.arguments = bundle
-                val transaction=parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_principal,fragment)
-                    .addToBackStack(null)
-                transaction.commit()
-            }
+
             binding.tvFlechaIzquierdaHoy.id->{
                 fechaActual=fechaActual.minusDays(1)
                 cargarDatosSesionesFiltradas()

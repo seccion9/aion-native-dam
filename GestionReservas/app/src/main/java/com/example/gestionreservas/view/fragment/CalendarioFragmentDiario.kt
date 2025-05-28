@@ -343,11 +343,8 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
         when (v?.id) {
             binding.tvFlechaIzquierdaHoy.id -> viewModel.retrocederDia()
             binding.tvFlechaDerechaHoy.id -> viewModel.avanzarDia()
-            binding.tvHoy.id, binding.tvDiario.id -> viewModel.irAHoy()
-            binding.tvSemana.id -> cambiarFragment(CalendarioFragmentSemana())
             binding.btnBloquear.id -> cambiarFragment(PostPurchaseFragment())
             binding.btnBloqueoMasivo.id -> mostrarDialogoBloqueo()
-            binding.tvMes.id ->  cambiarFragment(CalendarioFragment())
             binding.selectFecha.id ->  mostrarSeleccionFecha()
             binding.btnZombieRoom.id -> {
                 val bundle = Bundle()
@@ -413,14 +410,11 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
     private fun instanciasListeners() {
         binding.tvFlechaDerechaHoy.setOnClickListener(this)
         binding.tvFlechaIzquierdaHoy.setOnClickListener(this)
-        binding.tvMes.setOnClickListener(this)
         binding.btnZombieRoom.setOnClickListener(this)
         binding.btnEscapeJungle.setOnClickListener(this)
         binding.selectFecha.setOnClickListener(this)
         binding.tvHoy.setOnClickListener(this)
-        binding.tvDiario.setOnClickListener(this)
         binding.tvRecargar.setOnClickListener(this)
-        binding.tvSemana.setOnClickListener(this)
         binding.btnBloquear.setOnClickListener(this)
         binding.btnBloqueoMasivo.setOnClickListener(this)
     }

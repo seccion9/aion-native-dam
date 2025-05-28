@@ -66,4 +66,9 @@ class ConfiguracionViewModel(
         var email=mailingRepository.obtenerEmailUsuario(context)
         _email.value = email
     }
+    fun obtenerEmailDesdePrefs(context: Context) {
+        val prefs = context.getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
+        _email.value = prefs.getString("email_usuario", "No conectado")
+    }
+
 }

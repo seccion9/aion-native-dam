@@ -2,6 +2,7 @@
   "/api/getMonthlyOccupancyByExperienceIdsAndDates": "/monthlyOccupancy",
   "/api/getPurchaseById": "/purchasesById",
   "/api/getExperiencesByIdsAndDate": "/experiencesByDate",
+  "/api/paymentsCajaChica": "/paymentsCajaChica",
   "/api/getExperiencesByIds": "/experiencesByIds",
   "/api/paymentsCajaChicaDia": "/paymentsCajaChica"
 }

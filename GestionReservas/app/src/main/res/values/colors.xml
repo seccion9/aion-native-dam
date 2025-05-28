@@ -13,6 +13,8 @@
     <color name="fondo_card_correo">#f2f2f2</color>
     <color name="naranja_bloqueado">#FFDF81</color>
 
+    <color name="grisSuaveFondoDetalles">#F6F6F6</color>
+    <color name="indicadorDetallesVerde">#00FF37</color>
     <color name="fondo_config">#F5F5F5</color>
     <color name="items_config">#EEEEEE</color>
     <color name="color_botones_gmail">#B2A6A5A6</color>

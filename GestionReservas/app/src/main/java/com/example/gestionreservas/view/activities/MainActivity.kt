@@ -76,12 +76,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeLi
     //Metodo que se encarga de hacer el login del usuario con la API
 
     // Funcion que guarda el token y preferencias en local
-    private fun saveTokenToSharedPreferences(token: String) {
+    private fun saveTokenToSharedPreferences(token: String, nombre: String) {
         val sharedPreferences = getSharedPreferences("my_prefs", MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putString("auth_token", token)
-        editor.putBoolean("mantener_sesion", recordarCuenta)
-        editor.apply()
+        sharedPreferences.edit()
+            .putString("auth_token", token)
+            .putString("nombre_usuario", nombre)
+            .putBoolean("mantener_sesion", recordarCuenta)
+            .commit()
     }
 
     /*Credenciales validas para obtener token,cambiar por llamar a funcion login comentada para insertar datos en edittest
@@ -113,10 +114,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeLi
             val prefs = getSharedPreferences("ajustes", MODE_PRIVATE)
             prefs.edit().putBoolean("notificaciones_activadas", true).apply()
             val loginResponse = response.body() ?: return
+            val token = loginResponse.token
+            val nombre = loginResponse.nombreUsuario
+            saveTokenToSharedPreferences(token, nombre)
             Log.e("LoginResponse", "Código: ${response.code()}, Body: ${response.body()}, Error: ${response.errorBody()?.string()}")
 
-            val token =loginResponse.token
-            saveTokenToSharedPreferences(token)
             Log.e("TOKEN GUARDADO","TOKEN: $token")
             withContext(Dispatchers.Main) {
                 delay(2000)

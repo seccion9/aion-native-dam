@@ -221,79 +221,6 @@
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@+id/layoutFechas"
         tools:layout_editor_absoluteX="10dp" />
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearSelectorDias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFecha">
-
-        <TextView
-            android:id="@+id/tvDiario"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:background="@drawable/tv_home"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="dia"
-            android:textColor="@color/white"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvSemana"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_weight="0.33" />
-
-        <TextView
-            android:id="@+id/tvSemana"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:background="@drawable/tv_home"
-            android:foreground="?attr/selectableItemBackground"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Semana"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/tvDiario"
-            app:layout_constraintEnd_toStartOf="@+id/tvMes"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_weight="0.33" />
-
-        <TextView
-            android:id="@+id/tvMes"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:background="@drawable/tv_home"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Mes"
-            android:textColor="@color/white"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/tvSemana"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_weight="0.33" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearCabeceraReservas"
@@ -303,7 +230,7 @@
         android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearSelectorDias">
+        app:layout_constraintTop_toBottomOf="@+id/tvFecha">
 
         <TextView
             android:id="@+id/tvHora"

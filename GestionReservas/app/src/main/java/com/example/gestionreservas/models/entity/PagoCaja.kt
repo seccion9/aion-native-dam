@@ -5,5 +5,5 @@ class PagoCaja (
     var concepto:String,
     var cantidad:String,
     var tipo:String,
-    var parcial:String
+    var parcial:String?
 )

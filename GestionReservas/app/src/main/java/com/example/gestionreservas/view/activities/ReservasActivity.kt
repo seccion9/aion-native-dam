@@ -78,10 +78,10 @@ class ReservasActivity : AppCompatActivity() {
                 R.id.calendario -> {
                     replaceFragment(CalendarioFragmentDiario())
                 }
-
-                R.id.mailing -> {
+                //Se deja opción creada por si en el futuro se quiere implemenatr
+                /*R.id.mailing -> {
                     replaceFragment(MailingFragment())
-                }
+                }*/
                 R.id.configuracion ->{
                     replaceFragment(ConfiguracionFragment())
                 }
@@ -183,5 +183,6 @@ class ReservasActivity : AppCompatActivity() {
             }
         }
     }
+
 
 }

@@ -59,9 +59,13 @@ server.post('/api/sanctum/token', (req, res) => {
   const user = router.db.get('users').find({ email, password }).value();
   console.log("🔍 Usuario encontrado:", user);
   return user
-    ? res.status(200).json({ token: user.token })
+    ? res.status(200).json({ 
+        token: user.token,
+        nombreUsuario: user.nombreUsuario || user.nombre || 'SinNombre'
+      })
     : res.status(401).json({ error: 'Credenciales incorrectas' });
 });
+
 
 /* ─────────── Middleware global /api – exige Bearer <token> ────────── */
 server.use('/api', (req, res, next) => {
@@ -314,6 +318,43 @@ server.delete('/api/purchases/:id', (req, res) => {
 
   res.status(200).json({ mensaje: `Compra ${id} eliminada correctamente` });
 });
+
+server.post('/api/comentarios', (req, res) => {
+  const auth = req.headers.authorization || '';
+  const token = auth.replace('Bearer ', '');
+  const user = router.db.get('users').find({ token }).value();
+
+  if (!user) return res.status(403).json({ error: 'Token inválido' });
+
+  const nuevoComentario = req.body;
+
+  if (!nuevoComentario || !nuevoComentario.id || !nuevoComentario.fecha || !nuevoComentario.descripcion || !nuevoComentario.tipo) {
+    return res.status(400).json({ error: 'Faltan campos obligatorios' });
+  }
+
+  // Añadir userId automáticamente
+  nuevoComentario.userId = user.id;
+
+  router.db.get('comentarios').push(nuevoComentario).write();
+
+  res.status(201).json(nuevoComentario);
+});
+
+server.get('/api/comentarios', (req, res) => {
+  const auth = req.headers.authorization || '';
+  const token = auth.replace('Bearer ', '');
+  const user = router.db.get('users').find({ token }).value();
+
+  if (!user) return res.status(403).json({ error: 'Token inválido' });
+
+  const comentariosUsuario = router.db
+    .get('comentarios')
+    .filter({ userId: user.id })
+    .value();
+
+  res.status(200).json(comentariosUsuario);
+});
+
 
 
 

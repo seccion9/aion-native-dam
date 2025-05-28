@@ -35,6 +35,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.Scope
 import kotlinx.coroutines.launch
 
+/**
+ * De moemnto se deja sin funcionamiento a expensas de si se quiere implementar esta función en las aplicación
+ * o el cliente prefiere tener su correo y usarlo en vez de estar integrado en la app.
+ */
 @RequiresApi(Build.VERSION_CODES.O)
 class MailingFragment : Fragment(), View.OnClickListener {
 
@@ -145,17 +149,25 @@ class MailingFragment : Fragment(), View.OnClickListener {
             isLoading = cargando
         }
         mailingViewModel.mensajeSeleccionado.observe(viewLifecycleOwner) { mensaje ->
-            val fragment = DetallesCorreoFragment().apply {
-                arguments = Bundle().apply {
-                    putSerializable("mensaje", mensaje)
-                }
-            }
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_principal, fragment)
-                .addToBackStack(null)
-                .commit()
-        }
 
+            if (mensaje != null) {
+
+                val fragment = DetallesCorreoFragment().apply {
+                    arguments = Bundle().apply {
+                        putSerializable("mensaje", mensaje)
+                    }
+                }
+
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_principal, fragment)
+                    .addToBackStack(null)
+                    .commit()
+
+
+                mailingViewModel.limpiarMensajeSeleccionado()
+
+            }
+        }
 
     }
 
