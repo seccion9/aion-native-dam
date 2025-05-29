@@ -3,6 +3,7 @@ package com.example.gestionreservas.network
 import com.example.gestionreservas.models.entity.Bloqueo
 import com.example.gestionreservas.models.entity.Comentario
 import com.example.gestionreservas.models.entity.Compra
+import com.example.gestionreservas.models.entity.ExperienciaCompleta
 import com.example.gestionreservas.models.entity.LoginRequest
 import com.example.gestionreservas.models.entity.LoginResponse
 import com.example.gestionreservas.models.entity.MonthlyOccupancyResponse
@@ -119,4 +120,10 @@ interface ApiServiceFake {
         @Header("Authorization") token: String,
         @Path("id") id: String
     ): Response<Unit>
+
+    //Obtiene las experiencias de la API
+    @GET("getExperiencesByIds")
+    suspend fun obtenerExperiencias(
+        @Header("Authorization") token:String
+    ):Response<List<ExperienciaCompleta>>
 }

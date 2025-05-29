@@ -1,14 +1,19 @@
 package com.example.gestionreservas.viewModel.listado.ListadosReservas
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.models.repository.CompraRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.LocalDate
 
 
@@ -16,50 +21,28 @@ import java.time.LocalDate
 class ListadoViewModel(
     private val compraRepository: CompraRepository
 ) : ViewModel() {
-    private val _sesiones = MutableStateFlow<List<SesionConCompra>>(emptyList())
-    val sesiones: StateFlow<List<SesionConCompra>> get() = _sesiones
+    private val _sesiones= MutableLiveData<List<SesionConCompra>>()
+    val sesiones: LiveData<List<SesionConCompra>> = _sesiones
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun cargarSesiones(token: String, fecha: LocalDate, idExperience: String? = null) {
+    fun obtenerDatosCompras(token:String){
         viewModelScope.launch {
             try {
-                val lista = compraRepository.obtenerSesionesDelDia(token, fecha)
 
-                _sesiones.value = if (!idExperience.isNullOrEmpty()) {
-                    lista.filter { it.sesion.calendario == idExperience }
-
-                } else {
-                    lista
+                val compras = withContext(Dispatchers.IO) {
+                    compraRepository.obtenerCompras(token)
                 }
+                Log.e("ViewModelListado","Compras recuperadas : $compras")
+                val sesiones = withContext(Dispatchers.Default) {
+                    compraRepository.transformarComprasASesionesTodas(compras)
+                }.sortedByDescending { it.compra?.items?.lastOrNull()?.start ?: "" }
+
+
+                _sesiones.value = sesiones
 
             } catch (e: Exception) {
-                println("Error cargando sesiones: ${e.localizedMessage}")
+                Log.e("ViewModelListado", "Error obteniendo compras: ${e.message}")
+                _sesiones.value = emptyList()
             }
         }
     }
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun cargarSesionesSemana(token: String, fechaInicio: LocalDate, fechaFin: LocalDate, calendario: String? = null) {
-        viewModelScope.launch {
-            try {
-                val compras = compraRepository.obtenerCompras(token)
-                val sesiones = compraRepository.obtenerSesionesDeSemana(compras, fechaInicio)
-
-                val sesionesFiltradas = if (calendario != null) {
-                    sesiones.filter { it.sesion.calendario == calendario }
-                } else {
-                    sesiones
-                }
-
-                val ordenadas = sesionesFiltradas.sortedBy {
-                    java.time.LocalTime.parse(it.sesion.hora)
-                }
-
-                _sesiones.value = ordenadas
-
-            } catch (e: Exception) {
-                println("Error cargando sesiones semanales: ${e.localizedMessage}")
-            }
-        }
-    }
-
 }

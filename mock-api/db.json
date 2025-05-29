@@ -211,7 +211,7 @@
       "priceAfterDiscount": 50,
       "priceFractioned": 25,
       "isFractioned": false,
-      "name": "Nombre modificado desde Postman",
+      "name": "Raul Gonzalez",
       "mail": "cliente@example.com",
       "dni": "00000000X",
       "phone": "600123456",
@@ -228,8 +228,8 @@
           "idBusinessUnit": null,
           "status": "confirmada",
           "internaPermanent": false,
-          "start": "2025-04-29 10:00:00",
-          "end": "2025-04-29 11:00:00",
+          "start": "2025-05-29 10:00:00",
+          "end": "2025-05-29 11:00:00",
           "duration": 60,
           "peopleNumber": 2,
           "priceOriginal": 50,
@@ -257,7 +257,7 @@
       "payments": [
         {
           "id": "a14c9ed0-79a1-439f-b4cd-4cf44edfe94c",
-          "amount": 50,
+          "amount": 25,
           "method": "Tarjeta"
         }
       ],
@@ -266,8 +266,8 @@
           "id": "86f5f9e0-f29f-4301-ad4f-caddbddfaf13",
           "id_experience": "1",
           "id_calendario": "cal1",
-          "start": "2025-04-29 10:00:00",
-          "end": "2025-04-29 11:00:00",
+          "start": "2025-05-29 10:00:00",
+          "end": "2025-05-29 11:00:00",
           "people_number": 2,
           "price_original": 50,
           "price_fractioned": 25
@@ -304,8 +304,8 @@
           "idBusinessUnit": null,
           "status": "confirmada",
           "internaPermanent": false,
-          "start": "2025-03-31 10:00:00",
-          "end": "2025-03-31 11:00:00",
+          "start": "2025-05-29 12:00:00",
+          "end": "2025-05-29 13:00:00",
           "duration": 60,
           "peopleNumber": 5,
           "priceOriginal": 120,
@@ -333,7 +333,7 @@
       "payments": [
         {
           "id": "ea24c664-9c53-4991-9424-ab3132820fc8",
-          "amount": 120,
+          "amount": 100,
           "method": "Tarjeta"
         }
       ],
@@ -342,8 +342,8 @@
           "id": "ff4f924f-79aa-4b5e-97ec-b114d5e4b19f",
           "id_experience": "2",
           "id_calendario": "cal2",
-          "start": "2025-03-31 10:00:00",
-          "end": "2025-03-31 11:00:00",
+          "start": "2025-05-29 12:00:00",
+          "end": "2025-05-29 13:00:00",
           "people_number": 5,
           "price_original": 120,
           "price_fractioned": 60
@@ -354,7 +354,7 @@
     {
       "id": "75118c14-ea97-4196-8c5c-a15231cb1431",
       "uuid": "75118c14-ea97-4196-8c5c-a15231cb1431",
-      "status": "pendiente",
+      "status": "confirmada",
       "mailStatus": "none",
       "internaPermanent": false,
       "idDiscount": null,
@@ -378,10 +378,10 @@
           "idExperience": "2",
           "idCalendario": "cal2",
           "idBusinessUnit": null,
-          "status": "pendiente",
+          "status": "confirmada",
           "internaPermanent": false,
-          "start": "2025-03-31 11:00:00",
-          "end": "2025-03-31 12:00:00",
+          "start": "2025-05-29 15:00:00",
+          "end": "2025-05-29 16:00:00",
           "duration": 60,
           "peopleNumber": 5,
           "priceOriginal": 120,
@@ -409,7 +409,7 @@
       "payments": [
         {
           "id": "d12680de-1447-4d56-85a2-de02f4c88e49",
-          "amount": 120,
+          "amount": 50,
           "method": "Tarjeta"
         }
       ],
@@ -418,8 +418,8 @@
           "id": "b5f7ead0-8647-40fb-bc1b-a2a87c352c57",
           "id_experience": "2",
           "id_calendario": "cal2",
-          "start": "2025-03-31 11:00:00",
-          "end": "2025-03-31 12:00:00",
+          "start": "2025-05-29 15:00:00",
+          "end": "2025-05-29 16:00:00",
           "people_number": 5,
           "price_original": 120,
           "price_fractioned": 60
@@ -456,8 +456,8 @@
           "idBusinessUnit": null,
           "status": "confirmada",
           "internaPermanent": false,
-          "start": "2025-03-31 10:00:00",
-          "end": "2025-03-31 11:00:00",
+          "start": "2025-05-29 17:00:00",
+          "end": "2025-05-29 18:00:00",
           "duration": 60,
           "peopleNumber": 4,
           "priceOriginal": 90,
@@ -485,7 +485,7 @@
       "payments": [
         {
           "id": "f8f2d160-9c33-486b-b161-322b90ca2836",
-          "amount": 90,
+          "amount": 30,
           "method": "Bizum"
         }
       ],
@@ -494,8 +494,8 @@
           "id": "4c5cfa7d-fadb-4b12-aead-1b2134c27fa5",
           "id_experience": "1",
           "id_calendario": "cal1",
-          "start": "2025-03-31 10:00:00",
-          "end": "2025-03-31 11:00:00",
+          "start": "2025-05-29 17:00:00",
+          "end": "2025-05-29 18:00:00",
           "people_number": 4,
           "price_original": 90,
           "price_fractioned": 45
@@ -506,7 +506,7 @@
     {
       "id": "40be1352-3be7-47f4-bc67-f799dba421e4",
       "uuid": "40be1352-3be7-47f4-bc67-f799dba421e4",
-      "status": "pendiente",
+      "status": "confirmada",
       "mailStatus": "none",
       "internaPermanent": false,
       "idDiscount": null,
@@ -530,10 +530,10 @@
           "idExperience": "2",
           "idCalendario": "cal2",
           "idBusinessUnit": null,
-          "status": "pendiente",
+          "status": "confirmada",
           "internaPermanent": false,
-          "start": "2025-04-01 10:00:00",
-          "end": "2025-04-01 11:00:00",
+          "start": "2025-05-29 18:00:00",
+          "end": "2025-05-29 19:00:00",
           "duration": 60,
           "peopleNumber": 5,
           "priceOriginal": 120,
@@ -570,8 +570,8 @@
           "id": "d376273a-11bd-488c-8424-7c827927a4a1",
           "id_experience": "2",
           "id_calendario": "cal2",
-          "start": "2025-04-01 10:00:00",
-          "end": "2025-04-01 11:00:00",
+          "start": "2025-05-29 18:00:00",
+          "end": "2025-05-29 19:00:00",
           "people_number": 5,
           "price_original": 120,
           "price_fractioned": 60
@@ -608,8 +608,8 @@
           "idBusinessUnit": null,
           "status": "confirmada",
           "internaPermanent": false,
-          "start": "2025-04-02 10:00:00",
-          "end": "2025-04-02 11:00:00",
+          "start": "2025-05-29 09:00:00",
+          "end": "2025-05-29 10:00:00",
           "duration": 60,
           "peopleNumber": 5,
           "priceOriginal": 120,
@@ -646,8 +646,8 @@
           "id": "0aea6e25-fa69-45d3-88c2-ebed59ccc4da",
           "id_experience": "2",
           "id_calendario": "cal2",
-          "start": "2025-04-02 10:00:00",
-          "end": "2025-04-02 11:00:00",
+          "start": "2025-05-29 09:00:00",
+          "end": "2025-05-29 10:00:00",
           "people_number": 5,
           "price_original": 120,
           "price_fractioned": 60
@@ -658,7 +658,7 @@
     {
       "id": "65a08bd0-2ae2-4695-8817-17dcb0f02530",
       "uuid": "65a08bd0-2ae2-4695-8817-17dcb0f02530",
-      "status": "pendiente",
+      "status": "pagada",
       "mailStatus": "none",
       "internaPermanent": false,
       "idDiscount": null,
@@ -682,10 +682,10 @@
           "idExperience": "1",
           "idCalendario": "cal1",
           "idBusinessUnit": null,
-          "status": "pendiente",
+          "status": "confirmada",
           "internaPermanent": false,
-          "start": "2025-04-02 10:00:00",
-          "end": "2025-04-02 11:00:00",
+          "start": "2025-05-29 19:00:00",
+          "end": "2025-05-29 20:00:00",
           "duration": 60,
           "peopleNumber": 2,
           "priceOriginal": 50,
@@ -722,8 +722,8 @@
           "id": "b63785e3-f176-4432-85ca-95580c286111",
           "id_experience": "1",
           "id_calendario": "cal1",
-          "start": "2025-04-02 10:00:00",
-          "end": "2025-04-02 11:00:00",
+          "start": "2025-05-29 19:00:00",
+          "end": "2025-05-29 20:00:00",
           "people_number": 2,
           "price_original": 50,
           "price_fractioned": 25
@@ -760,8 +760,8 @@
           "idBusinessUnit": null,
           "status": "confirmada",
           "internaPermanent": false,
-          "start": "2025-04-02 11:00:00",
-          "end": "2025-04-02 12:00:00",
+          "start": "2025-05-29 20:00:00",
+          "end": "2025-05-29 21:00:00",
           "duration": 60,
           "peopleNumber": 3,
           "priceOriginal": 75,
@@ -798,8 +798,8 @@
           "id": "c8b144ca-abbe-4242-8e92-1adafe0d9071",
           "id_experience": "2",
           "id_calendario": "cal2",
-          "start": "2025-04-02 11:00:00",
-          "end": "2025-04-02 12:00:00",
+          "start": "2025-05-29 20:00:00",
+          "end": "2025-05-29 21:00:00",
           "people_number": 3,
           "price_original": 75,
           "price_fractioned": 37.5
@@ -16103,9 +16103,9 @@
               ]
             }
           ],
-          "schedules_by_date": []
-        },
-        "fields": []
+          "schedules_by_date": [],
+          "fields": []
+        }
       }
     },
     {
@@ -16248,9 +16248,9 @@
               ]
             }
           ],
-          "schedules_by_date": []
-        },
-        "fields": []
+          "schedules_by_date": [],
+          "fields": []
+        }
       }
     }
   ],

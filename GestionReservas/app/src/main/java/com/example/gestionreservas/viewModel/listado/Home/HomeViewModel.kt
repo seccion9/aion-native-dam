@@ -8,10 +8,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gestionreservas.models.entity.Comentario
+import com.example.gestionreservas.models.entity.ExperienciaCompleta
 import com.example.gestionreservas.models.entity.PagoCaja
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.models.repository.CajaChicaRepository
 import com.example.gestionreservas.models.repository.CompraRepository
+import com.example.gestionreservas.models.repository.ExperienciaRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -24,11 +26,15 @@ import java.util.UUID
 
 class HomeViewModel(
     private val compraRepository: CompraRepository,
-    private val cajaChicaRepository: CajaChicaRepository
+    private val cajaChicaRepository: CajaChicaRepository,
+    private val experienciaRepository: ExperienciaRepository
 ):ViewModel() {
 
     private val _sesiones=MutableLiveData<List<SesionConCompra>>()
     val sesiones: LiveData<List<SesionConCompra>> = _sesiones
+
+    private val _experiencias=MutableLiveData<List<ExperienciaCompleta>>()
+    val experiencias: LiveData<List<ExperienciaCompleta>> = _experiencias
 
     private val _pagos = MutableLiveData<List<PagoCaja>>()
     val pagos: LiveData<List<PagoCaja>> = _pagos
@@ -117,7 +123,7 @@ class HomeViewModel(
                 Log.d("HomeViewModel", "Compras obtenidas: ${compras.size}")
                 val sesionesFiltradas = withContext(Dispatchers.Default) {
                     compraRepository.transformarComprasASesiones(compras, fecha)
-                        .filter { it.sesion.estado.lowercase() == "confirmada" }
+                        .filter { it.sesion.estado.lowercase() == "confirmada" }.sortedBy { it.sesion.hora }
                 }
                 Log.d("HomeViewModel", "Sesiones confirmadas: ${sesionesFiltradas.size}")
                 val comprasConfirmadas = sesionesFiltradas.mapNotNull { it.compra }
@@ -137,6 +143,20 @@ class HomeViewModel(
         }
     }
 
+    fun obtenerExperiencias(token: String) {
+        viewModelScope.launch {
+            try {
+                val experienciasObtenidas = withContext(Dispatchers.IO) {
+                    experienciaRepository.obtenerExperienciasApi(token)
+                }
+                experienciasObtenidas?.let {
+                    _experiencias.value = it
+                } ?: Log.e("HOMEVIEWMODEL", "Lista de experiencias es nula")
+            } catch (e: Exception) {
+                Log.e("HOMEVIEWMODEL", "Error al obtener experiencias: ${e.message}")
+            }
+        }
+    }
     @RequiresApi(Build.VERSION_CODES.O)
     fun enviarComentario(token: String, tipo: String, texto: String, nombreUsuario: String, fecha: LocalDateTime) {
         viewModelScope.launch {

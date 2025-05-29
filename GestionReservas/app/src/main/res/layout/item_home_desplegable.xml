@@ -8,7 +8,7 @@
     app:cardElevation="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_marginBottom="5dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -93,10 +93,8 @@
             android:id="@+id/cardDetalle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:elevation="6dp"
-
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:visibility="visible"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -119,20 +117,26 @@
                     android:paddingEnd="8dp">
 
                     <TextView
-                        android:id="@+id/tvNombreDetallesSesion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="4dp"
-                        android:text="Pagado 150€"
-                        android:textSize="12sp" />
-
-                    <TextView
                         android:id="@+id/tvTotalPagadoDetallesSesion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="4dp"
-                        android:text="Restante: 75€"
-                        android:textSize="12sp" />
+                        android:text=""
+                        android:textSize="10sp" />
+                    <TextView
+                        android:id="@+id/tvPagadoDetallesSesion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text=""
+                        android:textSize="10sp" />
+                    <TextView
+                        android:id="@+id/tvRestantePagarDetallesSesion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text=""
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -151,14 +155,14 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tvParticipantesDetallesSesion"
+                            android:id="@+id/tvNombreExperienciaDetallesSesion"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.3"
                             android:gravity="center"
                             android:padding="2dp"
-                            android:text="Zombie Room"
-                            android:textSize="12sp" />
+                            android:text=""
+                            android:textSize="10sp" />
 
                         <TextView
                             android:id="@+id/tvIdiomaDetallesSesion"
@@ -167,8 +171,8 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="2dp"
-                            android:text="Español"
-                            android:textSize="12sp" />
+                            android:text=""
+                            android:textSize="10sp" />
 
                         <TextView
                             android:id="@+id/tvMonitorDetallesSesion"
@@ -177,75 +181,58 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="2dp"
-                            android:text="Monitor 1"
-                            android:textSize="12sp" />
+                            android:text=""
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-
                     android:id="@+id/linearColumna4detallesSesion"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.4"
+                    android:layout_weight="0.3"
                     android:background="@color/grisSuaveFondoDetalles"
                     android:orientation="vertical">
 
-
                     <TextView
+                        android:layout_weight="0.2"
                         android:id="@+id/tvSesionDetalles"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.3"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
+
                         android:textSize="10sp"
                         android:text="SESIÓN CLÁSICA 1H"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
-                    <!-- SEGUNDO HORIZONTAL: ocupa el otro 50% de alto -->
                     <LinearLayout
-                        android:id="@+id/linearBotonesColumna4DetallesSesion"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:baselineAligned="false"
-                        android:gravity="center_vertical|end"
-                        android:orientation="horizontal"
-                        android:padding="2dp">
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/call"
-                            android:background="@android:color/transparent"
-                            android:layout_marginEnd="10dp"
-                            android:id="@+id/btnCallDetallesSesion"
-                            />
-                        <ImageButton
-                            android:layout_marginEnd="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/whatsapp"
-                            android:background="@android:color/transparent"
-                            android:id="@+id/btnWhatsappDetallesSesion"
-                            />
+                        android:layout_weight="0.8"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <TextView
-                            android:id="@+id/tvEditar"
+                            android:id="@+id/tvOpciones"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:background="@drawable/boton_experiencia_azul"
-                            android:drawableLeft="@drawable/edit_mini"
-                            android:drawablePadding="2dp"
+                            android:background="@drawable/boton_bloqueo"
+                            android:drawableLeft="@drawable/options"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:drawablePadding="1dp"
                             android:gravity="center"
                             android:onClick="onEditarClick"
-                            android:text="Editar"
+                            android:text="Opciones"
                             android:textColor="@color/white"
-                            android:textSize="10sp"
-                            android:padding="3dp"
+                            android:textSize="12sp"
+                            android:padding="2dp"
                             android:visibility="visible" />
                     </LinearLayout>
 
                 </LinearLayout>
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

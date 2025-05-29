@@ -22,12 +22,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentHomeBinding
 import com.example.gestionreservas.models.entity.Comentario
+import com.example.gestionreservas.models.entity.ExperienciaCompleta
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.models.repository.CajaChicaRepository
 import com.example.gestionreservas.models.repository.CompraRepository
+import com.example.gestionreservas.models.repository.ExperienciaRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.utils.TablaBuilder
 import com.example.gestionreservas.view.adapter.AdaptadorCompra
+import com.example.gestionreservas.view.dialogs.OpcionesDialogFragment
 import com.example.gestionreservas.viewModel.listado.Home.HomeViewModel
 import com.example.gestionreservas.viewModel.listado.Home.HomeViewModelFactory
 import kotlinx.coroutines.launch
@@ -41,7 +44,9 @@ class HomeFragment: Fragment(),OnClickListener {
     private lateinit var binding: FragmentHomeBinding
     private val cajaChicaRepository = CajaChicaRepository(RetrofitFakeInstance)
     private val compraRepository = CompraRepository(RetrofitFakeInstance.apiFake)
+    private val experienciaRepository=ExperienciaRepository(RetrofitFakeInstance.apiFake)
     private lateinit var adaptadorListado: AdaptadorCompra
+    private lateinit var listaExperiencias:MutableList<ExperienciaCompleta>
     private lateinit var listaSesiones: MutableList<SesionConCompra>
     private lateinit var homeViewModel: HomeViewModel
 
@@ -52,7 +57,7 @@ class HomeFragment: Fragment(),OnClickListener {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Home"
 
-        val factory = HomeViewModelFactory(compraRepository, cajaChicaRepository)
+        val factory = HomeViewModelFactory(compraRepository, cajaChicaRepository,experienciaRepository)
         homeViewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
 
         instancias()
@@ -62,7 +67,6 @@ class HomeFragment: Fragment(),OnClickListener {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun instancias() {
         detectarScroll()
-        detectarScrollRecycler()
         //Instancias Click
         binding.btnEnviarComentarios.setOnClickListener(this)
         binding.selectFecha.setOnClickListener(this)
@@ -71,20 +75,30 @@ class HomeFragment: Fragment(),OnClickListener {
         binding.tvFlechaDerechaHoy.setOnClickListener(this)
         binding.btnScrollSubir.setOnClickListener(this)
         binding.btnEnviarCaja.setOnClickListener(this)
-
+        listaExperiencias= mutableListOf()
         //ViewModel
         observersViewModel()
         //Adaptador recycler
 
-        adaptadorListado = AdaptadorCompra(requireContext(), mutableListOf())
+        adaptadorListado = AdaptadorCompra(requireContext(), mutableListOf(),listaExperiencias) { sesionConCompra ->
+            val bundle=Bundle()
+            bundle.putSerializable("sesionConCompra",sesionConCompra)
+            val dialog = OpcionesDialogFragment.newInstance(sesionConCompra)
+            dialog.show(parentFragmentManager, "OpcionesDialog")
+        }
+
+
 
         binding.recyclerSesionesHome.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
         binding.recyclerSesionesHome.adapter = adaptadorListado
 
-        //Metodos para cargar datos
+        binding.recyclerSesionesHome.isNestedScrollingEnabled = true
 
+        binding.recyclerSesionesHome.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+
+        configurarDeteccionScroll()
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun observersViewModel(){
@@ -93,7 +107,10 @@ class HomeFragment: Fragment(),OnClickListener {
             adaptadorListado.actualizarLista(listaSesiones)
             binding.recyclerSesionesHome.visibility = View.VISIBLE
         }
-
+        homeViewModel.experiencias.observe(viewLifecycleOwner){ experiencias ->
+            listaExperiencias=experiencias.toMutableList()
+            adaptadorListado.actualizarExperiencias(listaExperiencias)
+        }
         homeViewModel.pagos.observe(viewLifecycleOwner) { pagos ->
             TablaBuilder.construirTablaPagos(binding.tablaCajaChica, pagos, requireContext())
             binding.tablaCajaChica.visibility = View.VISIBLE
@@ -112,6 +129,7 @@ class HomeFragment: Fragment(),OnClickListener {
             val token = getTokenFromSharedPreferences()
             if (token != null) {
                 homeViewModel.obtenerComentarios(token, fecha)
+                homeViewModel.obtenerExperiencias(token)
             }
         }
     }
@@ -269,22 +287,44 @@ class HomeFragment: Fragment(),OnClickListener {
     }
     private fun detectarScroll(){
         binding.nestedScroll.setOnScrollChangeListener { _, _, scrollY, _, _ ->
-            if (scrollY > 200) {
+            if (scrollY > 300) {
                 binding.btnScrollSubir.visibility = View.VISIBLE
             } else {
                 binding.btnScrollSubir.visibility = View.GONE
             }
         }
     }
-    private fun detectarScrollRecycler(){
-        binding.recyclerSesionesHome.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                Log.d("SCROLL", "Scroll interno RecyclerView: dy = $dy")
+    @SuppressLint("ClickableViewAccessibility")
+    private fun configurarDeteccionScroll() {
+        // Siempre bloqueamos el scroll del NestedScroll al principio
+        binding.nestedScroll.requestDisallowInterceptTouchEvent(true)
 
+        // Detectamos toques en el RecyclerView
+        binding.recyclerSesionesHome.setOnTouchListener { _, _ ->
+            val posicionCajaChicaY = binding.tablaCajaChica.y
+            val scrollYActual = binding.nestedScroll.scrollY
+            val alturaVisible = binding.nestedScroll.height
+
+            val yaSeVeCajaChica = scrollYActual + alturaVisible >= posicionCajaChicaY
+            val recyclerYaNoPuedeScroll = !binding.recyclerSesionesHome.canScrollVertically(1)
+
+            if (recyclerYaNoPuedeScroll && yaSeVeCajaChica) {
+                // Ya terminó el scroll del RecyclerView y se ve la zona de caja chica
+                binding.nestedScroll.requestDisallowInterceptTouchEvent(false)
+                Log.d("SCROLL", "✔ Se permite scroll en NestedScrollView")
+            } else {
+                // Aún no ha llegado a la zona → bloqueamos scroll del Nested
+                binding.nestedScroll.requestDisallowInterceptTouchEvent(true)
+                Log.d("SCROLL", " Bloqueamos scroll del NestedScrollView")
             }
-        })
-    }
 
+            false
+        }
+
+        // Este listener solo gestiona el botón flotante
+        binding.nestedScroll.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            binding.btnScrollSubir.visibility = if (scrollY > 200) View.VISIBLE else View.GONE
+        }
+    }
 
 }
