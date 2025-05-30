@@ -14,6 +14,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -23,8 +24,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestionreservas.viewModel.listado.ListadosReservas.ListadoViewModelFactory
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentListadoBinding
+import com.example.gestionreservas.models.entity.ExperienciaCompleta
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.models.repository.CompraRepository
+import com.example.gestionreservas.models.repository.ExperienciaRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.utils.SalaHelper
 import com.example.gestionreservas.view.adapter.AdaptadorCompra
@@ -39,7 +42,9 @@ class ListadoFragment: Fragment(),OnClickListener, AdapterView.OnItemSelectedLis
         private lateinit var adaptadorListado: AdaptadorListado
     private lateinit var listaSesiones: MutableList<SesionConCompra>
     private lateinit var adaptadorSpinner:ArrayAdapter<String>
-    private var listaEstadosReserva = arrayListOf("Todas", "Confirmada", "Pendiente", "No finalizada", "Cancelada")
+    private val experienciaRepository= ExperienciaRepository(RetrofitFakeInstance.apiFake)
+    private lateinit var listaExperiencias:MutableList<ExperienciaCompleta>
+    private var listaEstadosReserva = arrayListOf("Todas", "Confirmada", "Pendiente", "No_finalizada", "Cancelada")
     private lateinit var viewModel: ListadoViewModel
     private val compraRepository = CompraRepository(RetrofitFakeInstance.apiFake)
     private lateinit var token:String
@@ -53,8 +58,9 @@ class ListadoFragment: Fragment(),OnClickListener, AdapterView.OnItemSelectedLis
 
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Listado Reservas"
         token=getTokenFromSharedPreferences()
-        viewModel = ViewModelProvider(this, ListadoViewModelFactory(compraRepository))[ListadoViewModel::class.java]
+        viewModel = ViewModelProvider(this, ListadoViewModelFactory(compraRepository,experienciaRepository))[ListadoViewModel::class.java]
         viewModel.obtenerDatosCompras(token)
+        viewModel.obtenerExperiencias(token)
         instancias()
 
         return binding.root
@@ -63,6 +69,9 @@ class ListadoFragment: Fragment(),OnClickListener, AdapterView.OnItemSelectedLis
     @RequiresApi(Build.VERSION_CODES.O)
     private fun instancias() {
         binding.layoutSpinnerContainer.setOnClickListener(this)
+        binding.spinnerEstadoReserva.onItemSelectedListener = this
+
+        listaExperiencias= mutableListOf()
         observersViewModel()
         //Adaptador para añadir lista al spinner
         adaptadorSpinner = ArrayAdapter(
@@ -75,7 +84,7 @@ class ListadoFragment: Fragment(),OnClickListener, AdapterView.OnItemSelectedLis
 
         //Adaptador listado
         adaptadorListado = AdaptadorListado(requireContext(), mutableListOf(),
-            emptyList()
+            listaExperiencias
         ) { sesionConCompra ->
             val bundle=Bundle()
             bundle.putSerializable("sesionConCompra",sesionConCompra)
@@ -87,6 +96,11 @@ class ListadoFragment: Fragment(),OnClickListener, AdapterView.OnItemSelectedLis
 
         binding.recyclerReservasListado.adapter = adaptadorListado
 
+        binding.editTextBuscarNombre.doOnTextChanged { texto, _, _, _ ->
+            viewModel.actualizarNombreBusqueda(texto.toString())
+        }
+
+
     }
     private fun observersViewModel(){
         viewModel.sesiones.observe(viewLifecycleOwner){sesiones ->
@@ -95,6 +109,15 @@ class ListadoFragment: Fragment(),OnClickListener, AdapterView.OnItemSelectedLis
             binding.recyclerReservasListado.visibility = View.VISIBLE
 
         }
+        viewModel.listaFiltrada.observe(viewLifecycleOwner) { lista ->
+            adaptadorListado.actualizarLista(lista)
+        }
+        viewModel.experiencias.observe(viewLifecycleOwner) { experiencias ->
+            listaExperiencias = experiencias.toMutableList()
+            adaptadorListado.actualizarExperiencias(listaExperiencias)
+        }
+
+
     }
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onClick(v: View?) {
@@ -112,7 +135,8 @@ class ListadoFragment: Fragment(),OnClickListener, AdapterView.OnItemSelectedLis
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
+        val estadoSeleccionado = listaEstadosReserva[position]
+        viewModel.actualizarEstadoSeleccionado(estadoSeleccionado)
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?){}

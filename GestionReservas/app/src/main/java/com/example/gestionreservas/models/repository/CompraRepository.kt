@@ -148,23 +148,19 @@ class CompraRepository(private val api: ApiServiceFake) {
         val sesiones = mutableListOf<SesionConCompra>()
 
         compras.forEach { compra ->
-            compra.items
-                .filter { item ->
-                    item.status.equals("confirmada", ignoreCase = true)
-                }
-                .forEach { item ->
-                    val sesion = Sesion(
-                        hora = item.start.substring(11, 16),
-                        calendario = item.idCalendario,
-                        nombre = compra.name,
-                        participantes = item.peopleNumber,
-                        totalPagado = item.priceTotal,
-                        estado = item.status,
-                        idiomas = compra.language
-                    )
-                    sesiones.add(SesionConCompra(sesion, compra))
-                    Log.d("SESIONES", "Añadida sesión confirmada de ${compra.name} a las ${item.start}")
-                }
+            compra.items.forEach { item ->
+                val sesion = Sesion(
+                    hora = item.start.substring(11, 16),
+                    calendario = item.idCalendario,
+                    nombre = compra.name,
+                    participantes = item.peopleNumber,
+                    totalPagado = item.priceTotal,
+                    estado = item.status,
+                    idiomas = compra.language
+                )
+                sesiones.add(SesionConCompra(sesion, compra))
+                Log.d("SESIONES", "Añadida sesión ${item.status} de ${compra.name} a las ${item.start}")
+            }
         }
 
         return sesiones

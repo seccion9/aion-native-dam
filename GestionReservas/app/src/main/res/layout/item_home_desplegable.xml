@@ -18,7 +18,7 @@
             android:id="@+id/tvHoraCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/verde_confirmado"
+            android:background="@color/estado_confirmada"
             android:gravity="center"
             android:minHeight="48dp"
             android:text="confirmada"

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gestionreservas.models.entity.Bloqueo
 import com.example.gestionreservas.models.entity.Compra
+import com.example.gestionreservas.models.entity.FranjaHorariaReservas
 import com.example.gestionreservas.models.entity.HoraReserva
 import com.example.gestionreservas.models.entity.Ocupacion
 import com.example.gestionreservas.models.entity.Sesion
@@ -32,11 +33,9 @@ class CalendarioDiarioViewModel(
     @RequiresApi(Build.VERSION_CODES.O)
     val fechaActual: LiveData<LocalDate> = _fechaActual
 
-    private val _horas = MutableLiveData<List<HoraReserva>>()
-    val horas: LiveData<List<HoraReserva>> = _horas
+    private val _franjasHorarias = MutableLiveData<List<FranjaHorariaReservas>>()
+    val franjasHorarias: LiveData<List<FranjaHorariaReservas>> = _franjasHorarias
 
-    private val _sesiones = MutableLiveData<List<SesionConCompra>>()
-    val sesiones: LiveData<List<SesionConCompra>> = _sesiones
 
     private val _ocupaciones = MutableLiveData<List<Ocupacion>>()
     val ocupaciones: LiveData<List<Ocupacion>> = _ocupaciones
@@ -45,37 +44,6 @@ class CalendarioDiarioViewModel(
     val bloqueoExitoso: LiveData<Boolean> = _bloqueoExitoso
 
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun obtenerSesionConCompraDesdeOcupacion(token: String, hora: String, calendarioId: String, ocupacion: Ocupacion?): LiveData<SesionConCompra> {
-        val resultado = MutableLiveData<SesionConCompra>()
-        viewModelScope.launch {
-            try {
-                val compra = if (ocupacion != null) {
-                    val listaCompras = compraRepository.obtenerCompras(token)
-                    listaCompras.find { it.id == ocupacion.idCompra }
-                } else null
-
-                val sesion = if (ocupacion != null && compra != null) {
-                    transformarItemSesioncompra(compra, ocupacion)
-                } else {
-                    Sesion(
-                        hora = hora,
-                        calendario = calendarioId,
-                        nombre = "",
-                        participantes = 0,
-                        totalPagado = 0.0,
-                        estado = "sin_reserva",
-                        idiomas = ""
-                    )
-                }
-
-                resultado.postValue(SesionConCompra(sesion, compra))
-            } catch (e: Exception) {
-                Log.e("ViewModel", "Error obteniendo sesión con compra: ${e.message}")
-            }
-        }
-        return resultado
-    }
     @RequiresApi(Build.VERSION_CODES.O)
     suspend fun bloquearYEliminar(context: Context, token: String, bloqueos: List<Bloqueo>): Boolean {
         val success = calendarioRepository.bloquearFechas(token, bloqueos)
@@ -92,11 +60,6 @@ class CalendarioDiarioViewModel(
         return success
     }
 
-    fun obtenerOcupacion(hora: String, calendarioId: String): Ocupacion? {
-        return _ocupaciones.value?.find {
-            it.start == hora && it.calendarioId == calendarioId
-        }
-    }
     @RequiresApi(Build.VERSION_CODES.O)
     fun avanzarDia() {
         _fechaActual.value = _fechaActual.value?.plusDays(1)
@@ -117,25 +80,11 @@ class CalendarioDiarioViewModel(
         _fechaActual.value = fecha
     }
 
-    fun transformarItemSesioncompra(compra: Compra, ocupacion: Ocupacion): Sesion {
-        val item = compra.items.firstOrNull { it.id == ocupacion.idCompra } ?: compra.items.first()
-        return Sesion(
-            hora = item.start.substring(11, 16),
-            calendario = item.idCalendario,
-            nombre = compra.name,
-            participantes = item.peopleNumber,
-            totalPagado = item.priceTotal,
-            estado = compra.status,
-            idiomas = compra.language
-        )
-    }
-
     @RequiresApi(Build.VERSION_CODES.O)
     fun cargarSesionesDesdeMock(token: String, fecha: LocalDate) {
         viewModelScope.launch {
             try {
                 val sesiones = compraRepository.obtenerSesionesDelDia(token, fecha)
-                _sesiones.postValue(sesiones)
                 val bloqueos = calendarioRepository.obtenerBloqueos("Bearer $token")
                     ?.filter { it.fecha == fecha.toString() }
                 Log.e("BLOQUEOS_OBTENIDOS","$token")
@@ -168,7 +117,7 @@ class CalendarioDiarioViewModel(
                         fecha.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
                     )
                     val listaHoras = calendarioRepository.transformarOcupacionesAHoraReserva(fallback)
-                    _horas.postValue(listaHoras)
+
                     _ocupaciones.postValue(fallback)
                 } catch (fallbackError: Exception) {
                     Log.e("Error", fallbackError.message.toString())
@@ -244,7 +193,6 @@ class CalendarioDiarioViewModel(
             }
         }
 
-        _horas.postValue(listaBase)
     }
 
 

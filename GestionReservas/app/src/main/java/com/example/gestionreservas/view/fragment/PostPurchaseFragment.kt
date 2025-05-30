@@ -258,7 +258,8 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
             automaticActions = "",
             items = listOf(itemReserva),
             payments = listOf(pago),
-            resumenItems = listOf(resumenItem)
+            resumenItems = listOf(resumenItem),
+            fechaCompra = "2025-01-01"
         )
 
         Toast.makeText(requireContext(), "Compra generada con éxito", Toast.LENGTH_SHORT).show()

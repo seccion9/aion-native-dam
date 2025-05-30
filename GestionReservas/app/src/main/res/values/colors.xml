@@ -30,4 +30,27 @@
     <color name="verde_libre">#8BB38D</color>
     <color name="rojo_reserva">#F29898</color>
     <color name="amarillo_sinhorario">#F4E34A</color>
+    violeta_noFinalizada
+    <color name="naranja_pendientes">#F0CC9B</color>
+    <color name="violeta_noFinalizada">#E356FF</color>
+    <color name="rojo_cancelada">#FF6A61</color>
+
+    <color name="estado_confirmada">#6FFB74</color>
+    <color name="relleno_confirmada">#D8FBDB</color>
+
+    <color name="estado_pendiente">#FFC775</color>
+    <color name="relleno_pendiente">#FDE8C6</color>
+
+    <color name="estado_no_finalizada">#E040FF</color>
+    <color name="relleno_no_finalizada">#F3C4FA</color>
+
+    <color name="estado_cancelada">#FF7469</color>
+    <color name="relleno_cancelada">#FFD8DE</color>
+
+    <color name="pago_pagada">#42A5F5</color>
+    <color name="pago_parcial">#FFA000</color>
+    <color name="pago_no_pagada">#E53935</color>
+
+    <color name="verdeItemsReservas">#06BA33</color>
+
 </resources>

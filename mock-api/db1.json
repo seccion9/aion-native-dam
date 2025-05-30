@@ -198,6 +198,7 @@
       }
     }
   ],
+ 
   "purchases": [
     {
       "id": "62e37b12-0378-4a0c-be74-4d84c5f6ba82",
@@ -220,7 +221,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-15 10:22",
+      "fechaCompra": "2025-05-14",
       "items": [
         {
           "id": "154e5653-8cfc-4c26-a692-b6a47e2a8fab",
@@ -297,7 +298,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-15 16:11",
+      "fechaCompra": "2025-05-11",
       "items": [
         {
           "id": "40b3e26b-c05e-41d9-90ee-1a72ec71aa98",
@@ -374,7 +375,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-15 14:19",
+      "fechaCompra": "2025-05-13",
       "items": [
         {
           "id": "a1cd8acb-5e64-4d5d-9b2d-14640bab95c2",
@@ -451,7 +452,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-15 11:35",
+      "fechaCompra": "2025-05-13",
       "items": [
         {
           "id": "c8008a02-5500-4ce2-a7d4-b1d21fe5d590",
@@ -528,7 +529,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-15 12:40",
+      "fechaCompra": "2025-05-11",
       "items": [
         {
           "id": "a8674dfc-06a2-4307-90ce-c04e2aaffee0",
@@ -605,7 +606,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-15 18:30",
+      "fechaCompra": "2025-05-12",
       "items": [
         {
           "id": "7a10c223-f937-416f-88bb-8dd2196770a2",
@@ -682,7 +683,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-16 19:24",
+      "fechaCompra": "2025-05-12",
       "items": [
         {
           "id": "d0b660ff-34b2-410d-86a5-c575c126328a",
@@ -759,7 +760,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-16 11:29",
+      "fechaCompra": "2025-05-12",
       "items": [
         {
           "id": "67a7354e-3deb-43fc-8e30-c52e1f52469e",
@@ -836,7 +837,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-16 18:22",
+      "fechaCompra": "2025-05-15",
       "items": [
         {
           "id": "5a98ae60-8eef-4056-bd6d-3b0eb471bc1b",
@@ -913,7 +914,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-16 12:26",
+      "fechaCompra": "2025-05-14",
       "items": [
         {
           "id": "721f58c4-9f5e-469c-b5a5-778c26e58748",
@@ -990,7 +991,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-16 20:20",
+      "fechaCompra": "2025-05-13",
       "items": [
         {
           "id": "ab7dbe56-81b6-4031-8986-1cb14709ef5f",
@@ -1067,7 +1068,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-16 13:54",
+      "fechaCompra": "2025-05-14",
       "items": [
         {
           "id": "9543354f-08db-4d12-b06b-274dcd64a005",
@@ -1144,7 +1145,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-17 13:16",
+      "fechaCompra": "2025-05-14",
       "items": [
         {
           "id": "dc680660-c6fb-42a1-b690-e892f73401af",
@@ -1221,7 +1222,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-17 10:37",
+      "fechaCompra": "2025-05-15",
       "items": [
         {
           "id": "c62aa5eb-5d5c-4735-823b-bd0b2faaf7d2",
@@ -1298,7 +1299,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-17 21:20",
+      "fechaCompra": "2025-05-12",
       "items": [
         {
           "id": "6d1c7a6d-b3cf-473d-8d40-024aad3b1254",
@@ -1375,7 +1376,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-17 15:21",
+      "fechaCompra": "2025-05-13",
       "items": [
         {
           "id": "8ad3505f-d6a9-40a9-a85d-ed16e6979af0",
@@ -1452,7 +1453,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-17 13:48",
+      "fechaCompra": "2025-05-12",
       "items": [
         {
           "id": "d8aef76c-e58a-4ebe-aee6-af6831c141ca",
@@ -1529,7 +1530,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-17 12:11",
+      "fechaCompra": "2025-05-16",
       "items": [
         {
           "id": "2eacbbf2-ed65-48c1-b63b-0dbc18445bc5",
@@ -1606,7 +1607,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-18 12:18",
+      "fechaCompra": "2025-05-14",
       "items": [
         {
           "id": "125b181c-4f9d-4593-a814-9bb8167f5c68",
@@ -1683,7 +1684,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-18 13:10",
+      "fechaCompra": "2025-05-16",
       "items": [
         {
           "id": "15eaef56-a010-441f-b9cd-167ac4350ac4",
@@ -1760,7 +1761,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-18 15:09",
+      "fechaCompra": "2025-05-13",
       "items": [
         {
           "id": "1fe56f59-1c16-4151-9927-f0617efffcab",
@@ -1837,7 +1838,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-18 09:51",
+      "fechaCompra": "2025-05-15",
       "items": [
         {
           "id": "77ae2704-3774-425d-b3ad-3f2b3415f190",
@@ -1914,7 +1915,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-18 17:18",
+      "fechaCompra": "2025-05-16",
       "items": [
         {
           "id": "fa0b1601-9a3a-4a89-99e6-109427dd4d1a",
@@ -1991,7 +1992,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-18 21:40",
+      "fechaCompra": "2025-05-15",
       "items": [
         {
           "id": "3fa3c0f4-91ce-4fad-abc9-17d4fb1f1bc4",
@@ -2068,7 +2069,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-19 19:03",
+      "fechaCompra": "2025-05-16",
       "items": [
         {
           "id": "2e9b8c5e-2106-498f-b321-a1d10758afd3",
@@ -2145,7 +2146,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-19 12:09",
+      "fechaCompra": "2025-05-17",
       "items": [
         {
           "id": "a334fbe6-bfa3-4249-b8c6-85817b204dab",
@@ -2222,7 +2223,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-19 14:59",
+      "fechaCompra": "2025-05-16",
       "items": [
         {
           "id": "ade8bd64-df06-42d6-a7a5-84f70a00ab1a",
@@ -2299,7 +2300,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-19 14:06",
+      "fechaCompra": "2025-05-14",
       "items": [
         {
           "id": "c66a2933-f89d-4c2c-a0cc-c0295c941177",
@@ -2376,7 +2377,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-19 18:09",
+      "fechaCompra": "2025-05-17",
       "items": [
         {
           "id": "54d9bf6f-564e-4075-aa3e-c8c028ecce54",
@@ -2453,7 +2454,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-19 15:48",
+      "fechaCompra": "2025-05-17",
       "items": [
         {
           "id": "25982d3b-7551-4bd9-a3b3-d5fb5811a6b7",
@@ -2530,7 +2531,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-20 20:02",
+      "fechaCompra": "2025-05-19",
       "items": [
         {
           "id": "283a3322-37b3-4075-b9a3-9b3f25c83a20",
@@ -2607,7 +2608,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-20 09:19",
+      "fechaCompra": "2025-05-18",
       "items": [
         {
           "id": "066c7ed7-df5e-4b11-b727-4e34490167ba",
@@ -2684,7 +2685,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-20 17:56",
+      "fechaCompra": "2025-05-18",
       "items": [
         {
           "id": "b6570b5e-c6ed-4729-bf3b-e0acb170fff8",
@@ -2761,7 +2762,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-20 11:44",
+      "fechaCompra": "2025-05-17",
       "items": [
         {
           "id": "163b3f39-dab8-4279-af25-a007430f921e",
@@ -2838,7 +2839,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-20 09:11",
+      "fechaCompra": "2025-05-16",
       "items": [
         {
           "id": "92329ee2-cac4-4733-abc5-78fd89c66adf",
@@ -2915,7 +2916,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-20 15:32",
+      "fechaCompra": "2025-05-15",
       "items": [
         {
           "id": "df974b4a-2f34-4331-a434-5562f9d064f5",
@@ -2992,7 +2993,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-21 11:29",
+      "fechaCompra": "2025-05-18",
       "items": [
         {
           "id": "fb881ee0-cea6-4814-9d26-7af3d781236c",
@@ -3069,7 +3070,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-21 09:32",
+      "fechaCompra": "2025-05-16",
       "items": [
         {
           "id": "178ff338-5e82-4e0e-b9b6-ccc7630d1aa1",
@@ -3146,7 +3147,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-21 17:04",
+      "fechaCompra": "2025-05-19",
       "items": [
         {
           "id": "3221db62-51ef-4992-9ea2-b39223281f29",
@@ -3223,7 +3224,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-21 18:09",
+      "fechaCompra": "2025-05-16",
       "items": [
         {
           "id": "32060a19-b795-4712-aa26-61bb665d9609",
@@ -3300,7 +3301,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-21 10:05",
+      "fechaCompra": "2025-05-19",
       "items": [
         {
           "id": "893fadfd-6f5e-4d76-9497-ef5cf43d4eeb",
@@ -3377,7 +3378,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-21 10:38",
+      "fechaCompra": "2025-05-17",
       "items": [
         {
           "id": "d9e6de8a-14b6-43bd-a910-5822f8ccdd36",
@@ -3454,7 +3455,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-22 12:48",
+      "fechaCompra": "2025-05-18",
       "items": [
         {
           "id": "1195cb3f-ff0b-44cb-9e2a-0154841ef454",
@@ -3531,7 +3532,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-22 15:37",
+      "fechaCompra": "2025-05-17",
       "items": [
         {
           "id": "34b0d021-93c1-4992-8c09-e003a72ae979",
@@ -3608,7 +3609,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-22 09:04",
+      "fechaCompra": "2025-05-21",
       "items": [
         {
           "id": "edf0c867-9be1-4154-bc0b-6f435a5c2a04",
@@ -3685,7 +3686,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-22 17:10",
+      "fechaCompra": "2025-05-20",
       "items": [
         {
           "id": "6a603c3e-19c2-412e-a30c-ba7f7be65cc7",
@@ -3762,7 +3763,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-22 12:36",
+      "fechaCompra": "2025-05-19",
       "items": [
         {
           "id": "700a831b-30c2-497b-b2bc-07c4d417c7e8",
@@ -3839,7 +3840,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-22 19:35",
+      "fechaCompra": "2025-05-21",
       "items": [
         {
           "id": "e48f6c55-b574-4094-8679-c35e185dbf0c",
@@ -3916,7 +3917,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-23 20:38",
+      "fechaCompra": "2025-05-19",
       "items": [
         {
           "id": "a461ec54-0e5c-4ddf-92f2-987c124f4b2f",
@@ -3993,7 +3994,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-23 17:28",
+      "fechaCompra": "2025-05-18",
       "items": [
         {
           "id": "8dfee973-677e-4142-ac89-6b8af4f60032",
@@ -4070,7 +4071,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-23 11:49",
+      "fechaCompra": "2025-05-21",
       "items": [
         {
           "id": "80d25610-146a-477e-9b1e-7239a76c82b9",
@@ -4147,7 +4148,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-23 21:09",
+      "fechaCompra": "2025-05-21",
       "items": [
         {
           "id": "3dd53930-8eea-48de-9176-19d82b60ca29",
@@ -4224,7 +4225,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-23 20:04",
+      "fechaCompra": "2025-05-19",
       "items": [
         {
           "id": "cbe7b667-3135-4dc4-bb10-2f84c4af6545",
@@ -4301,7 +4302,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-23 17:59",
+      "fechaCompra": "2025-05-20",
       "items": [
         {
           "id": "47b1befb-5c24-4852-831c-76dadc863780",
@@ -4378,7 +4379,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-24 20:41",
+      "fechaCompra": "2025-05-23",
       "items": [
         {
           "id": "09a0769d-ab16-44b1-8f9a-aa27b39b25c4",
@@ -4455,7 +4456,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-24 17:28",
+      "fechaCompra": "2025-05-23",
       "items": [
         {
           "id": "f8590076-39ab-4396-95ed-84256e8b5bd6",
@@ -4532,7 +4533,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-24 18:26",
+      "fechaCompra": "2025-05-21",
       "items": [
         {
           "id": "0dc07096-3898-4bfd-aded-34d6e614d8ad",
@@ -4609,7 +4610,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-24 21:09",
+      "fechaCompra": "2025-05-22",
       "items": [
         {
           "id": "7ca87f6b-2f59-46b8-8818-d98b72fe0b4a",
@@ -4686,7 +4687,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-24 10:20",
+      "fechaCompra": "2025-05-22",
       "items": [
         {
           "id": "f500383f-8add-40db-82cd-6bf123f5b31a",
@@ -4763,7 +4764,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-24 13:10",
+      "fechaCompra": "2025-05-21",
       "items": [
         {
           "id": "95413bea-29f6-4248-8a3c-7b0fe0f45fc7",
@@ -4840,7 +4841,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-25 09:31",
+      "fechaCompra": "2025-05-21",
       "items": [
         {
           "id": "846c0c2a-6e1e-4bfe-ad2c-14849a24fa68",
@@ -4917,7 +4918,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-25 16:16",
+      "fechaCompra": "2025-05-20",
       "items": [
         {
           "id": "25a2d526-1f1c-472b-a786-686a4e0d2939",
@@ -4994,7 +4995,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-25 21:37",
+      "fechaCompra": "2025-05-23",
       "items": [
         {
           "id": "150d1174-594b-4e3f-ac3a-a2f935550017",
@@ -5071,7 +5072,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-25 15:18",
+      "fechaCompra": "2025-05-23",
       "items": [
         {
           "id": "309997ed-a8f8-4119-a0a8-3e56d93095d3",
@@ -5148,7 +5149,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-25 13:04",
+      "fechaCompra": "2025-05-23",
       "items": [
         {
           "id": "6016d3e6-6682-4880-a827-464dfe81dc2b",
@@ -5225,7 +5226,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-25 19:08",
+      "fechaCompra": "2025-05-22",
       "items": [
         {
           "id": "313fb684-4df5-41c7-ac60-04c9b98f8e50",
@@ -5302,7 +5303,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-26 14:20",
+      "fechaCompra": "2025-05-21",
       "items": [
         {
           "id": "2d75cfda-c5ac-4be7-bda7-24c5194ec47c",
@@ -5379,7 +5380,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-26 11:59",
+      "fechaCompra": "2025-05-25",
       "items": [
         {
           "id": "8ada5e54-d83b-4cbe-ac38-4cf78858a182",
@@ -5456,7 +5457,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-26 16:43",
+      "fechaCompra": "2025-05-22",
       "items": [
         {
           "id": "b18296fb-bb98-469b-8068-5280f681e098",
@@ -5533,7 +5534,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-26 16:35",
+      "fechaCompra": "2025-05-25",
       "items": [
         {
           "id": "bdcfdc0c-f8aa-44df-bb78-973122d1d447",
@@ -5610,7 +5611,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-26 18:23",
+      "fechaCompra": "2025-05-21",
       "items": [
         {
           "id": "e6f5600c-3e1e-4490-8a7a-97aac1545d8f",
@@ -5687,7 +5688,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-26 19:02",
+      "fechaCompra": "2025-05-22",
       "items": [
         {
           "id": "67044e12-dc94-4435-a5b8-621febea4ad7",
@@ -5764,7 +5765,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-27 09:52",
+      "fechaCompra": "2025-05-23",
       "items": [
         {
           "id": "216f73cb-3a73-4e04-87ad-1e3447d67fce",
@@ -5841,7 +5842,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-27 13:07",
+      "fechaCompra": "2025-05-26",
       "items": [
         {
           "id": "97f76cfd-70d3-42a3-8a90-d7cc1b0a0f8f",
@@ -5918,7 +5919,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-27 21:19",
+      "fechaCompra": "2025-05-26",
       "items": [
         {
           "id": "881e52be-fd55-49ae-88ce-b61e1510f753",
@@ -5995,7 +5996,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-27 12:59",
+      "fechaCompra": "2025-05-25",
       "items": [
         {
           "id": "e6563d8e-f845-4e05-b81d-544b0f2fefa5",
@@ -6072,7 +6073,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-27 20:12",
+      "fechaCompra": "2025-05-24",
       "items": [
         {
           "id": "edb64230-141f-49d2-8e2b-765b3980bda1",
@@ -6149,7 +6150,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-27 10:53",
+      "fechaCompra": "2025-05-22",
       "items": [
         {
           "id": "f77a79d7-a252-4e8f-8450-d436374f930a",
@@ -6226,7 +6227,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-28 11:41",
+      "fechaCompra": "2025-05-27",
       "items": [
         {
           "id": "33358c16-3fd9-438a-af11-0b85b1a5b7f6",
@@ -6303,7 +6304,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-28 18:00",
+      "fechaCompra": "2025-05-24",
       "items": [
         {
           "id": "2984adba-b2f9-4294-83d7-b4bbb7ebda07",
@@ -6380,7 +6381,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-28 18:53",
+      "fechaCompra": "2025-05-26",
       "items": [
         {
           "id": "fd90e4b9-baaf-46a4-afa6-fe21a4afc8a2",
@@ -6457,7 +6458,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-28 20:56",
+      "fechaCompra": "2025-05-24",
       "items": [
         {
           "id": "869602d9-9ed4-45ce-bd3c-dba274b86988",
@@ -6534,7 +6535,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-28 10:44",
+      "fechaCompra": "2025-05-24",
       "items": [
         {
           "id": "e8d83304-5610-4fa6-86f6-926ec891158c",
@@ -6611,7 +6612,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-28 15:22",
+      "fechaCompra": "2025-05-23",
       "items": [
         {
           "id": "90124419-5f74-40ea-a340-b64a107a3fdb",
@@ -6688,7 +6689,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-29 16:36",
+      "fechaCompra": "2025-05-26",
       "items": [
         {
           "id": "b8394f3f-f441-4b44-8560-a851db9dac4b",
@@ -6765,7 +6766,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-29 14:19",
+      "fechaCompra": "2025-05-28",
       "items": [
         {
           "id": "4fc635af-d7da-417c-905e-8388141d5b00",
@@ -6842,7 +6843,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-29 13:02",
+      "fechaCompra": "2025-05-28",
       "items": [
         {
           "id": "046bb359-fd93-4265-9d21-488cd69b4805",
@@ -6919,7 +6920,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-29 20:10",
+      "fechaCompra": "2025-05-24",
       "items": [
         {
           "id": "4187f09c-17a7-4b85-b250-59479ab048ca",
@@ -6996,7 +6997,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-29 09:23",
+      "fechaCompra": "2025-05-26",
       "items": [
         {
           "id": "bec5971f-3eef-48e5-bae5-3181703af551",
@@ -7073,7 +7074,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-29 20:37",
+      "fechaCompra": "2025-05-27",
       "items": [
         {
           "id": "1902c4b0-7350-4391-865c-358ad38e8365",
@@ -7150,7 +7151,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-30 11:45",
+      "fechaCompra": "2025-05-25",
       "items": [
         {
           "id": "77ec45ad-e3df-442c-9ed4-01bbabab2607",
@@ -7227,7 +7228,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-30 13:30",
+      "fechaCompra": "2025-05-28",
       "items": [
         {
           "id": "3128b12c-ab15-420d-b11c-aa134f10d8f5",
@@ -7304,7 +7305,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-30 11:20",
+      "fechaCompra": "2025-05-26",
       "items": [
         {
           "id": "e4f7a3d4-cabe-4075-abda-7a47e90b6a6c",
@@ -7381,7 +7382,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-30 21:28",
+      "fechaCompra": "2025-05-26",
       "items": [
         {
           "id": "f57ee82e-f40a-4e3a-97ca-c757b381a94f",
@@ -7458,7 +7459,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-30 14:49",
+      "fechaCompra": "2025-05-27",
       "items": [
         {
           "id": "9fe7e40a-94a3-4a1d-8473-5d5d798d0b0f",
@@ -7535,7 +7536,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-30 10:03",
+      "fechaCompra": "2025-05-27",
       "items": [
         {
           "id": "ecc37a66-aae6-4788-b1dd-c8f8baddeccb",
@@ -7612,7 +7613,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-31 12:05",
+      "fechaCompra": "2025-05-27",
       "items": [
         {
           "id": "3daf8df9-f247-4430-955d-72569002ea59",
@@ -7689,7 +7690,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-31 12:58",
+      "fechaCompra": "2025-05-30",
       "items": [
         {
           "id": "d0174ef0-d580-4108-8786-2950b6cda5cd",
@@ -7766,7 +7767,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-31 17:19",
+      "fechaCompra": "2025-05-29",
       "items": [
         {
           "id": "616128b1-b031-4c3c-9247-cf9ae1e03fb6",
@@ -7843,7 +7844,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-31 10:10",
+      "fechaCompra": "2025-05-30",
       "items": [
         {
           "id": "d24edadf-c571-410b-8dab-bfc3c2bf9089",
@@ -7920,7 +7921,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-31 14:32",
+      "fechaCompra": "2025-05-27",
       "items": [
         {
           "id": "b2d01f9c-cdfa-4021-83a3-8c3e6956b18f",
@@ -7997,7 +7998,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-31 14:12",
+      "fechaCompra": "2025-05-29",
       "items": [
         {
           "id": "6c6b7580-fdb5-4e31-bf21-d7b89b373cf0",
@@ -8074,7 +8075,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-01 20:36",
+      "fechaCompra": "2025-05-31",
       "items": [
         {
           "id": "7a23b40b-10a2-4964-abe1-30a1c15bb8f2",
@@ -8151,7 +8152,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-01 12:27",
+      "fechaCompra": "2025-05-27",
       "items": [
         {
           "id": "e9cb34de-c82e-42fa-b103-6fee72db197e",
@@ -8228,7 +8229,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-01 15:08",
+      "fechaCompra": "2025-05-31",
       "items": [
         {
           "id": "6f37d4ae-d608-43cf-86c6-768bf98d30fa",
@@ -8305,7 +8306,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-01 14:02",
+      "fechaCompra": "2025-05-31",
       "items": [
         {
           "id": "3f3668fb-2f0b-4f00-8d0b-e48bb3be672f",
@@ -8382,7 +8383,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-01 16:16",
+      "fechaCompra": "2025-05-29",
       "items": [
         {
           "id": "67edcf8d-5674-4654-89b6-9ce1a5ead724",
@@ -8459,7 +8460,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-01 10:34",
+      "fechaCompra": "2025-05-31",
       "items": [
         {
           "id": "52881abc-c572-42b9-98e2-3a5a6956b28f",
@@ -8536,7 +8537,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-02 10:00",
+      "fechaCompra": "2025-06-01",
       "items": [
         {
           "id": "63c3d914-8bab-4156-b02a-c0cd4a8c900f",
@@ -8613,7 +8614,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-02 14:42",
+      "fechaCompra": "2025-05-30",
       "items": [
         {
           "id": "3fd087f0-66f0-4174-a6bf-4dc1f28423f6",
@@ -8690,7 +8691,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-02 10:53",
+      "fechaCompra": "2025-05-29",
       "items": [
         {
           "id": "13afe512-63c2-461e-9804-8e6c048baa67",
@@ -8767,7 +8768,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-02 14:14",
+      "fechaCompra": "2025-05-30",
       "items": [
         {
           "id": "72c27020-7134-46b7-afca-351ecd2050fd",
@@ -8844,7 +8845,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-02 09:28",
+      "fechaCompra": "2025-05-28",
       "items": [
         {
           "id": "7102ab20-3429-46df-be63-4c1ec2c0e092",
@@ -8921,7 +8922,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-02 12:55",
+      "fechaCompra": "2025-05-28",
       "items": [
         {
           "id": "7036d3af-7b9a-4ef7-8e45-74ea52a24855",
@@ -8998,7 +8999,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-03 11:52",
+      "fechaCompra": "2025-06-01",
       "items": [
         {
           "id": "1ba77f4d-8f8e-4e93-b5a5-b260fcf7131f",
@@ -9075,7 +9076,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-03 10:23",
+      "fechaCompra": "2025-06-01",
       "items": [
         {
           "id": "305ae832-8574-4a36-a0de-ed6de46d6dfb",
@@ -9152,7 +9153,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-03 14:38",
+      "fechaCompra": "2025-05-29",
       "items": [
         {
           "id": "7e6e0ad2-bc61-426d-9ce0-eb1e937b1226",
@@ -9229,7 +9230,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-03 15:46",
+      "fechaCompra": "2025-06-02",
       "items": [
         {
           "id": "98d1d717-2c90-4c1b-a4c9-47bb2992609b",
@@ -9306,7 +9307,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-03 15:53",
+      "fechaCompra": "2025-06-02",
       "items": [
         {
           "id": "d3870611-a742-4bc4-97e8-9ac99b01538e",
@@ -9383,7 +9384,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-03 16:44",
+      "fechaCompra": "2025-06-01",
       "items": [
         {
           "id": "c2726999-6a19-45aa-b301-2c9893c405db",
@@ -9460,7 +9461,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-04 13:03",
+      "fechaCompra": "2025-05-31",
       "items": [
         {
           "id": "38a52aa4-6fc3-4694-ab02-3e0ad1d784b4",
@@ -9537,7 +9538,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-04 19:12",
+      "fechaCompra": "2025-06-03",
       "items": [
         {
           "id": "d34e409f-e376-4c76-8cff-92c73ed5005a",
@@ -9614,7 +9615,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-04 15:12",
+      "fechaCompra": "2025-05-31",
       "items": [
         {
           "id": "c3b3e242-7aaa-4bba-a047-82cafa7cdbf9",
@@ -9691,7 +9692,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-04 15:06",
+      "fechaCompra": "2025-05-30",
       "items": [
         {
           "id": "e6672aaf-6c95-4c8a-b738-6922f7a30035",
@@ -9768,7 +9769,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-04 21:37",
+      "fechaCompra": "2025-05-30",
       "items": [
         {
           "id": "ba23dee7-a470-4032-9e22-32249b6ca115",
@@ -9845,7 +9846,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-04 19:49",
+      "fechaCompra": "2025-05-30",
       "items": [
         {
           "id": "6df6cf29-907f-4c99-bfb0-3573bfef4ae9",
@@ -9922,7 +9923,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-05 19:33",
+      "fechaCompra": "2025-05-31",
       "items": [
         {
           "id": "5270382d-1b32-43a4-bfe0-a3b813beed09",
@@ -9999,7 +10000,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-05 16:06",
+      "fechaCompra": "2025-06-01",
       "items": [
         {
           "id": "291a30ad-7937-4d1e-a8b7-c5bc96da867b",
@@ -10076,7 +10077,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-05 21:01",
+      "fechaCompra": "2025-06-04",
       "items": [
         {
           "id": "5410bc0e-d895-4f8a-87ad-2e6bc57f5930",
@@ -10153,7 +10154,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-05 14:47",
+      "fechaCompra": "2025-06-04",
       "items": [
         {
           "id": "c66d2da8-8f1d-49e4-aada-120448ca71ac",
@@ -10230,7 +10231,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-05 17:35",
+      "fechaCompra": "2025-06-01",
       "items": [
         {
           "id": "cfa0be44-2980-4d39-839b-deb5b732d91e",
@@ -10307,7 +10308,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-05 19:46",
+      "fechaCompra": "2025-05-31",
       "items": [
         {
           "id": "f56cbdf2-d0c8-4e27-ad86-56c7829c6de9",
@@ -10384,7 +10385,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-06 19:23",
+      "fechaCompra": "2025-06-01",
       "items": [
         {
           "id": "f3dc9de2-2a62-471a-b3f2-b8711adab9fb",
@@ -10461,7 +10462,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-06 10:17",
+      "fechaCompra": "2025-06-01",
       "items": [
         {
           "id": "f1930922-0b74-4815-814d-10ebe8d8c1a4",
@@ -10538,7 +10539,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-06 11:06",
+      "fechaCompra": "2025-06-04",
       "items": [
         {
           "id": "8411589c-5ea1-4578-8475-27b3efa5a755",
@@ -10615,7 +10616,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-06 12:58",
+      "fechaCompra": "2025-06-03",
       "items": [
         {
           "id": "311c6e90-b860-44e2-873b-8f0651e916ed",
@@ -10692,7 +10693,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-06 10:04",
+      "fechaCompra": "2025-06-04",
       "items": [
         {
           "id": "cf918baa-96b1-4d8f-a703-a93b2ea05373",
@@ -10769,7 +10770,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-06 16:27",
+      "fechaCompra": "2025-06-01",
       "items": [
         {
           "id": "630ae254-1c24-41e7-a5b0-d27f499dc7ad",
@@ -10846,7 +10847,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-07 11:19",
+      "fechaCompra": "2025-06-02",
       "items": [
         {
           "id": "3ad5ed2b-31f2-492d-88f4-180c8876d85b",
@@ -10923,7 +10924,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-07 16:17",
+      "fechaCompra": "2025-06-05",
       "items": [
         {
           "id": "6f2a4593-cb70-45dd-b3ff-428e23a3b6b8",
@@ -11000,7 +11001,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-07 21:38",
+      "fechaCompra": "2025-06-06",
       "items": [
         {
           "id": "5dfbdfe7-a0f4-4fbf-9286-eb7e7b9bf5fb",
@@ -11077,7 +11078,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-07 18:07",
+      "fechaCompra": "2025-06-06",
       "items": [
         {
           "id": "aee470f8-3402-457f-88a4-e3c0bbfb2bcf",
@@ -11154,7 +11155,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-07 13:48",
+      "fechaCompra": "2025-06-02",
       "items": [
         {
           "id": "f0196814-4767-4a45-889c-078703ebb58a",
@@ -11231,7 +11232,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-07 09:32",
+      "fechaCompra": "2025-06-02",
       "items": [
         {
           "id": "72b0e34e-07af-4ee2-8495-9685d42265c8",
@@ -11308,7 +11309,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-08 19:48",
+      "fechaCompra": "2025-06-03",
       "items": [
         {
           "id": "ce9b313f-a7a1-4a0f-96cb-81e9e24b0c07",
@@ -11385,7 +11386,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-08 14:58",
+      "fechaCompra": "2025-06-03",
       "items": [
         {
           "id": "a8628fef-d4b1-4683-b167-410da97f28ed",
@@ -11462,7 +11463,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-08 20:25",
+      "fechaCompra": "2025-06-03",
       "items": [
         {
           "id": "60fbc145-803a-4554-9658-032708983a2f",
@@ -11539,7 +11540,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-08 11:04",
+      "fechaCompra": "2025-06-03",
       "items": [
         {
           "id": "b699fc55-58f2-4a63-b7f5-8f4c26f622cd",
@@ -11616,7 +11617,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-08 10:21",
+      "fechaCompra": "2025-06-05",
       "items": [
         {
           "id": "123a6657-5389-4eab-9a7d-055e2082cc6c",
@@ -11693,7 +11694,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-08 12:29",
+      "fechaCompra": "2025-06-06",
       "items": [
         {
           "id": "0a556262-dc14-4751-aa9c-119e0f052258",
@@ -11770,7 +11771,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-09 17:59",
+      "fechaCompra": "2025-06-05",
       "items": [
         {
           "id": "74ce2b9c-50d3-4d09-a575-b926f5847edf",
@@ -11847,7 +11848,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-09 11:11",
+      "fechaCompra": "2025-06-05",
       "items": [
         {
           "id": "0a9dff80-025a-4b38-89ef-30dc53a1a042",
@@ -11924,7 +11925,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-09 14:46",
+      "fechaCompra": "2025-06-05",
       "items": [
         {
           "id": "72fd1068-d2a6-4975-b088-b2735970cb56",
@@ -12001,7 +12002,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-09 09:55",
+      "fechaCompra": "2025-06-08",
       "items": [
         {
           "id": "96871f1c-fd4f-483b-b0d9-3b658c21b357",
@@ -12078,7 +12079,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-09 18:12",
+      "fechaCompra": "2025-06-05",
       "items": [
         {
           "id": "479c7773-bdb3-406c-ac89-5230cbbfe4b3",
@@ -12155,7 +12156,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-09 20:06",
+      "fechaCompra": "2025-06-08",
       "items": [
         {
           "id": "acdb8a1d-ae9b-45de-88b5-e48c6a54e133",
@@ -12232,7 +12233,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-10 15:15",
+      "fechaCompra": "2025-06-07",
       "items": [
         {
           "id": "20e20b23-5496-435e-8042-de1eb895409b",
@@ -12309,7 +12310,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-10 09:20",
+      "fechaCompra": "2025-06-08",
       "items": [
         {
           "id": "fb488c5b-4a08-467d-acfa-95f8ebc861b6",
@@ -12386,7 +12387,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-10 18:06",
+      "fechaCompra": "2025-06-05",
       "items": [
         {
           "id": "1422171a-e67c-4b56-a444-2b6b513d77b8",
@@ -12463,7 +12464,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-10 15:04",
+      "fechaCompra": "2025-06-05",
       "items": [
         {
           "id": "2594fe55-083b-4a0e-9096-f4c6b44fd3e5",
@@ -12540,7 +12541,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-10 17:01",
+      "fechaCompra": "2025-06-06",
       "items": [
         {
           "id": "14422778-48ff-4718-ab45-21ef42275d6d",
@@ -12617,7 +12618,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-10 20:23",
+      "fechaCompra": "2025-06-05",
       "items": [
         {
           "id": "7beffb1b-c60f-4bb2-8490-9012365825d4",
@@ -12694,7 +12695,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-11 19:30",
+      "fechaCompra": "2025-06-08",
       "items": [
         {
           "id": "209ee601-9d80-4f67-aaa1-a8db6234c625",
@@ -12771,7 +12772,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-11 14:39",
+      "fechaCompra": "2025-06-10",
       "items": [
         {
           "id": "e7af7544-07fd-43f1-a276-c811a139bbcf",
@@ -12848,7 +12849,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-11 16:48",
+      "fechaCompra": "2025-06-09",
       "items": [
         {
           "id": "eedf438a-18f5-4f19-a41f-72e120b7954f",
@@ -12925,7 +12926,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-11 10:50",
+      "fechaCompra": "2025-06-08",
       "items": [
         {
           "id": "572da8ad-da4b-46fc-8831-afc75cc1f802",
@@ -13002,7 +13003,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-11 12:37",
+      "fechaCompra": "2025-06-10",
       "items": [
         {
           "id": "f026b4a8-180d-48c7-b23d-9bb8f33817b0",
@@ -13079,7 +13080,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-11 20:41",
+      "fechaCompra": "2025-06-07",
       "items": [
         {
           "id": "4fbb1636-7955-422d-9661-b1bdb7c95014",
@@ -13156,7 +13157,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-12 11:58",
+      "fechaCompra": "2025-06-08",
       "items": [
         {
           "id": "8de138f6-1a89-4156-bcac-2f5a39b06036",
@@ -13233,7 +13234,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-12 18:33",
+      "fechaCompra": "2025-06-09",
       "items": [
         {
           "id": "354316b1-4d86-4a88-8322-6e51607434cb",
@@ -13310,7 +13311,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-12 16:16",
+      "fechaCompra": "2025-06-07",
       "items": [
         {
           "id": "5f2fae61-a116-4720-89ff-f71a356dc944",
@@ -13387,7 +13388,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-12 12:44",
+      "fechaCompra": "2025-06-11",
       "items": [
         {
           "id": "232ef953-e63e-4181-b682-b31b77e0f833",
@@ -13464,7 +13465,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-12 15:34",
+      "fechaCompra": "2025-06-10",
       "items": [
         {
           "id": "bc6c75c9-0b8d-44de-a4ff-33b48cd67fea",
@@ -13541,7 +13542,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-12 16:26",
+      "fechaCompra": "2025-06-11",
       "items": [
         {
           "id": "813e594a-8c5c-4fa9-9c85-06f2578d1f02",
@@ -13618,7 +13619,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-13 20:08",
+      "fechaCompra": "2025-06-08",
       "items": [
         {
           "id": "af0e20b8-bdc3-4ab4-8322-4e60a00a7819",
@@ -13695,7 +13696,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-13 14:41",
+      "fechaCompra": "2025-06-10",
       "items": [
         {
           "id": "5ae5f8d5-7ded-43c1-9361-97056f693042",
@@ -13772,7 +13773,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-13 21:38",
+      "fechaCompra": "2025-06-10",
       "items": [
         {
           "id": "0f4ea0b8-1048-4c80-a837-c5f56e15bff8",
@@ -13849,7 +13850,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-13 17:15",
+      "fechaCompra": "2025-06-08",
       "items": [
         {
           "id": "e9eab66c-e73a-4596-8625-a82025adb272",
@@ -13926,7 +13927,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-13 10:45",
+      "fechaCompra": "2025-06-09",
       "items": [
         {
           "id": "6f92cd26-df8b-4314-bf2f-174165885239",
@@ -14003,7 +14004,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-13 10:09",
+      "fechaCompra": "2025-06-10",
       "items": [
         {
           "id": "0b6b46b1-add5-4538-bb6d-c9cef37a154b",
@@ -14080,7 +14081,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-14 09:33",
+      "fechaCompra": "2025-06-12",
       "items": [
         {
           "id": "a2082d2b-e19d-4061-b1c2-5d1a4d8fa607",
@@ -14157,7 +14158,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-14 09:02",
+      "fechaCompra": "2025-06-11",
       "items": [
         {
           "id": "39bacbfa-ccb6-4924-8ed1-53575c17cbb1",
@@ -14234,7 +14235,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-14 09:58",
+      "fechaCompra": "2025-06-10",
       "items": [
         {
           "id": "5efcfe22-0f02-4e9e-aa56-2f38c286cf1e",
@@ -14311,7 +14312,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-14 11:13",
+      "fechaCompra": "2025-06-13",
       "items": [
         {
           "id": "bb1d7eea-70d3-49f1-96ce-fb55e1332713",
@@ -14388,7 +14389,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-14 10:44",
+      "fechaCompra": "2025-06-10",
       "items": [
         {
           "id": "a4223baf-d2ff-4fa1-b717-4a200fe68893",
@@ -14465,7 +14466,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-14 09:24",
+      "fechaCompra": "2025-06-12",
       "items": [
         {
           "id": "a3902ef9-7852-4d96-9599-0ccd8f07e259",
@@ -14542,7 +14543,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-15 09:21",
+      "fechaCompra": "2025-06-11",
       "items": [
         {
           "id": "d9fd1e97-4d49-43d4-8b21-9f7f73bd8113",
@@ -14619,7 +14620,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-15 18:57",
+      "fechaCompra": "2025-06-13",
       "items": [
         {
           "id": "9443bb2a-b942-4cde-8b16-5d05da0a3c9e",
@@ -14696,7 +14697,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-15 13:46",
+      "fechaCompra": "2025-06-14",
       "items": [
         {
           "id": "558da59c-2b76-4ca0-8feb-a86f476702cb",
@@ -14773,7 +14774,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-15 12:53",
+      "fechaCompra": "2025-06-10",
       "items": [
         {
           "id": "3800da78-65ea-4d9f-b2a5-e03b15c412f4",
@@ -14850,7 +14851,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-15 21:38",
+      "fechaCompra": "2025-06-11",
       "items": [
         {
           "id": "2b92f692-eb91-402a-8c78-1a3a57bfe741",
@@ -14927,7 +14928,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-15 10:31",
+      "fechaCompra": "2025-06-14",
       "items": [
         {
           "id": "b6e940e8-fa1e-4e89-8592-4040f59b4347",
@@ -15004,7 +15005,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-16 10:10",
+      "fechaCompra": "2025-06-11",
       "items": [
         {
           "id": "6eb92fa8-69ee-4b8c-9361-72610f417fe7",
@@ -15081,7 +15082,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-16 19:03",
+      "fechaCompra": "2025-06-13",
       "items": [
         {
           "id": "f8c92e8f-a084-46d5-8bb8-84352dba8895",
@@ -15158,7 +15159,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-16 11:21",
+      "fechaCompra": "2025-06-12",
       "items": [
         {
           "id": "f9cdbe36-5aa2-4d9c-b1df-d5c3fa0635e7",
@@ -15235,7 +15236,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-16 11:39",
+      "fechaCompra": "2025-06-12",
       "items": [
         {
           "id": "e8e13550-b84b-40f4-8d06-2b07ef269a1d",
@@ -15312,7 +15313,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-16 21:01",
+      "fechaCompra": "2025-06-13",
       "items": [
         {
           "id": "ee0d7a39-e5e5-4a85-b4cc-9736e4ee8414",
@@ -15389,7 +15390,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-16 09:16",
+      "fechaCompra": "2025-06-12",
       "items": [
         {
           "id": "55957ce7-f266-4326-996d-f93e8746bd91",
@@ -15466,7 +15467,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-17 09:02",
+      "fechaCompra": "2025-06-12",
       "items": [
         {
           "id": "bded66e9-45aa-4f05-ba2e-7696fc2c98ba",
@@ -15543,7 +15544,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-17 15:00",
+      "fechaCompra": "2025-06-16",
       "items": [
         {
           "id": "28726f55-e408-4f53-8918-9cee9c96ffff",
@@ -15620,7 +15621,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-17 13:37",
+      "fechaCompra": "2025-06-13",
       "items": [
         {
           "id": "cb33d600-c103-4f2b-8cea-2bca3430dacc",
@@ -15697,7 +15698,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-17 10:07",
+      "fechaCompra": "2025-06-12",
       "items": [
         {
           "id": "ade73e41-aa81-4bec-a112-a9637f438333",
@@ -15774,7 +15775,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-17 18:06",
+      "fechaCompra": "2025-06-15",
       "items": [
         {
           "id": "1d51fb0d-a5fe-4c86-abba-d766c3a5449e",
@@ -15851,7 +15852,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-17 10:39",
+      "fechaCompra": "2025-06-14",
       "items": [
         {
           "id": "6d3282d2-2e1f-47ac-b95e-dee16fe85954",
@@ -15928,7 +15929,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-18 16:51",
+      "fechaCompra": "2025-06-16",
       "items": [
         {
           "id": "ff30a399-b5cf-4ba3-9e40-2d169f89b3b2",
@@ -16005,7 +16006,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-18 12:54",
+      "fechaCompra": "2025-06-14",
       "items": [
         {
           "id": "e8e570be-4754-438f-aa9d-178dd61ffb12",
@@ -16082,7 +16083,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-18 15:15",
+      "fechaCompra": "2025-06-13",
       "items": [
         {
           "id": "3d1eb954-a761-414b-8e14-64fe765b0c5a",
@@ -16159,7 +16160,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-18 15:14",
+      "fechaCompra": "2025-06-13",
       "items": [
         {
           "id": "f7a7e0d2-98d6-4662-bb62-6f076a0b8898",
@@ -16236,7 +16237,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-18 09:32",
+      "fechaCompra": "2025-06-16",
       "items": [
         {
           "id": "af0317c8-91d3-46e4-b71b-004759e41a94",
@@ -16313,7 +16314,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-18 12:37",
+      "fechaCompra": "2025-06-15",
       "items": [
         {
           "id": "75f2908d-3590-4bab-b87a-9cde06aa4482",
@@ -16390,7 +16391,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-19 14:20",
+      "fechaCompra": "2025-06-18",
       "items": [
         {
           "id": "51898b79-d1f8-4296-a70d-045f414028c6",
@@ -16467,7 +16468,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-19 12:59",
+      "fechaCompra": "2025-06-18",
       "items": [
         {
           "id": "d85978ec-a772-4803-9471-85d0b30a0fa4",
@@ -16544,7 +16545,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-19 13:16",
+      "fechaCompra": "2025-06-14",
       "items": [
         {
           "id": "e5ad2dfe-fd1f-42a8-8994-48d4ce52d604",
@@ -16621,7 +16622,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-19 10:14",
+      "fechaCompra": "2025-06-17",
       "items": [
         {
           "id": "9332dc95-12ab-48f2-8dea-6e618a0914c9",
@@ -16698,7 +16699,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-19 17:51",
+      "fechaCompra": "2025-06-18",
       "items": [
         {
           "id": "ee96b79f-8049-466e-bbb0-8be3d1928af6",
@@ -16775,7 +16776,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-19 19:10",
+      "fechaCompra": "2025-06-17",
       "items": [
         {
           "id": "bf24b0b9-f6e3-4257-8d9d-4da63a42bf64",
@@ -16852,7 +16853,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-20 12:56",
+      "fechaCompra": "2025-06-16",
       "items": [
         {
           "id": "dac630ea-8182-4472-a5c2-4f9a6007ef89",
@@ -16929,7 +16930,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-20 17:37",
+      "fechaCompra": "2025-06-17",
       "items": [
         {
           "id": "c8043049-221a-4756-b219-07f0a3c7ed97",
@@ -17006,7 +17007,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-20 11:57",
+      "fechaCompra": "2025-06-19",
       "items": [
         {
           "id": "6df251f8-0729-49bd-aa3a-e01137ebc374",
@@ -17083,7 +17084,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-20 18:40",
+      "fechaCompra": "2025-06-16",
       "items": [
         {
           "id": "bec6f82d-8d7e-443a-bd42-625751acff3e",
@@ -17160,7 +17161,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-20 09:49",
+      "fechaCompra": "2025-06-16",
       "items": [
         {
           "id": "d0519ca3-9b66-4d52-9b66-00892aa68c23",
@@ -17237,7 +17238,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-20 18:17",
+      "fechaCompra": "2025-06-18",
       "items": [
         {
           "id": "5835ce64-7577-48d1-a623-8af196ce2794",
@@ -17314,7 +17315,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-21 11:34",
+      "fechaCompra": "2025-06-18",
       "items": [
         {
           "id": "f46d87ee-0414-41ae-8e89-4ecc708960c6",
@@ -17391,7 +17392,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-21 18:25",
+      "fechaCompra": "2025-06-18",
       "items": [
         {
           "id": "dd5e3b51-1b7b-449c-8ee4-be114cd410b9",
@@ -17468,7 +17469,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-21 12:08",
+      "fechaCompra": "2025-06-20",
       "items": [
         {
           "id": "2d08ca95-91ee-49a5-bdc5-7230e29ec1a3",
@@ -17545,7 +17546,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-21 17:32",
+      "fechaCompra": "2025-06-19",
       "items": [
         {
           "id": "5040f952-6b52-48a5-8d1a-f947bc6b5f20",
@@ -17622,7 +17623,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-21 21:26",
+      "fechaCompra": "2025-06-20",
       "items": [
         {
           "id": "86fe8f3e-dbe6-4743-897b-71e503e0ebea",
@@ -17699,7 +17700,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-21 16:36",
+      "fechaCompra": "2025-06-17",
       "items": [
         {
           "id": "937fd784-32e0-4a50-b52a-35f940164ecf",
@@ -17776,7 +17777,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-22 10:09",
+      "fechaCompra": "2025-06-18",
       "items": [
         {
           "id": "cd58210f-31ce-4127-aff6-19a8e825355f",
@@ -17853,7 +17854,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-22 18:01",
+      "fechaCompra": "2025-06-21",
       "items": [
         {
           "id": "d26dfbcd-b0a4-424b-9eeb-0a9442b70b25",
@@ -17930,7 +17931,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-22 19:46",
+      "fechaCompra": "2025-06-17",
       "items": [
         {
           "id": "8a18de58-34f8-47e1-8462-efec2c4ac762",
@@ -18007,7 +18008,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-22 14:36",
+      "fechaCompra": "2025-06-17",
       "items": [
         {
           "id": "05cc07cc-2fd2-402c-8fd7-7c300955375e",
@@ -18084,7 +18085,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-22 15:44",
+      "fechaCompra": "2025-06-21",
       "items": [
         {
           "id": "03cc7287-a41c-4dd8-a423-8b2097365c76",
@@ -18161,7 +18162,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-22 21:44",
+      "fechaCompra": "2025-06-18",
       "items": [
         {
           "id": "a093fff7-425a-4210-97a3-ddedccd12652",
@@ -18238,7 +18239,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-23 20:12",
+      "fechaCompra": "2025-06-22",
       "items": [
         {
           "id": "15db5374-8ed0-4d48-977b-0f0de43f902f",
@@ -18315,7 +18316,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-23 10:47",
+      "fechaCompra": "2025-06-19",
       "items": [
         {
           "id": "f7d68217-d49f-416a-a364-10113883195d",
@@ -18392,7 +18393,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-23 13:20",
+      "fechaCompra": "2025-06-21",
       "items": [
         {
           "id": "983e78ac-130f-4572-90c6-0feaed1c34f8",
@@ -18469,7 +18470,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-23 12:13",
+      "fechaCompra": "2025-06-22",
       "items": [
         {
           "id": "c3496c8c-8786-4b8e-bcc2-f0d6e5787d99",
@@ -18546,7 +18547,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-23 17:33",
+      "fechaCompra": "2025-06-22",
       "items": [
         {
           "id": "4e9b1494-7aad-42ed-916e-94c457bbd4d8",
@@ -18623,7 +18624,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-23 21:49",
+      "fechaCompra": "2025-06-19",
       "items": [
         {
           "id": "9b4b632c-6776-4f6c-927a-9195ffe37448",
@@ -18700,7 +18701,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-24 21:24",
+      "fechaCompra": "2025-06-22",
       "items": [
         {
           "id": "2b24cfab-6423-424e-888e-ad8467c668ca",
@@ -18777,7 +18778,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-24 13:26",
+      "fechaCompra": "2025-06-20",
       "items": [
         {
           "id": "5a1ace2d-d37e-420c-bc2a-feae24aea270",
@@ -18854,7 +18855,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-24 16:07",
+      "fechaCompra": "2025-06-21",
       "items": [
         {
           "id": "567c1fa3-5991-4eff-a72a-4149ab4f20eb",
@@ -18931,7 +18932,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-24 20:25",
+      "fechaCompra": "2025-06-23",
       "items": [
         {
           "id": "3ed9ec8b-313e-4175-b3f0-c07862f9a249",
@@ -19008,7 +19009,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-24 20:24",
+      "fechaCompra": "2025-06-22",
       "items": [
         {
           "id": "70bb9f9c-5671-4392-a945-9d59cd1789bb",
@@ -19085,7 +19086,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-24 21:57",
+      "fechaCompra": "2025-06-20",
       "items": [
         {
           "id": "c7c753c0-054d-4749-adf7-a10139fd2fc8",
@@ -19162,7 +19163,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-25 14:10",
+      "fechaCompra": "2025-06-22",
       "items": [
         {
           "id": "24ae59cf-07f6-4b27-9c3f-b164f40dbf1d",
@@ -19239,7 +19240,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-25 11:25",
+      "fechaCompra": "2025-06-24",
       "items": [
         {
           "id": "67fe2cf3-708e-4001-aabd-190d77b61b07",
@@ -19316,7 +19317,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-25 12:06",
+      "fechaCompra": "2025-06-24",
       "items": [
         {
           "id": "1dcbbcff-2276-4642-a88d-b000322762f8",
@@ -19393,7 +19394,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-25 15:26",
+      "fechaCompra": "2025-06-24",
       "items": [
         {
           "id": "c06dfb60-01d7-484a-809f-2b51be19fd22",
@@ -19470,7 +19471,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-25 11:46",
+      "fechaCompra": "2025-06-20",
       "items": [
         {
           "id": "e552baf6-d0ea-444d-8fce-414c7d854d12",
@@ -19547,7 +19548,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-25 12:59",
+      "fechaCompra": "2025-06-22",
       "items": [
         {
           "id": "4314d21f-d404-4a3b-954b-174de07a55d6",
@@ -19624,7 +19625,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-26 15:19",
+      "fechaCompra": "2025-06-21",
       "items": [
         {
           "id": "fc058425-eb9e-4157-841a-c041998d8375",
@@ -19701,7 +19702,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-26 12:12",
+      "fechaCompra": "2025-06-24",
       "items": [
         {
           "id": "be2c4044-0833-48ec-9cf9-ccd807613d51",
@@ -19778,7 +19779,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-26 21:27",
+      "fechaCompra": "2025-06-24",
       "items": [
         {
           "id": "b6c01632-cb25-42e6-a3da-26a26abea0a3",
@@ -19855,7 +19856,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-26 15:08",
+      "fechaCompra": "2025-06-22",
       "items": [
         {
           "id": "bf27ba16-292a-4e84-99e3-75e9359e0da3",
@@ -19932,7 +19933,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-26 15:44",
+      "fechaCompra": "2025-06-21",
       "items": [
         {
           "id": "6e5c0952-da2a-4cbe-9411-23d62c3506c2",
@@ -20009,7 +20010,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-26 10:47",
+      "fechaCompra": "2025-06-21",
       "items": [
         {
           "id": "450ffc4e-73e8-4cec-b720-51d1cfb7245b",
@@ -20086,7 +20087,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-27 21:56",
+      "fechaCompra": "2025-06-25",
       "items": [
         {
           "id": "42c427ea-11f0-4fca-b0ea-26f6226c4849",
@@ -20163,7 +20164,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-27 13:21",
+      "fechaCompra": "2025-06-26",
       "items": [
         {
           "id": "8716da50-27de-4933-b356-f8c43443e765",
@@ -20240,7 +20241,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-27 12:13",
+      "fechaCompra": "2025-06-26",
       "items": [
         {
           "id": "c9a0e231-cb42-49da-91b3-162b9e28905a",
@@ -20317,7 +20318,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-27 17:24",
+      "fechaCompra": "2025-06-22",
       "items": [
         {
           "id": "1ae69e76-2b56-4d26-9e1f-2c13c30ca88a",
@@ -20394,7 +20395,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-27 16:50",
+      "fechaCompra": "2025-06-25",
       "items": [
         {
           "id": "d3807c61-4a40-41f3-9393-819cb9aec7ea",
@@ -20471,7 +20472,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-27 14:38",
+      "fechaCompra": "2025-06-26",
       "items": [
         {
           "id": "6d6b0f36-599a-469e-b75b-fc099a0eff8a",
@@ -20548,7 +20549,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-28 19:22",
+      "fechaCompra": "2025-06-26",
       "items": [
         {
           "id": "eb7ef3b0-8027-4b27-bd96-32d220efe238",
@@ -20625,7 +20626,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-28 12:19",
+      "fechaCompra": "2025-06-25",
       "items": [
         {
           "id": "810cf57a-c5e6-47de-8672-9b1508cd69e3",
@@ -20702,7 +20703,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-28 20:12",
+      "fechaCompra": "2025-06-24",
       "items": [
         {
           "id": "ead36f54-64ef-400d-ab62-545570e60800",
@@ -20779,7 +20780,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-28 19:35",
+      "fechaCompra": "2025-06-27",
       "items": [
         {
           "id": "015e59e8-e18a-4b19-b0b5-a0c3dfb60dd1",
@@ -20856,7 +20857,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-28 21:33",
+      "fechaCompra": "2025-06-27",
       "items": [
         {
           "id": "b5e11238-06ed-4f85-a1d0-703fb92e0fff",
@@ -20933,7 +20934,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-28 14:55",
+      "fechaCompra": "2025-06-25",
       "items": [
         {
           "id": "3c16f19d-ba57-4b74-937b-5b0b1de8b1e8",
@@ -21010,7 +21011,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-29 10:46",
+      "fechaCompra": "2025-06-27",
       "items": [
         {
           "id": "6adec202-435b-47f2-b812-169bc9884478",
@@ -21087,7 +21088,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-29 12:47",
+      "fechaCompra": "2025-06-27",
       "items": [
         {
           "id": "f9f86171-b9bb-4657-bf98-44b7556465d0",
@@ -21164,7 +21165,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-29 12:19",
+      "fechaCompra": "2025-06-27",
       "items": [
         {
           "id": "6c653225-4823-4207-a0df-7fbc4a2f31b0",
@@ -21241,7 +21242,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-29 10:44",
+      "fechaCompra": "2025-06-24",
       "items": [
         {
           "id": "40003086-8784-4117-b23a-92530be71360",
@@ -21318,7 +21319,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-29 16:23",
+      "fechaCompra": "2025-06-24",
       "items": [
         {
           "id": "d05194c3-6a16-4669-b912-6cbe8247bf0e",
@@ -21395,7 +21396,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-29 17:10",
+      "fechaCompra": "2025-06-28",
       "items": [
         {
           "id": "e04b0669-07e9-40ba-8a68-4b7b336f57ab",
@@ -21472,7 +21473,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-30 20:07",
+      "fechaCompra": "2025-06-26",
       "items": [
         {
           "id": "d8e9617b-714f-4e9f-9696-fc047826a1fa",
@@ -21549,7 +21550,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-30 14:09",
+      "fechaCompra": "2025-06-29",
       "items": [
         {
           "id": "14e34a22-bafe-4d1b-9b1a-caec2becf6a5",
@@ -21626,7 +21627,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-30 16:41",
+      "fechaCompra": "2025-06-29",
       "items": [
         {
           "id": "dbac0f0c-c796-4ec4-9ed8-637860898c25",
@@ -21703,7 +21704,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-30 11:17",
+      "fechaCompra": "2025-06-28",
       "items": [
         {
           "id": "af00fab2-579c-4cdc-873b-ea69388c1f38",
@@ -21780,7 +21781,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-30 21:00",
+      "fechaCompra": "2025-06-27",
       "items": [
         {
           "id": "15e49bc8-bbe8-4274-b6ab-08fa1f181374",
@@ -21857,7 +21858,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-30 14:50",
+      "fechaCompra": "2025-06-25",
       "items": [
         {
           "id": "b57401c6-4f32-47f5-8234-ea26e9d1a463",
@@ -21934,7 +21935,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-15 15:50",
+      "fechaCompra": "2025-05-11",
       "items": [
         {
           "id": "b5a6b06b-87ac-4476-8d5d-aff2b2de1076",
@@ -22011,7 +22012,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-15 11:47",
+      "fechaCompra": "2025-05-11",
       "items": [
         {
           "id": "056096dc-ebc0-459c-8465-f22654f22999",
@@ -22088,7 +22089,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-15 12:28",
+      "fechaCompra": "2025-05-14",
       "items": [
         {
           "id": "ee5c94a9-0a2d-4e3d-85a4-98681b3844b5",
@@ -22165,7 +22166,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-16 14:04",
+      "fechaCompra": "2025-05-14",
       "items": [
         {
           "id": "857bc67d-f79f-4472-93a1-1e63c242ff46",
@@ -22242,7 +22243,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-16 20:43",
+      "fechaCompra": "2025-05-12",
       "items": [
         {
           "id": "b4aeae97-b483-4049-bbbf-98c4a24a7801",
@@ -22319,7 +22320,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-16 17:01",
+      "fechaCompra": "2025-05-14",
       "items": [
         {
           "id": "6d111b20-2e09-4e36-be69-1dd62a1abd6c",
@@ -22396,7 +22397,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-17 14:31",
+      "fechaCompra": "2025-05-13",
       "items": [
         {
           "id": "df985273-5a2a-42a7-a734-15bc3230fcdc",
@@ -22473,7 +22474,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-17 20:05",
+      "fechaCompra": "2025-05-15",
       "items": [
         {
           "id": "968bd571-a87a-4eb9-aed8-da582c5192eb",
@@ -22550,7 +22551,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-17 15:33",
+      "fechaCompra": "2025-05-16",
       "items": [
         {
           "id": "37a46887-e9e6-4a9d-9afe-830bfdf27784",
@@ -22627,7 +22628,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-18 11:40",
+      "fechaCompra": "2025-05-14",
       "items": [
         {
           "id": "55293b19-e541-4a42-98b5-1304658f601a",
@@ -22704,7 +22705,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-18 18:36",
+      "fechaCompra": "2025-05-15",
       "items": [
         {
           "id": "fd003f77-71a2-48a4-a0a8-57e10911f58c",
@@ -22781,7 +22782,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-18 13:59",
+      "fechaCompra": "2025-05-14",
       "items": [
         {
           "id": "09a52ea8-022f-4a76-8b4c-33ea25e96423",
@@ -22858,7 +22859,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-19 17:40",
+      "fechaCompra": "2025-05-15",
       "items": [
         {
           "id": "d6f9f7ab-1226-4c1a-9e31-ebcd26caabbd",
@@ -22935,7 +22936,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-19 10:21",
+      "fechaCompra": "2025-05-16",
       "items": [
         {
           "id": "eb57e01b-1781-4fb5-b149-291debd6b504",
@@ -23012,7 +23013,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-19 21:46",
+      "fechaCompra": "2025-05-18",
       "items": [
         {
           "id": "7213a885-6e82-401a-83b8-21087bdaa355",
@@ -23089,7 +23090,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-20 10:03",
+      "fechaCompra": "2025-05-16",
       "items": [
         {
           "id": "4b28057b-02fe-429a-80c1-bc28812ae45a",
@@ -23166,7 +23167,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-20 10:08",
+      "fechaCompra": "2025-05-19",
       "items": [
         {
           "id": "5864d1ad-42f6-457d-855a-895ddb36310a",
@@ -23243,7 +23244,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-20 10:24",
+      "fechaCompra": "2025-05-18",
       "items": [
         {
           "id": "aba5a75a-541e-4a6a-8349-0234df6048f7",
@@ -23320,7 +23321,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-21 15:49",
+      "fechaCompra": "2025-05-17",
       "items": [
         {
           "id": "d5930916-8ef0-424a-b212-50bfb989c2b1",
@@ -23397,7 +23398,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-21 11:47",
+      "fechaCompra": "2025-05-18",
       "items": [
         {
           "id": "1b79042f-c9e0-4ef2-b69e-ea0cacdc0897",
@@ -23474,7 +23475,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-21 21:05",
+      "fechaCompra": "2025-05-19",
       "items": [
         {
           "id": "39fa38f2-a405-47a4-acd9-2b0f96b86335",
@@ -23551,7 +23552,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-22 18:33",
+      "fechaCompra": "2025-05-20",
       "items": [
         {
           "id": "f63146e6-95e8-43eb-a992-60f4ee966d3d",
@@ -23628,7 +23629,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-22 09:57",
+      "fechaCompra": "2025-05-19",
       "items": [
         {
           "id": "fc6882c2-1d5f-44b6-a62a-12d87e615ae7",
@@ -23705,7 +23706,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-22 14:59",
+      "fechaCompra": "2025-05-18",
       "items": [
         {
           "id": "09873f7b-55f6-4dba-8e8f-98bb2c8eb19a",
@@ -23782,7 +23783,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-23 14:24",
+      "fechaCompra": "2025-05-22",
       "items": [
         {
           "id": "45b5f186-ec29-45ab-9eef-c5c4625c686f",
@@ -23859,7 +23860,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-23 14:15",
+      "fechaCompra": "2025-05-20",
       "items": [
         {
           "id": "6749b54f-c3c5-40be-a4f4-a2a8d8fdf3fb",
@@ -23936,7 +23937,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-23 12:39",
+      "fechaCompra": "2025-05-19",
       "items": [
         {
           "id": "7a048bcb-2b40-458e-8012-eebc99362ece",
@@ -24013,7 +24014,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-24 17:18",
+      "fechaCompra": "2025-05-20",
       "items": [
         {
           "id": "c0d752e3-3462-4de6-ba1d-a9d8425e1bf8",
@@ -24090,7 +24091,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-24 13:24",
+      "fechaCompra": "2025-05-20",
       "items": [
         {
           "id": "8532a288-5e3e-4bed-b485-e9b45fbd30ef",
@@ -24167,7 +24168,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-24 16:58",
+      "fechaCompra": "2025-05-21",
       "items": [
         {
           "id": "f7146bc6-e8b5-4430-a4c4-821ff9a88b2c",
@@ -24244,7 +24245,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-25 09:36",
+      "fechaCompra": "2025-05-23",
       "items": [
         {
           "id": "e3090e84-b247-4eb6-9dd8-4cfeafaf302d",
@@ -24321,7 +24322,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-25 14:41",
+      "fechaCompra": "2025-05-21",
       "items": [
         {
           "id": "561293e4-45ec-4a32-8787-796f67401f12",
@@ -24398,7 +24399,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-25 17:28",
+      "fechaCompra": "2025-05-23",
       "items": [
         {
           "id": "94034348-1058-488e-a5eb-72568bf94cb4",
@@ -24475,7 +24476,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-26 10:31",
+      "fechaCompra": "2025-05-24",
       "items": [
         {
           "id": "de9de5ca-d3ba-4943-9190-e8519a627b37",
@@ -24552,7 +24553,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-26 18:46",
+      "fechaCompra": "2025-05-24",
       "items": [
         {
           "id": "d1418e3a-61fb-4b4c-af3d-3d884a935a05",
@@ -24629,7 +24630,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-26 11:51",
+      "fechaCompra": "2025-05-23",
       "items": [
         {
           "id": "cffc0b58-c386-42d6-ada7-7cd9a35fd0f3",
@@ -24706,7 +24707,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-27 20:09",
+      "fechaCompra": "2025-05-23",
       "items": [
         {
           "id": "b4c804d7-fa82-4b1c-8ab5-2988372a1f7a",
@@ -24783,7 +24784,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-27 14:28",
+      "fechaCompra": "2025-05-25",
       "items": [
         {
           "id": "22f5cc22-f97f-47b7-b407-33477c8e6ca8",
@@ -24860,7 +24861,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-27 11:36",
+      "fechaCompra": "2025-05-24",
       "items": [
         {
           "id": "c387c4c5-b9e3-4322-aba2-91d388d5cca7",
@@ -24937,7 +24938,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-28 20:54",
+      "fechaCompra": "2025-05-26",
       "items": [
         {
           "id": "0a51cc91-fbec-4da6-8104-d4c6fd39700a",
@@ -25014,7 +25015,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-28 17:17",
+      "fechaCompra": "2025-05-25",
       "items": [
         {
           "id": "31c1ecec-1ad7-42df-8ebc-8305a25ead83",
@@ -25091,7 +25092,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-28 14:04",
+      "fechaCompra": "2025-05-25",
       "items": [
         {
           "id": "b29fc693-79ce-47f8-b86e-9a14dcc4be00",
@@ -25168,7 +25169,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-29 10:30",
+      "fechaCompra": "2025-05-28",
       "items": [
         {
           "id": "232f23b4-f728-44a3-aa05-9266802f5a34",
@@ -25245,7 +25246,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-29 09:13",
+      "fechaCompra": "2025-05-28",
       "items": [
         {
           "id": "2468bf54-24b4-437f-936f-f7488e862eb8",
@@ -25322,7 +25323,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-29 20:31",
+      "fechaCompra": "2025-05-28",
       "items": [
         {
           "id": "c3c52644-b947-4347-a3aa-4eb6eb6e1ebd",
@@ -25399,7 +25400,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-30 12:29",
+      "fechaCompra": "2025-05-28",
       "items": [
         {
           "id": "16c45911-64f1-4871-829f-cff0beb1a327",
@@ -25476,7 +25477,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-30 13:53",
+      "fechaCompra": "2025-05-29",
       "items": [
         {
           "id": "a99626ee-6ed8-4cdf-9016-f63122d98ff5",
@@ -25553,7 +25554,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-30 12:42",
+      "fechaCompra": "2025-05-29",
       "items": [
         {
           "id": "c24fac5e-0881-44b9-b885-4c72196f4636",
@@ -25630,7 +25631,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-31 11:44",
+      "fechaCompra": "2025-05-28",
       "items": [
         {
           "id": "1e8d1570-a6a0-46af-a532-5250c6fdf7ea",
@@ -25707,7 +25708,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-31 16:53",
+      "fechaCompra": "2025-05-30",
       "items": [
         {
           "id": "07447023-5491-4609-a4d2-5e39b019f384",
@@ -25784,7 +25785,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-05-31 14:21",
+      "fechaCompra": "2025-05-28",
       "items": [
         {
           "id": "320c4569-095d-45bd-8b9f-148028002116",
@@ -25861,7 +25862,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-01 10:45",
+      "fechaCompra": "2025-05-31",
       "items": [
         {
           "id": "e4273f12-6230-4ab5-ba1f-911f8488f757",
@@ -25938,7 +25939,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-01 12:25",
+      "fechaCompra": "2025-05-31",
       "items": [
         {
           "id": "d3e3795e-e125-46f4-a6a7-54bb98e56661",
@@ -26015,7 +26016,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-01 14:09",
+      "fechaCompra": "2025-05-31",
       "items": [
         {
           "id": "38c42fc4-64c1-408c-b293-f1244f6958fd",
@@ -26092,7 +26093,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-02 16:22",
+      "fechaCompra": "2025-05-31",
       "items": [
         {
           "id": "1502a0b1-dd1c-4fd7-af90-48c2b9430a60",
@@ -26169,7 +26170,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-02 13:53",
+      "fechaCompra": "2025-05-30",
       "items": [
         {
           "id": "e184f091-0162-4295-b234-aaf443dbe159",
@@ -26246,7 +26247,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-02 17:48",
+      "fechaCompra": "2025-05-29",
       "items": [
         {
           "id": "ef76f89c-7e96-44d4-b3a5-d40f6d1f94fb",
@@ -26323,7 +26324,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-03 21:35",
+      "fechaCompra": "2025-05-30",
       "items": [
         {
           "id": "2fb3cef5-330f-4f1b-bc8b-2c8d5ac1cca5",
@@ -26400,7 +26401,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-03 19:58",
+      "fechaCompra": "2025-05-30",
       "items": [
         {
           "id": "197d1a35-72a2-4844-86d0-8504bb703b34",
@@ -26477,7 +26478,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-03 12:07",
+      "fechaCompra": "2025-06-01",
       "items": [
         {
           "id": "1a17ccc2-d0b0-449e-9394-4620feef1bc4",
@@ -26554,7 +26555,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-04 11:28",
+      "fechaCompra": "2025-06-02",
       "items": [
         {
           "id": "613e3d4d-7f89-4a27-83b8-1723d691c988",
@@ -26631,7 +26632,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-04 17:33",
+      "fechaCompra": "2025-06-03",
       "items": [
         {
           "id": "654cc39f-ae21-4c89-a804-aee00ee0afc1",
@@ -26708,7 +26709,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-04 19:04",
+      "fechaCompra": "2025-05-31",
       "items": [
         {
           "id": "2a357239-049c-4084-b02c-0f59bfd9d1b0",
@@ -26785,7 +26786,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-05 15:17",
+      "fechaCompra": "2025-06-04",
       "items": [
         {
           "id": "a34259e7-0bd8-4268-877d-0e459523f514",
@@ -26862,7 +26863,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-05 14:01",
+      "fechaCompra": "2025-06-04",
       "items": [
         {
           "id": "079f7017-f36c-45ff-9f49-de6da89b9d58",
@@ -26939,7 +26940,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-05 13:16",
+      "fechaCompra": "2025-06-02",
       "items": [
         {
           "id": "35fef30b-7de0-4a0c-92c3-a8d9b73bc510",
@@ -27016,7 +27017,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-06 13:44",
+      "fechaCompra": "2025-06-04",
       "items": [
         {
           "id": "54e40af3-ac04-40a9-b263-e435e6314bc1",
@@ -27093,7 +27094,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-06 12:43",
+      "fechaCompra": "2025-06-02",
       "items": [
         {
           "id": "1f7634ee-307d-4735-85f6-4c8c193763f1",
@@ -27170,7 +27171,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-06 19:10",
+      "fechaCompra": "2025-06-05",
       "items": [
         {
           "id": "d2e28f77-8d2f-477e-a140-ca7c782440a7",
@@ -27247,7 +27248,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-07 09:59",
+      "fechaCompra": "2025-06-06",
       "items": [
         {
           "id": "27d4b1cf-9d5c-4a19-a9d8-681bfc398225",
@@ -27324,7 +27325,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-07 13:41",
+      "fechaCompra": "2025-06-03",
       "items": [
         {
           "id": "39e48929-836b-4902-aaf2-c93c19e0ca4c",
@@ -27401,7 +27402,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-07 13:33",
+      "fechaCompra": "2025-06-05",
       "items": [
         {
           "id": "1d578dfa-cca1-483a-9cf0-878701acd374",
@@ -27478,7 +27479,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-08 16:48",
+      "fechaCompra": "2025-06-07",
       "items": [
         {
           "id": "14bc26e7-8163-4e0f-8f58-72807dcc3408",
@@ -27555,7 +27556,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-08 10:26",
+      "fechaCompra": "2025-06-05",
       "items": [
         {
           "id": "44661dfd-a5c0-4c61-b893-079c744f2c76",
@@ -27632,7 +27633,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-08 21:05",
+      "fechaCompra": "2025-06-07",
       "items": [
         {
           "id": "35c7926f-e20b-4efe-8184-648129d9c6d2",
@@ -27709,7 +27710,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-09 10:26",
+      "fechaCompra": "2025-06-07",
       "items": [
         {
           "id": "c162d442-aefd-4194-a5e0-d4be7f67053c",
@@ -27786,7 +27787,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-09 15:38",
+      "fechaCompra": "2025-06-06",
       "items": [
         {
           "id": "3e6928c8-69ea-4ab4-9b52-4fd68384db33",
@@ -27863,7 +27864,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-09 13:52",
+      "fechaCompra": "2025-06-07",
       "items": [
         {
           "id": "4f911940-1428-41f8-ba45-95a19c4c2022",
@@ -27940,7 +27941,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-10 21:14",
+      "fechaCompra": "2025-06-06",
       "items": [
         {
           "id": "4078051c-78a0-4733-96ca-12c9f72bdede",
@@ -28017,7 +28018,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-10 17:53",
+      "fechaCompra": "2025-06-09",
       "items": [
         {
           "id": "62bb551f-b0d4-40d3-a241-30cf75aa218b",
@@ -28094,7 +28095,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-10 09:09",
+      "fechaCompra": "2025-06-09",
       "items": [
         {
           "id": "7d72354a-5d91-4562-8730-ad01579d091c",
@@ -28171,7 +28172,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-11 09:11",
+      "fechaCompra": "2025-06-10",
       "items": [
         {
           "id": "7c4950e9-38fe-4417-b7e0-cef9009fdc18",
@@ -28248,7 +28249,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-11 17:14",
+      "fechaCompra": "2025-06-07",
       "items": [
         {
           "id": "4da4c9e6-6fcf-44d8-a1d5-c6719df2561c",
@@ -28325,7 +28326,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-11 13:34",
+      "fechaCompra": "2025-06-08",
       "items": [
         {
           "id": "874c31b1-f7f9-454f-afc3-5be6d14807fd",
@@ -28402,7 +28403,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-12 19:25",
+      "fechaCompra": "2025-06-10",
       "items": [
         {
           "id": "551cb37e-f5ce-402a-8e87-e78812567f43",
@@ -28479,7 +28480,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-12 17:38",
+      "fechaCompra": "2025-06-10",
       "items": [
         {
           "id": "a9f4d56b-7a88-4ec9-aafa-c3ebf598ec11",
@@ -28556,7 +28557,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-12 11:42",
+      "fechaCompra": "2025-06-11",
       "items": [
         {
           "id": "a5a390ef-7a85-4546-b4b7-5f6d72ac8f42",
@@ -28633,7 +28634,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-13 10:21",
+      "fechaCompra": "2025-06-09",
       "items": [
         {
           "id": "e81930da-a0ca-4747-bb18-f7680829071e",
@@ -28710,7 +28711,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-13 12:30",
+      "fechaCompra": "2025-06-11",
       "items": [
         {
           "id": "babbe959-6bd1-417e-a79e-9d8b9a3e96eb",
@@ -28787,7 +28788,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-13 12:33",
+      "fechaCompra": "2025-06-12",
       "items": [
         {
           "id": "a2e79212-0c3f-4b8d-81be-645342d79f1f",
@@ -28864,7 +28865,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-14 18:27",
+      "fechaCompra": "2025-06-11",
       "items": [
         {
           "id": "56d85e2c-7553-4464-87ad-3b2326fec28a",
@@ -28941,7 +28942,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-14 12:48",
+      "fechaCompra": "2025-06-11",
       "items": [
         {
           "id": "78257473-462b-488f-aba2-db1b5a0e386c",
@@ -29018,7 +29019,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-14 17:23",
+      "fechaCompra": "2025-06-13",
       "items": [
         {
           "id": "2c00a813-7890-4bb1-973d-26b6d901fcfd",
@@ -29095,7 +29096,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-15 21:07",
+      "fechaCompra": "2025-06-11",
       "items": [
         {
           "id": "1a7fb734-1703-42a4-a020-501b0c200a27",
@@ -29172,7 +29173,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-15 13:25",
+      "fechaCompra": "2025-06-14",
       "items": [
         {
           "id": "13b52d0c-0f83-4a2c-8aab-6fe219bcc29b",
@@ -29249,7 +29250,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-15 17:35",
+      "fechaCompra": "2025-06-13",
       "items": [
         {
           "id": "3d09d696-c1a5-438a-b8c6-74ebef3b269f",
@@ -29326,7 +29327,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-16 13:42",
+      "fechaCompra": "2025-06-13",
       "items": [
         {
           "id": "810d77fb-ab65-480a-9413-c6e5e94e18f9",
@@ -29403,7 +29404,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-16 21:11",
+      "fechaCompra": "2025-06-14",
       "items": [
         {
           "id": "603b2d72-f726-46c2-90f0-7e753f9819ee",
@@ -29480,7 +29481,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-16 12:06",
+      "fechaCompra": "2025-06-13",
       "items": [
         {
           "id": "8ed2d611-1159-4997-9c00-a8421bcf01c0",
@@ -29557,7 +29558,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-17 17:54",
+      "fechaCompra": "2025-06-16",
       "items": [
         {
           "id": "7c398405-e0b4-4df5-a0f3-663b5cb5f526",
@@ -29634,7 +29635,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-17 16:11",
+      "fechaCompra": "2025-06-13",
       "items": [
         {
           "id": "2b8cc7b5-a351-472e-9cc8-7de8015efad4",
@@ -29711,7 +29712,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-17 11:52",
+      "fechaCompra": "2025-06-14",
       "items": [
         {
           "id": "8c1d813c-e205-4876-a2f2-edfb33b5d304",
@@ -29788,7 +29789,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-18 18:07",
+      "fechaCompra": "2025-06-17",
       "items": [
         {
           "id": "8064f3a1-0314-4ff8-93ae-c36ab7d93d05",
@@ -29865,7 +29866,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-18 16:08",
+      "fechaCompra": "2025-06-17",
       "items": [
         {
           "id": "53bbc6cc-40b6-4519-a40c-ae00d6da24d7",
@@ -29942,7 +29943,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-18 14:23",
+      "fechaCompra": "2025-06-15",
       "items": [
         {
           "id": "64dad139-bbfe-4b71-a1c0-e01f00835945",
@@ -30019,7 +30020,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-19 10:52",
+      "fechaCompra": "2025-06-17",
       "items": [
         {
           "id": "55e63062-75c4-4b33-9df2-771b147a9d7b",
@@ -30096,7 +30097,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-19 21:50",
+      "fechaCompra": "2025-06-16",
       "items": [
         {
           "id": "7bc206f4-2f55-47f5-8bfc-4a6139da5a97",
@@ -30173,7 +30174,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-19 20:50",
+      "fechaCompra": "2025-06-17",
       "items": [
         {
           "id": "395213d2-7dde-423c-82ff-aaa1532b2125",
@@ -30250,7 +30251,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-20 15:39",
+      "fechaCompra": "2025-06-18",
       "items": [
         {
           "id": "2d3db368-6f8e-4073-b2a8-4e338218b31c",
@@ -30327,7 +30328,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-20 17:30",
+      "fechaCompra": "2025-06-17",
       "items": [
         {
           "id": "10aca7ad-c0ee-4625-9877-42613a683bf2",
@@ -30404,7 +30405,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-20 15:53",
+      "fechaCompra": "2025-06-18",
       "items": [
         {
           "id": "1b58f00e-24cd-458c-9bdf-e94bca66c03d",
@@ -30481,7 +30482,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-21 13:40",
+      "fechaCompra": "2025-06-20",
       "items": [
         {
           "id": "cc0ad823-9231-47a7-a199-94a10374c187",
@@ -30558,7 +30559,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-21 10:31",
+      "fechaCompra": "2025-06-19",
       "items": [
         {
           "id": "57a99e1b-5f3e-4a73-9fa7-78adf171e67a",
@@ -30635,7 +30636,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-21 09:56",
+      "fechaCompra": "2025-06-19",
       "items": [
         {
           "id": "533bf77d-3f41-4748-bf40-3e4cdd879e6c",
@@ -30712,7 +30713,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-22 15:37",
+      "fechaCompra": "2025-06-21",
       "items": [
         {
           "id": "73318e48-67a1-4fad-a700-c946617e87c9",
@@ -30789,7 +30790,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-22 19:37",
+      "fechaCompra": "2025-06-21",
       "items": [
         {
           "id": "1dfc061d-d96f-41fe-92ed-e39e1f83ec82",
@@ -30866,7 +30867,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-22 21:07",
+      "fechaCompra": "2025-06-21",
       "items": [
         {
           "id": "2629d0cf-5d1f-400e-b543-322794c84eb8",
@@ -30943,7 +30944,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-23 09:41",
+      "fechaCompra": "2025-06-19",
       "items": [
         {
           "id": "23f8ce2e-4521-42f9-ad75-20bedc89d746",
@@ -31020,7 +31021,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-23 13:11",
+      "fechaCompra": "2025-06-22",
       "items": [
         {
           "id": "1ace19cd-59fa-4295-877d-3ef407d5f3e2",
@@ -31097,7 +31098,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-23 15:13",
+      "fechaCompra": "2025-06-20",
       "items": [
         {
           "id": "16c6d419-6790-42c8-9f11-069862b6146b",
@@ -31174,7 +31175,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-24 15:31",
+      "fechaCompra": "2025-06-23",
       "items": [
         {
           "id": "bdbd9014-efc2-43d7-ab0d-9a86426e1ce7",
@@ -31251,7 +31252,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-24 11:40",
+      "fechaCompra": "2025-06-20",
       "items": [
         {
           "id": "1e33e20e-63ee-48c7-8cf6-1e9167c7f7f7",
@@ -31328,7 +31329,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-24 18:21",
+      "fechaCompra": "2025-06-23",
       "items": [
         {
           "id": "334ed366-8f42-440d-9198-9398f3365e2a",
@@ -31405,7 +31406,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-25 21:21",
+      "fechaCompra": "2025-06-23",
       "items": [
         {
           "id": "f9bd45cf-ce68-4052-8bb1-572f401401b8",
@@ -31482,7 +31483,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-25 12:45",
+      "fechaCompra": "2025-06-24",
       "items": [
         {
           "id": "7217f2f0-f502-40e9-a0ab-0f78db8a53c2",
@@ -31559,7 +31560,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-25 12:06",
+      "fechaCompra": "2025-06-21",
       "items": [
         {
           "id": "6ab372fa-ad91-4cbb-9c49-093891491cac",
@@ -31636,7 +31637,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-26 15:03",
+      "fechaCompra": "2025-06-22",
       "items": [
         {
           "id": "8b1a150f-206f-4e61-9f05-f00ef45af44b",
@@ -31713,7 +31714,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-26 18:08",
+      "fechaCompra": "2025-06-25",
       "items": [
         {
           "id": "2e98c71f-a1ae-4ee3-beb5-3c01bc4cd3c0",
@@ -31790,7 +31791,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-26 09:42",
+      "fechaCompra": "2025-06-25",
       "items": [
         {
           "id": "b8c63253-fe48-4ec9-a705-8e59fce46eb9",
@@ -31867,7 +31868,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-27 13:17",
+      "fechaCompra": "2025-06-24",
       "items": [
         {
           "id": "7dd19e61-c075-4b3e-827f-343652ee7b98",
@@ -31944,7 +31945,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-27 21:57",
+      "fechaCompra": "2025-06-23",
       "items": [
         {
           "id": "256ce29a-c68c-49bf-b920-96c2bfaa9179",
@@ -32021,7 +32022,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-27 17:11",
+      "fechaCompra": "2025-06-23",
       "items": [
         {
           "id": "644d5b71-7919-4233-a1da-7b64e253791a",
@@ -32098,7 +32099,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-28 11:48",
+      "fechaCompra": "2025-06-25",
       "items": [
         {
           "id": "b34b1223-fdc5-4e10-a2d8-a8b899e9dc22",
@@ -32175,7 +32176,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-28 21:34",
+      "fechaCompra": "2025-06-24",
       "items": [
         {
           "id": "733ab1f5-2a08-4327-9154-19a7260148e7",
@@ -32252,7 +32253,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-28 14:50",
+      "fechaCompra": "2025-06-24",
       "items": [
         {
           "id": "e1e58a8d-17db-41e0-8c7b-de095b3dff0a",
@@ -32329,7 +32330,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-29 12:06",
+      "fechaCompra": "2025-06-25",
       "items": [
         {
           "id": "f8c4a09f-5837-4250-b66b-39947fddcd8a",
@@ -32406,7 +32407,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-29 18:04",
+      "fechaCompra": "2025-06-25",
       "items": [
         {
           "id": "8bdc906d-4f65-4445-8a3d-578ac5c4583b",
@@ -32483,7 +32484,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-29 12:25",
+      "fechaCompra": "2025-06-28",
       "items": [
         {
           "id": "34a7f27a-ac9a-4ac3-96f8-165ccb39d5dc",
@@ -32560,7 +32561,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-30 14:10",
+      "fechaCompra": "2025-06-26",
       "items": [
         {
           "id": "c1eaa8a5-7f09-47c7-af0c-39ac8f96dd54",
@@ -32637,7 +32638,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-30 15:24",
+      "fechaCompra": "2025-06-29",
       "items": [
         {
           "id": "4caa151d-1203-4a0f-93e2-6300c7645851",
@@ -32714,7 +32715,7 @@
       "ip": "192.168.1.10",
       "comment": "",
       "automaticActions": "",
-      "fechaCompra": "2025-06-30 17:40",
+      "fechaCompra": "2025-06-29",
       "items": [
         {
           "id": "59c448d5-a1d9-4ecf-be68-22646d46e5ca",
@@ -32770,7 +32771,8 @@
       ],
       "userId": "1"
     }
-  ],
+  ]
+,
   "experiencesByDate": [
     {
       "id": "d6e17015-263e-4730-a390-aa0d1dac4dde",

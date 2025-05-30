@@ -70,18 +70,44 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutBuscarNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/layoutSpinnerContainer"
+        app:layout_constraintStart_toStartOf="@+id/layoutSpinnerContainer"
+        app:layout_constraintTop_toBottomOf="@+id/layoutSpinnerContainer">
+
+        <EditText
+            android:drawableEnd="@drawable/buscar"
+            android:id="@+id/editTextBuscarNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_experiencia"
+            android:hint="Buscar por nombre"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/cabeceraRecycler"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="5dp"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
-        app:layout_constraintTop_toBottomOf="@id/layoutSpinnerContainer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="@+id/layoutBuscarNombre"
+        app:layout_constraintStart_toStartOf="@+id/layoutBuscarNombre"
+        app:layout_constraintTop_toBottomOf="@id/layoutBuscarNombre">
 
         <TableRow
             android:id="@+id/tablaCabecera"
@@ -91,16 +117,16 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:gravity="center"
-                android:text="Hora"
+                android:text="Fecha\nCompra"
                 android:textSize="10sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.16"
                 android:gravity="center"
                 android:text="Calendario"
@@ -109,7 +135,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.25"
                 android:gravity="center"
                 android:text="Nombre"
@@ -118,7 +144,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.20"
                 android:gravity="center"
                 android:text="Participantes"
@@ -127,7 +153,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.18"
                 android:gravity="center"
                 android:text="Total"
@@ -142,9 +168,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/cabeceraRecycler"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/cabeceraRecycler"
+        app:layout_constraintStart_toStartOf="@+id/cabeceraRecycler"
+        app:layout_constraintTop_toBottomOf="@id/cabeceraRecycler" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionreservas.R
 import com.example.gestionreservas.models.entity.ExperienciaCompleta
@@ -33,6 +34,7 @@ class AdaptadorCompra(
         val tvIdioma = view.findViewById<TextView>(R.id.tvIdiomaDetallesSesion)
         val tvMonitor = view.findViewById<TextView>(R.id.tvMonitorDetallesSesion)
         val tvPagadoCliente = view.findViewById<TextView>(R.id.tvPagadoDetallesSesion)
+        val tvEstadoPago = view.findViewById<TextView>(R.id.tvTotalCard)
 
     }
 
@@ -60,6 +62,21 @@ class AdaptadorCompra(
         holder.tvPagadoCliente.text = Html.fromHtml("Pagado <b>%.2f€</b>".format(totalPagado))
         holder.tvFaltaPagar.text = Html.fromHtml("Restante <b>%.2f€</b>".format(restante))
 
+        val estadoPago = when {
+            totalPagado == 0.0 -> "No pagada"
+            restante > 0 -> "Parcial"
+            else -> "Pagada"
+        }
+
+        val colorPago = when (estadoPago) {
+            "Pagada" -> R.color.pago_pagada
+            "Parcial" -> R.color.pago_parcial
+            "No pagada" -> R.color.pago_no_pagada
+            else -> R.color.white
+        }
+
+        holder.tvEstadoPago.text = estadoPago
+        holder.tvEstadoPago.setBackgroundColor(ContextCompat.getColor(context, colorPago))
 
         val idExp = compra.items.last().idExperience
         Log.d("DEBUG_EXP", "Buscando experiencia con ID: $idExp")

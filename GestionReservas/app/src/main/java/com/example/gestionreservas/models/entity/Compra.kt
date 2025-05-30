@@ -16,6 +16,7 @@ data class Compra(
     var priceAfterDiscount: Double,
     var priceFractioned: Double,
     var isFractioned: Boolean,
+    var fechaCompra:String,
     var name: String,
     var mail: String,
     var dni: String,

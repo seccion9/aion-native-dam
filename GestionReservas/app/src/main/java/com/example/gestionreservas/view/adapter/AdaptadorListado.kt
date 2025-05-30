@@ -40,7 +40,7 @@ class AdaptadorListado(
         val tvIdioma = view.findViewById<TextView>(R.id.tvIdiomaDetallesSesion)
         val tvMonitor = view.findViewById<TextView>(R.id.tvMonitorDetallesSesion)
         val tvPagadoCliente = view.findViewById<TextView>(R.id.tvPagadoDetallesSesion)
-
+        val tvEstadoPago = view.findViewById<TextView>(R.id.tvTotalCard)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompraViewHolder {
@@ -70,6 +70,22 @@ class AdaptadorListado(
         holder.tvPagadoCliente.text = Html.fromHtml("Pagado <b>%.2f€</b>".format(totalPagado))
         holder.tvFaltaPagar.text = Html.fromHtml("Restante <b>%.2f€</b>".format(restante))
 
+        val estadoPago = when {
+            totalPagado == 0.0 -> "No pagada"
+            restante > 0 -> "Parcial"
+            else -> "Pagada"
+        }
+
+        val colorPago = when (estadoPago) {
+            "Pagada" -> R.color.pago_pagada
+            "Parcial" -> R.color.pago_parcial
+            "No pagada" -> R.color.pago_no_pagada
+            else -> R.color.white
+        }
+
+        holder.tvEstadoPago.text = estadoPago
+        holder.tvEstadoPago.setBackgroundColor(ContextCompat.getColor(context, colorPago))
+
 
         val idExp = compra.items.last().idExperience
         Log.d("DEBUG_EXP", "Buscando experiencia con ID: $idExp")
@@ -83,6 +99,45 @@ class AdaptadorListado(
             holder.tvExperiencia.text = "Desconocida"
             Log.w("DEBUG_EXP", "No se encontró experiencia para ID: $idExp")
         }
+
+        val estado = compra.status.lowercase()
+
+        val colorEstado = when (estado) {
+            "confirmada" -> R.color.estado_confirmada
+            "pendiente" -> R.color.estado_pendiente
+            "no_finalizada" -> R.color.estado_no_finalizada
+            "cancelada" -> R.color.estado_cancelada
+            else -> R.color.black
+        }
+
+        val colorRelleno = when (estado) {
+            "confirmada" -> R.color.relleno_confirmada
+            "pendiente" -> R.color.relleno_pendiente
+            "no_finalizada" -> R.color.relleno_no_finalizada
+            "cancelada" -> R.color.relleno_cancelada
+            else -> R.color.white
+        }
+
+        with(holder) {
+            // Columna de estado: color fuerte
+            tvHora.setBackgroundResource(colorEstado)
+
+            // Resto de columnas: color suave
+            tvCalendario.setBackgroundResource(colorRelleno)
+            tvNombre.setBackgroundResource(colorRelleno)
+            tvParticipantes.setBackgroundResource(colorRelleno)
+        }
+
+
+        holder.tvHora.setBackgroundColor(ContextCompat.getColor(context, colorEstado))
+
+
+        val fechaHora = compra.fechaCompra
+        val fecha = fechaHora.substring(0, 10)
+        val hora = fechaHora.substring(11, 16)
+        holder.tvHora.text = "$fecha\n$hora"
+
+
 
         holder.tvIdioma.text = fields.firstOrNull { it.title == "Idioma" }?.value ?: "No indicado"
         holder.tvMonitor.text = fields.firstOrNull { it.title == "Monitor" }?.name ?: "No indicado"
