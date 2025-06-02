@@ -93,5 +93,11 @@ class DetalleSesionViewModel(
             }
         }
     }
+    fun cargarSoloCompra(compra: Compra?) {
+        _compra.value = compra
+        _reserva.value = compra?.items?.lastOrNull()
+        _pago.value = compra?.payments?.lastOrNull()
+    }
+
 
 }

@@ -11,9 +11,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gestionreservas.models.entity.Bloqueo
 import com.example.gestionreservas.models.entity.Compra
+import com.example.gestionreservas.models.entity.EstadoSala
 import com.example.gestionreservas.models.entity.FranjaHorariaReservas
-import com.example.gestionreservas.models.entity.HoraReserva
 import com.example.gestionreservas.models.entity.Ocupacion
+import com.example.gestionreservas.models.entity.SalaConEstado
 import com.example.gestionreservas.models.entity.Sesion
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.models.repository.CalendarioRepository
@@ -43,6 +44,7 @@ class CalendarioDiarioViewModel(
     private val _bloqueoExitoso = MutableLiveData<Boolean>()
     val bloqueoExitoso: LiveData<Boolean> = _bloqueoExitoso
 
+    private var sesionesGuardadas: List<SesionConCompra> = emptyList()
 
     @RequiresApi(Build.VERSION_CODES.O)
     suspend fun bloquearYEliminar(context: Context, token: String, bloqueos: List<Bloqueo>): Boolean {
@@ -85,6 +87,7 @@ class CalendarioDiarioViewModel(
         viewModelScope.launch {
             try {
                 val sesiones = compraRepository.obtenerSesionesDelDia(token, fecha)
+                sesionesGuardadas = sesiones
                 val bloqueos = calendarioRepository.obtenerBloqueos("Bearer $token")
                     ?.filter { it.fecha == fecha.toString() }
                 Log.e("BLOQUEOS_OBTENIDOS","$token")
@@ -97,6 +100,7 @@ class CalendarioDiarioViewModel(
                         if (item != null) {
                             Ocupacion(
                                 experienciaId = item.idExperience,
+                                salas = item.salas ?: emptyList(),
                                 calendarioId = sc.sesion.calendario,
                                 date = fecha.toString(),
                                 start = sc.sesion.hora,
@@ -106,9 +110,11 @@ class CalendarioDiarioViewModel(
                         } else null
                     }
                 }
+                Log.e("LISTAOCUPACIONES",listaOcupaciones.toString())
+                _ocupaciones.value = listaOcupaciones
+                actualizarFranjasConOcupaciones()
 
-                prepararListaReservas(listaOcupaciones, bloqueos ?: emptyList())
-                _ocupaciones.postValue(listaOcupaciones)
+
 
             } catch (e: Exception) {
                 try {
@@ -116,7 +122,6 @@ class CalendarioDiarioViewModel(
                         token,
                         fecha.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
                     )
-                    val listaHoras = calendarioRepository.transformarOcupacionesAHoraReserva(fallback)
 
                     _ocupaciones.postValue(fallback)
                 } catch (fallbackError: Exception) {
@@ -125,6 +130,24 @@ class CalendarioDiarioViewModel(
             }
         }
     }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun actualizarFranjasConOcupaciones() {
+        val listaBase = generarHorasDelDia().toMutableList()
+
+        for (franja in listaBase) {
+            val comprasDeFranja = sesionesGuardadas
+                .filter { it.sesion.hora == franja.horaInicio }
+                .mapNotNull { it.compra }
+                .distinctBy { it.id }
+
+            franja.reservas = comprasDeFranja
+            Log.d("DEBUG_FRANJA", "Franja ${franja.horaInicio}-${franja.horaFin} tiene ${franja.reservas.size} reservas")
+            franja.reservas.forEach { Log.d("DEBUG_RESERVA", "Reserva de ${it.name} en franja ${franja.horaInicio}") }
+        }
+
+        _franjasHorarias.postValue(listaBase)
+    }
+
 
     suspend fun borrarComprasTrasBloqueo(token: String, fecha: LocalDate) {
             val ocupaciones = _ocupaciones.value ?: return
@@ -155,50 +178,10 @@ class CalendarioDiarioViewModel(
         val minutos = partes[1].toInt()
         return String.format("%02d:%02d", (hora + 1) % 24, minutos)
     }
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun prepararListaReservas(ocupaciones: List<Ocupacion>, bloqueos: List<Bloqueo>) {
-        val listaBase = generarHorasDelDia()
-
-        listaBase.forEach { hora ->
-            // Comprobar si hay bloqueos por sala
-            bloqueos.forEach { bloqueo ->
-                if (bloqueo.fecha == _fechaActual.value.toString()) { // Comparación por fecha
-                    when (bloqueo.calendarioId) {
-                        "cal1" -> {
-                            hora.sala1Libre = false
-                            hora.sala1Bloqueada = true
-                        }
-                        "cal2" -> {
-                            hora.sala2Libre = false
-                            hora.sala2Bloqueada = true
-                        }
-                        "ambas" -> {
-                            hora.sala1Libre = false
-                            hora.sala2Libre = false
-                            hora.sala1Bloqueada = true
-                            hora.sala2Bloqueada = true
-                        }
-                    }
-                }
-            }
-
-            // Comprobar si hay ocupaciones (reservas reales)
-            ocupaciones.forEach { ocupacion ->
-                if (ocupacion.coincideCon(hora)) {
-                    when (ocupacion.obtenerSala()) {
-                        "sala1" -> hora.sala1Libre = false
-                        "sala2" -> hora.sala2Libre = false
-                    }
-                }
-            }
-        }
-
-    }
-
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun generarHorasDelDia(): List<HoraReserva> {
-        val listaHoras = mutableListOf<HoraReserva>()
+    private fun generarHorasDelDia(): List<FranjaHorariaReservas> {
+        val listaHoras = mutableListOf<FranjaHorariaReservas>()
         val formato = DateTimeFormatter.ofPattern("HH:mm")
 
         var horaActual = LocalTime.of(9, 0)
@@ -206,28 +189,33 @@ class CalendarioDiarioViewModel(
 
         while (horaActual < horaFin) {
             val siguiente = horaActual.plusHours(1)
+
             listaHoras.add(
-                HoraReserva(
+                FranjaHorariaReservas(
                     horaInicio = horaActual.format(formato),
                     horaFin = siguiente.format(formato),
-                    sala1Libre = true,    // por defecto libre
-                    sala2Libre = true
+                    reservas = emptyList()
                 )
             )
+
             horaActual = siguiente
         }
 
         return listaHoras
     }
-    fun Ocupacion.obtenerSala(): String {
-        return when (this.calendarioId) {
+
+    fun mapearCalendarioASala(calId: String): String {
+        return when (calId) {
             "cal1" -> "sala1"
             "cal2" -> "sala2"
-            else -> "desconocida"
+            "cal3" -> "sala3"
+            "cal4" -> "sala4"
+            "cal5" -> "sala5"
+            "cal6" -> "sala6"
+            "cal7" -> "sala7"
+            "cal8" -> "sala8"
+            else -> calId
         }
     }
 
-    fun Ocupacion.coincideCon(hora: HoraReserva): Boolean {
-        return this.start == hora.horaInicio
-    }
 }

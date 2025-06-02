@@ -355,6 +355,14 @@ server.get('/api/comentarios', (req, res) => {
   res.status(200).json(comentariosUsuario);
 });
 
+server.get('/api/filtrarComprasPorHora', (req, res) => {
+  const hora = req.query.hora; // ejemplo: "2025-06-03 10:00:00"
+  const db = router.db.getState();
+  const comprasFiltradas = db.purchases.filter(compra =>
+    compra.items.some(item => item.start === hora)
+  );
+  res.json(comprasFiltradas);
+});
 
 
 

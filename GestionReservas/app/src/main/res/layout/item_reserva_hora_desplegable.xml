@@ -63,14 +63,15 @@
                 android:orientation="vertical">
 
                 <!-- Header BLOQUEADA -->
-                <LinearLayout
 
+                <!-- RecyclerView de SALAS -->
+                <LinearLayout
+                    android:id="@+id/item_estado_sala_reserva"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/hora_bloqueada_calendario"
-                    android:padding="12dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tvReservaDetalle"
@@ -79,26 +80,50 @@
                         android:layout_weight="1"
                         android:text="BLOQUEADA"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold"/>
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvSalasReservadasCandado"/>
+                    <FrameLayout
+                        android:layout_width="32dp"
+                        android:layout_height="32dp">
 
-                    <ImageView
-                        android:id="@+id/imagenCandado"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/candado"
-                        android:contentDescription="candado"/>
+                        <ImageView
+                            android:id="@+id/imagenCandado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:contentDescription="candado"
+                            android:src="@drawable/candado"
+                            android:visibility="gone" />
+
+
+                        <TextView
+                            android:id="@+id/tvSalasReservadasPorDefecto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="8/8"
+                            android:textSize="20sp"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
+                    </FrameLayout>
 
                     <ImageView
                         android:id="@+id/imagenSelector"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/selector_derecha"
                         android:layout_marginStart="4dp"
-                        android:contentDescription="desplegar"/>
+                        android:contentDescription="desplegar"
+                        android:src="@drawable/selector_derecha" />
                 </LinearLayout>
 
-                <!-- RecyclerView de SALAS -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerItemsReservas"
                     android:layout_width="match_parent"

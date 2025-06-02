@@ -5,8 +5,7 @@
     android:padding="10dp"
     android:layout_margin="10dp"
     app:cardCornerRadius="10dp"
-    android:elevation="10dp"
-    android:background="@color/verde_confirmado">
+    android:elevation="10dp">
 
     <LinearLayout
         android:background="@color/verdeItemsReservas"

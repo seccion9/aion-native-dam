@@ -10,13 +10,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionreservas.R
+import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.EstadoSala
 import com.example.gestionreservas.models.entity.SalaConEstado
 
 class AdaptadorSalasPorHora(
-    var context: Context,
-    var listaSalasEstados:MutableList<SalaConEstado>,
-    var onItemClick: () -> Unit = {}
+    private val context: Context,
+    private val listaReservas: MutableList<Compra>,
+    private val onItemClick: (Compra) -> Unit = {}
 ) :RecyclerView.Adapter<AdaptadorSalasPorHora.MyHolder>(){
 
     class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -31,38 +32,17 @@ class AdaptadorSalasPorHora(
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        val sala = listaSalasEstados[position]
-        Log.d("AdaptadorSalas", "Total salas: ${listaSalasEstados.size}")
+        val compra = listaReservas[position]
+        val nombreCliente = compra.name
+        val salasOcupadas = compra.items.flatMap { it.salas ?: emptyList() }.distinct().size
 
-        when (sala.estado) {
-            EstadoSala.LIBRE -> {
-                holder.tvNombre.text = sala.idSala
+        holder.tvNombre.text = nombreCliente
+        holder.numeroSalasReservadas.text = "$salasOcupadas/8"
+        holder.flechaRedireccionarAdetalles.visibility = View.VISIBLE
 
-            }
-            EstadoSala.BLOQUEADA -> {
-                holder.tvNombre.text = sala.idSala
-
-            }
-            EstadoSala.RESERVADA -> {
-                val compra = sala.reservas?.firstOrNull()
-                holder.tvNombre.text = compra?.name ?: "Sin nombre"
-                holder.flechaRedireccionarAdetalles.visibility = View.VISIBLE
-
-                holder.itemView.setOnClickListener {
-                    if (compra != null) {
-                        onItemClick()
-                    } else {
-                        Toast.makeText(context, "Reserva no disponible", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-        }
+        holder.itemView.setOnClickListener { onItemClick(compra) }
     }
 
-
-    override fun getItemCount(): Int {
-        return listaSalasEstados.size
-    }
-
+    override fun getItemCount(): Int = listaReservas.size
 
 }

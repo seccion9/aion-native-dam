@@ -17,5 +17,6 @@ data class ItemReserva(
     var priceTotal: Double,
     var priceFractioned: Double,
     var discountAmount: Int,
-    var fields: List<Field>
+    var fields: List<Field>,
+    var salas: List<String>? = null
 ):Serializable

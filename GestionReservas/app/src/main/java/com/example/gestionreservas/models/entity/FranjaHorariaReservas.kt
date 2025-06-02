@@ -3,5 +3,6 @@ package com.example.gestionreservas.models.entity
 data class FranjaHorariaReservas(
     val horaInicio: String,
     val horaFin: String,
-    val salas: List<SalaConEstado>
+    var reservas: List<Compra> = emptyList(),
+    var bloqueada: Boolean = false
 )

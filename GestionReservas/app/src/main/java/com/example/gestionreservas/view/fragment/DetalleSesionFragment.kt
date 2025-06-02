@@ -52,7 +52,12 @@ class DetalleSesionFragment : Fragment(), OnClickListener {
             .get(DetalleSesionViewModel::class.java)
 
         val sesionConCompra = arguments?.getSerializable("sesionConCompra") as? SesionConCompra
-        viewModel.cargarSesion(sesionConCompra)
+        val compra = arguments?.getSerializable("compra") as? Compra
+        if (sesionConCompra != null) {
+            viewModel.cargarSesion(sesionConCompra)
+        } else if (compra != null) {
+            viewModel.cargarSoloCompra(compra)
+        }
 
         observarDatos()
         instancias()
@@ -395,4 +400,5 @@ class DetalleSesionFragment : Fragment(), OnClickListener {
         transaccion.commit()
 
     }
+
 }

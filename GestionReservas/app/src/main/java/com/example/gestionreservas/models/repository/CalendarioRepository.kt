@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.gestionreservas.models.entity.Bloqueo
 import com.example.gestionreservas.models.entity.DiaSemana
-import com.example.gestionreservas.models.entity.HoraReserva
 import com.example.gestionreservas.models.entity.Ocupacion
 import com.example.gestionreservas.models.entity.OcupacionCalendarioSemanal
 import com.example.gestionreservas.network.ApiServiceFake
@@ -39,46 +38,7 @@ class CalendarioRepository(private val api: ApiServiceFake) {
             false
         }
     }
-    /*
-     Transforma una lista de ocupaciones en una lista de HoraReserva.
-     Se agrupan las reservas por horas y en cada hora se ve si hay reserva en cada sala (cal1-2),
-     si la hay se marca como `false` y si no `true`.
-     Se transforma a HoraReserva y se ordenan las horas.
-     */
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun transformarOcupacionesAHoraReserva(ocupaciones: List<Ocupacion>): List<HoraReserva> {
-        return ocupaciones
-            .groupBy { it.start.substring(0, 5) to it.end.substring(0, 5) }
-            .map { (horas, lista) ->
-                val (ini, fin) = horas
 
-                val hayCal1 = lista.any { it.calendarioId == "cal1" }
-                val hayCal2 = lista.any { it.calendarioId == "cal2" }
-
-                HoraReserva(
-                    horaInicio = ini,
-                    horaFin = fin,
-                    sala1Libre = !hayCal1,
-                    sala2Libre = !hayCal2
-                )
-            }
-            .sortedBy { it.horaInicio }
-    }
-    @RequiresApi(Build.VERSION_CODES.O)
-    suspend fun obtenerOcupacionSemanalFake(
-        token: String,
-        ids: List<Int>,
-        fechaInicio: String,
-        fechaFin: String
-    ): Map<String, OcupacionCalendarioSemanal> {
-        val resp = api.getMonthlyOccupancy(token, ids, fechaInicio, fechaFin)
-        Log.e("OCUPACION",resp.toString())
-        // Si el backend siempre envía un único mapa:
-        val mapa = resp
-
-        Log.d("REPO_OCUPACION", "Claves recibidas: ${mapa.keys}")   // <- ahora sí verás fechas
-        return mapa
-    }
     suspend fun obtenerBloqueos(token:String): List<Bloqueo>? {
         return try {
             val resp = api.obtenerBloqueos(token)
@@ -93,34 +53,6 @@ class CalendarioRepository(private val api: ApiServiceFake) {
             emptyList()
         }
     }
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun transformarMapaADiasSemana(
-        mapa: Map<String, OcupacionCalendarioSemanal>?,
-        fechaLunes: LocalDate
-    ): ArrayList<DiaSemana> {
-
-        val lista   = arrayListOf<DiaSemana>()
-        val isoFmt  = DateTimeFormatter.ISO_LOCAL_DATE          // 2025-05-19
-        val slashFmt= DateTimeFormatter.ofPattern("dd/MM/yyyy") // 19/05/2025
-
-        for (i in 0..6) {
-            val fecha = fechaLunes.plusDays(i.toLong())
-
-            // ① buscamos con ISO
-            var datos = mapa?.get(fecha.format(isoFmt))
-
-            // ② si no hay, probamos con dd/MM/yyyy
-            if (datos == null) datos = mapa?.get(fecha.format(slashFmt))
-
-            val nombreDia = fecha.dayOfWeek.getDisplayName(TextStyle.FULL, Locale("es", "ES"))
-            val reservas  = datos?.ocupadas?.toString() ?: "0"
-            val sesiones  = datos?.sesiones?.toString() ?: "0"
-
-            lista.add(DiaSemana(fecha, reservas, sesiones, nombreDia))
-        }
-        return lista
-    }
-
 
 
 }

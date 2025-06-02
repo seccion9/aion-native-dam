@@ -26,10 +26,7 @@ import java.util.Locale
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestionreservas.models.entity.Bloqueo
-import com.example.gestionreservas.models.entity.Compra
-import com.example.gestionreservas.models.entity.EstadoSala
 import com.example.gestionreservas.models.entity.FranjaHorariaReservas
-import com.example.gestionreservas.models.entity.SalaConEstado
 import com.example.gestionreservas.models.repository.CalendarioRepository
 import com.example.gestionreservas.models.repository.CompraRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
@@ -63,162 +60,6 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
 
         val factory = CalendarioDiarioViewModelFactory(compraRepository, calendarioRepository)
         viewModel = ViewModelProvider(this, factory)[CalendarioDiarioViewModel::class.java]
-        listaFranjas = mutableListOf(
-            FranjaHorariaReservas(
-                horaInicio = "09:00",
-                horaFin = "10:00",
-                salas = listOf(
-                    SalaConEstado(
-                        idSala = "cal1",
-                        estado = EstadoSala.RESERVADA,
-                        reservas = listOf(
-                            Compra(
-                                userId = "1",
-                                id = "cmp01",
-                                uuid = "uuid01",
-                                status = "Confirmada",
-                                mailStatus = "Enviado",
-                                internaPermanent = false,
-                                idDiscount = null,
-                                idBono = null,
-                                priceFinal = 50.0,
-                                priceAfterDiscount = 45.0,
-                                priceFractioned = 0.0,
-                                isFractioned = false,
-                                fechaCompra = "2025-05-30",
-                                name = "Carlos López",
-                                mail = "carlos@mail.com",
-                                dni = "11111111A",
-                                phone = "600111111",
-                                direction = "Calle A, 1",
-                                language = "es",
-                                ip = "192.168.0.1",
-                                comment = "",
-                                automaticActions = "",
-                                items = listOf(),
-                                payments = listOf()
-                            )
-                        )
-                    )
-                )
-            ),
-            FranjaHorariaReservas(
-                horaInicio = "10:00",
-                horaFin = "11:00",
-                salas = listOf(
-                    SalaConEstado(
-                        idSala = "cal2",
-                        estado = EstadoSala.RESERVADA,
-                        reservas = listOf(
-                            Compra(
-                                userId = "2",
-                                id = "cmp02",
-                                uuid = "uuid02",
-                                status = "Confirmada",
-                                mailStatus = "Pendiente",
-                                internaPermanent = false,
-                                idDiscount = null,
-                                idBono = null,
-                                priceFinal = 35.0,
-                                priceAfterDiscount = 35.0,
-                                priceFractioned = 0.0,
-                                isFractioned = false,
-                                fechaCompra = "2025-05-30",
-                                name = "Lucía Gómez",
-                                mail = "lucia@mail.com",
-                                dni = "22222222B",
-                                phone = "600222222",
-                                direction = "Calle B, 2",
-                                language = "es",
-                                ip = "192.168.0.2",
-                                comment = "Es primera vez",
-                                automaticActions = "",
-                                items = listOf(),
-                                payments = listOf()
-                            )
-                        )
-                    )
-                )
-            ),
-            FranjaHorariaReservas(
-                horaInicio = "12:00",
-                horaFin = "13:00",
-                salas = listOf(
-                    SalaConEstado(
-                        idSala = "cal1",
-                        estado = EstadoSala.RESERVADA,
-                        reservas = listOf(
-                            Compra(
-                                userId = "3",
-                                id = "cmp03",
-                                uuid = "uuid03",
-                                status = "Confirmada",
-                                mailStatus = "Enviado",
-                                internaPermanent = false,
-                                idDiscount = null,
-                                idBono = null,
-                                priceFinal = 40.0,
-                                priceAfterDiscount = 40.0,
-                                priceFractioned = 0.0,
-                                isFractioned = false,
-                                fechaCompra = "2025-05-30",
-                                name = "Mario Pérez",
-                                mail = "mario@mail.com",
-                                dni = "33333333C",
-                                phone = "600333333",
-                                direction = "Calle C, 3",
-                                language = "es",
-                                ip = "192.168.0.3",
-                                comment = "",
-                                automaticActions = "",
-                                items = listOf(),
-                                payments = listOf()
-                            )
-                        )
-                    )
-                )
-            ),
-            FranjaHorariaReservas(
-                horaInicio = "13:00",
-                horaFin = "14:00",
-                salas = listOf(
-                    SalaConEstado(
-                        idSala = "cal2",
-                        estado = EstadoSala.RESERVADA,
-                        reservas = listOf(
-                            Compra(
-                                userId = "4",
-                                id = "cmp04",
-                                uuid = "uuid04",
-                                status = "Confirmada",
-                                mailStatus = "Enviado",
-                                internaPermanent = true,
-                                idDiscount = null,
-                                idBono = null,
-                                priceFinal = 60.0,
-                                priceAfterDiscount = 55.0,
-                                priceFractioned = 30.0,
-                                isFractioned = true,
-                                fechaCompra = "2025-05-30",
-                                name = "Ana Ruiz",
-                                mail = "ana@mail.com",
-                                dni = "44444444D",
-                                phone = "600444444",
-                                direction = "Calle D, 4",
-                                language = "es",
-                                ip = "192.168.0.4",
-                                comment = "Tiene bono",
-                                automaticActions = "",
-                                items = listOf(),
-                                payments = listOf()
-                            )
-                        )
-                    )
-                )
-            )
-        )
-
-
 
 
         instancias()
@@ -250,15 +91,36 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
                 Toast.makeText(requireContext(), "Bloqueos guardados correctamente", Toast.LENGTH_SHORT).show()
             }
         }
+        viewModel.franjasHorarias.observe(viewLifecycleOwner) { lista ->
+            Log.d("FRAGMENT", "Recibidas ${lista.size} franjas horarias")
+            adaptadorFranjasHorarias.actualizarLista(lista)
+        }
+
     }
     @RequiresApi(Build.VERSION_CODES.O)
     fun instancias() {
         //Instancias click
         instanciasListeners()
+        listaFranjas = mutableListOf()
+        Log.d("CALENDARIO_FRAGMENT", "Recibidas ${listaFranjas.size} franjas horarias")
 
-        adaptadorFranjasHorarias = AdaptadorFranjasHorarias(requireContext(), listaFranjas)
+        //Adaptador franjas
+        adaptadorFranjasHorarias = AdaptadorFranjasHorarias(requireContext(), listaFranjas) { compraSeleccionada ->
+            val bundle = Bundle().apply {
+                putSerializable("compra", compraSeleccionada)
+            }
+            val fragment = DetalleSesionFragment()
+            fragment.arguments = bundle
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_principal, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
         binding.recyclerHorasSalas.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerHorasSalas.adapter = adaptadorFranjasHorarias
+
+
 
     }
 
