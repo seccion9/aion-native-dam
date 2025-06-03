@@ -83,9 +83,14 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
                     <TextView
-                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="8/8"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
                         android:id="@+id/tvSalasReservadasCandado"/>
                     <FrameLayout
                         android:layout_width="32dp"

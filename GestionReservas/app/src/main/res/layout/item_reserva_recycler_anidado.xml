@@ -2,15 +2,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
+    android:padding="0dp"
     android:layout_margin="10dp"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="14dp"
+    android:background="@android:color/transparent"
     android:elevation="10dp">
 
     <LinearLayout
+        android:id="@+id/contenedorItemAnidado"
         android:background="@color/verdeItemsReservas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="42dp"
+        android:layout_gravity="center"
         android:orientation="horizontal"
         android:padding="5dp">
 
@@ -23,10 +26,9 @@
             android:layout_weight="0.75"
             android:text="DANIEL HERNANDEZ"
             android:gravity="start|center_vertical"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:fontFamily="@font/amaranth_bold"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
+            android:textColor="@android:color/white" />
 
         <TextView
             android:layout_marginEnd="5dp"
@@ -35,19 +37,19 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_weight="0.15"
+            android:textStyle="bold"
             android:gravity="end|center_vertical"
             android:text="/ 2"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/imagenItemReserva"
-            android:layout_marginEnd="5dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.10"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="0.02"
             android:layout_gravity="center"
-            android:src="@drawable/flecha_recycler"
+            android:src="@drawable/flecha_gruesa"
             android:contentDescription="detalle"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter" />

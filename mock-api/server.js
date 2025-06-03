@@ -285,9 +285,10 @@ server.post('/api/bloqueos', (req, res) => {
 
   const nuevoBloqueo = req.body;
   console.log('🟢 BLOQUEO RECIBIDO:', nuevoBloqueo);
-  if (!nuevoBloqueo || !nuevoBloqueo.id || !nuevoBloqueo.fecha || !nuevoBloqueo.calendarioId) {
-    return res.status(400).json({ error: 'Faltan campos obligatorios: id, fecha o calendarioId' });
-  }
+if (!nuevoBloqueo || !nuevoBloqueo.id || !nuevoBloqueo.salas || !nuevoBloqueo.inicio || !nuevoBloqueo.fin) {
+  return res.status(400).json({ error: 'Faltan campos obligatorios: id, salas, inicio o fin' });
+}
+
 
   router.db.get('bloqueos').push(nuevoBloqueo).write();
 

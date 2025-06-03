@@ -1,0 +1,17 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Círculo de fondo (gris claro) -->
+    <path
+        android:fillColor="@color/fondo_app"
+        android:pathData="M12,2a10,10 0 1,0 0,20a10,10 0 1,0 0,-20z" />
+
+    <!-- Borde (gris oscuro) -->
+    <path
+        android:strokeColor="@android:color/darker_gray"
+        android:strokeWidth="3"
+        android:pathData="M12,2a10,10 0 1,0 0,20a10,10 0 1,0 0,-20z" />
+</vector>

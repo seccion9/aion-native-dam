@@ -210,12 +210,26 @@
         android:layout_marginBottom="16dp"
         android:background="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@id/tvFecha"
-        app:layout_constraintBottom_toTopOf="@id/layoutBotonesFinales"
+        app:layout_constraintBottom_toTopOf="@id/btnBloqueoMasivo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBloqueoMasivo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/boton_bloqueo"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="Bloqueo masivo"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
     <!-- Botones finales -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!--<androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutBotonesFinales"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -223,7 +237,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnBloquear"
             android:layout_width="0dp"
@@ -258,7 +271,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_weight="1" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

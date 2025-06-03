@@ -6,17 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionreservas.R
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.EstadoSala
+import com.example.gestionreservas.models.entity.ItemReservaPorSala
 import com.example.gestionreservas.models.entity.SalaConEstado
 
 class AdaptadorSalasPorHora(
     private val context: Context,
-    private val listaReservas: MutableList<Compra>,
+    private val listaReservas: MutableList<ItemReservaPorSala>,
+    private val onClickCrearReserva: () -> Unit,
     private val onItemClick: (Compra) -> Unit = {}
 ) :RecyclerView.Adapter<AdaptadorSalasPorHora.MyHolder>(){
 
@@ -24,6 +28,7 @@ class AdaptadorSalasPorHora(
         var tvNombre=itemView.findViewById<TextView>(R.id.tvNombreReserva)
         var numeroSalasReservadas=itemView.findViewById<TextView>(R.id.tvSalasOcupadas)
         var flechaRedireccionarAdetalles=itemView.findViewById<ImageView>(R.id.imagenItemReserva)
+        var contenedorItem=itemView.findViewById<LinearLayout>(R.id.contenedorItemAnidado)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdaptadorSalasPorHora.MyHolder {
@@ -32,15 +37,37 @@ class AdaptadorSalasPorHora(
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        val compra = listaReservas[position]
-        val nombreCliente = compra.name
-        val salasOcupadas = compra.items.flatMap { it.salas ?: emptyList() }.distinct().size
+        val item = listaReservas[position]
 
-        holder.tvNombre.text = nombreCliente
-        holder.numeroSalasReservadas.text = "$salasOcupadas/8"
-        holder.flechaRedireccionarAdetalles.visibility = View.VISIBLE
+        when (item.estado) {
+            EstadoSala.RESERVADA -> {
+                holder.tvNombre.text = item.compra?.name?.uppercase() ?: "RESERVADO"
+                holder.numeroSalasReservadas.text = "${item.cantidadSalas}/8"
+                holder.itemView.setOnClickListener {
+                    item.compra?.let { onItemClick(it) }
+                }
+            }
 
-        holder.itemView.setOnClickListener { onItemClick(compra) }
+            EstadoSala.BLOQUEADA -> {
+                holder.contenedorItem.setBackgroundResource(R.drawable.hora_bloqueada_calendario)
+                holder.flechaRedireccionarAdetalles.setImageResource(R.drawable.candado)
+                holder.tvNombre.text = "BLOQUEADA"
+                holder.numeroSalasReservadas.text = "${item.cantidadSalas}/8"
+                holder.itemView.setOnClickListener(null)
+            }
+
+            EstadoSala.LIBRE -> {
+                holder.tvNombre.text = "LIBRE"
+                holder.tvNombre.setTextColor(ContextCompat.getColor(context, R.color.gray))
+                holder.contenedorItem.setBackgroundResource(R.drawable.item_reserva_libre)
+                holder.flechaRedireccionarAdetalles.setImageResource(R.drawable.circulo_libre)
+                holder.numeroSalasReservadas.text = "${item.cantidadSalas}/8"
+                holder.numeroSalasReservadas.setTextColor(ContextCompat.getColor(context, R.color.gray))
+                holder.itemView.setOnClickListener {
+                    onClickCrearReserva()
+                }
+            }
+        }
     }
 
     override fun getItemCount(): Int = listaReservas.size

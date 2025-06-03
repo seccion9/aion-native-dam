@@ -16,6 +16,20 @@
         <item>Cancelacion</item>
     </array>
 
+    <array name="salas_array">
+        <item>-- Todas --</item>
+        <item>Sala 1</item>
+        <item>Sala 2</item>
+        <item>Sala 3</item>
+        <item>Sala 4</item>
+        <item>Sala 5</item>
+        <item>Sala 6</item>
+        <item>Sala 7</item>
+        <item>Sala 8</item>
+
+
+    </array>
+
     <array name="idioma_array">
         <item>--Idioma--</item>
         <item>Spanish</item>

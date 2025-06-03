@@ -21,6 +21,7 @@ import com.example.gestionreservas.models.repository.CalendarioRepository
 import com.example.gestionreservas.models.repository.CompraRepository
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
@@ -44,24 +45,42 @@ class CalendarioDiarioViewModel(
     private val _bloqueoExitoso = MutableLiveData<Boolean>()
     val bloqueoExitoso: LiveData<Boolean> = _bloqueoExitoso
 
+    private val _bloqueos = MutableLiveData<List<Bloqueo>?>()
+    val bloqueos: LiveData<List<Bloqueo>?> = _bloqueos
+
     private var sesionesGuardadas: List<SesionConCompra> = emptyList()
 
     @RequiresApi(Build.VERSION_CODES.O)
-    suspend fun bloquearYEliminar(context: Context, token: String, bloqueos: List<Bloqueo>): Boolean {
-        val success = calendarioRepository.bloquearFechas(token, bloqueos)
-        _bloqueoExitoso.postValue(success)
+    fun registrarBloqueo(token:String, bloqueo:Bloqueo){
+        viewModelScope.launch {
+            try {
+                val success = calendarioRepository.bloquearFechas("Bearer $token", bloqueo)
+                _bloqueoExitoso.postValue(success)
+                if (success) {
+                    val listaBloqueos = calendarioRepository.obtenerBloqueos("Bearer $token")
+                    _bloqueos.postValue(listaBloqueos)
 
-        if (success) {
-            val fechas = bloqueos.map { it.fecha }.distinct()
-            for (fechaStr in fechas) {
-                val fecha = LocalDate.parse(fechaStr)
-                borrarComprasTrasBloqueo(token, fecha)
+                    actualizarFranjasConOcupaciones()
+                }
+            } catch (e: Exception) {
+                Log.e("ViewModelBloqueo", "Error al bloquear: ${e.message}")
+                _bloqueoExitoso.postValue(false)
             }
         }
-
-        return success
     }
-
+    fun obtenerBloqueos(token:String){
+        viewModelScope.launch {
+            try{
+                val listaBloqueos=calendarioRepository.obtenerBloqueos("Bearer $token")
+                if(listaBloqueos!=null){
+                    _bloqueos.value=listaBloqueos
+                }
+            }catch (e:Exception){
+                Log.e("ViewModelBloqueo", "Error al obtener bloqueos: ${e.message}")
+                _bloqueos.value= emptyList()
+            }
+        }
+    }
     @RequiresApi(Build.VERSION_CODES.O)
     fun avanzarDia() {
         _fechaActual.value = _fechaActual.value?.plusDays(1)
@@ -88,10 +107,6 @@ class CalendarioDiarioViewModel(
             try {
                 val sesiones = compraRepository.obtenerSesionesDelDia(token, fecha)
                 sesionesGuardadas = sesiones
-                val bloqueos = calendarioRepository.obtenerBloqueos("Bearer $token")
-                    ?.filter { it.fecha == fecha.toString() }
-                Log.e("BLOQUEOS_OBTENIDOS","$token")
-                val bloqueosPorDiaSala = bloqueos?.groupBy { it.fecha to it.calendarioId }
 
 
                 val listaOcupaciones = sesiones.mapNotNull { sc ->
@@ -133,42 +148,85 @@ class CalendarioDiarioViewModel(
     @RequiresApi(Build.VERSION_CODES.O)
     fun actualizarFranjasConOcupaciones() {
         val listaBase = generarHorasDelDia().toMutableList()
+        val totalSalas = 8
 
         for (franja in listaBase) {
-            val comprasDeFranja = sesionesGuardadas
-                .filter { it.sesion.hora == franja.horaInicio }
-                .mapNotNull { it.compra }
-                .distinctBy { it.id }
+            // Inicializa todas las salas como LIBRES
+            val salasDeFranja = MutableList(totalSalas) { index ->
+                SalaConEstado(
+                    idSala = "sala${index + 1}",
+                    estado = EstadoSala.LIBRE,
+                    reserva = null
+                )
+            }
 
-            franja.reservas = comprasDeFranja
-            Log.d("DEBUG_FRANJA", "Franja ${franja.horaInicio}-${franja.horaFin} tiene ${franja.reservas.size} reservas")
-            franja.reservas.forEach { Log.d("DEBUG_RESERVA", "Reserva de ${it.name} en franja ${franja.horaInicio}") }
+            // Añadir ocupaciones reales
+            val ocupacionesDeFranja = _ocupaciones.value?.filter {
+                it.start == franja.horaInicio
+            } ?: emptyList()
+
+            for (ocupacion in ocupacionesDeFranja) {
+                val compraAsociada = sesionesGuardadas
+                    .firstOrNull { it.compra?.id == ocupacion.idCompra }
+                    ?.compra
+
+                for (salaId in ocupacion.salas!!) {
+                    val index = salaId.removePrefix("cal").toIntOrNull()?.minus(1)
+                    Log.d("DEBUG_SALA", "Asignando ${salaId} a index $index para la franja ${franja.horaInicio}")
+                    if (index != null && index in 0 until totalSalas) {
+                        salasDeFranja[index] = SalaConEstado(
+                            idSala = salaId,
+                            estado = EstadoSala.RESERVADA,
+                            reserva = compraAsociada
+                        )
+                    }
+                }
+            }
+            val bloqueosDelDia = _bloqueos.value?.filter { bloqueo ->
+                val tipo = bloqueo.tipo.lowercase()
+                val fechaFranja = fechaActual.value?.toString() ?: return@filter false
+
+                when (tipo) {
+                    "dia_entero" -> {
+                        // Si la franja coincide con el día del bloqueo
+                        bloqueo.inicio == fechaFranja
+                    }
+                    "franja" -> {
+                        try {
+                            val formatoFechaHora = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+                            val inicio = LocalDateTime.parse(bloqueo.inicio, formatoFechaHora)
+                            val fin = LocalDateTime.parse(bloqueo.fin, formatoFechaHora)
+
+                            val horaFranja = LocalTime.parse(franja.horaInicio, DateTimeFormatter.ofPattern("HH:mm"))
+                            val fechaFranjaCompleta = LocalDateTime.of(_fechaActual.value, horaFranja)
+
+                            // Si la franja está dentro del rango de bloqueo
+                            fechaFranjaCompleta in inicio..fin
+                        } catch (e: Exception) {
+                            false
+                        }
+                    }
+                    else -> false
+                }
+            } ?: emptyList()
+
+        // Aplicar bloqueos a salas de la franja
+            for (bloqueo in bloqueosDelDia) {
+                for (salaBloqueada in bloqueo.salas) {
+                    val idNormalizado = salaBloqueada.lowercase().replace(" ", "")
+                    val index = idNormalizado.removePrefix("sala").toIntOrNull()?.minus(1)
+                    if (index != null && index in 0 until totalSalas) {
+                        salasDeFranja[index] = salasDeFranja[index].copy(estado = EstadoSala.BLOQUEADA)
+                    }
+                }
+            }
+
+
+            // Asignar la lista final de salas a la franja
+            franja.salas = salasDeFranja
         }
 
         _franjasHorarias.postValue(listaBase)
-    }
-
-
-    suspend fun borrarComprasTrasBloqueo(token: String, fecha: LocalDate) {
-            val ocupaciones = _ocupaciones.value ?: return
-        val bloqueos = calendarioRepository.obtenerBloqueos("Bearer $token")
-                ?.filter { it.fecha == fecha.toString() }
-
-            val bloqueosPorSala = bloqueos?.groupBy { it.calendarioId }
-
-            val ocupacionesAEliminar = ocupaciones.filter {
-                bloqueosPorSala?.containsKey(it.calendarioId) == true
-            }
-
-            val idsAEliminar = ocupacionesAEliminar.map { it.idCompra }.distinct()
-
-            for (id in idsAEliminar) {
-                val ok = compraRepository.eliminarCompra(token, id)
-                if (!ok) Log.e("CANCELAR", "Error al eliminar compra $id")
-            }
-
-            Log.d("CANCELAR", "Reservas eliminadas: $idsAEliminar")
-
     }
 
 
@@ -185,7 +243,7 @@ class CalendarioDiarioViewModel(
         val formato = DateTimeFormatter.ofPattern("HH:mm")
 
         var horaActual = LocalTime.of(9, 0)
-        val horaFin = LocalTime.of(17, 0)
+        val horaFin = LocalTime.of(20, 0)
 
         while (horaActual < horaFin) {
             val siguiente = horaActual.plusHours(1)
@@ -194,7 +252,7 @@ class CalendarioDiarioViewModel(
                 FranjaHorariaReservas(
                     horaInicio = horaActual.format(formato),
                     horaFin = siguiente.format(formato),
-                    reservas = emptyList()
+                    salas = emptyList()
                 )
             )
 
@@ -204,18 +262,5 @@ class CalendarioDiarioViewModel(
         return listaHoras
     }
 
-    fun mapearCalendarioASala(calId: String): String {
-        return when (calId) {
-            "cal1" -> "sala1"
-            "cal2" -> "sala2"
-            "cal3" -> "sala3"
-            "cal4" -> "sala4"
-            "cal5" -> "sala5"
-            "cal6" -> "sala6"
-            "cal7" -> "sala7"
-            "cal8" -> "sala8"
-            else -> calId
-        }
-    }
 
 }

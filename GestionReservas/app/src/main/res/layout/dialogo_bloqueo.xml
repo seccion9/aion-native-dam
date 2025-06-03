@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="16dp">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="BLOQUEAR"
+            android:textAlignment="center"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Grupo Radio -->
+        <RadioGroup
+            android:gravity="center"
+            android:id="@+id/grupoRadiosHorario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitulo"
+            app:layout_constraintStart_toStartOf="@+id/tvTitulo"
+            app:layout_constraintTop_toBottomOf="@id/tvTitulo">
+
+            <RadioButton
+                android:id="@+id/radioFranjaHoraria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Franja Horaria" />
+
+            <RadioButton
+                android:id="@+id/radioDiaEntero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Día Entero" />
+        </RadioGroup>
+
+        <LinearLayout
+
+            android:id="@+id/contenedorCheckboxSalas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:padding="8dp"
+            android:background="@drawable/boton_experiencia"
+            app:layout_constraintStart_toStartOf="@id/grupoRadiosHorario"
+            app:layout_constraintTop_toBottomOf="@+id/grupoRadiosHorario"
+            app:layout_constraintEnd_toEndOf="@id/grupoRadiosHorario">
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:id="@+id/tvTituloMotivo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Motivo"
+            app:layout_constraintStart_toStartOf="@+id/contenedorCheckboxSalas"
+            app:layout_constraintTop_toBottomOf="@+id/contenedorCheckboxSalas" />
+
+        <EditText
+            android:layout_marginTop="5dp"
+            android:id="@+id/EditMotivo"
+            android:layout_width="0dp"
+            android:background="@drawable/boton_experiencia"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/contenedorCheckboxSalas"
+            app:layout_constraintStart_toStartOf="@+id/tvTituloMotivo"
+            app:layout_constraintTop_toBottomOf="@+id/tvTituloMotivo" />
+
+        <!-- Contenedor horizontal para Inicio y Fin -->
+        <TextView
+            android:id="@+id/tvInicio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="Inicio"
+            app:layout_constraintEnd_toStartOf="@id/tvFin"
+            app:layout_constraintStart_toStartOf="@+id/EditMotivo"
+            app:layout_constraintTop_toBottomOf="@id/EditMotivo" />
+
+        <TextView
+            android:id="@+id/tvFin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Fin"
+            app:layout_constraintEnd_toEndOf="@+id/EditMotivo"
+            app:layout_constraintStart_toEndOf="@id/tvInicio"
+            app:layout_constraintTop_toBottomOf="@id/EditMotivo" />
+
+        <!-- Campo Inicio -->
+        <EditText
+            android:layout_marginTop="4dp"
+            android:id="@+id/editFechaInicio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/boton_experiencia"
+            android:clickable="true"
+            android:drawableEnd="@drawable/calendar"
+            android:drawablePadding="10dp"
+            android:focusable="false"
+            android:hint="Fecha y hora"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/tvInicio"
+            app:layout_constraintStart_toStartOf="@+id/tvInicio"
+            app:layout_constraintTop_toBottomOf="@id/tvInicio"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.42" />
+
+        <!-- Campo Fin -->
+        <EditText
+            android:layout_marginTop="4dp"
+            android:id="@+id/editFechaFin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_experiencia"
+            android:clickable="true"
+            android:drawableEnd="@drawable/calendar"
+            android:drawablePadding="10dp"
+            android:focusable="false"
+            android:hint="Fecha y hora"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/tvFin"
+            app:layout_constraintStart_toStartOf="@+id/tvFin"
+            app:layout_constraintTop_toBottomOf="@id/tvFin"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.42" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

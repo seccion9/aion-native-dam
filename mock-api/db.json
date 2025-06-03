@@ -8948,492 +8948,6 @@
       "userId": "1"
     },
     {
-      "id": "63e348ed-9f1c-4582-a0c2-c1886c41cd17",
-      "uuid": "63e348ed-9f1c-4582-a0c2-c1886c41cd17",
-      "status": "confirmada",
-      "mailStatus": "none",
-      "internaPermanent": false,
-      "idDiscount": null,
-      "idBono": null,
-      "priceFinal": 75,
-      "priceAfterDiscount": 75,
-      "priceFractioned": 37.5,
-      "isFractioned": true,
-      "name": "Sergio Martín",
-      "mail": "cliente@example.com",
-      "dni": "00000000X",
-      "phone": "600123456",
-      "direction": "Calle Falsa 123",
-      "language": "es",
-      "ip": "192.168.1.10",
-      "comment": "",
-      "automaticActions": "",
-      "fechaCompra": "2025-06-03 11:52",
-      "items": [
-        {
-          "id": "1ba77f4d-8f8e-4e93-b5a5-b260fcf7131f",
-          "idExperience": "2",
-          "idCalendario": "cal2",
-          "idBusinessUnit": null,
-          "status": "confirmada",
-          "internaPermanent": false,
-          "start": "2025-06-03 15:00:00",
-          "end": "2025-06-03 16:00:00",
-          "duration": 60,
-          "peopleNumber": 2,
-          "priceOriginal": 75,
-          "priceTotal": 75,
-          "priceFractioned": 37.5,
-          "discountAmount": 0,
-          "fields": [
-            {
-              "id": "81a806dd-5d47-48f5-8a1f-732068697200",
-              "title": "Idioma",
-              "name": "language",
-              "value": "English",
-              "amount": 0
-            },
-            {
-              "id": "069ecbc6-318d-4159-915b-6684b55c21e7",
-              "title": "Monitor",
-              "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
-            }
-          ],
-          "salas": [
-            "cal2",
-            "cal1"
-          ]
-        }
-      ],
-      "payments": [
-        {
-          "id": "16239b54-c0b6-4f7d-b63d-fa683d1f072e",
-          "amount": 37.5,
-          "method": "Tarjeta"
-        }
-      ],
-      "resumenItems": [
-        {
-          "id": "1ba77f4d-8f8e-4e93-b5a5-b260fcf7131f",
-          "id_experience": "2",
-          "id_calendario": "cal2",
-          "start": "2025-06-03 15:00:00",
-          "end": "2025-06-03 16:00:00",
-          "people_number": 5,
-          "price_original": 75,
-          "price_fractioned": 37.5
-        }
-      ],
-      "userId": "1"
-    },
-    {
-      "id": "bc63541c-f542-4b4a-9903-8d6e8bf000fe",
-      "uuid": "bc63541c-f542-4b4a-9903-8d6e8bf000fe",
-      "status": "cancelada",
-      "mailStatus": "none",
-      "internaPermanent": false,
-      "idDiscount": null,
-      "idBono": null,
-      "priceFinal": 120,
-      "priceAfterDiscount": 120,
-      "priceFractioned": 60,
-      "isFractioned": false,
-      "name": "Lucía Fernández",
-      "mail": "cliente@example.com",
-      "dni": "00000000X",
-      "phone": "600123456",
-      "direction": "Calle Falsa 123",
-      "language": "es",
-      "ip": "192.168.1.10",
-      "comment": "",
-      "automaticActions": "",
-      "fechaCompra": "2025-06-03 10:23",
-      "items": [
-        {
-          "id": "305ae832-8574-4a36-a0de-ed6de46d6dfb",
-          "idExperience": "1",
-          "idCalendario": "cal2",
-          "idBusinessUnit": null,
-          "status": "cancelada",
-          "internaPermanent": false,
-          "start": "2025-06-03 14:00:00",
-          "end": "2025-06-03 15:00:00",
-          "duration": 60,
-          "peopleNumber": 5,
-          "priceOriginal": 120,
-          "priceTotal": 120,
-          "priceFractioned": 60,
-          "discountAmount": 0,
-          "fields": [
-            {
-              "id": "87645c2c-dab7-4dae-aa66-d6188cfc5d67",
-              "title": "Idioma",
-              "name": "language",
-              "value": "English",
-              "amount": 0
-            },
-            {
-              "id": "74b01de6-a039-4d95-8dc2-7d49316eb60c",
-              "title": "Monitor",
-              "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
-            }
-          ],
-          "salas": [
-            "cal2",
-            "cal1"
-          ]
-        }
-      ],
-      "payments": [
-        {
-          "id": "73cfc0d3-77f8-4c19-a6bf-90aded0a3803",
-          "amount": 120,
-          "method": "Efectivo"
-        }
-      ],
-      "resumenItems": [
-        {
-          "id": "305ae832-8574-4a36-a0de-ed6de46d6dfb",
-          "id_experience": "1",
-          "id_calendario": "cal2",
-          "start": "2025-06-03 14:00:00",
-          "end": "2025-06-03 15:00:00",
-          "people_number": 5,
-          "price_original": 120,
-          "price_fractioned": 60
-        }
-      ],
-      "userId": "1"
-    },
-    {
-      "id": "6f8ad796-e381-47aa-a803-6b3ff337e334",
-      "uuid": "6f8ad796-e381-47aa-a803-6b3ff337e334",
-      "status": "confirmada",
-      "mailStatus": "none",
-      "internaPermanent": false,
-      "idDiscount": null,
-      "idBono": null,
-      "priceFinal": 90,
-      "priceAfterDiscount": 90,
-      "priceFractioned": 45,
-      "isFractioned": false,
-      "name": "Sergio Martín",
-      "mail": "cliente@example.com",
-      "dni": "00000000X",
-      "phone": "600123456",
-      "direction": "Calle Falsa 123",
-      "language": "es",
-      "ip": "192.168.1.10",
-      "comment": "",
-      "automaticActions": "",
-      "fechaCompra": "2025-06-03 14:38",
-      "items": [
-        {
-          "id": "7e6e0ad2-bc61-426d-9ce0-eb1e937b1226",
-          "idExperience": "2",
-          "idCalendario": "cal1",
-          "idBusinessUnit": null,
-          "status": "confirmada",
-          "internaPermanent": false,
-          "start": "2025-06-03 10:00:00",
-          "end": "2025-06-03 11:00:00",
-          "duration": 60,
-          "peopleNumber": 3,
-          "priceOriginal": 90,
-          "priceTotal": 90,
-          "priceFractioned": 45,
-          "discountAmount": 0,
-          "fields": [
-            {
-              "id": "7e5d3d41-2e43-4377-8bf9-7d1ab9293f23",
-              "title": "Idioma",
-              "name": "language",
-              "value": "English",
-              "amount": 0
-            },
-            {
-              "id": "8db98b29-c731-4dd5-8574-40ac7913c3aa",
-              "title": "Monitor",
-              "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
-            }
-          ],
-          "salas": [
-            "cal1",
-            "cal2"
-          ]
-        }
-      ],
-      "payments": [
-        {
-          "id": "6e74d4ff-4a73-4c18-912d-96da429ceaf4",
-          "amount": 90,
-          "method": "Bizum"
-        }
-      ],
-      "resumenItems": [
-        {
-          "id": "7e6e0ad2-bc61-426d-9ce0-eb1e937b1226",
-          "id_experience": "1",
-          "id_calendario": "cal1",
-          "start": "2025-06-03 10:00:00",
-          "end": "2025-06-03 11:00:00",
-          "people_number": 4,
-          "price_original": 90,
-          "price_fractioned": 45
-        }
-      ],
-      "userId": "1"
-    },
-    {
-      "id": "9752b136-1d9a-4f1a-a9eb-edf9ef63ffb5",
-      "uuid": "9752b136-1d9a-4f1a-a9eb-edf9ef63ffb5",
-      "status": "no_finalizada",
-      "mailStatus": "none",
-      "internaPermanent": false,
-      "idDiscount": null,
-      "idBono": null,
-      "priceFinal": 75,
-      "priceAfterDiscount": 75,
-      "priceFractioned": 37.5,
-      "isFractioned": true,
-      "name": "Mario Pérez",
-      "mail": "cliente@example.com",
-      "dni": "00000000X",
-      "phone": "600123456",
-      "direction": "Calle Falsa 123",
-      "language": "es",
-      "ip": "192.168.1.10",
-      "comment": "",
-      "automaticActions": "",
-      "fechaCompra": "2025-06-03 15:46",
-      "items": [
-        {
-          "id": "98d1d717-2c90-4c1b-a4c9-47bb2992609b",
-          "idExperience": "1",
-          "idCalendario": "cal2",
-          "idBusinessUnit": null,
-          "status": "no_finalizada",
-          "internaPermanent": false,
-          "start": "2025-06-03 18:00:00",
-          "end": "2025-06-03 19:00:00",
-          "duration": 60,
-          "peopleNumber": 3,
-          "priceOriginal": 75,
-          "priceTotal": 75,
-          "priceFractioned": 37.5,
-          "discountAmount": 0,
-          "fields": [
-            {
-              "id": "dc03762c-37ef-4990-8b48-0fac85a29277",
-              "title": "Idioma",
-              "name": "language",
-              "value": "Spanish",
-              "amount": 0
-            },
-            {
-              "id": "46f0fe86-8896-4c1c-b973-f8051daf7cbe",
-              "title": "Monitor",
-              "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
-            }
-          ],
-          "salas": [
-            "cal2",
-            "cal1"
-          ]
-        }
-      ],
-      "payments": [
-        {
-          "id": "1b99ac65-0aaa-41b3-a2bd-743245c3eac9",
-          "amount": 37.5,
-          "method": "Tarjeta"
-        }
-      ],
-      "resumenItems": [
-        {
-          "id": "98d1d717-2c90-4c1b-a4c9-47bb2992609b",
-          "id_experience": "2",
-          "id_calendario": "cal2",
-          "start": "2025-06-03 18:00:00",
-          "end": "2025-06-03 19:00:00",
-          "people_number": 4,
-          "price_original": 75,
-          "price_fractioned": 37.5
-        }
-      ],
-      "userId": "1"
-    },
-    {
-      "id": "58baa195-2b47-4464-8eb9-606e3eff60b0",
-      "uuid": "58baa195-2b47-4464-8eb9-606e3eff60b0",
-      "status": "no_finalizada",
-      "mailStatus": "none",
-      "internaPermanent": false,
-      "idDiscount": null,
-      "idBono": null,
-      "priceFinal": 50,
-      "priceAfterDiscount": 50,
-      "priceFractioned": 25,
-      "isFractioned": true,
-      "name": "Mario Pérez",
-      "mail": "cliente@example.com",
-      "dni": "00000000X",
-      "phone": "600123456",
-      "direction": "Calle Falsa 123",
-      "language": "es",
-      "ip": "192.168.1.10",
-      "comment": "",
-      "automaticActions": "",
-      "fechaCompra": "2025-06-03 15:53",
-      "items": [
-        {
-          "id": "d3870611-a742-4bc4-97e8-9ac99b01538e",
-          "idExperience": "1",
-          "idCalendario": "cal1",
-          "idBusinessUnit": null,
-          "status": "no_finalizada",
-          "internaPermanent": false,
-          "start": "2025-06-03 11:00:00",
-          "end": "2025-06-03 12:00:00",
-          "duration": 60,
-          "peopleNumber": 5,
-          "priceOriginal": 50,
-          "priceTotal": 50,
-          "priceFractioned": 25,
-          "discountAmount": 0,
-          "fields": [
-            {
-              "id": "aaa96b03-0ff0-4443-82eb-1bfc4c540080",
-              "title": "Idioma",
-              "name": "language",
-              "value": "Spanish",
-              "amount": 0
-            },
-            {
-              "id": "d7df2058-6def-45b1-8af2-e115e801e2e6",
-              "title": "Monitor",
-              "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
-            }
-          ],
-          "salas": [
-            "cal1",
-            "cal2"
-          ]
-        }
-      ],
-      "payments": [
-        {
-          "id": "fd562e17-e673-4639-92b2-6118364a6f1f",
-          "amount": 25,
-          "method": "Tarjeta"
-        }
-      ],
-      "resumenItems": [
-        {
-          "id": "d3870611-a742-4bc4-97e8-9ac99b01538e",
-          "id_experience": "2",
-          "id_calendario": "cal1",
-          "start": "2025-06-03 11:00:00",
-          "end": "2025-06-03 12:00:00",
-          "people_number": 2,
-          "price_original": 50,
-          "price_fractioned": 25
-        }
-      ],
-      "userId": "1"
-    },
-    {
-      "id": "2b77ae66-6b29-4857-9200-0757baf1ab1f",
-      "uuid": "2b77ae66-6b29-4857-9200-0757baf1ab1f",
-      "status": "no_finalizada",
-      "mailStatus": "none",
-      "internaPermanent": false,
-      "idDiscount": null,
-      "idBono": null,
-      "priceFinal": 75,
-      "priceAfterDiscount": 75,
-      "priceFractioned": 37.5,
-      "isFractioned": true,
-      "name": "Javier López",
-      "mail": "cliente@example.com",
-      "dni": "00000000X",
-      "phone": "600123456",
-      "direction": "Calle Falsa 123",
-      "language": "es",
-      "ip": "192.168.1.10",
-      "comment": "",
-      "automaticActions": "",
-      "fechaCompra": "2025-06-03 16:44",
-      "items": [
-        {
-          "id": "c2726999-6a19-45aa-b301-2c9893c405db",
-          "idExperience": "2",
-          "idCalendario": "cal1",
-          "idBusinessUnit": null,
-          "status": "no_finalizada",
-          "internaPermanent": false,
-          "start": "2025-06-03 19:00:00",
-          "end": "2025-06-03 20:00:00",
-          "duration": 60,
-          "peopleNumber": 3,
-          "priceOriginal": 75,
-          "priceTotal": 75,
-          "priceFractioned": 37.5,
-          "discountAmount": 0,
-          "fields": [
-            {
-              "id": "9496474e-5431-42b7-a607-5a2043c83d06",
-              "title": "Idioma",
-              "name": "language",
-              "value": "Spanish",
-              "amount": 0
-            },
-            {
-              "id": "e1cab2fd-36da-4e39-8e5c-dd4cdda090f3",
-              "title": "Monitor",
-              "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
-            }
-          ],
-          "salas": [
-            "cal1",
-            "cal2"
-          ]
-        }
-      ],
-      "payments": [
-        {
-          "id": "cdd54e0f-a098-4296-ab16-b2bc67f1a18d",
-          "amount": 37.5,
-          "method": "Bizum"
-        }
-      ],
-      "resumenItems": [
-        {
-          "id": "c2726999-6a19-45aa-b301-2c9893c405db",
-          "id_experience": "2",
-          "id_calendario": "cal1",
-          "start": "2025-06-03 19:00:00",
-          "end": "2025-06-03 20:00:00",
-          "people_number": 2,
-          "price_original": 75,
-          "price_fractioned": 37.5
-        }
-      ],
-      "userId": "1"
-    },
-    {
       "id": "ed2e01b6-a8b8-40d5-832a-ace32dc41e91",
       "uuid": "ed2e01b6-a8b8-40d5-832a-ace32dc41e91",
       "status": "confirmada",
@@ -26959,8 +26473,8 @@
           "idBusinessUnit": null,
           "status": "confirmada",
           "internaPermanent": false,
-          "start": "2025-06-02 09:00:00",
-          "end": "2025-06-02 10:00:00",
+          "start": "2025-06-03 09:00:00",
+          "end": "2025-06-03 10:00:00",
           "duration": 60,
           "peopleNumber": 3,
           "priceOriginal": 75,
@@ -26985,7 +26499,86 @@
           ],
           "salas": [
             "cal1",
-            "cal2",
+            "cal2"
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "id": "3611b933-7638-4e6a-b33a-e581bec3acc0",
+          "amount": 75,
+          "method": "Efectivo"
+        }
+      ],
+      "resumenItems": [
+        {
+          "id": "1502a0b1-dd1c-4fd7-af90-48c2b9430a60",
+          "id_experience": "2",
+          "id_calendario": "cal2",
+          "start": "2025-06-03 18:00:00",
+          "end": "2025-06-03 19:00:00",
+          "people_number": 4,
+          "price_original": 75,
+          "price_fractioned": 37.5
+        }
+      ],
+      "userId": "1"
+    },
+    {
+      "id": "d553a673-b7ea-4ce3-bff7-da8b309cd58f-5",
+      "uuid": "d553a673-b7ea-4ce3-bff7-da8b309cd58f-5",
+      "status": "confirmada",
+      "mailStatus": "none",
+      "internaPermanent": false,
+      "idDiscount": null,
+      "idBono": null,
+      "priceFinal": 75,
+      "priceAfterDiscount": 75,
+      "priceFractioned": 37.5,
+      "isFractioned": false,
+      "name": "Pedro García",
+      "mail": "cliente@example.com",
+      "dni": "00000000X",
+      "phone": "600123456",
+      "direction": "Calle Falsa 123",
+      "language": "es",
+      "ip": "192.168.1.10",
+      "comment": "",
+      "automaticActions": "",
+      "fechaCompra": "2025-06-02 16:22",
+      "items": [
+        {
+          "id": "1502a0b1-dd1c-4fd7-af90-48c2b9430a60",
+          "idExperience": "1",
+          "idCalendario": "cal2",
+          "idBusinessUnit": null,
+          "status": "confirmada",
+          "internaPermanent": false,
+          "start": "2025-06-03 09:00:00",
+          "end": "2025-06-03 10:00:00",
+          "duration": 60,
+          "peopleNumber": 3,
+          "priceOriginal": 75,
+          "priceTotal": 75,
+          "priceFractioned": 37.5,
+          "discountAmount": 0,
+          "fields": [
+            {
+              "id": "e0c94454-aea6-4edb-8e87-a60dcadb2db0",
+              "title": "Idioma",
+              "name": "language",
+              "value": "English",
+              "amount": 0
+            },
+            {
+              "id": "3a32243f-7cc7-4ad2-a1be-f95b68b5f17a",
+              "title": "Monitor",
+              "name": "monitor",
+              "value": "1 pax",
+              "amount": 10.5
+            }
+          ],
+          "salas": [
             "cal3",
             "cal4"
           ]
@@ -27003,8 +26596,8 @@
           "id": "1502a0b1-dd1c-4fd7-af90-48c2b9430a60",
           "id_experience": "2",
           "id_calendario": "cal2",
-          "start": "2025-06-02 18:00:00",
-          "end": "2025-06-02 19:00:00",
+          "start": "2025-06-03 18:00:00",
+          "end": "2025-06-03 19:00:00",
           "people_number": 4,
           "price_original": 75,
           "price_fractioned": 37.5
@@ -27042,8 +26635,8 @@
           "idBusinessUnit": null,
           "status": "confirmada",
           "internaPermanent": false,
-          "start": "2025-06-02 10:00:00",
-          "end": "2025-06-02 11:00:00",
+          "start": "2025-06-03 10:00:00",
+          "end": "2025-06-03 11:00:00",
           "duration": 60,
           "peopleNumber": 3,
           "priceOriginal": 75,
@@ -27067,7 +26660,86 @@
             }
           ],
           "salas": [
-            "cal1",
+            "cal1"
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "id": "3611b933-7638-4e6a-b33a-e581bec3acc0",
+          "amount": 75,
+          "method": "Efectivo"
+        }
+      ],
+      "resumenItems": [
+        {
+          "id": "1502a0b1-dd1c-4fd7-af90-48c2b9430a60",
+          "id_experience": "2",
+          "id_calendario": "cal2",
+          "start": "2025-06-03 18:00:00",
+          "end": "2025-06-03 19:00:00",
+          "people_number": 4,
+          "price_original": 75,
+          "price_fractioned": 37.5
+        }
+      ],
+      "userId": "1"
+    },
+    {
+      "id": "d553a673-b7ea-4ce3-bff7-da8b309d58f-8",
+      "uuid": "d553a673-b7ea-4ce3-bff7-da8b39cd58f-8",
+      "status": "confirmada",
+      "mailStatus": "none",
+      "internaPermanent": false,
+      "idDiscount": null,
+      "idBono": null,
+      "priceFinal": 75,
+      "priceAfterDiscount": 75,
+      "priceFractioned": 37.5,
+      "isFractioned": false,
+      "name": "Ana Estévez",
+      "mail": "cliente@example.com",
+      "dni": "00000000X",
+      "phone": "600123456",
+      "direction": "Calle Falsa 123",
+      "language": "es",
+      "ip": "192.168.1.10",
+      "comment": "",
+      "automaticActions": "",
+      "fechaCompra": "2025-06-02 16:22",
+      "items": [
+        {
+          "id": "1502a0b1-dd1c-4fd7-af90-48c2b9430a60",
+          "idExperience": "1",
+          "idCalendario": "cal2",
+          "idBusinessUnit": null,
+          "status": "confirmada",
+          "internaPermanent": false,
+          "start": "2025-06-03 10:00:00",
+          "end": "2025-06-03 11:00:00",
+          "duration": 60,
+          "peopleNumber": 3,
+          "priceOriginal": 75,
+          "priceTotal": 75,
+          "priceFractioned": 37.5,
+          "discountAmount": 0,
+          "fields": [
+            {
+              "id": "e0c94454-aea6-4edb-8e87-a60dcadb2db0",
+              "title": "Idioma",
+              "name": "language",
+              "value": "English",
+              "amount": 0
+            },
+            {
+              "id": "3a32243f-7cc7-4ad2-a1be-f95b68b5f17a",
+              "title": "Monitor",
+              "name": "monitor",
+              "value": "1 pax",
+              "amount": 10.5
+            }
+          ],
+          "salas": [
             "cal2",
             "cal3",
             "cal4"
@@ -27086,8 +26758,8 @@
           "id": "1502a0b1-dd1c-4fd7-af90-48c2b9430a60",
           "id_experience": "2",
           "id_calendario": "cal2",
-          "start": "2025-06-02 18:00:00",
-          "end": "2025-06-02 19:00:00",
+          "start": "2025-06-03 18:00:00",
+          "end": "2025-06-03 19:00:00",
           "people_number": 4,
           "price_original": 75,
           "price_fractioned": 37.5
@@ -27125,8 +26797,8 @@
           "idBusinessUnit": null,
           "status": "confirmada",
           "internaPermanent": false,
-          "start": "2025-06-02 12:00:00",
-          "end": "2025-06-02 13:00:00",
+          "start": "2025-06-03 12:00:00",
+          "end": "2025-06-03 13:00:00",
           "duration": 60,
           "peopleNumber": 3,
           "priceOriginal": 75,
@@ -27150,10 +26822,7 @@
             }
           ],
           "salas": [
-            "cal1",
-            "cal2",
-            "cal3",
-            "cal4"
+            "cal1"
           ]
         }
       ],
@@ -27169,8 +26838,8 @@
           "id": "1502a0b1-dd1c-4fd7-af90-48c2b9430a60",
           "id_experience": "2",
           "id_calendario": "cal2",
-          "start": "2025-06-02 18:00:00",
-          "end": "2025-06-02 19:00:00",
+          "start": "2025-06-03 18:00:00",
+          "end": "2025-06-03 19:00:00",
           "people_number": 4,
           "price_original": 75,
           "price_fractioned": 37.5
@@ -27208,8 +26877,8 @@
           "idBusinessUnit": null,
           "status": "confirmada",
           "internaPermanent": false,
-          "start": "2025-06-02 09:00:00",
-          "end": "2025-06-02 10:00:00",
+          "start": "2025-06-03 09:00:00",
+          "end": "2025-06-03 10:00:00",
           "duration": 60,
           "peopleNumber": 3,
           "priceOriginal": 75,
@@ -27252,254 +26921,11 @@
           "id": "1502a0b1-dd1c-4fd7-af90-48c2b930a60",
           "id_experience": "2",
           "id_calendario": "cal2",
-          "start": "2025-06-02 18:00:00",
-          "end": "2025-06-02 19:00:00",
+          "start": "2025-06-03 18:00:00",
+          "end": "2025-06-03 19:00:00",
           "people_number": 4,
           "price_original": 75,
           "price_fractioned": 37.5
-        }
-      ],
-      "userId": "1"
-    },
-    {
-      "id": "3a3fd689-84b5-43c8-9a7d-e6ab781466c2",
-      "uuid": "3a3fd689-84b5-43c8-9a7d-e6ab781466c2",
-      "status": "confirmada",
-      "mailStatus": "none",
-      "internaPermanent": false,
-      "idDiscount": null,
-      "idBono": null,
-      "priceFinal": 120,
-      "priceAfterDiscount": 120,
-      "priceFractioned": 60,
-      "isFractioned": true,
-      "name": "Sergio Martín",
-      "mail": "cliente@example.com",
-      "dni": "00000000X",
-      "phone": "600123456",
-      "direction": "Calle Falsa 123",
-      "language": "es",
-      "ip": "192.168.1.10",
-      "comment": "",
-      "automaticActions": "",
-      "fechaCompra": "2025-06-03 21:35",
-      "items": [
-        {
-          "id": "2fb3cef5-330f-4f1b-bc8b-2c8d5ac1cca5",
-          "idExperience": "1",
-          "idCalendario": "cal2",
-          "idBusinessUnit": null,
-          "status": "confirmada",
-          "internaPermanent": false,
-          "start": "2025-06-03 18:00:00",
-          "end": "2025-06-03 19:00:00",
-          "duration": 60,
-          "peopleNumber": 2,
-          "priceOriginal": 120,
-          "priceTotal": 120,
-          "priceFractioned": 60,
-          "discountAmount": 0,
-          "fields": [
-            {
-              "id": "7813a09f-c715-4599-981b-423c9f93b68d",
-              "title": "Idioma",
-              "name": "language",
-              "value": "English",
-              "amount": 0
-            },
-            {
-              "id": "a07dc1fc-5678-4d15-b7dc-e14c75722583",
-              "title": "Monitor",
-              "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
-            }
-          ],
-          "salas": [
-            "cal2",
-            "cal1"
-          ]
-        }
-      ],
-      "payments": [
-        {
-          "id": "995f9651-ce1f-47a1-94bb-add80adeb76e",
-          "amount": 60,
-          "method": "Bizum"
-        }
-      ],
-      "resumenItems": [
-        {
-          "id": "2fb3cef5-330f-4f1b-bc8b-2c8d5ac1cca5",
-          "id_experience": "1",
-          "id_calendario": "cal2",
-          "start": "2025-06-03 18:00:00",
-          "end": "2025-06-03 19:00:00",
-          "people_number": 5,
-          "price_original": 120,
-          "price_fractioned": 60
-        }
-      ],
-      "userId": "1"
-    },
-    {
-      "id": "f28f8e6b-e3a9-406a-b6ce-14241f98713e",
-      "uuid": "f28f8e6b-e3a9-406a-b6ce-14241f98713e",
-      "status": "confirmada",
-      "mailStatus": "none",
-      "internaPermanent": false,
-      "idDiscount": null,
-      "idBono": null,
-      "priceFinal": 90,
-      "priceAfterDiscount": 90,
-      "priceFractioned": 45,
-      "isFractioned": false,
-      "name": "Javier López",
-      "mail": "cliente@example.com",
-      "dni": "00000000X",
-      "phone": "600123456",
-      "direction": "Calle Falsa 123",
-      "language": "es",
-      "ip": "192.168.1.10",
-      "comment": "",
-      "automaticActions": "",
-      "fechaCompra": "2025-06-03 19:58",
-      "items": [
-        {
-          "id": "197d1a35-72a2-4844-86d0-8504bb703b34",
-          "idExperience": "1",
-          "idCalendario": "cal1",
-          "idBusinessUnit": null,
-          "status": "confirmada",
-          "internaPermanent": false,
-          "start": "2025-06-03 09:00:00",
-          "end": "2025-06-03 10:00:00",
-          "duration": 60,
-          "peopleNumber": 4,
-          "priceOriginal": 90,
-          "priceTotal": 90,
-          "priceFractioned": 45,
-          "discountAmount": 0,
-          "fields": [
-            {
-              "id": "cbe13c0b-1f40-4d3e-9927-bbeb467a781f",
-              "title": "Idioma",
-              "name": "language",
-              "value": "Spanish",
-              "amount": 0
-            },
-            {
-              "id": "e65557c4-691f-4e00-952b-bbfb4143f265",
-              "title": "Monitor",
-              "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
-            }
-          ],
-          "salas": [
-            "cal1",
-            "cal2"
-          ]
-        }
-      ],
-      "payments": [
-        {
-          "id": "c2f6d1c1-6987-4038-8a2c-774e00db1451",
-          "amount": 90,
-          "method": "Efectivo"
-        }
-      ],
-      "resumenItems": [
-        {
-          "id": "197d1a35-72a2-4844-86d0-8504bb703b34",
-          "id_experience": "1",
-          "id_calendario": "cal2",
-          "start": "2025-06-03 09:00:00",
-          "end": "2025-06-03 10:00:00",
-          "people_number": 4,
-          "price_original": 90,
-          "price_fractioned": 45
-        }
-      ],
-      "userId": "1"
-    },
-    {
-      "id": "3af5145a-fa6f-4c20-9225-7a257d81be18",
-      "uuid": "3af5145a-fa6f-4c20-9225-7a257d81be18",
-      "status": "confirmada",
-      "mailStatus": "none",
-      "internaPermanent": false,
-      "idDiscount": null,
-      "idBono": null,
-      "priceFinal": 90,
-      "priceAfterDiscount": 90,
-      "priceFractioned": 45,
-      "isFractioned": false,
-      "name": "Mario Pérez",
-      "mail": "cliente@example.com",
-      "dni": "00000000X",
-      "phone": "600123456",
-      "direction": "Calle Falsa 123",
-      "language": "es",
-      "ip": "192.168.1.10",
-      "comment": "",
-      "automaticActions": "",
-      "fechaCompra": "2025-06-03 12:07",
-      "items": [
-        {
-          "id": "1a17ccc2-d0b0-449e-9394-4620feef1bc4",
-          "idExperience": "1",
-          "idCalendario": "cal2",
-          "idBusinessUnit": null,
-          "status": "confirmada",
-          "internaPermanent": false,
-          "start": "2025-06-03 18:00:00",
-          "end": "2025-06-03 19:00:00",
-          "duration": 60,
-          "peopleNumber": 5,
-          "priceOriginal": 90,
-          "priceTotal": 90,
-          "priceFractioned": 45,
-          "discountAmount": 0,
-          "fields": [
-            {
-              "id": "b5dd6c17-ca82-446d-8edf-e60df54fdd54",
-              "title": "Idioma",
-              "name": "language",
-              "value": "Spanish",
-              "amount": 0
-            },
-            {
-              "id": "a97482f0-a39c-4f0c-9805-11dd694c3d1f",
-              "title": "Monitor",
-              "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
-            }
-          ],
-          "salas": [
-            "cal2",
-            "cal1"
-          ]
-        }
-      ],
-      "payments": [
-        {
-          "id": "adaed929-5af7-4162-9eb3-eaf2a111b140",
-          "amount": 90,
-          "method": "Tarjeta"
-        }
-      ],
-      "resumenItems": [
-        {
-          "id": "1a17ccc2-d0b0-449e-9394-4620feef1bc4",
-          "id_experience": "2",
-          "id_calendario": "cal1",
-          "start": "2025-06-03 18:00:00",
-          "end": "2025-06-03 19:00:00",
-          "people_number": 3,
-          "price_original": 90,
-          "price_fractioned": 45
         }
       ],
       "userId": "1"
@@ -37308,242 +36734,43 @@
   ],
   "bloqueos": [
     {
-      "id": "bloq-001",
-      "calendarioId": "cal1",
-      "fecha": "2025-06-01",
-      "motivo": "Mantenimiento general"
+      "fin": "2025-06-03 20:00",
+      "id": "53431168-4768-46d1-81b1-5aa73ec73064",
+      "inicio": "2025-06-03 13:00",
+      "motivo": "cerrado",
+      "salas": [
+        "Sala 1",
+        "Sala 2",
+        "Sala 3",
+        "Sala 4",
+        "Sala 5",
+        "Sala 6",
+        "Sala 7",
+        "Sala 8"
+      ],
+      "tipo": "franja"
     },
     {
-      "calendarioId": "cal1",
-      "fecha": "2025-05-23",
-      "id": "4dc85c97-b881-4882-8773-05a15236205d",
-      "motivo": "Festivo local"
+      "fin": "2025-06-03 13:00",
+      "id": "8ff03d37-bcdc-4818-affb-35caa8160d4f",
+      "inicio": "2025-06-03 12:00",
+      "motivo": "k",
+      "salas": [
+        "Sala 3",
+        "Sala 4"
+      ],
+      "tipo": "franja"
     },
     {
-      "calendarioId": "cal2",
-      "fecha": "2025-05-23",
-      "id": "a46f43a4-3294-419e-96fd-7d2b0bc3c2b9",
-      "motivo": "Festivo local"
-    },
-    {
-      "calendarioId": "cal1",
-      "fecha": "2025-05-23",
-      "id": "eb94b237-48f2-49f8-be55-37d60736e1c7",
-      "motivo": "asas"
-    },
-    {
-      "calendarioId": "cal2",
-      "fecha": "2025-05-23",
-      "id": "503c4fa7-e905-411b-b5d6-f3381a74e7d8",
-      "motivo": "asas"
-    },
-    {
-      "calendarioId": "cal1",
-      "fecha": "2025-05-22",
-      "id": "2dc87212-3fd7-4282-9827-b9302507baf7"
-    },
-    {
-      "calendarioId": "cal1",
-      "fecha": "2025-04-30",
-      "id": "75417cb0-989e-4676-98dc-150d8c1a2b7e",
-      "motivo": "Motivos personales"
-    },
-    {
-      "calendarioId": "cal2",
-      "fecha": "2025-04-30",
-      "id": "cd619cf9-e3ac-48df-9dfb-900158af8f1a",
-      "motivo": "Motivos personales"
-    },
-    {
-      "calendarioId": "cal1",
-      "fecha": "2025-03-30",
-      "id": "12eb5daf-0988-4d29-aa4a-76c0ef2063c4",
-      "motivo": "fff"
-    },
-    {
-      "calendarioId": "cal2",
-      "fecha": "2025-03-30",
-      "id": "c9828309-dff1-4ee1-8870-10caf7253d3d",
-      "motivo": "fff"
-    },
-    {
-      "calendarioId": "cal1",
-      "fecha": "2025-05-21",
-      "id": "044f558a-3c7f-46eb-93ce-bc2d09626357",
-      "motivo": "pruebasala1"
-    },
-    {
-      "calendarioId": "cal2",
-      "fecha": "2025-05-21",
-      "id": "1f3aad1e-965e-4a16-b84d-c44a6df3b34c"
-    },
-    {
-      "calendarioId": "cal1",
-      "fecha": "2025-05-14",
-      "id": "8d8c2221-990f-42c6-bb7c-9b9a42ba1eed"
-    },
-    {
-      "calendarioId": "cal2",
-      "fecha": "2025-05-14",
-      "id": "06823423-804d-4dab-bde6-cd3e92eefbce"
-    },
-    {
-      "calendarioId": "cal1",
-      "fecha": "2025-05-24",
-      "id": "4aebb9b4-ee73-4412-8a00-9c45bc00dd65",
-      "motivo": "cancelación "
-    },
-    {
-      "calendarioId": "cal1",
-      "fecha": "2025-05-27",
-      "id": "b3d8fe43-0aae-4cc2-991d-7ad89840161f",
-      "motivo": "obras"
-    }
-  ],
-  "comentarios": [
-    {
-      "descripcion": "prueba",
-      "fecha": "2025-05-28 08:04",
-      "id": "8cf9c10f-131a-4896-916f-a1f4a428c5d1",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "prueba 2",
-      "fecha": "2025-05-28 08:06",
-      "id": "7c6838ff-da0a-4adc-9076-f74c6c3636c7",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "prueba 3",
-      "fecha": "2025-05-28 08:06",
-      "id": "92ee5067-10ee-4e35-bc91-e0edf95d1921",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "hacha rota sala 1",
-      "fecha": "2025-05-28 10:08",
-      "id": "1a5109f7-ffe1-402b-bc44-05211e272e1c",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "prueba 4",
-      "fecha": "2025-05-28 10:09",
-      "id": "b806cc32-7e74-48d2-bfed-ea8a04354039",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "prueba 5",
-      "fecha": "2025-05-28 10:09",
-      "id": "96c4179a-73ed-4b60-8dc8-d79e04b1394c",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "prueba 1 dia 27",
-      "fecha": "2025-05-28 08:33",
-      "id": "d740e438-2878-41a3-8627-d8fffff4a98d",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "prueba 2 dia 27",
-      "fecha": "2025-05-27 08:36",
-      "id": "4c8da3e8-b144-4e43-8814-6a52982c3a51",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "diana rota sala 1",
-      "fecha": "2025-05-24 09:53",
-      "id": "6a0b848b-c90d-4fc1-b8f1-78692fac064a",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "diana arreglada sala 1",
-      "fecha": "2025-05-24 09:54",
-      "id": "7c3a5c27-4948-4927-9fae-170dc4fd2378",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "diana 1 arreglada",
-      "fecha": "2025-05-27 09:56",
-      "id": "1cfbb319-8db0-43be-9ec7-5267cffc66be",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "prueba 3",
-      "fecha": "2025-05-27 10:00",
-      "id": "7dfe167b-3a6b-469a-9fbf-2244eddf0348",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "prueba ",
-      "fecha": "2025-05-26 10:02",
-      "id": "0005db5d-0ddd-44fb-819a-c5b6fd33add2",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "prueba 2",
-      "fecha": "2025-05-26 10:03",
-      "id": "be4678fc-9304-4176-9d1f-ec55b4918b6b",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "prueba 3",
-      "fecha": "2025-05-26 10:18",
-      "id": "7fae0cfb-9dfe-486d-93d9-eb3021e55872",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "prueba 4",
-      "fecha": "2025-05-26 10:23",
-      "id": "66558e5b-9386-4282-8791-fb080e0d9594",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "hacha rota sala 1",
-      "fecha": "2025-05-29 06:11",
-      "id": "4570e48d-1edf-4520-b022-5062e0899be2",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "hacha rota sala 3",
-      "fecha": "2025-06-05 06:24",
-      "id": "e5eb17c3-b22b-4d10-bb4a-005a6f55cdca",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
+      "fin": "2025-06-03 13:00",
+      "id": "d37a6125-cee6-4f24-8c84-0c17584a9732",
+      "inicio": "2025-06-03 12:00",
+      "motivo": "cerrado",
+      "salas": [
+        "Sala 5",
+        "Sala 6"
+      ],
+      "tipo": "franja"
     }
   ]
 }

@@ -230,46 +230,28 @@
         app:layout_constraintTop_toBottomOf="@id/tvFecha"
         app:layout_constraintStart_toStartOf="@id/tvFecha"
         app:layout_constraintEnd_toEndOf="@id/tvFecha"
-        app:layout_constraintBottom_toTopOf="@id/btnBloquear" />
-
-    <!-- Botón Bloquear -->
-    <TextView
-        android:gravity="center"
-        android:id="@+id/btnBloquear"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/boton_bloqueo"
-        android:foreground="?attr/selectableItemBackground"
-        android:text="Bloquear"
-        android:padding="7dp"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/recyclerHorasSalas"
-        app:layout_constraintBottom_toTopOf="@id/guideline6"
-        app:layout_constraintStart_toStartOf="@id/recyclerHorasSalas"
-        app:layout_constraintEnd_toStartOf="@id/guideline5" />
+        app:layout_constraintBottom_toTopOf="@id/btnBloqueoMasivo" />
 
     <!-- Botón Bloqueo Masivo -->
     <TextView
-        android:gravity="center"
-        android:padding="7dp"
-        android:layout_marginTop="10dp"
         android:id="@+id/btnBloqueoMasivo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/boton_bloqueo"
         android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:padding="7dp"
+        android:layout_marginStart="
+10dp"
         android:text="Bloqueo masivo"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/recyclerHorasSalas"
         app:layout_constraintBottom_toTopOf="@id/guideline6"
-        app:layout_constraintStart_toStartOf="@id/guideline5"
-        app:layout_constraintEnd_toEndOf="@id/recyclerHorasSalas" />
+        app:layout_constraintEnd_toEndOf="@id/recyclerHorasSalas"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@id/recyclerHorasSalas" />
 
     <!-- Guidelines -->
     <androidx.constraintlayout.widget.Guideline
