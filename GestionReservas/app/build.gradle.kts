@@ -68,14 +68,21 @@ dependencies {
 
     // Unit Test
     testImplementation(libs.junit)
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+
+    //testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
     testImplementation("io.mockk:mockk:1.13.5")
     testImplementation("com.squareup.okhttp3:mockwebserver:4.9.0")
+    testImplementation("io.mockk:mockk:1.13.7")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
+
+
 
     // Instrumentation Test
     androidTestImplementation("com.squareup.okhttp3:mockwebserver:4.9.0")
+    androidTestImplementation(libs.androidx.core.testing)
     debugImplementation("androidx.fragment:fragment-testing:1.5.7")
+    testImplementation("org.mockito:mockito-inline:5.2.0")
 
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.test.rules)
@@ -84,4 +91,12 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.espresso.intents)
     androidTestImplementation(libs.androidx.espresso.contrib)
+}
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "androidx.test" && requested.name == "core") {
+            useVersion("1.5.0")
+            because("Evita conflicto entre androidx.test:core 1.5.0 y resolución forzada a 1.4.0")
+        }
+    }
 }

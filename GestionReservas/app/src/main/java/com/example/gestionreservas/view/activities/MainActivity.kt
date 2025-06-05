@@ -90,8 +90,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,OnCheckedChangeLi
     fun hacerLogin() {
         val intent: Intent = Intent(this, ReservasActivity::class.java)
         //Credenciales validas para conexion con API
-        val email = "75d3be3a6b0dc3c6770273c56c6f4bdb5cb8b426be9ac4044a0b377@aether.com"
-        val password = "122f1bb7be0436316311bdd20367102e79ce6d954ef8f44bc95ae"
+        val email = ""
+        val password = ""
 
         //Metodo para obtener respuesta de nuestra API a nuestra autenticacion,nos devuelve un token en
         //formato string

@@ -90,7 +90,6 @@ class AdaptadorCompra(
             holder.tvExperiencia.text = "Desconocida"
             Log.w("DEBUG_EXP", "No se encontró experiencia para ID: $idExp")
         }
-
         holder.tvIdioma.text = fields.firstOrNull { it.title == "Idioma" }?.value ?: "No indicado"
         holder.tvMonitor.text = fields.firstOrNull { it.title == "Monitor" }?.name ?: "No indicado"
 
@@ -98,7 +97,7 @@ class AdaptadorCompra(
         val expandido = posicionExpandida == position
         holder.layoutDetalle.visibility = if (expandido) View.VISIBLE else View.GONE
 
-
+        //listeners para expandir item o llevar a compra
         holder.itemView.setOnClickListener {
             val visible = holder.layoutDetalle.visibility == View.VISIBLE
             holder.layoutDetalle.visibility = if (visible) View.GONE else View.VISIBLE

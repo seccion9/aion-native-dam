@@ -57,7 +57,7 @@ class AdaptadorCorreo(
         listaOriginal.clear()
         listaOriginal.addAll(nuevaLista)
     }
-
+    //Filtra los correos en tiempo real
     fun filtrar(texto:String){
         val textoFiltrado=texto.lowercase().trim()
         listaCorreos.clear()

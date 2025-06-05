@@ -5,5 +5,6 @@ data class PagoCajaChica(
     var fecha:String,
     var concepto:String,
     var cantidad:Double,
-    var tipo:String
+    var tipo:String,
+    val reserva: Compra? = null
 )

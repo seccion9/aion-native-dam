@@ -39,6 +39,11 @@ class DetallesCorreoFragment:Fragment(),OnClickListener {
         correoCliente=obtenerCorreo(mensajeRecibido.remitente)
 
     }
+
+    /**
+     * Asignamos la información a los items y en asunto y remitente obtenemos solo unas pocas palabras
+     * para mejor UX
+     */
     private fun asignarDetallesMensajeItems(){
         binding.tvCuerpoMensaje.text=mensajeRecibido.cuerpoPreview
         binding.tvNombre.text=mensajeRecibido.asunto.take(30)
@@ -48,11 +53,15 @@ class DetallesCorreoFragment:Fragment(),OnClickListener {
 
 
     }
+    //Crea inicial para el icono dependiendo de la letra que se le pase(inicio nombre)
     private fun inicialParaIcono(texto: String): String {
         val letra = texto.firstOrNull()?.uppercaseChar()
-        return if (letra != null && letra in 'A'..'Z') letra.toString() else "G" // emoji usuario
+        return if (letra != null && letra in 'A'..'Z') letra.toString() else "G"
     }
 
+    /**
+     * Funciones on click
+     */
     override fun onClick(v: View?) {
         when(v?.id){
             binding.btnReply.id -> {
@@ -60,6 +69,9 @@ class DetallesCorreoFragment:Fragment(),OnClickListener {
             }
         }
     }
+    /**
+     * Redirige a gmail u otro servidor de correo compatible para mandar mensaje de respuesta
+     */
     private fun redirigirRespuestaGmail(){
         val uri= Uri.parse("mailto:$correoCliente")
         //Intentamos mandar el correo
@@ -74,6 +86,10 @@ class DetallesCorreoFragment:Fragment(),OnClickListener {
             Toast.makeText(requireContext(), "No hay apps de correo instaladas", Toast.LENGTH_SHORT).show()
         }
     }
+
+    /**
+     * Obtiene correo de texto sin filtrar
+     */
     private fun obtenerCorreo(texto:String):String{
         val correo=texto.substringAfter("<").substringBefore(">")
         return correo

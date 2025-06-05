@@ -25,8 +25,8 @@ import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentConfiguracionBinding
 import com.example.gestionreservas.repository.MailingRepository
 import com.example.gestionreservas.view.activities.MainActivity
-import com.example.gestionreservas.viewModel.listado.Configuracion.ConfiguracionViewModel
-import com.example.gestionreservas.viewModel.listado.Configuracion.ConfiguracionViewModelFactory
+import com.example.gestionreservas.viewModel.Configuracion.ConfiguracionViewModel
+import com.example.gestionreservas.viewModel.Configuracion.ConfiguracionViewModelFactory
 
 class ConfiguracionFragment:Fragment(),OnClickListener {
     private lateinit var binding:FragmentConfiguracionBinding
@@ -39,6 +39,7 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
 
         binding=FragmentConfiguracionBinding.inflate(layoutInflater)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Configuracion"
+        //Obtenemos preferencias para configurar botones de notificaciones
         val prefs = requireContext().getSharedPreferences("ajustes", Context.MODE_PRIVATE)
         val notificacionesActivas = prefs.getBoolean("notificaciones_activadas", false)
         if (notificacionesActivas) {
@@ -52,6 +53,10 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
 
         return binding.root
     }
+
+    /**
+     * Pide permiso para activar notificaciones
+     */
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1001) {
@@ -101,6 +106,9 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
         }
     }
 
+    /**
+     * Botones spannable debajo de edits para mejorar UX
+     */
     private fun btnSpannable() {
         val texto = SpannableString("Desconectar")
 
@@ -116,6 +124,10 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
         textoSesion.setSpan(UnderlineSpan(), 0, textoSesion.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.tvCerrarSesionGlobal.text = textoSesion
     }
+
+    /**
+     * Carga el estado de las notificaciones y controla si se cambian o no a traves del viewmodel
+     */
     private fun configurarNotificaciones() {
         viewModel.cargarEstadoNotificaciones(requireContext())
 
@@ -135,6 +147,9 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
         }
     }
 
+    /**
+     * Comprueba la version de android para pedir permisos
+     */
     private fun pedirPermisoNotificaciones() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(
@@ -147,6 +162,9 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
         }
     }
 
+    /**
+     * Funciones on click
+     */
     override fun onClick(v: View?) {
         when(v?.id){
             binding.tvCerrarSesionGmail.id->{
@@ -162,6 +180,10 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
             }
         }
     }
+
+    /**
+     * Cierra sesión llevandote a login y borra token de shared preferneces
+     */
     private fun cerrarSesion(context: Context) {
         val preferencias = context.getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
         preferencias.edit().remove("auth_token").apply()
@@ -169,6 +191,10 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         context.startActivity(intent)
     }
+
+    /**
+     * Crea canal de notificaciones para las reservas
+     */
     private fun crearCanalNotificaciones() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Reservas"

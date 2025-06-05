@@ -68,7 +68,7 @@ class AdaptadorFranjasHorarias(
 
         holder.recylerReservas.visibility = View.GONE
 
-
+        //Logica para mostrar items de franjas de una manera u otra dependiendo de las reservas
         when {
             salasBloqueadas == 8 -> {
                 holder.reservaItem.text = "BLOQUEADA"
@@ -124,7 +124,7 @@ class AdaptadorFranjasHorarias(
             }
         }
 
-
+        //Listeners para mostrar detalles al expandir
         holder.itemView.setOnClickListener {
             val visible = holder.recylerReservas.visibility == View.VISIBLE
             holder.recylerReservas.visibility = if (visible) {

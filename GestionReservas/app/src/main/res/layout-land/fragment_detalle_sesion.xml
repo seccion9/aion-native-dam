@@ -139,7 +139,7 @@
                 android:background="@color/white"
                 android:enabled="false"
                 android:padding="5dp"
-                android:text="Calendario: "
+                android:text="Salas: "
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/tvFechaFin"
@@ -201,6 +201,19 @@
                 app:layout_constraintEnd_toEndOf="@+id/tvIdioma"
                 app:layout_constraintStart_toStartOf="@+id/tvIdioma"
                 app:layout_constraintTop_toBottomOf="@+id/tvIdioma" />
+            <EditText
+                android:id="@+id/tvMonitor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:enabled="false"
+                android:padding="5dp"
+                android:text="Monitor: "
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tvEstado"
+                app:layout_constraintStart_toStartOf="@+id/tvEstado"
+                app:layout_constraintTop_toBottomOf="@+id/tvEstado" />
 
             <TextView
                 android:id="@+id/tvDatosPago"
@@ -213,9 +226,35 @@
                 android:text="Pago"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tvEstado"
-                app:layout_constraintTop_toBottomOf="@+id/tvEstado" />
+                app:layout_constraintStart_toStartOf="@+id/tvMonitor"
+                app:layout_constraintTop_toBottomOf="@+id/tvMonitor" />
 
+            <EditText
+                android:id="@+id/tvFechaCompra"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:enabled="false"
+                android:padding="5dp"
+                android:text="Fecha Compra: 2025-06-01 10:23"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tvDatosPago"
+                app:layout_constraintStart_toStartOf="@+id/tvDatosPago"
+                app:layout_constraintTop_toBottomOf="@+id/tvDatosPago" />
+            <EditText
+                android:id="@+id/tvPrecioTotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:enabled="false"
+                android:padding="5dp"
+                android:text="Total : 230€"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tvFechaCompra"
+                app:layout_constraintStart_toStartOf="@+id/tvFechaCompra"
+                app:layout_constraintTop_toBottomOf="@+id/tvFechaCompra" />
             <EditText
                 android:id="@+id/tvTotalPagado"
                 android:layout_width="0dp"
@@ -226,10 +265,23 @@
                 android:text="Total Pagado: "
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/tvDatosPago"
-                app:layout_constraintStart_toStartOf="@+id/tvDatosPago"
-                app:layout_constraintTop_toBottomOf="@+id/tvDatosPago" />
-
+                app:layout_constraintEnd_toEndOf="@+id/tvPrecioTotal"
+                app:layout_constraintStart_toStartOf="@+id/tvPrecioTotal"
+                app:layout_constraintTop_toBottomOf="@+id/tvPrecioTotal" />
+            <EditText
+                android:id="@+id/tvPagoRestante"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:enabled="false"
+                android:padding="5dp"
+                android:text="Restante: "
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTotalPagado"
+                />
             <EditText
                 android:id="@+id/tvMetodoPago"
                 android:layout_width="0dp"
@@ -242,7 +294,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTotalPagado" />
+                app:layout_constraintTop_toBottomOf="@+id/tvPagoRestante" />
 
 
             <FrameLayout

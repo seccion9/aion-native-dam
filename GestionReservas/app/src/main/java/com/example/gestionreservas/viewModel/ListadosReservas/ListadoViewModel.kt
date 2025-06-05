@@ -1,4 +1,4 @@
-package com.example.gestionreservas.viewModel.listado.ListadosReservas
+package com.example.gestionreservas.viewModel.ListadosReservas
 
 import android.os.Build
 import android.util.Log
@@ -40,6 +40,10 @@ class ListadoViewModel(
     private val _experiencias=MutableLiveData<List<ExperienciaCompleta>>()
     val experiencias: LiveData<List<ExperienciaCompleta>> = _experiencias
 
+    private val _cargando = MutableLiveData<Boolean>()
+    val cargando: LiveData<Boolean> get() = _cargando
+
+
 
     private fun filtrarSesiones() {
         val estado = _estadoSeleccionado.value
@@ -67,6 +71,7 @@ class ListadoViewModel(
 
 
     fun obtenerDatosCompras(token: String) {
+        _cargando.value = true
         viewModelScope.launch {
             try {
                 val compras = withContext(Dispatchers.IO) {
@@ -86,6 +91,8 @@ class ListadoViewModel(
                 _sesiones.value = emptyList()
                 _listaCompleta.value = emptyList()
                 _listaFiltrada.value = emptyList()
+            } finally {
+                _cargando.value = false
             }
         }
     }

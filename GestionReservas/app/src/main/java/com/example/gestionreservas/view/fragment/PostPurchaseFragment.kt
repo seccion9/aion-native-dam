@@ -50,6 +50,7 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
         binding.tvGuardar.setOnClickListener(this)
         binding.tvFechaInicio.setOnClickListener(this)
         binding.tvFechaFin.setOnClickListener(this)
+       //Detecta participantes seleccionados en el spinner
         binding.tvParticipantes.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val seleccion = parent.getItemAtPosition(position).toString()
@@ -57,11 +58,11 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                // Opcional, puede quedarse vacío
+
             }
         }
     }
-
+    //Funciones on click
     override fun onClick(v: View?) {
         when (v?.id) {
 
@@ -124,6 +125,9 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
         datePicker.show()
     }
 
+    /**
+     * Compara fechas de inicio y fin para comprobar que la fecha de fin es posterior a la de inicio
+     */
     private fun compararFechas(fechaInicioStr:String,fechaFinStr:String):Boolean{
 
         val formatoCompleto = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
@@ -140,6 +144,11 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
             false
         }
     }
+
+    /**
+     * Valida que todos los campos sean correstos y si es asi lanza una corrutina para registrar la compra
+     * en api,si es exitosa o no mostrara toast de información
+     */
     private fun registrarCompras() {
         if (!validarCamposObligatorios()) return
         rellenarCompra()
@@ -173,6 +182,9 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
         }
     }
 
+    /**
+     * Rellena un objeto compra con los datos de la vista para despues registrarla en registrar compras
+     */
     private fun rellenarCompra() {
         var nombre = binding.tvNombre.text.toString()
         val email = binding.tvEmail.text.toString()
@@ -215,7 +227,7 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
             priceTotal = precio,
             priceFractioned = priceFractioned,
             discountAmount = 0,
-            fields = listOf(fieldIdioma)
+            fields = mutableListOf(fieldIdioma)
         )
 
         val resumenItem = ResumenItem(
@@ -265,12 +277,18 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
         Toast.makeText(requireContext(), "Compra generada con éxito", Toast.LENGTH_SHORT).show()
     }
 
+    /**
+     * Obtiene token de shared preferences
+     */
     private fun getTokenFromSharedPreferences(): String? {
         val sharedPreferences =
             requireActivity().getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
         return sharedPreferences.getString("auth_token", null)
     }
 
+    /**
+     * Creamos lista de todos los campos a rellenar y los recorremos para comprobar que se introjueron los datos
+     */
     private fun validarCamposObligatorios(): Boolean {
         val camposObligatorios = listOf(
             binding.tvNombre,
@@ -323,6 +341,10 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
 
         return true
     }
+
+    /**
+     * Vacia los edits tras registrar compra
+     */
     private fun vaciarEdits(){
         binding.tvNombre.text.clear()
         binding.tvEmail.text.clear()
@@ -335,6 +357,10 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
         binding.tvTotalPagado.text.clear()
         binding.tvMetodoPago.text.clear()
     }
+
+    /**
+     * Cmabia a otro fragment
+     */
     private fun cambiarFragment(fragment:Fragment){
         val transacion=parentFragmentManager.beginTransaction()
         transacion.replace(com.example.gestionreservas.R.id.fragment_principal,fragment)

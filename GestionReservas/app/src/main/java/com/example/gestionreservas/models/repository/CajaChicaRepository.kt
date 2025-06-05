@@ -18,6 +18,14 @@ class CajaChicaRepository(private val retrofit: RetrofitFakeInstance) {
             throw Exception("Error HTTP ${response.code()}")
         }
     }
+    suspend fun obtenerPagosTotales(token:String):List<PagoCajaChica>{
+        val response=retrofit.apiFake.getPagosCaja("Bearer $token")
+        if(response.isSuccessful){
+            return response.body() ?: emptyList()
+        }else{
+            throw Exception("Error HTTP ${response.code()}")
+        }
+    }
 
     suspend fun obtenerCompras(token: String): List<Compra> {
         val response = retrofit.apiFake.getPurchasesV2(token)

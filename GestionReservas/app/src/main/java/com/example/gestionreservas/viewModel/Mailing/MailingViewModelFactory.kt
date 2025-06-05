@@ -1,4 +1,4 @@
-package com.example.gestionreservas.viewModel.listado.Mailing
+package com.example.gestionreservas.viewModel.Mailing
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -21,7 +21,9 @@ import androidx.work.WorkManager
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.ActivityReservasBinding
 import com.example.gestionreservas.background.CheckReservasWorker
+import com.example.gestionreservas.view.fragment.CajaChicaFragment
 import com.example.gestionreservas.view.fragment.CalendarioFragmentDiario
+import com.example.gestionreservas.view.fragment.ComentariosFragment
 import com.example.gestionreservas.view.fragment.ConfiguracionFragment
 import com.example.gestionreservas.view.fragment.HomeFragment
 import com.example.gestionreservas.view.fragment.ListadoFragment
@@ -77,6 +79,12 @@ class ReservasActivity : AppCompatActivity() {
 
                 R.id.calendario -> {
                     replaceFragment(CalendarioFragmentDiario())
+                }
+                R.id.cajaChica ->{
+                    replaceFragment(CajaChicaFragment())
+                }
+                R.id.comentarios ->{
+                    replaceFragment(ComentariosFragment())
                 }
                 //Se deja opción creada por si en el futuro se quiere implemenatr
                 /*R.id.mailing -> {

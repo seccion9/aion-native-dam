@@ -58,6 +58,7 @@ class AdaptadorListado(
         val restante = totalFinal - totalPagado
 
         val fields = compra.items.last().fields
+        //Limpiamos hora para mostrarla en el tv
         holder.tvHora.text =
             "${compra.items.last().start.split(" ")[0]}\n" +
                     "${compra.items.last().start.split(" ")[1].substring(0,5)}"
@@ -69,7 +70,7 @@ class AdaptadorListado(
         holder.tvTotal.text = Html.fromHtml("Total <b>%.2f€</b>".format(compra.priceFinal))
         holder.tvPagadoCliente.text = Html.fromHtml("Pagado <b>%.2f€</b>".format(totalPagado))
         holder.tvFaltaPagar.text = Html.fromHtml("Restante <b>%.2f€</b>".format(restante))
-
+        //Lógica para mostrar estado pago y sus colores
         val estadoPago = when {
             totalPagado == 0.0 -> "No pagada"
             restante > 0 -> "Parcial"
@@ -86,7 +87,7 @@ class AdaptadorListado(
         holder.tvEstadoPago.text = estadoPago
         holder.tvEstadoPago.setBackgroundColor(ContextCompat.getColor(context, colorPago))
 
-
+        //Busca las experiencias coincidentes con los id de compras para mostrar el nombre de la exp
         val idExp = compra.items.last().idExperience
         Log.d("DEBUG_EXP", "Buscando experiencia con ID: $idExp")
 
@@ -99,7 +100,7 @@ class AdaptadorListado(
             holder.tvExperiencia.text = "Desconocida"
             Log.w("DEBUG_EXP", "No se encontró experiencia para ID: $idExp")
         }
-
+        //Comprobamos estado del pago para mostrar diferentes colores en el recycler
         val estado = compra.status.lowercase()
 
         val colorEstado = when (estado) {
@@ -146,11 +147,12 @@ class AdaptadorListado(
         val expandido = posicionExpandida == position
         holder.layoutDetalle.visibility = if (expandido) View.VISIBLE else View.GONE
 
-
+        //Listeners de expandir y de ir a detalles
         holder.itemView.setOnClickListener {
             val visible = holder.layoutDetalle.visibility == View.VISIBLE
             holder.layoutDetalle.visibility = if (visible) View.GONE else View.VISIBLE
         }
+        holder.botonOpciones.setBackgroundResource(R.drawable.boton_suave_listado)
         holder.botonOpciones.setOnClickListener {
             onClick(sesionConCompra)
         }

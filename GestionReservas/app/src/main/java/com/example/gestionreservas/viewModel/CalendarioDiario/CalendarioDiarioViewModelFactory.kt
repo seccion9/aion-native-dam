@@ -1,4 +1,4 @@
-package com.example.gestionreservas.viewModel.listado.CalendarioDiario
+package com.example.gestionreservas.viewModel.CalendarioDiario
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

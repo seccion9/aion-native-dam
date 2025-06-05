@@ -1,4 +1,4 @@
-package com.example.gestionreservas.viewModel.listado.Mailing
+package com.example.gestionreservas.viewModel.Mailing
 
 import android.content.Context
 import android.util.Log

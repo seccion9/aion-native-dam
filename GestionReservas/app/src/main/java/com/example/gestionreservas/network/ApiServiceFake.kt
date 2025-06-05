@@ -6,7 +6,6 @@ import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.ExperienciaCompleta
 import com.example.gestionreservas.models.entity.LoginRequest
 import com.example.gestionreservas.models.entity.LoginResponse
-import com.example.gestionreservas.models.entity.MonthlyOccupancyResponse
 import com.example.gestionreservas.models.entity.Ocupacion
 import com.example.gestionreservas.models.entity.OcupacionCalendarioSemanal
 import com.example.gestionreservas.models.entity.PagoCaja
@@ -69,6 +68,13 @@ interface ApiServiceFake {
         @Header("Authorization") token: String,
         @Path("fecha") fecha: String
     ): Response<List<PagoCajaChica>>
+
+    //Obtener los pagos totales de la caja chica
+    @GET("paymentsCajaChicaDia")
+    suspend fun getPagosCaja(
+        @Header("Authorization") token:String
+    ):Response<List<PagoCajaChica>>
+
     //Guardar pagos manuales caja chica
     @POST("paymentsCajaChica")
     suspend fun registrarPagoCajaChica(

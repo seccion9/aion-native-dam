@@ -1,4 +1,4 @@
-package com.example.gestionreservas.viewModel.listado.Configuracion
+package com.example.gestionreservas.viewModel.Configuracion
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate

@@ -27,8 +27,8 @@ import com.example.gestionreservas.models.entity.TokenResponse
 import com.example.gestionreservas.repository.MailingRepository
 import com.example.gestionreservas.repository.MailingRepository.obtenerTokenGuardado
 import com.example.gestionreservas.view.adapter.AdaptadorCorreo
-import com.example.gestionreservas.viewModel.listado.Mailing.MailingViewModel
-import com.example.gestionreservas.viewModel.listado.Mailing.MailingViewModelFactory
+import com.example.gestionreservas.viewModel.Mailing.MailingViewModel
+import com.example.gestionreservas.viewModel.Mailing.MailingViewModelFactory
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions

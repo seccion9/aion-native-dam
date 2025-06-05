@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -38,8 +39,8 @@ import com.example.gestionreservas.models.repository.CompraRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.view.adapter.AdaptadorFranjasHorarias
 import com.example.gestionreservas.view.adapter.AdaptadorSalasPorHora
-import com.example.gestionreservas.viewModel.listado.CalendarioDiario.CalendarioDiarioViewModel
-import com.example.gestionreservas.viewModel.listado.CalendarioDiario.CalendarioDiarioViewModelFactory
+import com.example.gestionreservas.viewModel.CalendarioDiario.CalendarioDiarioViewModel
+import com.example.gestionreservas.viewModel.CalendarioDiario.CalendarioDiarioViewModelFactory
 import kotlinx.coroutines.launch
 import java.util.Calendar
 import java.util.UUID
@@ -86,14 +87,19 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
         return binding.root
     }
 
+    /**
+     * Carga los observers del viewmodel
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun cargarObservers() {
+        //Actualiza la fecha y carga sesiones y bloqueos.
         viewModel.fechaActual.observe(viewLifecycleOwner) { fecha ->
             actualizarFecha(fecha)
             val token = getTokenFromSharedPreferences() ?: return@observe
             viewModel.cargarSesionesDesdeMock(token, fecha)
             viewModel.obtenerBloqueos(token)
         }
+        //Obtiene token crea el bloqueo y refresca los datos de la vista
         viewModel.bloqueoExitoso.observe(viewLifecycleOwner) { success ->
             if (success) {
                 Toast.makeText(requireContext(), "Bloqueo creado con éxito", Toast.LENGTH_SHORT)
@@ -110,10 +116,15 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
                     .show()
             }
         }
+        //Actualiza la lista del adaptador y usa la animación
         viewModel.franjasHorarias.observe(viewLifecycleOwner) { lista ->
             Log.d("FRAGMENT", "Recibidas ${lista.size} franjas horarias")
             adaptadorFranjasHorarias.actualizarLista(lista)
+            binding.recyclerHorasSalas.scheduleLayoutAnimation()
+            binding.swipeRefreshLayout.isRefreshing = false
+
         }
+
         viewModel.bloqueos.observe(viewLifecycleOwner) { bloqueos ->
             Log.d("FRAGMENT_BLOQUEOS", "Bloqueos recibidos: ${bloqueos?.size}")
             bloqueos?.forEach { bloqueo ->
@@ -133,7 +144,7 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
         adaptadorFranjasHorarias = AdaptadorFranjasHorarias(
             context = requireContext(),
             listaFranjas = listaFranjas,
-            onClickCrearReserva = {
+            onClickCrearReserva = {//Si das a crear reserva te lleva a esa vista
                 val fragment = PostPurchaseFragment()
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.fragment_principal, fragment)
@@ -141,7 +152,7 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
                     .commit()
             },
             onItemClick = {compraSeleccionada ->
-                val bundle = Bundle().apply {
+                val bundle = Bundle().apply {//Te lleva a la vista reserva al pinchar en el
                     putSerializable("compra", compraSeleccionada)
                 }
                 val fragment = DetalleSesionFragment()
@@ -154,10 +165,16 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
 
         binding.recyclerHorasSalas.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerHorasSalas.adapter = adaptadorFranjasHorarias
-
+        //Animación del recycler
+        val controller = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_fade_in)
+        binding.recyclerHorasSalas.layoutAnimation = controller
+        //Refresca pantalla al inicio.
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            refrescarTodaLaPantalla()
+        }
 
     }
-
+    //Actualiza la fecha del textview según nos movamos por la vista
     @RequiresApi(Build.VERSION_CODES.O)
     private fun actualizarFecha(fecha: LocalDate) {
         val diaSemana = fecha.dayOfWeek.getDisplayName(TextStyle.FULL, Locale("es", "ES"))
@@ -187,7 +204,9 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
                 fragment.arguments = bundle
                 cambiarFragment(fragment)
             }
-
+            binding.tvHoy.id ->{
+                viewModel.irAHoy()
+            }
             binding.btnEscapeJungle.id -> {
                 val bundle = Bundle()
                 bundle.putString("idExperience", "exp_jungle_1")
@@ -199,6 +218,10 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
         }
     }
 
+    /**
+     * Muestra el dialogo de bloqueo para seleccionar las salas,obtiene info de el(motivo,fecha,etc)
+     *
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun mostrarDialogoBloqueo() {
         val inflater = LayoutInflater.from(requireContext())
@@ -228,7 +251,7 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
                 editFechaFin.setText(fechaHora)
             }
         }
-
+        //Si se rellena todo creamos el bloqueo y lo registramos a través del viewmodel.
         val dialog = AlertDialog.Builder(requireContext())
             .setView(view)
             .setPositiveButton("Aceptar") { _, _ ->
@@ -275,7 +298,9 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
         dialog.show()
     }
 
-
+    /**
+     * DatePicker para seleccionar día y hora de los bloqueos
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun mostrarDateTimePicker(
         radio: RadioButton,
@@ -323,13 +348,16 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
         return sharedPreferences.getString("auth_token", null)
     }
 
+    /**
+     * Cambia de fragment a otro
+     */
     private fun cambiarFragment(fragment: Fragment) {
         val transacion = parentFragmentManager.beginTransaction()
         transacion.replace(R.id.fragment_principal, fragment)
         transacion.addToBackStack(null)
         transacion.commit()
     }
-
+    //Instancias listeners
     private fun instanciasListeners() {
         binding.tvFlechaDerechaHoy.setOnClickListener(this)
         binding.tvFlechaIzquierdaHoy.setOnClickListener(this)
@@ -365,5 +393,21 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
         }
 
     }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun refrescarTodaLaPantalla() {
+        binding.swipeRefreshLayout.isRefreshing = true
 
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            val token = getTokenFromSharedPreferences()
+            val fecha = viewModel.fechaActual.value
+            if (token != null && fecha != null) {
+                viewModel.cargarSesionesDesdeMock(token, fecha)
+                viewModel.obtenerBloqueos(token)
+            }
+            kotlinx.coroutines.delay(1000)
+            binding.swipeRefreshLayout.isRefreshing = false
+            Toast.makeText(requireContext(), "Datos actualizados", Toast.LENGTH_SHORT).show()
+        }
+    }
 }

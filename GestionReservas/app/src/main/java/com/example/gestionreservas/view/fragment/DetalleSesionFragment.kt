@@ -24,8 +24,8 @@ import com.example.gestionreservas.models.entity.Pago
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.models.repository.CompraRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
-import com.example.gestionreservas.viewModel.listado.DetalleSesion.DetalleSesionViewModel
-import com.example.gestionreservas.viewModel.listado.DetalleSesion.DetalleSesionViewModelFactory
+import com.example.gestionreservas.viewModel.DetalleSesion.DetalleSesionViewModel
+import com.example.gestionreservas.viewModel.DetalleSesion.DetalleSesionViewModelFactory
 import java.net.URLEncoder
 
 class DetalleSesionFragment : Fragment(), OnClickListener {
@@ -108,18 +108,24 @@ class DetalleSesionFragment : Fragment(), OnClickListener {
     @SuppressLint("SetTextI18n")
     private fun cargarDatosCompra() {
         if (compra == null || reserva == null || pago == null) return
-
+        var salasLimpias=reserva!!.salas.toString().replace("cal","sala ").removePrefix("[").removeSuffix("]")
+        var restante=compra!!.priceFinal - pago!!.amount
         binding.tvNombre.setText("Nombre: ${compra!!.name}")
         binding.tvTelefono.setText("Teléfono: ${compra!!.phone}")
         binding.tvEmail.setText("Email: ${compra!!.mail}")
         binding.tvEstado.setText("Estado: ${reserva!!.status}")
         binding.tvFechaInicio.setText("Inicio: ${reserva!!.start}")
         binding.tvFechaFin.setText("Fin: ${reserva!!.end}")
-        binding.tvSala.setText("Sala: ${reserva!!.idCalendario}")
+        binding.tvSala.setText("Salas: ${salasLimpias}")
+        val campoMonitor = reserva!!.fields.find { it.title.contains("monitor", ignoreCase = true) }
+        binding.tvMonitor.setText("Monitor: ${campoMonitor?.name ?: "No asignado"}")
         binding.tvParticipantes.setText("Participantes: ${reserva!!.peopleNumber}")
         binding.tvExperiencia.setText("Experiencia: ${reserva!!.idExperience}")
         binding.tvIdioma.setText("Idioma: ${compra!!.language}")
+        binding.tvFechaCompra.setText("Fecha Compra: ${compra!!.fechaCompra}")
+        binding.tvPrecioTotal.setText("Total: ${compra!!.priceFinal}€")
         binding.tvTotalPagado.setText("Total pagado: ${pago!!.amount} €")
+        binding.tvPagoRestante.setText("Restante: ${restante}€")
         binding.tvMetodoPago.setText("Método de pago: ${pago!!.method}")
         binding.tvDNI.setText("DNI: ${compra!!.dni}")
     }
@@ -130,10 +136,10 @@ class DetalleSesionFragment : Fragment(), OnClickListener {
      */
     private fun activarEdits() {
         listOf(
-            binding.tvNombre, binding.tvTelefono, binding.tvEmail, binding.tvEstado,
-            binding.tvFechaInicio, binding.tvFechaFin, binding.tvSala, binding.tvParticipantes,
-            binding.tvExperiencia, binding.tvIdioma, binding.tvTotalPagado,
-            binding.tvMetodoPago, binding.tvDNI
+            binding.tvNombre, binding.tvTelefono, binding.tvEmail,
+            binding.tvEstado, binding.tvFechaInicio, binding.tvFechaFin, binding.tvSala, binding.tvMonitor,
+            binding.tvParticipantes, binding.tvExperiencia, binding.tvIdioma, binding.tvFechaCompra, binding.tvPrecioTotal,
+            binding.tvTotalPagado, binding.tvPagoRestante, binding.tvMetodoPago, binding.tvDNI
         ).forEach { it.isEnabled = true }
 
         binding.tvEditar.visibility = View.GONE
@@ -164,7 +170,7 @@ class DetalleSesionFragment : Fragment(), OnClickListener {
             binding.tvNombre, binding.tvTelefono, binding.tvEmail, binding.tvEstado,
             binding.tvFechaInicio, binding.tvFechaFin, binding.tvSala, binding.tvParticipantes,
             binding.tvExperiencia, binding.tvIdioma, binding.tvTotalPagado,
-            binding.tvMetodoPago, binding.tvDNI
+            binding.tvMetodoPago, binding.tvDNI,binding.tvMonitor,binding.tvFechaCompra,binding.tvPrecioTotal,binding.tvPagoRestante
         ).forEach { it.isEnabled = false }
 
         binding.tvGuardar.visibility = View.GONE
@@ -179,7 +185,7 @@ class DetalleSesionFragment : Fragment(), OnClickListener {
             binding.tvNombre, binding.tvTelefono, binding.tvEmail, binding.tvEstado,
             binding.tvFechaInicio, binding.tvFechaFin, binding.tvSala, binding.tvParticipantes,
             binding.tvExperiencia, binding.tvIdioma, binding.tvTotalPagado,
-            binding.tvMetodoPago, binding.tvDNI
+            binding.tvMetodoPago, binding.tvDNI,binding.tvMonitor,binding.tvFechaCompra,binding.tvPrecioTotal,binding.tvPagoRestante
         ).all { it.text.toString().substringAfter(":").trim().isNotEmpty() }
     }
 
@@ -194,18 +200,25 @@ class DetalleSesionFragment : Fragment(), OnClickListener {
             mail = binding.tvEmail.text.toString().removePrefix("Email: ").trim()
             language = binding.tvIdioma.text.toString().removePrefix("Idioma: ").trim()
             dni = binding.tvDNI.text.toString().removePrefix("DNI: ").trim()
+            fechaCompra = binding.tvFechaCompra.text.toString().removePrefix("Fecha Compra: ").trim()
+            priceFinal = binding.tvPrecioTotal.text.toString().removePrefix("Total: ").removeSuffix("€").trim().toDouble()
         }
 
         reserva?.apply {
             status = binding.tvEstado.text.toString().removePrefix("Estado: ").trim()
             start = binding.tvFechaInicio.text.toString().removePrefix("Inicio: ").trim()
             end = binding.tvFechaFin.text.toString().removePrefix("Fin: ").trim()
-            idCalendario = binding.tvSala.text.toString().removePrefix("Sala: ").trim()
+            idCalendario = binding.tvSala.text.toString().removePrefix("Salas: ").trim()
             peopleNumber =
                 binding.tvParticipantes.text.toString().removePrefix("Participantes: ").trim()
                     .toInt()
             idExperience =
                 binding.tvExperiencia.text.toString().removePrefix("Experiencia: ").trim()
+            // Buscar campo con title == "monitor"
+            val campoMonitor = fields.find { it.title.equals("monitor", ignoreCase = true) }
+
+            campoMonitor?.name = binding.tvMonitor.text.toString().removePrefix("Monitor: ").trim()
+
         }
 
         pago?.apply {
@@ -354,7 +367,7 @@ class DetalleSesionFragment : Fragment(), OnClickListener {
         binding.tvEstado.setText("Estado: ")
         binding.tvFechaInicio.setText("Inicio: ")
         binding.tvFechaFin.setText("Fin: ")
-        binding.tvSala.setText("Sala:")
+        binding.tvSala.setText("Salas:")
         binding.tvParticipantes.setText("Participantes: ")
         binding.tvExperiencia.setText("Experiencia: ")
         binding.tvIdioma.setText("Idioma: ")
@@ -380,11 +393,11 @@ class DetalleSesionFragment : Fragment(), OnClickListener {
      * Detecta si se hace scroll en la pantalla para mostrar botón de subir
      */
     private fun detectarScroll() {
-        binding.nestedScroll?.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+        binding.nestedScroll.setOnScrollChangeListener { _, _, scrollY, _, _ ->
             if (scrollY > 200) {
-                binding.btnScrollSubir?.visibility = View.VISIBLE
+                binding.btnScrollSubir.visibility = View.VISIBLE
             } else {
-                binding.btnScrollSubir?.visibility = View.GONE
+                binding.btnScrollSubir.visibility = View.GONE
             }
         }
     }

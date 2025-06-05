@@ -1,4 +1,4 @@
-package com.example.gestionreservas.viewModel.listado.DetalleSesion
+package com.example.gestionreservas.viewModel.DetalleSesion
 
 import android.util.Log
 import androidx.lifecycle.LiveData

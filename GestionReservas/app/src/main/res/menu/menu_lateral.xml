@@ -18,6 +18,14 @@
                 android:id="@+id/calendario"
                 android:icon="@drawable/calendario"
                 android:title="Calendario"/>
+            <item
+                android:id="@+id/cajaChica"
+                android:icon="@drawable/pagos"
+                android:title="Caja Chica"/>
+            <item
+                android:id="@+id/comentarios"
+                android:icon="@drawable/comentarios"
+                android:title="Comentarios"/>
             <!--<item
                 android:id="@+id/mailing"
                 android:icon="@drawable/email"

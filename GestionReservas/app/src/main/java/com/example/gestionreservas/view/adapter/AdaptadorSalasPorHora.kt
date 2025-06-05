@@ -38,7 +38,7 @@ class AdaptadorSalasPorHora(
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         val item = listaReservas[position]
-
+        //Mostramos diferentes estados del item dependiendo de datos del item de las reserva
         when (item.estado) {
             EstadoSala.RESERVADA -> {
                 holder.tvNombre.text = item.compra?.name?.uppercase() ?: "RESERVADO"

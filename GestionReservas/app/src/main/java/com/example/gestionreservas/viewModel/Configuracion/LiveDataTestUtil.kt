@@ -1,4 +1,4 @@
-package com.example.gestionreservas.viewModel.listado.Configuracion
+package com.example.gestionreservas.viewModel.Configuracion
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

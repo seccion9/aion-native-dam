@@ -5,8 +5,8 @@ import android.content.SharedPreferences
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
 import com.example.gestionreservas.repository.MailingRepository
-import com.example.gestionreservas.viewModel.listado.Configuracion.ConfiguracionViewModel
-import com.example.gestionreservas.viewModel.listado.Configuracion.getOrAwaitValue
+import com.example.gestionreservas.viewModel.Configuracion.ConfiguracionViewModel
+import com.example.gestionreservas.viewModel.Configuracion.getOrAwaitValue
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule

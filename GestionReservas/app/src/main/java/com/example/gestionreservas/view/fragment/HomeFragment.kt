@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -28,11 +29,12 @@ import com.example.gestionreservas.models.repository.CajaChicaRepository
 import com.example.gestionreservas.models.repository.CompraRepository
 import com.example.gestionreservas.models.repository.ExperienciaRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
+import com.example.gestionreservas.ui.helpers.StretchAnimationHelper
 import com.example.gestionreservas.utils.TablaBuilder
 import com.example.gestionreservas.view.adapter.AdaptadorCompra
 import com.example.gestionreservas.view.dialogs.OpcionesDialogFragment
-import com.example.gestionreservas.viewModel.listado.Home.HomeViewModel
-import com.example.gestionreservas.viewModel.listado.Home.HomeViewModelFactory
+import com.example.gestionreservas.viewModel.Home.HomeViewModel
+import com.example.gestionreservas.viewModel.Home.HomeViewModelFactory
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -56,7 +58,7 @@ class HomeFragment: Fragment(),OnClickListener {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Home"
-
+        //Instancia viewmodel
         val factory = HomeViewModelFactory(compraRepository, cajaChicaRepository,experienciaRepository)
         homeViewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
 
@@ -78,47 +80,64 @@ class HomeFragment: Fragment(),OnClickListener {
         listaExperiencias= mutableListOf()
         //ViewModel
         observersViewModel()
-        //Adaptador recycler
 
+        //Adaptador recycler
         adaptadorListado = AdaptadorCompra(requireContext(), mutableListOf(),listaExperiencias) { sesionConCompra ->
             val bundle=Bundle()
             bundle.putSerializable("sesionConCompra",sesionConCompra)
             val dialog = OpcionesDialogFragment.newInstance(sesionConCompra)
             dialog.show(parentFragmentManager, "OpcionesDialog")
         }
-
-
-
         binding.recyclerSesionesHome.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-
         binding.recyclerSesionesHome.adapter = adaptadorListado
 
-        binding.recyclerSesionesHome.isNestedScrollingEnabled = true
+        //Animación para el recycler al recargar datos
+        val controller = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_fade_in)
+        binding.recyclerSesionesHome.layoutAnimation = controller
 
+        //Activamos scroll de inicio en el recycler
+        binding.recyclerSesionesHome.isNestedScrollingEnabled = true
         binding.recyclerSesionesHome.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
         configurarDeteccionScroll()
+        //Detecta el refresh y refreca los datos de la vista
+        binding.swipeRefresh.setOnRefreshListener {
+            refrescarTodaLaPantalla()
+        }
+
+        binding.nestedScroll.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            // Si está en la parte superior, permitimos el refresco
+            binding.swipeRefresh.isEnabled = scrollY == 0
+        }
+
     }
+    //Observers del viewmodel
     @RequiresApi(Build.VERSION_CODES.O)
     private fun observersViewModel(){
+        //Actualiza la lista de sesiones del recycler con una animación
         homeViewModel.sesiones.observe(viewLifecycleOwner) { sesiones ->
             listaSesiones = sesiones.toMutableList()
             adaptadorListado.actualizarLista(listaSesiones)
+            binding.recyclerSesionesHome.scheduleLayoutAnimation()
             binding.recyclerSesionesHome.visibility = View.VISIBLE
         }
+        //Actualiza la lista de experiences
         homeViewModel.experiencias.observe(viewLifecycleOwner){ experiencias ->
             listaExperiencias=experiencias.toMutableList()
             adaptadorListado.actualizarExperiencias(listaExperiencias)
         }
+        //Actualiza los pagos de caja chica y construye su tabla
         homeViewModel.pagos.observe(viewLifecycleOwner) { pagos ->
             TablaBuilder.construirTablaPagos(binding.tablaCajaChica, pagos, requireContext())
             binding.tablaCajaChica.visibility = View.VISIBLE
         }
+        //Crea la tabla de comentarios con sus datos
         homeViewModel.comentarios.observe(viewLifecycleOwner){ comentarios ->
             Log.d("OBSERVER", "Actualizando comentarios: ${comentarios.size}")
             TablaBuilder.construirTablaComentarios(binding.tablaComentarios, comentarios, requireContext())
         }
+        //Actualiza la fecha de la vista y recarga los nuevos datos
         homeViewModel.fechaActual.observe(viewLifecycleOwner) { fecha ->
             val dia = fecha.dayOfMonth
             val mes = fecha.month.value
@@ -133,6 +152,11 @@ class HomeFragment: Fragment(),OnClickListener {
             }
         }
     }
+
+    /**
+     * Obtiene el token de shared prefrences si no es nulo y si la fecha actual no es nula.
+     * Después carga datos de vista a través del viewmodel con el token y la fecha
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun cargarDatosSesionesHoy() {
         binding.tablaCajaChica.visibility = View.GONE
@@ -143,6 +167,10 @@ class HomeFragment: Fragment(),OnClickListener {
         } ?: Toast.makeText(requireContext(), "No se pudo recuperar el token", Toast.LENGTH_SHORT).show()
     }
 
+    /**
+     * Comprobamos si el campo del edit es nulo o vacio,si no obtenemos el usuario de shared preferences y
+     * el token y lo registramos en la api con todos los datos que se necesitan.(Esto debo moverlo al viewmodel)
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun enviarComentarios() {
         if (binding.editComentario.text.isNullOrBlank()) {
@@ -162,7 +190,7 @@ class HomeFragment: Fragment(),OnClickListener {
         val fecha = homeViewModel.fechaActual.value ?: LocalDate.now()
         val fechaFormateada = "$fecha $horaActual"
 
-
+        //Corrutina para registrar comentario en api a traves de comprarepository.
         viewLifecycleOwner.lifecycleScope.launch {
             try {
                 val comentario = Comentario(
@@ -176,7 +204,8 @@ class HomeFragment: Fragment(),OnClickListener {
                 val success = compraRepository.registrarComentarioAPI("Bearer $token", comentario)
 
                 Log.e("ENVIO_COMENTARIO", success.toString())
-
+                //Comprobamos si es exitoso,vaciamos campos,notificamos y actualizamos fecha y comentarios
+                //a traves de viewmodel
                 if (success) {
 
                     Toast.makeText(requireContext(), "Comentario añadido correctamente", Toast.LENGTH_LONG).show()
@@ -204,7 +233,7 @@ class HomeFragment: Fragment(),OnClickListener {
         fragment.arguments=bundle
         cambiarFragmento(fragment)
     }
-
+    //Metodos on click de la vista
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onClick(v: View?) {
         when(v?.id){
@@ -239,6 +268,9 @@ class HomeFragment: Fragment(),OnClickListener {
         }
     }
 
+    /**
+     * Obtenemos datos para registrar pago en efectivo y lo registramos a traves del viewmodel
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun agregarDineroCajaChica() {
         val concepto = binding.editCopcepto.text.toString().trim()
@@ -255,6 +287,9 @@ class HomeFragment: Fragment(),OnClickListener {
         )
     }
 
+    /**
+     * Mostramos dialogo para seleccionar dia al que queremos ir.
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun mostrarDialogoFecha() {
         val fechaHoy = LocalDate.now()
@@ -279,12 +314,14 @@ class HomeFragment: Fragment(),OnClickListener {
         Log.e("TOKEN DEVUELTO","TOKEN : $token")
         return token?.let { "Bearer $it" }
     }
+    //Método para cambiar de fragmento
     private fun cambiarFragmento(fragment:Fragment){
         val transaction=parentFragmentManager.beginTransaction()
             .replace(R.id.fragment_principal,fragment)
             .addToBackStack(null)
         transaction.commit()
     }
+    //Metodo para detectar scroll y mostrar boton de subir.
     private fun detectarScroll(){
         binding.nestedScroll.setOnScrollChangeListener { _, _, scrollY, _, _ ->
             if (scrollY > 300) {
@@ -294,6 +331,7 @@ class HomeFragment: Fragment(),OnClickListener {
             }
         }
     }
+
     @SuppressLint("ClickableViewAccessibility")
     private fun configurarDeteccionScroll() {
         // Siempre bloqueamos el scroll del NestedScroll al principio
@@ -324,6 +362,24 @@ class HomeFragment: Fragment(),OnClickListener {
         // Este listener solo gestiona el botón flotante
         binding.nestedScroll.setOnScrollChangeListener { _, _, scrollY, _, _ ->
             binding.btnScrollSubir.visibility = if (scrollY > 200) View.VISIBLE else View.GONE
+        }
+    }
+
+    /**
+     * Muestra animación refresg hasta que actualizamos la fecha y se cargan los datos
+     */
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun refrescarTodaLaPantalla() {
+        binding.swipeRefresh.isRefreshing = true
+
+        homeViewModel.fechaActual.value?.let {
+            homeViewModel.actualizarFecha(it)
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            kotlinx.coroutines.delay(1000)
+            binding.swipeRefresh.isRefreshing = false
+            Toast.makeText(requireContext(), "Datos actualizados", Toast.LENGTH_SHORT).show()
         }
     }
 

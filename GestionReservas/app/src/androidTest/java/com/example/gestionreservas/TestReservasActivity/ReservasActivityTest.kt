@@ -92,7 +92,7 @@ class ReservasActivityTest {
 
     }
 
-    @Test
+   /* @Test
     fun navegationMailing(){
         val context = ApplicationProvider.getApplicationContext<Context>()
         val prefs = context.getSharedPreferences("gmail_tokens", Context.MODE_PRIVATE)
@@ -104,7 +104,7 @@ class ReservasActivityTest {
         onView(withId(textview)).perform(click())
         onView(withId(R.id.btnLogin)).check(matches(isDisplayed()))
 
-    }
+    }*/
 
     @Test
     fun navegationConfiguracion(){
