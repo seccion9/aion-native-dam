@@ -10,6 +10,7 @@ import com.example.gestionreservas.models.entity.Ocupacion
 import com.example.gestionreservas.models.entity.OcupacionCalendarioSemanal
 import com.example.gestionreservas.models.entity.PagoCaja
 import com.example.gestionreservas.models.entity.PagoCajaChica
+import com.example.gestionreservas.models.entity.PagoReserva
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -67,7 +68,7 @@ interface ApiServiceFake {
     suspend fun getPagosCajaDia(
         @Header("Authorization") token: String,
         @Path("fecha") fecha: String
-    ): Response<List<PagoCajaChica>>
+    ): Response<List<PagoCaja>>
 
     //Obtener los pagos totales de la caja chica
     @GET("paymentsCajaChicaDia")

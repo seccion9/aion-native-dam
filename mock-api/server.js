@@ -69,7 +69,7 @@ server.post('/api/sanctum/token', (req, res) => {
 
 /* ─────────── Middleware global /api – exige Bearer <token> ────────── */
 server.use('/api', (req, res, next) => {
-  if (req.path === '/sanctum/token') return next();          // deja pasar login
+  if (req.path === '/sanctum/token') return next();        
 
   const auth = req.headers.authorization || '';
   if (!auth.startsWith('Bearer ')) {
@@ -80,7 +80,7 @@ server.use('/api', (req, res, next) => {
   const user  = router.db.get('users').find({ token }).value();
   if (!user)  return res.status(403).json({ error: 'Token inválido' });
 
-  next();                                                    // token OK
+  next();                                                  
 });
 
 /* ───────  /api/getMonthlyOccupancyByExperienceIdsAndDates  ───────── */
@@ -105,11 +105,11 @@ server.get('/api/getMonthlyOccupancyByExperienceIdsAndDates', (req, res) => {
   const dStart = parseDate(dateStartStr);
   const dEnd   = parseDate(dateEndStr);
 
-  const allData = router.db.get('monthlyOccupancy').value()[0]; // solo 1 objeto
+  const allData = router.db.get('monthlyOccupancy').value()[0]; 
   const result = {};
 
   for (const [fecha, datos] of Object.entries(allData)) {
-    const d = parseDate(fecha); // ✅ usar parseDate aquí también
+    const d = parseDate(fecha);
     if (d >= dStart && d <= dEnd) {
       result[fecha] = datos;
     }
@@ -172,15 +172,16 @@ server.patch('/api/purchases/:id', (req, res) => {
 
 /* ────────── Endpoint /api/paymentsCajaChica ────────── */
 server.get('/api/paymentsCajaChicaDia/:fecha', (req, res) => {
-  const { fecha } = req.params;
+  const { fecha } = req.params; // ejemplo: 2025-06-06
 
   const pagosDelDia = router.db
     .get('paymentsCajaChica')
-    .filter({ fecha })
+    .filter(p => p.fecha.startsWith(fecha))
     .value();
 
   res.status(200).json(pagosDelDia);
 });
+
 
 /* ────────── Endpoint PATCH para guardar el FCM token de un usuario ────────── */
 server.patch('/api/users/:id/fcmToken', (req, res) => {

@@ -244,7 +244,10 @@ class PostPurchaseFragment : Fragment(), OnClickListener {
         val pago = Pago(
             id = UUID.randomUUID().toString(),
             amount = totalPagado,
-            method = metodoPago
+            method = metodoPago,
+            tipo = "Manual",
+            estado="Desconocido"
+
         )
 
         compra = Compra(

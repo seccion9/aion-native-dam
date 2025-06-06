@@ -1,98 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/swipeRefreshLayout"
-
     android:layout_width="match_parent"
+    android:background="@color/fondo_app"
+    android:padding="10dp"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <include
+        android:id="@+id/cajaChicaItem"
+        layout="@layout/caja_chica"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <!-- Lista de pagos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerPagosCaja"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/fondo_app"
-        android:padding="10dp">
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@+id/cajaChicaItem"
+        app:layout_constraintTop_toBottomOf="@+id/cajaChicaItem"
+        app:layout_constraintEnd_toEndOf="@+id/cajaChicaItem"
+        tools:layout_editor_absoluteX="10dp" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutSpinnerContainer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layoutSpinner"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/boton_experiencia"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <Spinner
-                    android:id="@+id/spinnerTipoPagos"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="8dp"
-                    android:background="@android:color/transparent"
-                    android:popupBackground="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/arrowIcon"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/arrowIcon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="Desplegar"
-                    android:src="@drawable/flecha_abajo"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@android:color/black" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutBuscarNombre"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/layoutSpinnerContainer"
-            app:layout_constraintStart_toStartOf="@+id/layoutSpinnerContainer"
-            app:layout_constraintTop_toBottomOf="@+id/layoutSpinnerContainer">
-
-            <EditText
-                android:id="@+id/editTextBuscarConcepto"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/boton_experiencia"
-                android:drawableEnd="@drawable/buscar"
-                android:hint="Buscar por concepto"
-                android:inputType="text"
-                android:padding="10dp"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerPagosCajaChica"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/layoutBuscarNombre"
-            app:layout_constraintStart_toStartOf="@+id/layoutBuscarNombre"
-            app:layout_constraintTop_toBottomOf="@+id/layoutBuscarNombre" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

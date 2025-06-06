@@ -69,7 +69,7 @@ class HomeViewModel(
         val fechaFormateada = fecha.toString()
 
 
-        val nuevoPago = PagoCaja(fechaFormateada, concepto, cantidad, "Manual", "")
+        val nuevoPago = PagoCaja(fechaFormateada, concepto, cantidad, "Efectivo", "")
 
         viewModelScope.launch {
             try {
@@ -119,24 +119,21 @@ class HomeViewModel(
         viewModelScope.launch {
             try{
                 val compras = cajaChicaRepository.obtenerCompras(token)
-
+                val pagosApi:List<PagoCaja>
                 Log.d("HomeViewModel", "Compras obtenidas: ${compras.size}")
                 val sesionesFiltradas = withContext(Dispatchers.Default) {
                     compraRepository.transformarComprasASesiones(compras, fecha)
                         .filter { it.sesion.estado.lowercase() == "confirmada" }.sortedBy { it.sesion.hora }
                 }
                 Log.d("HomeViewModel", "Sesiones confirmadas: ${sesionesFiltradas.size}")
-                val comprasConfirmadas = sesionesFiltradas.mapNotNull { it.compra }
 
-                val pagosReservas = withContext(Dispatchers.Default) {
-                    cajaChicaRepository.transformarComprasAPagos(comprasConfirmadas, fecha)
-                }
                 val pagosCaja = withContext(Dispatchers.IO) {
-                    val pagosApi = cajaChicaRepository.obtenerPagosDelDia(token, fecha.toString())
-                    cajaChicaRepository.transformarPagosCajaApi(pagosApi)
+                    cajaChicaRepository.obtenerPagosDelDia(token, fecha.toString())
                 }
+                Log.d("HomeViewModel", "Pagos de caja obtenidos: $pagosCaja")
+
                 _sesiones.value = sesionesFiltradas
-                _pagos.value = (pagosReservas + pagosCaja).take(5)
+                _pagos.value = pagosCaja
             }catch (e:Exception){
                 Log.e("HOMEVIEWMODEL","Error al cargar sesiones: ${e.message}")
             }

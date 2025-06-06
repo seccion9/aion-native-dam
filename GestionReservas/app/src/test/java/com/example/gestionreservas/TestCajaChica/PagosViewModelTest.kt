@@ -3,7 +3,7 @@ import androidx.lifecycle.Observer
 import com.example.gestionreservas.models.entity.PagoCajaChica
 import com.example.gestionreservas.models.repository.CajaChicaRepository
 import com.example.gestionreservas.models.repository.CompraRepository
-import com.example.gestionreservas.viewModel.CajaChica.CajaChicaViewModel
+import com.example.gestionreservas.viewModel.Pagos.PagosViewModel
 import io.mockk.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -11,7 +11,7 @@ import kotlinx.coroutines.test.*
 import org.junit.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class CajaChicaViewModelTest {
+class PagosViewModelTest {
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -20,7 +20,7 @@ class CajaChicaViewModelTest {
 
     private lateinit var cajaChicaRepository: CajaChicaRepository
     private lateinit var compraRepository: CompraRepository
-    private lateinit var viewModel: CajaChicaViewModel
+    private lateinit var viewModel: PagosViewModel
 
     @Before
     fun setup() {
@@ -28,7 +28,7 @@ class CajaChicaViewModelTest {
         MockKAnnotations.init(this, relaxed = true)
         cajaChicaRepository = mockk()
         compraRepository = mockk()
-        viewModel = CajaChicaViewModel(cajaChicaRepository, compraRepository)
+        viewModel = PagosViewModel(cajaChicaRepository, compraRepository)
     }
 
     @After

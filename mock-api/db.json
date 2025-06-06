@@ -263,7 +263,9 @@
         {
           "id": "dcfe379d-ec43-4c8d-9b1f-931cc025ea84",
           "amount": 45,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -344,7 +346,9 @@
         {
           "id": "881bca0d-3b4c-444f-b2fd-01d724c2e2a0",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -425,7 +429,9 @@
         {
           "id": "6dfd7ade-52d7-4a99-8424-162ef09f9908",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -506,7 +512,9 @@
         {
           "id": "87ccb829-5e2f-4db1-bf2a-00eea2bcea4e",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -587,7 +595,9 @@
         {
           "id": "4acb3554-2317-4e25-9126-595a04f2fddd",
           "amount": 60,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -668,7 +678,9 @@
         {
           "id": "15501dbc-f535-42d6-833a-479f2cbb1666",
           "amount": 60,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -749,7 +761,9 @@
         {
           "id": "9d12434b-7a6d-4047-9671-27137ff67c67",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -830,7 +844,9 @@
         {
           "id": "9b6e9ced-96c8-4778-b41e-dab14fe62ee4",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -911,7 +927,9 @@
         {
           "id": "1d9eba39-7e3e-41c9-8637-0dfc3a4889a4",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -992,7 +1010,9 @@
         {
           "id": "a9fa7e92-1b12-4784-bc30-9e9497c9f157",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -1073,7 +1093,9 @@
         {
           "id": "849ddc0e-3902-49ce-9937-ae22149de88b",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -1154,7 +1176,9 @@
         {
           "id": "0f9e0366-dede-41b1-828a-f227bcafa9fe",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -1235,7 +1259,9 @@
         {
           "id": "542e4c55-81d8-48f9-a174-060763435ff3",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -1316,7 +1342,9 @@
         {
           "id": "64cf4525-29bc-4dac-a41e-af5b5a84e742",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -1397,7 +1425,9 @@
         {
           "id": "a5b81485-5a4e-4e1e-a5b3-8bc55c404f04",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -1478,7 +1508,9 @@
         {
           "id": "37e81f24-16c0-4c42-b1cb-9efd181790c6",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -1559,7 +1591,9 @@
         {
           "id": "98088ae0-485d-4620-99d1-be1da90752fe",
           "amount": 60,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -1640,7 +1674,9 @@
         {
           "id": "43a39d1f-1b9a-424f-89a9-d766ee2369e2",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -1721,7 +1757,9 @@
         {
           "id": "93d17a20-28ec-4423-a8a5-3a96abb53490",
           "amount": 25,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -1802,7 +1840,9 @@
         {
           "id": "8029c5ff-2543-440c-9499-93885e7cbdda",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -1883,7 +1923,9 @@
         {
           "id": "ea153a9d-56af-4e4a-92e1-e871b12669d4",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -1964,7 +2006,9 @@
         {
           "id": "39c706f3-2fde-4ae2-b431-354b543bce93",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -2045,7 +2089,9 @@
         {
           "id": "a6d9df40-9e13-4ccb-a1cb-bf790d175051",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -2126,7 +2172,9 @@
         {
           "id": "cfedd29f-c42f-4aaa-a0ff-db38c214e6a7",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -2207,7 +2255,9 @@
         {
           "id": "7fd76e65-8934-446e-9e1d-d0780bcfe3b7",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -2288,7 +2338,9 @@
         {
           "id": "6ecabfbc-9e6b-421d-bda9-f22f7f2e8a4b",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -2369,7 +2421,9 @@
         {
           "id": "ed90ff6b-89d2-40eb-a209-3f6e67a412df",
           "amount": 25,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -2450,7 +2504,9 @@
         {
           "id": "675e2b75-02f6-475c-8ae4-7f6aea4e3f1c",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -2531,7 +2587,9 @@
         {
           "id": "83197a07-63c6-41ec-bd50-c81c345a0cba",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -2612,7 +2670,9 @@
         {
           "id": "d4fadd4f-5bbd-4250-b202-21d3c463d62b",
           "amount": 25,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -2693,7 +2753,9 @@
         {
           "id": "5318d0c3-9c1d-44e5-93a9-42f5a3b3bc6f",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -2774,7 +2836,9 @@
         {
           "id": "552a5611-b13a-45c5-abd2-7a6e66b320f5",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -2855,7 +2919,9 @@
         {
           "id": "545b5871-4747-4eef-a479-608a7d7b0c3c",
           "amount": 37.5,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -2936,7 +3002,9 @@
         {
           "id": "d3302312-4f02-45a8-b315-3df8b925d7ff",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -3017,7 +3085,9 @@
         {
           "id": "452a578f-1731-4a8e-86c9-69bddaced470",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -3098,7 +3168,9 @@
         {
           "id": "f4c338ca-5964-4355-86c7-addabc55815c",
           "amount": 60,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -3179,7 +3251,9 @@
         {
           "id": "83922977-d28b-4fbd-9b6c-1aed7b45f1d9",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -3260,7 +3334,9 @@
         {
           "id": "1fa3f812-1eb3-4ea1-8b06-c49cbdefe731",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -3341,7 +3417,9 @@
         {
           "id": "9573a46a-0183-4a55-b1d0-c2435d60ca45",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -3422,7 +3500,9 @@
         {
           "id": "8eff259b-b30f-49cf-84f8-65cc512d8944",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -3503,7 +3583,9 @@
         {
           "id": "9d7b1834-acf9-4822-823a-cbfccb7ec1ad",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -3584,7 +3666,9 @@
         {
           "id": "b42a929e-b52d-4e9b-9f4c-f202d4bc8539",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -3665,7 +3749,9 @@
         {
           "id": "3e82662c-698f-4a4b-8c86-40b252a135db",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -3746,7 +3832,9 @@
         {
           "id": "16ce1985-802c-463d-b7af-a351a1f39522",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -3827,7 +3915,9 @@
         {
           "id": "caacaf2d-5f92-447b-b1ab-b807596ee020",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -3908,7 +3998,9 @@
         {
           "id": "6fe058a0-2c01-487a-a4f1-213fb55e419e",
           "amount": 60,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -3989,7 +4081,9 @@
         {
           "id": "0aecbb7d-ac7e-4a31-93b7-4cd1f8f6effb",
           "amount": 25,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -4070,7 +4164,9 @@
         {
           "id": "c6716fd0-e072-4356-93dd-88b6202c8703",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -4151,7 +4247,9 @@
         {
           "id": "689b5f85-a620-45bb-9851-657a9d0dbb7f",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -4232,7 +4330,9 @@
         {
           "id": "4c498567-2f6a-4917-8b40-c23d0df952df",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -4313,7 +4413,9 @@
         {
           "id": "a748ab23-c312-4f00-90f4-7e4ce5c8b7f6",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -4394,7 +4496,9 @@
         {
           "id": "f94018d1-ac6b-47b0-b4a8-cb447e65755c",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -4475,7 +4579,9 @@
         {
           "id": "91a701a2-f6e6-415d-8b4d-b190b393b823",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -4556,7 +4662,9 @@
         {
           "id": "6d787ec5-5846-4387-b10d-b1b792265bfb",
           "amount": 25,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -4637,7 +4745,9 @@
         {
           "id": "c56caf88-8769-4fdd-a364-ea55dfc141fc",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -4718,7 +4828,9 @@
         {
           "id": "adc9cf3f-b25b-458a-bff9-9de77c961d9f",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -4799,7 +4911,9 @@
         {
           "id": "a54f23a7-609b-4be9-866f-fc9ad9ed0898",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -4880,7 +4994,9 @@
         {
           "id": "3ff8b166-290b-4025-9c19-1e1318a5454d",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -4961,7 +5077,9 @@
         {
           "id": "8440f877-cb09-48f0-8d50-1d4cfcb5bf0d",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -5042,7 +5160,9 @@
         {
           "id": "d4d05edb-b3fc-413c-8563-de685d604b58",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -5123,7 +5243,9 @@
         {
           "id": "c835fc3c-f70f-450f-8072-1de5c6f854a1",
           "amount": 60,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -5204,7 +5326,9 @@
         {
           "id": "05075114-1403-4572-a3a3-65d882bc71d9",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -5285,7 +5409,9 @@
         {
           "id": "138f6d6e-384c-49e3-8189-b43bcd2bedb3",
           "amount": 25,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -5366,7 +5492,9 @@
         {
           "id": "27ca4e00-a793-4f1f-b2b7-8142d6709ebd",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -5447,7 +5575,9 @@
         {
           "id": "cde47cac-4c9e-41c6-89f0-95918ce264ca",
           "amount": 45,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -5528,7 +5658,9 @@
         {
           "id": "2c2d7fca-0b2b-49bb-b619-b9719ff3144f",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -5609,7 +5741,9 @@
         {
           "id": "cbb03707-80ee-4bb5-be2d-c092b2663ce5",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -5690,7 +5824,9 @@
         {
           "id": "61216b28-3a63-42b3-9b99-1cd8a63ba718",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -5771,7 +5907,9 @@
         {
           "id": "d62841d9-e04d-4e84-a1c0-d9989c973e14",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -5852,7 +5990,9 @@
         {
           "id": "8b586688-cd9a-4616-bdb0-3681a9437e15",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -5933,7 +6073,9 @@
         {
           "id": "9b28aa06-b2be-45f8-9ab1-8e7e30f80bce",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -6014,7 +6156,9 @@
         {
           "id": "a16779bc-920f-4a7a-9568-b77f9a2d6838",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -6095,7 +6239,9 @@
         {
           "id": "d3f4a7d9-37c6-4420-a0f2-3ccd006f6303",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -6176,7 +6322,9 @@
         {
           "id": "32802370-50a0-4e56-b878-e3ac5fcadad0",
           "amount": 25,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -6257,7 +6405,9 @@
         {
           "id": "6a9da521-731c-4c23-992a-64474827a369",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -6338,7 +6488,9 @@
         {
           "id": "a8f14fc7-fdb5-4cd7-ba0d-3e846a024348",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -6419,7 +6571,9 @@
         {
           "id": "a7792ad7-70ac-46af-bee0-f8c6e3e3dc29",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -6500,7 +6654,9 @@
         {
           "id": "651376a8-6f4b-4594-8fbf-324f068fe2ca",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -6581,7 +6737,9 @@
         {
           "id": "0963abbb-2898-4d84-b152-de7451e4170f",
           "amount": 37.5,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -6662,7 +6820,9 @@
         {
           "id": "89e22585-8688-479f-b8fd-c4f692c6300f",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -6743,7 +6903,9 @@
         {
           "id": "fd7603f4-092f-488c-ad46-ca9782e41bd9",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -6824,7 +6986,9 @@
         {
           "id": "7320a8a4-8e9d-430f-b2fc-27f0bbdf1c85",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -6905,7 +7069,9 @@
         {
           "id": "ed8c40fc-edf3-49a3-a53d-e8cbb2471a23",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -6986,7 +7152,9 @@
         {
           "id": "4aeca411-4ca2-4bee-8ae5-d5bbe730cd91",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -7067,7 +7235,9 @@
         {
           "id": "9fcd31c1-56ca-46dd-862f-0cc56ed62f31",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -7148,7 +7318,9 @@
         {
           "id": "d9e3ba03-278d-4e21-a848-c847c05bf143",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -7229,7 +7401,9 @@
         {
           "id": "dfc1471b-9709-44ee-8b22-de3b5c69f024",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -7310,7 +7484,9 @@
         {
           "id": "31ae37ed-955c-4f47-a887-48e80684395d",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -7391,7 +7567,9 @@
         {
           "id": "912d9f19-dfcc-4124-bf6e-afcb3294f022",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -7472,7 +7650,9 @@
         {
           "id": "7285fe06-fbe8-4e8a-a9b3-dac14fbd3001",
           "amount": 45,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -7553,7 +7733,9 @@
         {
           "id": "77f85ec8-2b22-4347-b271-6fcc7345de30",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -7634,7 +7816,9 @@
         {
           "id": "a8c5891f-5754-4a40-ac52-59314cb9e63f",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -7715,7 +7899,9 @@
         {
           "id": "b2e2f039-9fc0-4615-bd17-e23953cd1673",
           "amount": 37.5,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -7796,7 +7982,9 @@
         {
           "id": "87c2dd43-e5d8-4201-b0f4-c8c71105fc01",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -7877,7 +8065,9 @@
         {
           "id": "c35ebc45-f865-48fb-a217-c8bb1190b142",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -7958,7 +8148,9 @@
         {
           "id": "30e8062c-de04-4bb7-a4e2-b9faa63416ce",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -8039,7 +8231,9 @@
         {
           "id": "0b572b7e-f5c6-4b37-a14d-c3b5064b247b",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -8120,7 +8314,9 @@
         {
           "id": "8c155cfc-9a82-41c6-b3c0-2163ab5f1947",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -8201,7 +8397,9 @@
         {
           "id": "5f7a195a-4541-42b9-ab82-7f1572e05840",
           "amount": 25,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -8282,7 +8480,9 @@
         {
           "id": "8dde60de-eeaf-4965-9221-ea3e65766e04",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -8363,7 +8563,9 @@
         {
           "id": "b4f1f128-1634-46cf-8df6-3c745fb8088b",
           "amount": 45,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -8444,7 +8646,9 @@
         {
           "id": "ff867bd4-5636-4424-a0b5-702705728980",
           "amount": 45,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -8525,7 +8729,9 @@
         {
           "id": "11c38e1f-20cf-4fab-8572-563b26d615af",
           "amount": 25,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -8606,7 +8812,9 @@
         {
           "id": "87eec980-a40b-48be-a2f9-cec7eaf47a21",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -8687,7 +8895,9 @@
         {
           "id": "9606ceb8-4618-4024-bf5d-7ef7560104ff",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -8768,7 +8978,9 @@
         {
           "id": "0317ffe2-b86a-474a-bb8e-bbf16eb5b94c",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -8849,7 +9061,9 @@
         {
           "id": "a855e88d-1e42-49e3-b6f8-9d6dc4224c2d",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -8930,7 +9144,9 @@
         {
           "id": "3811df55-43f5-4436-8bee-44ed6afcec26",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -9011,7 +9227,9 @@
         {
           "id": "e88b9b77-8de4-4869-8d47-e809a520e4d9",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -9092,7 +9310,9 @@
         {
           "id": "6457eb35-2744-4168-9c31-21f0497696be",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -9173,7 +9393,9 @@
         {
           "id": "3143b9e2-1359-4970-b6d2-65385402cbaa",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -9254,7 +9476,9 @@
         {
           "id": "ccf97c4f-995f-43ae-a91d-3ef08b13f962",
           "amount": 25,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -9335,7 +9559,9 @@
         {
           "id": "ce389172-9fdc-4c81-87c1-b2c88fc3c0e8",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -9416,7 +9642,9 @@
         {
           "id": "2eda0a65-02a6-4f0d-9f16-d4ac4cecb612",
           "amount": 60,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -9497,7 +9725,9 @@
         {
           "id": "b528aaf5-ca4e-4bbc-b1c8-5270b0eca9fe",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -9578,7 +9808,9 @@
         {
           "id": "a7f4bd41-7598-4d3a-a52f-1856f54764b2",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -9659,7 +9891,9 @@
         {
           "id": "5f17f75f-0b25-4a64-a598-fe7fe2ec69bc",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -9740,7 +9974,9 @@
         {
           "id": "d6745ed0-77b6-4675-a431-0f42a7a131e1",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -9821,7 +10057,9 @@
         {
           "id": "6f3ada55-18d0-4960-8cad-a14ef4d44970",
           "amount": 37.5,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -9902,7 +10140,9 @@
         {
           "id": "ca010383-3108-48c0-85cd-ea1d01aa2a1a",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -9983,7 +10223,9 @@
         {
           "id": "f3d97d7a-bf12-467d-8b32-5ff1d67d5703",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -10064,7 +10306,9 @@
         {
           "id": "5345cb09-2b67-459b-a309-e375169e5c09",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -10145,7 +10389,9 @@
         {
           "id": "0c0646e2-c3e3-4814-ab74-728f8b1e3a6b",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -10226,7 +10472,9 @@
         {
           "id": "6754ad09-39c9-4546-b1b4-b88f9c6516ff",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -10307,7 +10555,9 @@
         {
           "id": "932d1ecd-8938-4b69-be9c-60108fae01dd",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -10388,7 +10638,9 @@
         {
           "id": "12053c6f-2e18-41e6-a65f-5834c4c5799e",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -10469,7 +10721,9 @@
         {
           "id": "6c1b9442-c54d-458c-b585-88cf4b73be67",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -10550,7 +10804,9 @@
         {
           "id": "cbabc285-8c6d-472d-9be1-27f58fc00ee9",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -10631,7 +10887,9 @@
         {
           "id": "f5aab1e5-a942-4423-959c-ca62b96a3912",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -10712,7 +10970,9 @@
         {
           "id": "cb60c9f2-2ca9-493a-a3bb-bdc36c223b79",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -10793,7 +11053,9 @@
         {
           "id": "66bed336-35ea-4ad4-87e0-65ed0b20fadd",
           "amount": 45,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -10874,7 +11136,9 @@
         {
           "id": "d3e03144-e6c3-4e86-9530-4a85262e97c1",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -10955,7 +11219,9 @@
         {
           "id": "638b38f8-a374-41cd-be93-424ad67dbb8a",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -11036,7 +11302,9 @@
         {
           "id": "38191c8a-0f93-4092-abc3-feb662eaca80",
           "amount": 37.5,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -11117,7 +11385,9 @@
         {
           "id": "1f03fa70-e54b-4970-9e27-5063716a90f7",
           "amount": 60,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -11198,7 +11468,9 @@
         {
           "id": "605810a6-9ae1-41e9-8ed9-3b92e8f81cd8",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -11279,7 +11551,9 @@
         {
           "id": "19fbe43f-2932-40a6-a123-fffa424dcb91",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -11360,7 +11634,9 @@
         {
           "id": "f2ce9773-d069-43f3-9a3c-f7f80dae52ba",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -11441,7 +11717,9 @@
         {
           "id": "fc2e7802-2d16-473b-96d6-46cbad135468",
           "amount": 45,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -11522,7 +11800,9 @@
         {
           "id": "1517a3cb-2462-4446-99d9-a8f2ffca1287",
           "amount": 25,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -11603,7 +11883,9 @@
         {
           "id": "74d76453-a3f8-4305-95e8-707a69fbadd2",
           "amount": 37.5,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -11684,7 +11966,9 @@
         {
           "id": "db13fe42-2553-42d0-8aa5-9174e3638e08",
           "amount": 45,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -11765,7 +12049,9 @@
         {
           "id": "b364a205-e5b6-42cd-a998-763a61068c13",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -11846,7 +12132,9 @@
         {
           "id": "5a0c62d7-0268-4e42-8b67-6772094cc5b8",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -11927,7 +12215,9 @@
         {
           "id": "8223680c-fd67-4b4e-9138-7308f257d5b7",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -12008,7 +12298,9 @@
         {
           "id": "0ed22cba-2833-4f51-951c-60a556220806",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -12089,7 +12381,9 @@
         {
           "id": "12ccac4f-6bd0-40f8-88a8-0202c16ab648",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -12170,7 +12464,9 @@
         {
           "id": "935165fd-f87c-47a0-82ef-aebe514c00c6",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -12251,7 +12547,9 @@
         {
           "id": "01eebf6d-c02f-49cc-b30d-b3d1db453597",
           "amount": 25,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -12332,7 +12630,9 @@
         {
           "id": "263f7c4a-cf18-410f-9a59-903b60062b42",
           "amount": 45,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -12413,7 +12713,9 @@
         {
           "id": "d4243b80-4a49-4a23-b520-4e6bdb811f97",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -12494,7 +12796,9 @@
         {
           "id": "1fe24176-96bf-4f92-b9d8-0fb543a3107b",
           "amount": 25,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -12575,7 +12879,9 @@
         {
           "id": "2f5f7fd1-a33a-45d7-8710-21417e866f98",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -12656,7 +12962,9 @@
         {
           "id": "cc71c8e4-6f34-4d22-bd7b-eac17f197901",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -12737,7 +13045,9 @@
         {
           "id": "761ca55f-634b-4dad-a8b9-52a7213dedfd",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -12818,7 +13128,9 @@
         {
           "id": "ee01e49a-5631-4559-9548-d01622eb2889",
           "amount": 45,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -12899,7 +13211,9 @@
         {
           "id": "065258d9-5c97-4146-aa0c-ca6e150f30f9",
           "amount": 45,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -12980,7 +13294,9 @@
         {
           "id": "9c59d48d-93d6-40cf-986e-f8ba89aa2ff0",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -13061,7 +13377,9 @@
         {
           "id": "82f6265e-b4eb-4f04-8e8d-d3febc983c6d",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -13142,7 +13460,9 @@
         {
           "id": "22cd9a1b-2b44-4e20-8a2d-e575a33cc427",
           "amount": 45,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -13223,7 +13543,9 @@
         {
           "id": "e532a713-7ac6-428b-9f6a-da3cc60d8cec",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -13304,7 +13626,9 @@
         {
           "id": "9f3890f5-fa9c-476d-8534-c73bb032b108",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -13385,7 +13709,9 @@
         {
           "id": "e528ce79-9dff-4079-ba84-bf14d12e5079",
           "amount": 45,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -13466,7 +13792,9 @@
         {
           "id": "a854924e-32ad-4d76-b2c7-d03d0a929284",
           "amount": 25,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -13547,7 +13875,9 @@
         {
           "id": "086efbe8-fac9-499a-acf5-11b71dd54fea",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -13628,7 +13958,9 @@
         {
           "id": "34388608-d45f-4474-8659-e9a39c808511",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -13709,7 +14041,9 @@
         {
           "id": "9b5e49db-6ae4-4c54-bdaf-3f0379ea8c59",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -13790,7 +14124,9 @@
         {
           "id": "73dcfd53-009f-4620-9ba4-969f1dca3c8e",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -13871,7 +14207,9 @@
         {
           "id": "25f229b2-5c1e-4f7f-a8b3-e001f1274571",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -13952,7 +14290,9 @@
         {
           "id": "39e7b6ba-320c-40ae-8b20-de6e939cd021",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -14033,7 +14373,9 @@
         {
           "id": "60ce96e6-e2d5-41f2-b456-449e32238e44",
           "amount": 60,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -14114,7 +14456,9 @@
         {
           "id": "adaa4a28-6fe6-4f23-9126-451d82795325",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -14195,7 +14539,9 @@
         {
           "id": "9654bdef-3809-4555-ad41-8c67d5179941",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -14276,7 +14622,9 @@
         {
           "id": "f9df42f3-256f-45f6-b7f7-5e86be9af322",
           "amount": 25,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -14357,7 +14705,9 @@
         {
           "id": "1d696263-ff54-416e-bb80-3af6c454a844",
           "amount": 60,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -14438,7 +14788,9 @@
         {
           "id": "4ea550b5-cd09-4077-ad82-b924d9ba0619",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -14519,7 +14871,9 @@
         {
           "id": "22e8094c-6255-44a8-b91b-4eac928cba3f",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -14600,7 +14954,9 @@
         {
           "id": "b01223ca-bc4a-4d58-988f-2c1e389dcb49",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -14681,7 +15037,9 @@
         {
           "id": "28052e0c-e9b8-40de-97b4-7d9a9b3161ce",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -14762,7 +15120,9 @@
         {
           "id": "194a7769-4ffe-4e54-a06e-aba4420402df",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -14843,7 +15203,9 @@
         {
           "id": "6f1d9dba-9b08-4fdb-ad25-57a0306c1b51",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -14924,7 +15286,9 @@
         {
           "id": "d264bd72-3350-44ce-8ce4-6f148a8888f2",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -15005,7 +15369,9 @@
         {
           "id": "dd7d860c-2687-4a56-a116-4f6b09b1b34e",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -15086,7 +15452,9 @@
         {
           "id": "fd8c6f39-115d-47de-8c6e-f9fed68ee9a0",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -15167,7 +15535,9 @@
         {
           "id": "14d1a4ff-07af-4042-834b-ac9610aeba67",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -15248,7 +15618,9 @@
         {
           "id": "4e723174-d42c-4c37-a6dc-80ba1ec95da3",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -15329,7 +15701,9 @@
         {
           "id": "aaeb95a8-f961-4809-9b5e-9c3df557935c",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -15410,7 +15784,9 @@
         {
           "id": "a6f4a6a3-5001-4454-8c62-1406f302bc74",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -15491,7 +15867,9 @@
         {
           "id": "2289bab7-346d-41b7-99d6-356b6a26fb81",
           "amount": 37.5,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -15572,7 +15950,9 @@
         {
           "id": "bdc594c1-a881-4414-a117-c0e504927035",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -15653,7 +16033,9 @@
         {
           "id": "f8923f3a-3b34-4a7c-ae16-8cb4a335740f",
           "amount": 60,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -15734,7 +16116,9 @@
         {
           "id": "fae2d217-62c3-4be0-9994-cfcebe58261e",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -15815,7 +16199,9 @@
         {
           "id": "160918ab-5561-4243-b839-d668dc4ccabf",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -15896,7 +16282,9 @@
         {
           "id": "711aa44f-28f1-489f-b2ea-d2bcafd4ff5a",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -15977,7 +16365,9 @@
         {
           "id": "24f72a25-8248-49b2-b28e-f00d92d8e45b",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -16058,7 +16448,9 @@
         {
           "id": "562205a7-6ab4-451b-b8f0-544dfb799682",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -16139,7 +16531,9 @@
         {
           "id": "841ebde1-07c1-4e49-bfec-06e525ea5620",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -16220,7 +16614,9 @@
         {
           "id": "b80337ef-2a79-4133-b414-e14101bc3dd5",
           "amount": 60,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -16301,7 +16697,9 @@
         {
           "id": "66e7bcf2-8f12-4b49-9005-4d991194d2a2",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -16382,7 +16780,9 @@
         {
           "id": "eba098b0-85f1-4410-a1e9-ba4aa945610a",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -16463,7 +16863,9 @@
         {
           "id": "87b12e9f-8db6-4bd1-b49f-1341028e00dd",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -16544,7 +16946,9 @@
         {
           "id": "6eacdcb6-1345-4537-85b9-4f95e48be903",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -16625,7 +17029,9 @@
         {
           "id": "b069baa5-a871-4d24-b286-b86cb2eeda55",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -16706,7 +17112,9 @@
         {
           "id": "898c3882-f663-4b06-ab43-5c3712557900",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -16787,7 +17195,9 @@
         {
           "id": "ee9af898-7afd-4b88-86db-bc137cdad889",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -16868,7 +17278,9 @@
         {
           "id": "cb8bd0a0-f8f7-4899-8ffc-e745d83d0a93",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -16949,7 +17361,9 @@
         {
           "id": "30c4786e-ea49-4234-99c8-3d7397b2ca0b",
           "amount": 45,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -17030,7 +17444,9 @@
         {
           "id": "f07a1200-244b-4ead-a6d5-c50311435b15",
           "amount": 45,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -17111,7 +17527,9 @@
         {
           "id": "b9ea959e-ed5a-4fa9-a7a4-c109874fd9f0",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -17192,7 +17610,9 @@
         {
           "id": "0a82bb3c-1305-46af-ac67-3edbd2f479f1",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -17273,7 +17693,9 @@
         {
           "id": "09e141ff-0a42-4283-b160-cc21dead5ffd",
           "amount": 60,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -17354,7 +17776,9 @@
         {
           "id": "aebd6041-4b1c-46dd-a51f-e604a301c642",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -17435,7 +17859,9 @@
         {
           "id": "0863a746-0790-4dd5-b1bc-31e478b004e5",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -17516,7 +17942,9 @@
         {
           "id": "58db1762-96e6-42cc-b531-2ce174188db1",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -17597,7 +18025,9 @@
         {
           "id": "20e4a359-5997-40f5-b16c-bc91dd9de3c0",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -17678,7 +18108,9 @@
         {
           "id": "738b09bf-be3f-4891-98bb-7c8974bacfa1",
           "amount": 37.5,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -17759,7 +18191,9 @@
         {
           "id": "62972a6e-0e42-4280-a53c-3457c31d6194",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -17840,7 +18274,9 @@
         {
           "id": "642f64cb-1dda-48fa-ad07-d1be369a000e",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -17921,7 +18357,9 @@
         {
           "id": "1f626705-5339-4ded-ab80-f038752a0601",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -18002,7 +18440,9 @@
         {
           "id": "d51124bf-bbed-4ac1-a657-497374e20b22",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -18083,7 +18523,9 @@
         {
           "id": "13b88eab-4a2c-4120-a517-337f3ce5a901",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -18164,7 +18606,9 @@
         {
           "id": "65e19c6c-078c-4075-abba-767316ea4aaa",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -18245,7 +18689,9 @@
         {
           "id": "d1525a17-e2d8-40f0-8442-57d4464cb079",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -18326,7 +18772,9 @@
         {
           "id": "50b455b8-14b7-48bf-a3ca-32c291c91afc",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -18407,7 +18855,9 @@
         {
           "id": "11faa306-78f7-4664-a4fd-edf41e1e03c8",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -18488,7 +18938,9 @@
         {
           "id": "e675f9e5-d47d-4d35-bf81-2a011d779c29",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -18569,7 +19021,9 @@
         {
           "id": "127c6fb5-44ad-46b1-826b-139fe9068910",
           "amount": 45,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -18650,7 +19104,9 @@
         {
           "id": "34ec1f29-c255-4133-a232-0b5417d41d21",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -18731,7 +19187,9 @@
         {
           "id": "20ef8062-0b94-40f7-b819-d9324c77c13f",
           "amount": 25,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -18812,7 +19270,9 @@
         {
           "id": "0a5abef2-784c-4afd-951e-cd52a8a233dc",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -18893,7 +19353,9 @@
         {
           "id": "6b8a0afa-fbde-4fe7-8cd6-4d2f76c6cb87",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -18974,7 +19436,9 @@
         {
           "id": "7ae8c731-7761-4b6f-95e3-a311e2d6f99c",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -19055,7 +19519,9 @@
         {
           "id": "d52fd373-155f-41b9-bb45-1432428abb70",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -19136,7 +19602,9 @@
         {
           "id": "1302558f-c33e-4e27-ad34-8695a4a56591",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -19217,7 +19685,9 @@
         {
           "id": "8364cb85-fe39-41a6-b312-ca15754e44ce",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -19298,7 +19768,9 @@
         {
           "id": "31866237-ff50-4c56-b012-a0d0b0e86b89",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -19379,7 +19851,9 @@
         {
           "id": "c9cdb25e-989d-49de-8aae-069dd6662a4e",
           "amount": 60,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -19460,7 +19934,9 @@
         {
           "id": "bbc99ff2-a96b-4f56-b8bd-7e704de73e47",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -19541,7 +20017,9 @@
         {
           "id": "01e25a9e-de28-438d-b7d6-275933207692",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -19622,7 +20100,9 @@
         {
           "id": "48ac67d8-78ac-4fc3-befc-0cbddc09f6ef",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -19703,7 +20183,9 @@
         {
           "id": "930c7dd5-4833-4580-9cec-b92562bdf3d3",
           "amount": 25,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -19784,7 +20266,9 @@
         {
           "id": "fdc883b6-ba96-48b7-89a9-5ba9d25353e3",
           "amount": 60,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -19865,7 +20349,9 @@
         {
           "id": "5352a043-03f4-4cd2-b842-331419310581",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -19946,7 +20432,9 @@
         {
           "id": "63cf13f1-6556-484b-8c40-76bf3d67da58",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -20027,7 +20515,9 @@
         {
           "id": "29f4d5d2-19b8-44d5-b81c-456e4ede043f",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -20108,7 +20598,9 @@
         {
           "id": "b881990b-587e-44f9-8d94-92748c13e24f",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -20189,7 +20681,9 @@
         {
           "id": "b521fa22-6f33-4465-bab3-ae59277974de",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -20270,7 +20764,9 @@
         {
           "id": "8c293626-fa37-410d-b384-b7b42c0c16be",
           "amount": 37.5,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -20351,7 +20847,9 @@
         {
           "id": "4b26bb52-9471-4c4b-9b30-4af50e0b49f0",
           "amount": 60,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -20432,7 +20930,9 @@
         {
           "id": "c400b475-84db-4ef8-81d5-91813be28cf8",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -20513,7 +21013,9 @@
         {
           "id": "c25dcab3-906f-48a3-9db0-1c91944d6fc2",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -20594,7 +21096,9 @@
         {
           "id": "23f3db82-560c-45a2-aacc-2faf148eba26",
           "amount": 25,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -20675,7 +21179,9 @@
         {
           "id": "38b19db7-8a81-48ac-9356-fc36b56a2690",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -20756,7 +21262,9 @@
         {
           "id": "9ae25b59-3539-40fa-a35e-4c64af06e8ea",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -20837,7 +21345,9 @@
         {
           "id": "e526d0b9-12d7-42bb-9f43-c9f9e859664c",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -20918,7 +21428,9 @@
         {
           "id": "9f9977bf-bce2-4446-adef-32534bf96034",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -20999,7 +21511,9 @@
         {
           "id": "2e1f7c5e-24e8-46e3-af16-a7a95b652b85",
           "amount": 37.5,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -21080,7 +21594,9 @@
         {
           "id": "dcfb9fde-f035-4ff7-aff7-164a0a3aac1f",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -21161,7 +21677,9 @@
         {
           "id": "6dcc287b-aa18-44ff-bd1d-f0a69ed1f81b",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -21242,7 +21760,9 @@
         {
           "id": "678fa519-0200-4d6f-b36e-15723620d4b9",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -21323,7 +21843,9 @@
         {
           "id": "cfbdcc10-c6c5-4002-9337-a824b62ac302",
           "amount": 50,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -21404,7 +21926,9 @@
         {
           "id": "ff0bc977-ecd3-4fe7-b39d-a6d572c78f10",
           "amount": 37.5,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -21485,7 +22009,9 @@
         {
           "id": "4a2180ff-04a6-425e-a2dd-4f447ca22211",
           "amount": 50,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -21566,7 +22092,9 @@
         {
           "id": "e28dedc6-8e18-4ea1-b859-aa95031f9531",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -21647,7 +22175,9 @@
         {
           "id": "ae06fc91-c6e3-4d4f-9860-65195ff4c06a",
           "amount": 50,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -21728,7 +22258,9 @@
         {
           "id": "fff6322b-76c6-46f3-890a-1add60054425",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -21809,7 +22341,9 @@
         {
           "id": "f2677569-e1e2-441c-9816-1b87ee655290",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -21890,7 +22424,9 @@
         {
           "id": "e7f98421-7b62-46a3-8588-17dedc406cf5",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -21971,7 +22507,9 @@
         {
           "id": "244aaab4-e878-43f9-81b4-276eaca7e77b",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -22052,7 +22590,9 @@
         {
           "id": "9683873a-4b49-4ade-9eae-a9504e12cb88",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -22133,7 +22673,9 @@
         {
           "id": "b1b1ec82-d3a3-4e6e-9c6c-694a3a330f9b",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -22214,7 +22756,9 @@
         {
           "id": "0ed7a973-bbe8-419d-b185-f590ccc36cec",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -22295,7 +22839,9 @@
         {
           "id": "9d355aea-ecae-4168-99b6-04f11b451ff1",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -22376,7 +22922,9 @@
         {
           "id": "ebce89b5-8bd7-47a4-9bd7-db6454d5ef56",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -22457,7 +23005,9 @@
         {
           "id": "bcb3239d-dcf3-442b-a188-06bc23743456",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -22538,7 +23088,9 @@
         {
           "id": "57a9b2b2-dac6-4485-827b-07945672ddcb",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -22619,7 +23171,9 @@
         {
           "id": "8e33db18-4df7-4f2e-9c76-46c10abb2064",
           "amount": 37.5,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -22700,7 +23254,9 @@
         {
           "id": "dce68852-182e-438e-9385-163e352ba570",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -22781,7 +23337,9 @@
         {
           "id": "5dd1439e-b44a-4e51-9f73-38fcb4ef0e06",
           "amount": 60,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -22862,7 +23420,9 @@
         {
           "id": "c9b3b6ba-3650-432c-9240-ea094250e8cf",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -22943,7 +23503,9 @@
         {
           "id": "7a59b5c1-8395-47c6-a882-480b6b49aa02",
           "amount": 45,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -23024,7 +23586,9 @@
         {
           "id": "3220fd68-9d1b-4ddd-ace4-3e8d70eadaea",
           "amount": 37.5,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -23105,7 +23669,9 @@
         {
           "id": "0048063f-1795-4eaf-9227-87c78127d802",
           "amount": 60,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -23186,7 +23752,9 @@
         {
           "id": "87e994dc-63a7-44c3-9c3d-ae182df5feb7",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -23267,7 +23835,9 @@
         {
           "id": "7542643c-e48f-4b81-8515-0d3b80e040bf",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -23348,7 +23918,9 @@
         {
           "id": "5af31333-9807-428f-a547-4892e446eb43",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -23429,7 +24001,9 @@
         {
           "id": "64f0ad38-1690-4933-9036-11331bae6bdf",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -23510,7 +24084,9 @@
         {
           "id": "b5c6dd10-489f-4ec0-af79-2631b5af5625",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -23591,7 +24167,9 @@
         {
           "id": "938bca7e-b899-4553-8bd9-093e6a89c763",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -23672,7 +24250,9 @@
         {
           "id": "747ff2cc-657f-452b-b676-e9f9cb3ebcc7",
           "amount": 60,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -23753,7 +24333,9 @@
         {
           "id": "3002dfe5-dbbe-43c6-9fb8-ca29f4a67a37",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -23834,7 +24416,9 @@
         {
           "id": "64aff8cd-a906-409d-a26a-784d900f080b",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -23915,7 +24499,9 @@
         {
           "id": "9c140ec1-541d-4195-8b49-814e9db55a15",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -23996,7 +24582,9 @@
         {
           "id": "3ff1dffe-9aef-4584-b68b-0124316277b0",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -24077,7 +24665,9 @@
         {
           "id": "b1b2e827-8b7a-4261-9663-bbba40a65887",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -24158,7 +24748,9 @@
         {
           "id": "ced06164-7578-4f87-9718-e6c538c015da",
           "amount": 37.5,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -24239,7 +24831,9 @@
         {
           "id": "b20d1f10-3f5e-4818-94b4-6c12c37ad964",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -24320,7 +24914,9 @@
         {
           "id": "3cfea9f4-ff22-43e6-bfea-4ab4ecdeee3a",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -24401,7 +24997,9 @@
         {
           "id": "5c81456a-1cf0-4541-a419-ec4d11ac4944",
           "amount": 45,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -24482,7 +25080,9 @@
         {
           "id": "b76b5eaf-2370-4837-a4a8-ac7a41a27837",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -24563,7 +25163,9 @@
         {
           "id": "719a64e5-76a5-4a38-abb7-7ffa5ea8b5b9",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -24644,7 +25246,9 @@
         {
           "id": "a29b4a0f-caeb-4a2b-8ecc-72dfcf9820c9",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -24725,7 +25329,9 @@
         {
           "id": "a4253003-2e49-42fd-af85-e3edacc14c0e",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -24806,7 +25412,9 @@
         {
           "id": "35adf6d5-f2d0-4039-a673-fe1759a61f9d",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -24887,7 +25495,9 @@
         {
           "id": "b2efd49c-bd94-49bd-bc48-6979ac8fa7f7",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -24968,7 +25578,9 @@
         {
           "id": "aed8e86b-282c-4e4e-ae03-a0abccb632bb",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -25049,7 +25661,9 @@
         {
           "id": "44b0b73f-c066-4a61-8bbc-c1e7809d1db2",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -25130,7 +25744,9 @@
         {
           "id": "417d051b-2540-4dd8-8d34-99a5939fe22c",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -25211,7 +25827,9 @@
         {
           "id": "609ece06-4b45-4def-9c2f-f63617e59308",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -25292,7 +25910,9 @@
         {
           "id": "65462642-22a2-4a54-8b67-91be333325da",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -25373,7 +25993,9 @@
         {
           "id": "1924ce55-aa5d-452c-8a56-beff77113983",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -25454,7 +26076,9 @@
         {
           "id": "8cf29cd4-9c43-47ea-a910-ea67d2b325cb",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -25535,7 +26159,9 @@
         {
           "id": "1e608697-6603-4202-816b-ede7c63d62dc",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -25616,7 +26242,9 @@
         {
           "id": "79b08dd3-110b-439b-aa94-3382fefc62ce",
           "amount": 37.5,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -25697,7 +26325,9 @@
         {
           "id": "8584b4ff-807b-4bad-98f0-041ae34864ee",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -25778,7 +26408,9 @@
         {
           "id": "c232efb4-7513-4f13-947b-e8f88f8f32de",
           "amount": 45,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -25859,7 +26491,9 @@
         {
           "id": "b1fe6280-2f5c-4bc6-b193-3376d7aa9384",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -25940,7 +26574,9 @@
         {
           "id": "52e1631b-34f5-4945-b010-5b5c3ab85b75",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -26021,7 +26657,9 @@
         {
           "id": "8e157807-d533-4e41-92b6-53c9a7ce5d6d",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -26102,7 +26740,9 @@
         {
           "id": "7b67bcaf-010f-4ff4-b5f2-1579a9777daf",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -26183,7 +26823,9 @@
         {
           "id": "52b609f3-ea6a-4863-9ecb-8abe41f7eb72",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -26264,7 +26906,9 @@
         {
           "id": "62a92228-c520-43be-b19f-8b840e9a0581",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -26345,7 +26989,9 @@
         {
           "id": "5f202c8c-8633-492c-b8f0-80a6f0adf456",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -26426,7 +27072,9 @@
         {
           "id": "ada2d26f-2798-48b2-9e9c-8a035714c78d",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -26507,7 +27155,9 @@
         {
           "id": "3611b933-7638-4e6a-b33a-e581bec3acc0",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -26548,59 +27198,60 @@
       "fechaCompra": "2025-06-02 16:22",
       "items": [
         {
-          "id": "1502a0b1-dd1c-4fd7-af90-48c2b9430a60",
-          "idExperience": "1",
-          "idCalendario": "cal2",
-          "idBusinessUnit": null,
-          "status": "confirmada",
-          "internaPermanent": false,
-          "start": "2025-06-03 09:00:00",
-          "end": "2025-06-03 10:00:00",
-          "duration": 60,
-          "peopleNumber": 3,
-          "priceOriginal": 75,
-          "priceTotal": 75,
-          "priceFractioned": 37.5,
           "discountAmount": 0,
+          "duration": 60,
+          "end": "2025-06-03 10:00:00",
           "fields": [
             {
+              "amount": 0,
               "id": "e0c94454-aea6-4edb-8e87-a60dcadb2db0",
-              "title": "Idioma",
               "name": "language",
-              "value": "English",
-              "amount": 0
+              "title": "Idioma",
+              "value": "English"
             },
             {
+              "amount": 10.5,
               "id": "3a32243f-7cc7-4ad2-a1be-f95b68b5f17a",
+              "name": "Juan",
               "title": "Monitor",
-              "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
+              "value": "1 pax"
             }
           ],
+          "id": "1502a0b1-dd1c-4fd7-af90-48c2b9430a60",
+          "idCalendario": "sala 3, sala 4",
+          "idExperience": "1",
+          "internaPermanent": false,
+          "peopleNumber": 3,
+          "priceFractioned": 37.5,
+          "priceOriginal": 75,
+          "priceTotal": 75,
           "salas": [
             "cal3",
             "cal4"
-          ]
+          ],
+          "start": "2025-06-03 09:00:00",
+          "status": "confirmada"
         }
       ],
       "payments": [
         {
-          "id": "3611b933-7638-4e6a-b33a-e581bec3acc0",
           "amount": 75,
-          "method": "Efectivo"
+          "id": "3611b933-7638-4e6a-b33a-e581bec3acc0",
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
         {
-          "id": "1502a0b1-dd1c-4fd7-af90-48c2b9430a60",
-          "id_experience": "2",
-          "id_calendario": "cal2",
-          "start": "2025-06-03 18:00:00",
           "end": "2025-06-03 19:00:00",
+          "id": "1502a0b1-dd1c-4fd7-af90-48c2b9430a60",
+          "id_calendario": "cal2",
+          "id_experience": "2",
           "people_number": 4,
+          "price_fractioned": 37.5,
           "price_original": 75,
-          "price_fractioned": 37.5
+          "start": "2025-06-03 18:00:00"
         }
       ],
       "userId": "1"
@@ -26668,7 +27319,9 @@
         {
           "id": "3611b933-7638-4e6a-b33a-e581bec3acc0",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -26750,7 +27403,9 @@
         {
           "id": "3611b933-7638-4e6a-b33a-e581bec3acc0",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -26830,7 +27485,9 @@
         {
           "id": "3611b933-7638-4e6a-b33a-e581bec3acc0",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -26871,61 +27528,62 @@
       "fechaCompra": "2025-06-02 16:22",
       "items": [
         {
-          "id": "1502a0b1-dd1c-4fd7-af90-48c2b943a60",
-          "idExperience": "1",
-          "idCalendario": "cal2",
-          "idBusinessUnit": null,
-          "status": "confirmada",
-          "internaPermanent": false,
-          "start": "2025-06-03 09:00:00",
-          "end": "2025-06-03 10:00:00",
-          "duration": 60,
-          "peopleNumber": 3,
-          "priceOriginal": 75,
-          "priceTotal": 75,
-          "priceFractioned": 37.5,
           "discountAmount": 0,
+          "duration": 60,
+          "end": "2025-06-03 10:00:00",
           "fields": [
             {
+              "amount": 0,
               "id": "e0c94454-aea6-4edb-8e87-a60dcadb2db0",
-              "title": "Idioma",
               "name": "language",
-              "value": "English",
-              "amount": 0
+              "title": "Idioma",
+              "value": "English"
             },
             {
+              "amount": 10.5,
               "id": "3a32243f-7cc7-4ad2-a1be-f95b68b5f17a",
-              "title": "Monitor",
               "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
+              "title": "Monitor",
+              "value": "1 pax"
             }
           ],
+          "id": "1502a0b1-dd1c-4fd7-af90-48c2b943a60",
+          "idCalendario": "sala 5, sala 6, sala 7, sala 8",
+          "idExperience": "1",
+          "internaPermanent": false,
+          "peopleNumber": 3,
+          "priceFractioned": 37.5,
+          "priceOriginal": 75,
+          "priceTotal": 75,
           "salas": [
             "cal5",
             "cal6",
             "cal7",
             "cal8"
-          ]
+          ],
+          "start": "2025-06-03 09:00:00",
+          "status": "confirmada"
         }
       ],
       "payments": [
         {
-          "id": "3611b933-7638-4e6a-b33a-e581bec3acc0",
           "amount": 75,
-          "method": "Efectivo"
+          "id": "3611b933-7638-4e6a-b33a-e581bec3acc0",
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
         {
-          "id": "1502a0b1-dd1c-4fd7-af90-48c2b930a60",
-          "id_experience": "2",
-          "id_calendario": "cal2",
-          "start": "2025-06-03 18:00:00",
           "end": "2025-06-03 19:00:00",
+          "id": "1502a0b1-dd1c-4fd7-af90-48c2b930a60",
+          "id_calendario": "cal2",
+          "id_experience": "2",
           "people_number": 4,
+          "price_fractioned": 37.5,
           "price_original": 75,
-          "price_fractioned": 37.5
+          "start": "2025-06-03 18:00:00"
         }
       ],
       "userId": "1"
@@ -26994,7 +27652,9 @@
         {
           "id": "e02c070d-5f8c-44e1-8937-abc8d7bf7eb5",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -27075,7 +27735,9 @@
         {
           "id": "ce73a680-75cf-4266-b542-51ddd44b2840",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -27156,7 +27818,9 @@
         {
           "id": "e8ca09df-938a-49be-b79e-3fa909530907",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -27237,7 +27901,9 @@
         {
           "id": "cefe22c2-1c37-4941-8285-8f0c07276612",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -27318,7 +27984,9 @@
         {
           "id": "9563a06f-45a2-4a5b-8161-5b626be810ef",
           "amount": 60,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -27359,59 +28027,60 @@
       "fechaCompra": "2025-06-05 13:16",
       "items": [
         {
-          "id": "35fef30b-7de0-4a0c-92c3-a8d9b73bc510",
-          "idExperience": "2",
-          "idCalendario": "cal1",
-          "idBusinessUnit": null,
-          "status": "confirmada",
-          "internaPermanent": false,
-          "start": "2025-06-05 09:00:00",
-          "end": "2025-06-05 10:00:00",
-          "duration": 60,
-          "peopleNumber": 4,
-          "priceOriginal": 120,
-          "priceTotal": 120,
-          "priceFractioned": 60,
           "discountAmount": 0,
+          "duration": 60,
+          "end": "2025-06-05 10:00:00",
           "fields": [
             {
+              "amount": 0,
               "id": "89e78580-18cb-4cc1-b98b-e26b3b22419b",
-              "title": "Idioma",
               "name": "language",
-              "value": "English",
-              "amount": 0
+              "title": "Idioma",
+              "value": "English"
             },
             {
+              "amount": 10.5,
               "id": "69f45de6-379b-4fda-9548-c262708f3c6f",
-              "title": "Monitor",
               "name": "monitor",
-              "value": "1 pax",
-              "amount": 10.5
+              "title": "Monitor",
+              "value": "1 pax"
             }
           ],
+          "id": "35fef30b-7de0-4a0c-92c3-a8d9b73bc510",
+          "idCalendario": "sala 1, sala 2",
+          "idExperience": "2",
+          "internaPermanent": false,
+          "peopleNumber": 4,
+          "priceFractioned": 60,
+          "priceOriginal": 120,
+          "priceTotal": 120,
           "salas": [
             "cal1",
             "cal2"
-          ]
+          ],
+          "start": "2025-06-05 09:00:00",
+          "status": "confirmada"
         }
       ],
       "payments": [
         {
-          "id": "085fc81e-479d-4dee-a0a3-6c1dbc12e871",
           "amount": 120,
-          "method": "Efectivo"
+          "id": "085fc81e-479d-4dee-a0a3-6c1dbc12e871",
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
         {
-          "id": "35fef30b-7de0-4a0c-92c3-a8d9b73bc510",
-          "id_experience": "1",
-          "id_calendario": "cal2",
-          "start": "2025-06-05 09:00:00",
           "end": "2025-06-05 10:00:00",
+          "id": "35fef30b-7de0-4a0c-92c3-a8d9b73bc510",
+          "id_calendario": "cal2",
+          "id_experience": "1",
           "people_number": 5,
+          "price_fractioned": 60,
           "price_original": 120,
-          "price_fractioned": 60
+          "start": "2025-06-05 09:00:00"
         }
       ],
       "userId": "1"
@@ -27480,7 +28149,9 @@
         {
           "id": "7d382149-e5c9-431d-adf0-e439edc48fcf",
           "amount": 60,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -27561,7 +28232,9 @@
         {
           "id": "695b8c02-4de4-4ac4-928b-c63ddafbe4b6",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -27642,7 +28315,9 @@
         {
           "id": "37de8d5b-43dd-40a3-ab95-9600e018156f",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -27723,7 +28398,9 @@
         {
           "id": "e3c5197b-009e-4c19-a142-9b58f8b95ded",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -27804,7 +28481,9 @@
         {
           "id": "ce768e62-97f9-495d-86c5-269c30c536ec",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -27885,7 +28564,9 @@
         {
           "id": "6ff9f0e2-da03-490a-ab4c-f45f4915b729",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -27966,7 +28647,9 @@
         {
           "id": "3988bdc2-b053-4843-b803-1c577a456451",
           "amount": 45,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -28047,7 +28730,9 @@
         {
           "id": "01ec6cc5-53ce-419e-aaa9-c158e936b1d8",
           "amount": 37.5,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -28128,7 +28813,9 @@
         {
           "id": "41e210cf-ab58-4d14-a25c-65a1d6e48443",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -28209,7 +28896,9 @@
         {
           "id": "c801cb36-3f57-40ca-91f3-a70168794832",
           "amount": 37.5,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -28290,7 +28979,9 @@
         {
           "id": "ab6b51df-366b-4913-b7c9-de90005fe6e4",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -28371,7 +29062,9 @@
         {
           "id": "17f5b7ea-ca8f-41fc-8a6c-444437e93087",
           "amount": 60,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -28452,7 +29145,9 @@
         {
           "id": "9642064d-8771-4331-8d14-249382c21210",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -28533,7 +29228,9 @@
         {
           "id": "253467d2-5e3b-437e-9408-c651a6e446a2",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -28614,7 +29311,9 @@
         {
           "id": "35bfe6ad-d0e4-4a94-8d9b-5ccedadae471",
           "amount": 60,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -28695,7 +29394,9 @@
         {
           "id": "c1470e00-9cb4-4ea5-bb0d-006d40842ce7",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -28776,7 +29477,9 @@
         {
           "id": "b8838ba7-1a92-4c89-b5b8-d6ab20dd7f94",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -28857,7 +29560,9 @@
         {
           "id": "82c6b4c4-6620-4730-bf1f-d23f3df569fa",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -28938,7 +29643,9 @@
         {
           "id": "e40e4396-d4bb-4be1-967e-3a2bf4d51e5c",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -29019,7 +29726,9 @@
         {
           "id": "e2319a07-245b-4468-a5a3-264e076e385c",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -29100,7 +29809,9 @@
         {
           "id": "21156082-5c30-4f9f-b5dc-f9763d85a4db",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -29181,7 +29892,9 @@
         {
           "id": "a8d0553a-2d4d-4204-b165-cac59741ab67",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -29262,7 +29975,9 @@
         {
           "id": "c5164a49-b5e6-4abb-92a1-4580c4191aac",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -29343,7 +30058,9 @@
         {
           "id": "1e22fb48-7229-4a08-a01f-30d978b97a3d",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -29424,7 +30141,9 @@
         {
           "id": "cb6e8622-3cbc-48dd-bc04-42876e9f8f4a",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -29505,7 +30224,9 @@
         {
           "id": "acd66bb0-3e37-4e77-b7f2-42094b9e11dd",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -29586,7 +30307,9 @@
         {
           "id": "a5aad870-9238-4d0d-9f49-7540657923d6",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -29667,7 +30390,9 @@
         {
           "id": "3c74670c-04f3-4461-a713-458aaa96c549",
           "amount": 37.5,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -29748,7 +30473,9 @@
         {
           "id": "43cdfa8b-cee4-4698-b210-8e12118db11f",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -29829,7 +30556,9 @@
         {
           "id": "a485da65-b246-498b-81dc-baccec4e430a",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -29910,7 +30639,9 @@
         {
           "id": "5e4bc685-d369-4e1c-a0f0-57c1a7fc1535",
           "amount": 37.5,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -29991,7 +30722,9 @@
         {
           "id": "9b270577-eb8a-4e68-a73d-84256daf2dc6",
           "amount": 37.5,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -30072,7 +30805,9 @@
         {
           "id": "d3f768ff-7bfb-4fa4-a800-2966e69a23d9",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -30153,7 +30888,9 @@
         {
           "id": "de839412-bf5b-43d3-ac53-c6105da98569",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -30234,7 +30971,9 @@
         {
           "id": "90ec3dde-65e9-4bf0-9190-53abe0ebe01c",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -30315,7 +31054,9 @@
         {
           "id": "97093a28-3c60-4f43-97d6-ec42d5ba50ed",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -30396,7 +31137,9 @@
         {
           "id": "81fbe1a1-a7e1-4af1-b36d-2bcd6eab8c8c",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -30477,7 +31220,9 @@
         {
           "id": "331b51e7-9b3c-4463-ac13-2ded5d1e73a9",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -30558,7 +31303,9 @@
         {
           "id": "57c7495c-5cee-44ca-9ad7-8d3bb06c2a99",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -30639,7 +31386,9 @@
         {
           "id": "14f6daec-1de6-4408-b967-cf5ff55f347a",
           "amount": 37.5,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -30720,7 +31469,9 @@
         {
           "id": "415b73ef-80c7-4712-b95a-12bbca571f5c",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -30801,7 +31552,9 @@
         {
           "id": "e2ec29de-718a-4b96-ac23-89ea66e0f523",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -30882,7 +31635,9 @@
         {
           "id": "b2500fcd-c105-4985-acf5-94f053c877b6",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -30963,7 +31718,9 @@
         {
           "id": "686e7ee4-49a6-48e7-83b1-a7029e1a80b1",
           "amount": 90,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -31044,7 +31801,9 @@
         {
           "id": "48ef757c-2e75-4f3c-9ef8-69aad6e93d07",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -31125,7 +31884,9 @@
         {
           "id": "c1439b23-8978-4c13-adc4-6c26db3a5876",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -31206,7 +31967,9 @@
         {
           "id": "49a75040-d4e7-4c1f-8d0c-ff3f6514f024",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -31287,7 +32050,9 @@
         {
           "id": "ce64c764-84f4-4211-aab8-a0e03155ac0f",
           "amount": 60,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -31368,7 +32133,9 @@
         {
           "id": "0fe04438-8679-4dfb-a6bf-c91b3c6041af",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -31449,7 +32216,9 @@
         {
           "id": "2dd5991c-7e72-4a8e-a7ee-f7f94b905b9b",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -31530,7 +32299,9 @@
         {
           "id": "52560f64-8a5f-4c98-a484-9dc8a0a0d313",
           "amount": 37.5,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -31611,7 +32382,9 @@
         {
           "id": "57eba506-9d58-48c5-8b4d-c8d5e3038f0a",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -31692,7 +32465,9 @@
         {
           "id": "3f9f1fb6-f73a-43c3-805e-c379f3b87241",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -31773,7 +32548,9 @@
         {
           "id": "7ac8a33f-4072-46d0-931d-834675a0bd63",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -31854,7 +32631,9 @@
         {
           "id": "1f5b1472-1b5e-4208-9cf7-e74e1f8e3a76",
           "amount": 60,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -31935,7 +32714,9 @@
         {
           "id": "a1f7dc60-8882-4851-996f-5c63d4031635",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -32016,7 +32797,9 @@
         {
           "id": "1aea2b31-ab5a-4455-a1d7-51e250c6af08",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -32097,7 +32880,9 @@
         {
           "id": "30246ace-03ce-4385-85ee-23cb53a3ba4a",
           "amount": 37.5,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -32178,7 +32963,9 @@
         {
           "id": "1627cbbb-d056-4faa-b16f-6baa85ea88b6",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -32259,7 +33046,9 @@
         {
           "id": "f246250e-74d8-4b06-8c18-84b4d99317ee",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -32340,7 +33129,9 @@
         {
           "id": "82566440-01a9-4d53-aa4c-3a59425df728",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -32421,7 +33212,9 @@
         {
           "id": "6a719d80-e93d-48f2-ae75-ca52e44d9891",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -32502,7 +33295,9 @@
         {
           "id": "8475c76c-cbe3-4747-8ec0-3712e2b78748",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -32583,7 +33378,9 @@
         {
           "id": "3fab8386-d6a8-44a3-b363-52407528457c",
           "amount": 90,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -32664,7 +33461,9 @@
         {
           "id": "2645fcf3-1fb6-42a7-8cdd-27f3b24e35af",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -32745,7 +33544,9 @@
         {
           "id": "ef89d727-84eb-401f-9a70-2a2373acf3dd",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -32826,7 +33627,9 @@
         {
           "id": "4541d293-ff0d-43a1-a144-ce972ad0d666",
           "amount": 75,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -32907,7 +33710,9 @@
         {
           "id": "4c5f89e3-b4a2-4fc7-8490-fcc0093f72c8",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -32988,7 +33793,9 @@
         {
           "id": "7d7b0312-813a-419f-83a7-1eb38f434778",
           "amount": 60,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -33069,7 +33876,9 @@
         {
           "id": "c94d7055-3019-487a-ae95-ef7f0a3713ef",
           "amount": 120,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -33150,7 +33959,9 @@
         {
           "id": "025f8b30-49b0-450b-a7c2-8db1d1f7ba3b",
           "amount": 120,
-          "method": "Tarjeta"
+          "method": "Tarjeta",
+          "tipo": "Web",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -33231,7 +34042,9 @@
         {
           "id": "cc3f0a37-8fd2-426c-9d91-374a938fe82c",
           "amount": 75,
-          "method": "Bizum"
+          "method": "Bizum",
+          "tipo": "Efectivo",
+          "estado": "pendiente"
         }
       ],
       "resumenItems": [
@@ -33312,7 +34125,9 @@
         {
           "id": "90bb6769-d084-4012-8343-5253536773dc",
           "amount": 90,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -33393,7 +34208,9 @@
         {
           "id": "c8962a14-81cb-432b-bb54-9559518913e0",
           "amount": 75,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -33474,7 +34291,9 @@
         {
           "id": "7fa80ac3-b031-4aa6-8612-4a96de04522a",
           "amount": 120,
-          "method": "Efectivo"
+          "method": "Efectivo",
+          "tipo": "Local",
+          "estado": "confirmado"
         }
       ],
       "resumenItems": [
@@ -36715,62 +37534,439 @@
     }
   ],
   "paymentsCajaChica": [
+  {
+    "fecha": "2025-06-06-10:00",
+    "concepto": "Reposición de llaves",
+    "cantidad": "-7.66",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-06-18:45",
+    "concepto": "Merienda individual",
+    "cantidad": "55.18",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-06-17:00",
+    "concepto": "Escape Room + Fotos",
+    "cantidad": "54.51",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-07-15:30",
+    "concepto": "Compra de snacks",
+    "cantidad": "-24.36",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-07-10:15",
+    "concepto": "Merienda individual",
+    "cantidad": "44.63",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-07-19:45",
+    "concepto": "Entrada Escape Room Básico",
+    "cantidad": "105.00",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-07-18:15",
+    "concepto": "Pago a monitor",
+    "cantidad": "-27.16",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-08-19:15",
+    "concepto": "Reposición de vasos",
+    "cantidad": "-5.93",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-08-20:15",
+    "concepto": "Escape + Merienda",
+    "cantidad": "48.37",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-08-11:30",
+    "concepto": "Entrada Escape Room Extremo",
+    "cantidad": "115.16",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-08-16:15",
+    "concepto": "Pack Amigos",
+    "cantidad": "86.34",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-09-12:00",
+    "concepto": "Escape Room + Fotos",
+    "cantidad": "66.80",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-09-16:30",
+    "concepto": "Compra de snacks",
+    "cantidad": "-11.61",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-09-11:15",
+    "concepto": "Merienda individual",
+    "cantidad": "108.30",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-09-10:00",
+    "concepto": "Entrada Escape Room Extremo",
+    "cantidad": "76.05",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-10-19:15",
+    "concepto": "Entrada Escape Room Básico",
+    "cantidad": "112.20",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-10-14:00",
+    "concepto": "Escape + Merienda",
+    "cantidad": "45.84",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-10-12:30",
+    "concepto": "Entrada Escape Room Básico",
+    "cantidad": "92.41",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-11-11:15",
+    "concepto": "Merienda individual",
+    "cantidad": "106.29",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-11-20:00",
+    "concepto": "Entrada Escape Room Básico",
+    "cantidad": "101.48",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-11-13:30",
+    "concepto": "Entrada Escape Room Básico",
+    "cantidad": "100.17",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-12-17:45",
+    "concepto": "Merienda individual",
+    "cantidad": "97.52",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-12-10:30",
+    "concepto": "Compra de snacks",
+    "cantidad": "-15.55",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-12-20:30",
+    "concepto": "Escape Room + Fotos",
+    "cantidad": "96.08",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-12-13:45",
+    "concepto": "Suministros varios",
+    "cantidad": "-14.33",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-13-11:15",
+    "concepto": "Merienda individual",
+    "cantidad": "82.80",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-13-16:15",
+    "concepto": "Impresión de flyers",
+    "cantidad": "-9.68",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-13-16:30",
+    "concepto": "Pack Merienda",
+    "cantidad": "54.53",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-13-10:00",
+    "concepto": "Escape + Merienda",
+    "cantidad": "94.05",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-14-12:30",
+    "concepto": "Pack Merienda",
+    "cantidad": "114.82",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-14-17:15",
+    "concepto": "Pack Amigos",
+    "cantidad": "54.63",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-14-19:00",
+    "concepto": "Experiencia completa",
+    "cantidad": "44.04",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-15-14:00",
+    "concepto": "Experiencia completa",
+    "cantidad": "45.91",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-15-13:15",
+    "concepto": "Merienda individual",
+    "cantidad": "84.40",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-15-16:00",
+    "concepto": "Pack Merienda",
+    "cantidad": "93.35",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-16-16:15",
+    "concepto": "Compra de snacks",
+    "cantidad": "-24.23",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-16-16:00",
+    "concepto": "Pack Pareja",
+    "cantidad": "47.39",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-16-12:30",
+    "concepto": "Escape + Merienda",
+    "cantidad": "117.38",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-16-12:30",
+    "concepto": "Pack Amigos",
+    "cantidad": "80.48",
+    "tipo": "Efectivo",
+    "parcial": null
+  },
+  {
+    "fecha": "2025-06-16-16:45",
+    "concepto": "Entrada Familiar",
+    "cantidad": "46.47",
+    "tipo": "Efectivo",
+    "parcial": null
+  }
+],
+  "comentarios": [
     {
-      "cantidad": "120",
-      "concepto": "sofia",
-      "fecha": "2025-05-28",
-      "parcial": "",
-      "tipo": "Manual",
-      "id": 1
+      "descripcion": "prueba",
+      "fecha": "2025-05-28 08:04",
+      "id": "8cf9c10f-131a-4896-916f-a1f4a428c5d1",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
     },
     {
-      "cantidad": "50",
-      "concepto": "reserva andrea",
-      "fecha": "2025-06-05",
-      "parcial": "",
-      "tipo": "Manual",
-      "id": 2
-    }
-  ],
-  "bloqueos": [
-    {
-      "fin": "2025-06-03 20:00",
-      "id": "53431168-4768-46d1-81b1-5aa73ec73064",
-      "inicio": "2025-06-03 13:00",
-      "motivo": "cerrado",
-      "salas": [
-        "Sala 1",
-        "Sala 2",
-        "Sala 3",
-        "Sala 4",
-        "Sala 5",
-        "Sala 6",
-        "Sala 7",
-        "Sala 8"
-      ],
-      "tipo": "franja"
+      "descripcion": "prueba 2",
+      "fecha": "2025-05-28 08:06",
+      "id": "7c6838ff-da0a-4adc-9076-f74c6c3636c7",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
     },
     {
-      "fin": "2025-06-03 13:00",
-      "id": "8ff03d37-bcdc-4818-affb-35caa8160d4f",
-      "inicio": "2025-06-03 12:00",
-      "motivo": "k",
-      "salas": [
-        "Sala 3",
-        "Sala 4"
-      ],
-      "tipo": "franja"
+      "descripcion": "prueba 3",
+      "fecha": "2025-05-28 08:06",
+      "id": "92ee5067-10ee-4e35-bc91-e0edf95d1921",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
     },
     {
-      "fin": "2025-06-03 13:00",
-      "id": "d37a6125-cee6-4f24-8c84-0c17584a9732",
-      "inicio": "2025-06-03 12:00",
-      "motivo": "cerrado",
-      "salas": [
-        "Sala 5",
-        "Sala 6"
-      ],
-      "tipo": "franja"
+      "descripcion": "hacha rota sala 1",
+      "fecha": "2025-05-28 10:08",
+      "id": "1a5109f7-ffe1-402b-bc44-05211e272e1c",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 4",
+      "fecha": "2025-05-28 10:09",
+      "id": "b806cc32-7e74-48d2-bfed-ea8a04354039",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 5",
+      "fecha": "2025-05-28 10:09",
+      "id": "96c4179a-73ed-4b60-8dc8-d79e04b1394c",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 1 dia 27",
+      "fecha": "2025-05-28 08:33",
+      "id": "d740e438-2878-41a3-8627-d8fffff4a98d",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 2 dia 27",
+      "fecha": "2025-05-27 08:36",
+      "id": "4c8da3e8-b144-4e43-8814-6a52982c3a51",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "diana rota sala 1",
+      "fecha": "2025-05-24 09:53",
+      "id": "6a0b848b-c90d-4fc1-b8f1-78692fac064a",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "diana arreglada sala 1",
+      "fecha": "2025-05-24 09:54",
+      "id": "7c3a5c27-4948-4927-9fae-170dc4fd2378",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "diana 1 arreglada",
+      "fecha": "2025-05-27 09:56",
+      "id": "1cfbb319-8db0-43be-9ec7-5267cffc66be",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 3",
+      "fecha": "2025-05-27 10:00",
+      "id": "7dfe167b-3a6b-469a-9fbf-2244eddf0348",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba ",
+      "fecha": "2025-05-26 10:02",
+      "id": "0005db5d-0ddd-44fb-819a-c5b6fd33add2",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 2",
+      "fecha": "2025-05-26 10:03",
+      "id": "be4678fc-9304-4176-9d1f-ec55b4918b6b",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 3",
+      "fecha": "2025-05-26 10:18",
+      "id": "7fae0cfb-9dfe-486d-93d9-eb3021e55872",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "prueba 4",
+      "fecha": "2025-05-26 10:23",
+      "id": "66558e5b-9386-4282-8791-fb080e0d9594",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "hacha rota sala 1",
+      "fecha": "2025-05-29 06:11",
+      "id": "4570e48d-1edf-4520-b022-5062e0899be2",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "hacha rota sala 3",
+      "fecha": "2025-06-05 06:24",
+      "id": "e5eb17c3-b22b-4d10-bb4a-005a6f55cdca",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
+    },
+    {
+      "descripcion": "hacha rota sala 3",
+      "fecha": "2025-06-06 06:34",
+      "id": "a3e75a07-27f7-4919-bf3d-a7543686a549",
+      "nombreUsuario": "Sergio Gómez",
+      "tipo": "Comentario",
+      "userId": 1
     }
   ]
 }

@@ -21,6 +21,15 @@
     <color name="verde_item_caja_chica">#09672e</color>
     <color name="btn_detalles">#555555</color>
 
+    <color name="fondo_caja">#2196F3</color>
+    <color name="letras_caja">#FFFFFF</color>
+    <color name="detalles_caja">#FFC107</color>
+
+    <color name="verde_estado">#4CAF50</color>
+    <color name="texto_principal">#212121</color>
+    <color name="texto_secundario">#757575</color>
+
+
     <!-- Colores recycler listado-->
     <color name="verde_confirmado">#91C282</color>
     <color name="verde_recycler">#d8ead2</color>

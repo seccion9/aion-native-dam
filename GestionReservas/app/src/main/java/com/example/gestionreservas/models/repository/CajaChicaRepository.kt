@@ -1,6 +1,7 @@
 package com.example.gestionreservas.models.repository
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.PagoCaja
@@ -10,9 +11,10 @@ import java.time.LocalDate
 
 class CajaChicaRepository(private val retrofit: RetrofitFakeInstance) {
 
-    suspend fun obtenerPagosDelDia(token: String, fecha: String): List<PagoCajaChica> {
+    suspend fun obtenerPagosDelDia(token: String, fecha: String): List<PagoCaja> {
         val response = retrofit.apiFake.getPagosCajaDia(token, fecha)
         if (response.isSuccessful) {
+
             return response.body() ?: emptyList()
         } else {
             throw Exception("Error HTTP ${response.code()}")
@@ -36,11 +38,6 @@ class CajaChicaRepository(private val retrofit: RetrofitFakeInstance) {
         }
     }
 
-    fun transformarPagosCajaApi(pagos: List<PagoCajaChica>): List<PagoCaja> {
-        return pagos.map {
-            PagoCaja(it.fecha, it.concepto, it.cantidad.toString(), it.tipo, "")
-        }
-    }
     suspend fun registrarPagoCajaChica(token: String, pago: PagoCaja): Boolean {
         return try {
             val response = retrofit.apiFake.registrarPagoCajaChica("Bearer $token", pago)

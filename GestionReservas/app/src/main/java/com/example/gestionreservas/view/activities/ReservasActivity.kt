@@ -22,12 +22,12 @@ import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.ActivityReservasBinding
 import com.example.gestionreservas.background.CheckReservasWorker
 import com.example.gestionreservas.view.fragment.CajaChicaFragment
+import com.example.gestionreservas.view.fragment.PagosFragment
 import com.example.gestionreservas.view.fragment.CalendarioFragmentDiario
 import com.example.gestionreservas.view.fragment.ComentariosFragment
 import com.example.gestionreservas.view.fragment.ConfiguracionFragment
 import com.example.gestionreservas.view.fragment.HomeFragment
 import com.example.gestionreservas.view.fragment.ListadoFragment
-import com.example.gestionreservas.view.fragment.MailingFragment
 import java.util.concurrent.TimeUnit
 
 class ReservasActivity : AppCompatActivity() {
@@ -80,8 +80,8 @@ class ReservasActivity : AppCompatActivity() {
                 R.id.calendario -> {
                     replaceFragment(CalendarioFragmentDiario())
                 }
-                R.id.cajaChica ->{
-                    replaceFragment(CajaChicaFragment())
+                R.id.pagos ->{
+                    replaceFragment(PagosFragment())
                 }
                 R.id.comentarios ->{
                     replaceFragment(ComentariosFragment())
@@ -90,6 +90,9 @@ class ReservasActivity : AppCompatActivity() {
                 /*R.id.mailing -> {
                     replaceFragment(MailingFragment())
                 }*/
+                R.id.cajaChica ->{
+                    replaceFragment(CajaChicaFragment())
+                }
                 R.id.configuracion ->{
                     replaceFragment(ConfiguracionFragment())
                 }

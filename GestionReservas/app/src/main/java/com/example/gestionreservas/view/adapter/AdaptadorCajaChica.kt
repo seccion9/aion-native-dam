@@ -4,39 +4,29 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionreservas.R
-import com.example.gestionreservas.models.entity.Compra
-import com.example.gestionreservas.models.entity.PagoCajaChica
+import com.example.gestionreservas.models.entity.PagoCaja
 import com.example.gestionreservas.models.entity.SesionConCompra
+import com.example.gestionreservas.view.adapter.AdaptadorPagos.MyHolder
 
 class AdaptadorCajaChica(
-    private var context: Context,
-    private var listaPagos: List<PagoCajaChica>,
-    private val mapaPagosACompras: Map<String, Compra>
-) : RecyclerView.Adapter<AdaptadorCajaChica.MyHolder>() {
-    private val itemsDesplegados = mutableSetOf<Int>()
-    class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var concepto = itemView.findViewById<TextView>(R.id.tvConcepto)
-        var fecha = itemView.findViewById<TextView>(R.id.tvFecha)
-        var pago = itemView.findViewById<TextView>(R.id.tvCantidadPago)
-        var metodoPago = itemView.findViewById<TextView>(R.id.tvTipoPago)
-        var linearContenedor=itemView.findViewById<LinearLayout>(R.id.linearContenedorItemsDesplegables)
+    private val context: Context,
+    private var listaPagos: List<PagoCaja>,
+) :RecyclerView.Adapter<AdaptadorCajaChica.MyHolder>(){
 
-        var tvNombre = itemView.findViewById<TextView>(R.id.tvDesplegableNombreCliente)
-        var tvTelefono = itemView.findViewById<TextView>(R.id.tvDesplegableTelefono)
-        var tvExperiencia = itemView.findViewById<TextView>(R.id.tvDesplegableExperiencia)
-        var tvFechaSesion = itemView.findViewById<TextView>(R.id.tvDesplegableFechaSesion)
-        var tvEstado = itemView.findViewById<TextView>(R.id.tvDesplegableEstadoSesion)
-        var tvIidoma=itemView.findViewById<TextView>(R.id.tvDesplegableIdiomaSesion)
+    class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var concepto=itemView.findViewById<TextView>(R.id.tvConceptoPago)
+        var cantidad=itemView.findViewById<TextView>(R.id.tvCantidadPago)
+        var fecha=itemView.findViewById<TextView>(R.id.tvFechaPago)
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val vista =
-            LayoutInflater.from(context).inflate(R.layout.item_recycler_caja_chica, parent, false)
+            LayoutInflater.from(context).inflate(R.layout.pagos_caja_chica_item, parent, false)
         return MyHolder(vista)
     }
 
@@ -46,41 +36,18 @@ class AdaptadorCajaChica(
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         val item = listaPagos[position]
+
         holder.concepto.text = item.concepto
         holder.fecha.text = item.fecha
-        holder.pago.text = "${item.cantidad}€"
-        holder.metodoPago.text = item.tipo
 
-        val compra = mapaPagosACompras[item.id]
+        val cantidadFloat = item.cantidad.toFloatOrNull() ?: 0f
+        holder.cantidad.text = "%.2f€".format(cantidadFloat)
 
-        // Mostrar info si está desplegado
-        val desplegado = itemsDesplegados.contains(position)
-        holder.linearContenedor.visibility = if (desplegado) View.VISIBLE else View.GONE
-        //Si la compra no es nula le asigna los datos a los textview
-        compra?.let {
-            holder.tvNombre.text = "${it.name}" ?: "Desconocido"
-            holder.tvTelefono.text = "${it.phone}" ?: "Desconocido"
-            holder.tvExperiencia.text = "${it.resumenItems?.last()?.id_experience}" ?: "Desconocido"
-            holder.tvFechaSesion.text = "${it.fechaCompra}" ?: "Desconocido"
-            holder.tvEstado.text = "${it.status }" ?: "Desconocido"
-            holder.tvIidoma.text="${it.language}" ?: "Desconocido"
+        when {
+            cantidadFloat < 0 -> holder.cantidad.setTextColor(ContextCompat.getColor(context, R.color.pago_no_pagada))
+            cantidadFloat > 0 -> holder.cantidad.setTextColor(ContextCompat.getColor(context, R.color.verdeItemsReservas))
+            else -> holder.cantidad.setTextColor(ContextCompat.getColor(context, R.color.texto_secundario))
         }
-
-        // Listener para mostrar detalles
-        holder.itemView.setOnClickListener {
-            if (desplegado) {
-                itemsDesplegados.remove(position)
-            } else {
-                itemsDesplegados.add(position)
-            }
-            notifyItemChanged(position)
-        }
-    }
-
-    fun actualizarLista(nuevaLista: List<PagoCajaChica>) {
-        listaPagos = nuevaLista
-        itemsDesplegados.clear()
-        notifyDataSetChanged()
     }
 
 }

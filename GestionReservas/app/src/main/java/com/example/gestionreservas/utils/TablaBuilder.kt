@@ -50,7 +50,7 @@ object TablaBuilder {
 
     fun construirTablaPagos(tabla: TableLayout, pagos: List<PagoCaja>, context: Context) {
         tabla.removeAllViews()
-        var totalParcial = 0
+        var totalParcial = 0.00
         val filaCabecera = TableRow(context)
 
         val titulos = listOf("Fecha", "Concepto", "Cantidad", "Tipo", "Total Parcial")
@@ -60,16 +60,22 @@ object TablaBuilder {
         tabla.addView(filaCabecera)
 
         pagos.forEach { pago ->
+            val cantidadNum = pago.cantidad
+                .replace("€", "")
+                .replace(",", ".")
+                .replace(" ", "")
+                .toDoubleOrNull() ?: 0.0
             val fila = TableRow(context)
-            val cantidadNum = pago.cantidad.replace("€", "").replace(",", ".").trim().toDouble()
-            totalParcial += cantidadNum.toInt()
-            val totalString = "$totalParcial €"
+
+            totalParcial += cantidadNum
+
+            val totalFormateado = String.format("%.2f€", totalParcial)
 
             fila.addView(crearCelda(context, pago.fecha))
             fila.addView(crearCelda(context, pago.concepto))
             fila.addView(crearCelda(context, pago.cantidad))
             fila.addView(crearCelda(context, pago.tipo))
-            fila.addView(crearCelda(context, totalString))
+            fila.addView(crearCelda(context, totalFormateado))
 
             aplicarFondoClickable(context, fila)
             tabla.addView(fila)
