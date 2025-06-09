@@ -60,7 +60,7 @@ class PagosViewModel(
                     .filter { it.cantidad > 0 }
                     .map { pagoCaja ->
                         PagoReserva(
-                            id = pagoCaja.id,
+                            id = pagoCaja.id ?: "sin_id",
                             fecha = pagoCaja.fecha,
                             concepto = pagoCaja.concepto,
                             cantidad = pagoCaja.cantidad,
@@ -70,6 +70,7 @@ class PagosViewModel(
                             estado = "confirmado"
                         )
                     }
+
 
                 val listaCompras= compraRepository.obtenerCompras(token)
                 var pagosDesdeCompras =generarPagosConCompras(listaCompras)

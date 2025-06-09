@@ -37534,287 +37534,334 @@
     }
   ],
   "paymentsCajaChica": [
-  {
-    "fecha": "2025-06-06-10:00",
-    "concepto": "Reposición de llaves",
-    "cantidad": "-7.66",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-06-18:45",
-    "concepto": "Merienda individual",
-    "cantidad": "55.18",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-06-17:00",
-    "concepto": "Escape Room + Fotos",
-    "cantidad": "54.51",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-07-15:30",
-    "concepto": "Compra de snacks",
-    "cantidad": "-24.36",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-07-10:15",
-    "concepto": "Merienda individual",
-    "cantidad": "44.63",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-07-19:45",
-    "concepto": "Entrada Escape Room Básico",
-    "cantidad": "105.00",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-07-18:15",
-    "concepto": "Pago a monitor",
-    "cantidad": "-27.16",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-08-19:15",
-    "concepto": "Reposición de vasos",
-    "cantidad": "-5.93",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-08-20:15",
-    "concepto": "Escape + Merienda",
-    "cantidad": "48.37",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-08-11:30",
-    "concepto": "Entrada Escape Room Extremo",
-    "cantidad": "115.16",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-08-16:15",
-    "concepto": "Pack Amigos",
-    "cantidad": "86.34",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-09-12:00",
-    "concepto": "Escape Room + Fotos",
-    "cantidad": "66.80",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-09-16:30",
-    "concepto": "Compra de snacks",
-    "cantidad": "-11.61",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-09-11:15",
-    "concepto": "Merienda individual",
-    "cantidad": "108.30",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-09-10:00",
-    "concepto": "Entrada Escape Room Extremo",
-    "cantidad": "76.05",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-10-19:15",
-    "concepto": "Entrada Escape Room Básico",
-    "cantidad": "112.20",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-10-14:00",
-    "concepto": "Escape + Merienda",
-    "cantidad": "45.84",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-10-12:30",
-    "concepto": "Entrada Escape Room Básico",
-    "cantidad": "92.41",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-11-11:15",
-    "concepto": "Merienda individual",
-    "cantidad": "106.29",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-11-20:00",
-    "concepto": "Entrada Escape Room Básico",
-    "cantidad": "101.48",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-11-13:30",
-    "concepto": "Entrada Escape Room Básico",
-    "cantidad": "100.17",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-12-17:45",
-    "concepto": "Merienda individual",
-    "cantidad": "97.52",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-12-10:30",
-    "concepto": "Compra de snacks",
-    "cantidad": "-15.55",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-12-20:30",
-    "concepto": "Escape Room + Fotos",
-    "cantidad": "96.08",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-12-13:45",
-    "concepto": "Suministros varios",
-    "cantidad": "-14.33",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-13-11:15",
-    "concepto": "Merienda individual",
-    "cantidad": "82.80",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-13-16:15",
-    "concepto": "Impresión de flyers",
-    "cantidad": "-9.68",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-13-16:30",
-    "concepto": "Pack Merienda",
-    "cantidad": "54.53",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-13-10:00",
-    "concepto": "Escape + Merienda",
-    "cantidad": "94.05",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-14-12:30",
-    "concepto": "Pack Merienda",
-    "cantidad": "114.82",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-14-17:15",
-    "concepto": "Pack Amigos",
-    "cantidad": "54.63",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-14-19:00",
-    "concepto": "Experiencia completa",
-    "cantidad": "44.04",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-15-14:00",
-    "concepto": "Experiencia completa",
-    "cantidad": "45.91",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-15-13:15",
-    "concepto": "Merienda individual",
-    "cantidad": "84.40",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-15-16:00",
-    "concepto": "Pack Merienda",
-    "cantidad": "93.35",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-16-16:15",
-    "concepto": "Compra de snacks",
-    "cantidad": "-24.23",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-16-16:00",
-    "concepto": "Pack Pareja",
-    "cantidad": "47.39",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-16-12:30",
-    "concepto": "Escape + Merienda",
-    "cantidad": "117.38",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-16-12:30",
-    "concepto": "Pack Amigos",
-    "cantidad": "80.48",
-    "tipo": "Efectivo",
-    "parcial": null
-  },
-  {
-    "fecha": "2025-06-16-16:45",
-    "concepto": "Entrada Familiar",
-    "cantidad": "46.47",
-    "tipo": "Efectivo",
-    "parcial": null
-  }
-],
+    {
+      "fecha": "2025-06-06 10:00",
+      "concepto": "Reposición de llaves",
+      "cantidad": "-7.66",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "2e28dba4-5968-48a0-a02a-382f7c4b72e0"
+    },
+    {
+      "fecha": "2025-06-06 18:45",
+      "concepto": "Merienda individual",
+      "cantidad": "55.18",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "0cb73e40-7294-4895-bac6-ec1f6af8ab19"
+    },
+    {
+      "fecha": "2025-06-06 17:00",
+      "concepto": "Escape Room + Fotos",
+      "cantidad": "54.51",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "747124b1-8533-4587-999c-2488d35cf27a"
+    },
+    {
+      "fecha": "2025-06-07 15:30",
+      "concepto": "Compra de snacks",
+      "cantidad": "-24.36",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "e36ac61a-03a6-45a2-bac6-b8f2fa0a7fad"
+    },
+    {
+      "fecha": "2025-06-07-10:15",
+      "concepto": "Merienda individual",
+      "cantidad": "44.63",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "c66a94ef-844f-4f8b-8816-c24495ded420"
+    },
+    {
+      "fecha": "2025-06-07 19:45",
+      "concepto": "Entrada Escape Room Básico",
+      "cantidad": "105.00",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "3d55cbc4-5a82-47bb-be36-51f4b6539fd4"
+    },
+    {
+      "fecha": "2025-06-07 18:15",
+      "concepto": "Pago a monitor",
+      "cantidad": "-27.16",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "8b635399-c9ec-46a5-805f-f443bad3be8d"
+    },
+    {
+      "fecha": "2025-06-08 19:15",
+      "concepto": "Reposición de vasos",
+      "cantidad": "-5.93",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "182fe0e6-0815-4a5e-8063-1781843b88e2"
+    },
+    {
+      "fecha": "2025-06-08 20:15",
+      "concepto": "Escape + Merienda",
+      "cantidad": "48.37",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "159d2d92-f0ed-4467-b68d-9f78ec96ad0b"
+    },
+    {
+      "fecha": "2025-06-08 11:30",
+      "concepto": "Entrada Escape Room Extremo",
+      "cantidad": "115.16",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "d7716594-5971-480c-89b8-f7d14e612d2d"
+    },
+    {
+      "fecha": "2025-06-08 16:15",
+      "concepto": "Pack Amigos",
+      "cantidad": "86.34",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "8bade22b-17d3-4705-9d88-70b92b8ebd47"
+    },
+    {
+      "fecha": "2025-06-09 12:00",
+      "concepto": "Escape Room + Fotos",
+      "cantidad": "66.80",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "bc52d762-793d-4188-8c59-a58d13132372"
+    },
+    {
+      "fecha": "2025-06-09-16:30",
+      "concepto": "Compra de snacks",
+      "cantidad": "-11.61",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "b8b34056-6e11-4ac1-b370-fc1b4a00df27"
+    },
+    {
+      "fecha": "2025-06-09 11:15",
+      "concepto": "Merienda individual",
+      "cantidad": "108.30",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "e0827c5c-88f3-4e85-a0f5-f5aae66a7025"
+    },
+    {
+      "fecha": "2025-06-09 10:00",
+      "concepto": "Entrada Escape Room Extremo",
+      "cantidad": "76.05",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "7da9d4dc-a80d-4f66-aa02-9a652492d8de"
+    },
+    {
+      "fecha": "2025-06-10 19:15",
+      "concepto": "Entrada Escape Room Básico",
+      "cantidad": "112.20",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "5cf4f202-34e5-4590-bf8c-7e2a9d22360c"
+    },
+    {
+      "fecha": "2025-06-10 14:00",
+      "concepto": "Escape + Merienda",
+      "cantidad": "45.84",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "c3921bd5-a813-4838-b5b6-a87ecdc3a480"
+    },
+    {
+      "fecha": "2025-06-10 12:30",
+      "concepto": "Entrada Escape Room Básico",
+      "cantidad": "92.41",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "ecc14782-29d7-4738-bf89-a9865fa0fc71"
+    },
+    {
+      "fecha": "2025-06-11 11:15",
+      "concepto": "Merienda individual",
+      "cantidad": "106.29",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "148c917b-9e52-4b6f-9e64-4683ea340fef"
+    },
+    {
+      "fecha": "2025-06-11 20:00",
+      "concepto": "Entrada Escape Room Básico",
+      "cantidad": "101.48",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "e9a85768-2858-4245-862f-5d5496e82989"
+    },
+    {
+      "fecha": "2025-06-11 13:30",
+      "concepto": "Entrada Escape Room Básico",
+      "cantidad": "100.17",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "e02b260b-1518-4a7e-b360-de2b29be3cdf"
+    },
+    {
+      "fecha": "2025-06-12 17:45",
+      "concepto": "Merienda individual",
+      "cantidad": "97.52",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "f7c5e682-7511-450b-bb2b-1fbfa203551a"
+    },
+    {
+      "fecha": "2025-06-12 10:30",
+      "concepto": "Compra de snacks",
+      "cantidad": "-15.55",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "8ec29777-122d-469a-aa89-c62ae0b08dc4"
+    },
+    {
+      "fecha": "2025-06-12 20:30",
+      "concepto": "Escape Room + Fotos",
+      "cantidad": "96.08",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "6ce207d1-091a-47eb-9c5e-89622e4c1408"
+    },
+    {
+      "fecha": "2025-06-12 13:45",
+      "concepto": "Suministros varios",
+      "cantidad": "-14.33",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "527d9c38-766f-4eab-8818-e4fa455ba437"
+    },
+    {
+      "fecha": "2025-06-13 11:15",
+      "concepto": "Merienda individual",
+      "cantidad": "82.80",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "3f541be3-ff16-4bfb-a499-29434cd54591"
+    },
+    {
+      "fecha": "2025-06-13 16:15",
+      "concepto": "Impresión de flyers",
+      "cantidad": "-9.68",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "736a9dcd-01e8-4bae-861f-cfade03cf6f3"
+    },
+    {
+      "fecha": "2025-06-13 16:30",
+      "concepto": "Pack Merienda",
+      "cantidad": "54.53",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "f8636d76-bf64-4b47-b32f-4a348c31f109"
+    },
+    {
+      "fecha": "2025-06-13 10:00",
+      "concepto": "Escape + Merienda",
+      "cantidad": "94.05",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "0488ea07-0631-4673-bce7-27bb85cefc0a"
+    },
+    {
+      "fecha": "2025-06-14 12:30",
+      "concepto": "Pack Merienda",
+      "cantidad": "114.82",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "4885d428-c0e0-4b32-ae53-f9f71d74bbc6"
+    },
+    {
+      "fecha": "2025-06-14 17:15",
+      "concepto": "Pack Amigos",
+      "cantidad": "54.63",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "cc4de28b-09e4-4c4f-a2fc-9a35f0ded28d"
+    },
+    {
+      "fecha": "2025-06-14 19:00",
+      "concepto": "Experiencia completa",
+      "cantidad": "44.04",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "b1e6ed53-ec24-4532-a3e1-722a7fca8b27"
+    },
+    {
+      "fecha": "2025-06-15 14:00",
+      "concepto": "Experiencia completa",
+      "cantidad": "45.91",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "39f04ad4-b2fa-47d4-ac3e-a4665342c7be"
+    },
+    {
+      "fecha": "2025-06-15 13:15",
+      "concepto": "Merienda individual",
+      "cantidad": "84.40",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "c41a902d-9904-483d-826d-8418bad53dfd"
+    },
+    {
+      "fecha": "2025-06-15 16:00",
+      "concepto": "Pack Merienda",
+      "cantidad": "93.35",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "1f63ea63-f64c-4ccf-92ef-bbec50af8f94"
+    },
+    {
+      "fecha": "2025-06-16 16:15",
+      "concepto": "Compra de snacks",
+      "cantidad": "-24.23",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "3647b47c-1f75-4ad3-a3df-6303c5ce32be"
+    },
+    {
+      "fecha": "2025-06-16 16:00",
+      "concepto": "Pack Pareja",
+      "cantidad": "47.39",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "434ac4c3-7294-4621-984e-1a6d66101125"
+    },
+    {
+      "fecha": "2025-06-16 12:30",
+      "concepto": "Escape + Merienda",
+      "cantidad": "117.38",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "804d9a0b-278a-43b6-8566-4eee6c06cf5b"
+    },
+    {
+      "fecha": "2025-06-16 12:30",
+      "concepto": "Pack Amigos",
+      "cantidad": "80.48",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "c3f5e6d1-937a-4265-830b-81979b218bdf"
+    },
+    {
+      "fecha": "2025-06-16 16:45",
+      "concepto": "Entrada Familiar",
+      "cantidad": "46.47",
+      "tipo": "Efectivo",
+      "parcial": null,
+      "id": "7a36d978-8c83-4610-a36c-9fb2a3ecb0fb"
+    },
+    {
+      "cantidad": "-43.55",
+      "concepto": "Recarga Bebidas",
+      "fecha": "2025-06-09 12:00",
+      "id": "e03c8eda-51db-430e-8e10-c85d1414b954",
+      "tipo": "Efectivo"
+    }
+  ],
   "comentarios": [
     {
       "descripcion": "prueba",

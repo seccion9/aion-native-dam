@@ -366,6 +366,38 @@ server.get('/api/filtrarComprasPorHora', (req, res) => {
   res.json(comprasFiltradas);
 });
 
+server.patch('/api/paymentsCajaChica/:id', (req, res) => {
+  const { id } = req.params;
+  const cambios = req.body;
+
+  const pago = router.db.get('paymentsCajaChica').find({ id }).value();
+
+  if (!pago) {
+    return res.status(404).json({ error: 'Pago no encontrado' });
+  }
+
+  const pagoActualizado = router.db.get('paymentsCajaChica')
+    .find({ id })
+    .assign(cambios)
+    .write();
+
+  res.status(200).json(pagoActualizado);
+});
+
+server.delete('/api/paymentsCajaChica/:id', (req, res) => {
+  const { id } = req.params;
+
+  const pago = router.db.get('paymentsCajaChica').find({ id }).value();
+
+  if (!pago) {
+    return res.status(404).json({ error: 'Pago no encontrado' });
+  }
+
+  router.db.get('paymentsCajaChica').remove({ id }).write();
+
+  res.status(200).json({ mensaje: `Pago ${id} eliminado correctamente` });
+});
+
 
 
 server.use(router);     // todas las colecciones con prefijo /api

@@ -1,67 +1,220 @@
 package com.example.gestionreservas.view.fragment
 
+import android.app.AlertDialog
+import android.content.Context.MODE_PRIVATE
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestionreservas.databinding.FragmentCajaChicaBinding
-import com.example.gestionreservas.models.entity.PagoCaja
+import com.example.gestionreservas.models.repository.CajaChicaRepository
+import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.view.adapter.AdaptadorCajaChica
+import com.example.gestionreservas.view.dialog.DialogoPagoCajaFragment
+import com.example.gestionreservas.viewModel.CajaChica.CajaChicaViewModel
+import com.example.gestionreservas.viewModel.CajaChica.CajaChicaViewModelFactory
+import com.google.android.material.snackbar.Snackbar
+import java.time.format.DateTimeFormatter
 
-class CajaChicaFragment : Fragment() {
+class CajaChicaFragment : Fragment(), OnClickListener {
     private lateinit var binding: FragmentCajaChicaBinding
     private lateinit var adaptadorCajaChica: AdaptadorCajaChica
-    private lateinit var listaPagos: List<PagoCaja>
+    private lateinit var viewModel: CajaChicaViewModel
+    private var accionActual: String? = null
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCajaChicaBinding.inflate(layoutInflater)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Caja Chica"
+        val cajaChicaRepository = CajaChicaRepository(RetrofitFakeInstance)
+        //Viewmodel
+        val factory = CajaChicaViewModelFactory(cajaChicaRepository)
+        viewModel = ViewModelProvider(this, factory)[CajaChicaViewModel::class.java]
+
         instancias()
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun instancias() {
-        var total = 0.0
-        val listaPagosSimulados = listOf(
-            PagoCaja("2025-06-06", "Reserva de Javier López", "75.00", "Efectivo", null),
-            PagoCaja("2025-06-06", "Compra de snacks", "-12.00", "Manual", null),
-            PagoCaja("2025-06-06", "Reserva de Lucía Fernández", "90.00", "Efectivo", null),
-            PagoCaja("2025-06-06", "Reposición de folletos", "-6.50", "Manual", null),
-            PagoCaja("2025-06-05", "Reserva de Sergio Martín", "120.00", "Tarjeta", null),
-            PagoCaja("2025-06-05", "Gasto en limpieza", "-18.00", "Manual", null),
-            PagoCaja("2025-06-05", "Reserva de Andrea Gómez", "50.00", "Efectivo", "true"),
-            PagoCaja("2025-06-05", "Reembolso parcial", "-25.00", "Manual", "true"),
-            PagoCaja("2025-06-06", "Reserva de Carlos López", "60.00", "Efectivo", null),
-            PagoCaja("2025-06-06", "Impresión carteles", "-10.00", "Manual", null),
-            PagoCaja("2025-06-06", "Reserva de Laura Díaz", "80.00", "Tarjeta", null),
-            PagoCaja("2025-06-06", "Pago monitor extra", "-30.00", "Manual", null),
-            PagoCaja("2025-06-06", "Reserva de Marco Ruiz", "100.00", "Efectivo", null),
-            PagoCaja("2025-06-06", "Suministros varios", "-8.75", "Manual", null),
-            PagoCaja("2025-06-06", "Reserva de Alicia Romero", "95.00", "Efectivo", null),
-            PagoCaja("2025-06-06", "Reserva cancelada", "-50.00", "Manual", null),
-            PagoCaja("2025-06-06", "Reserva de Enrique Navarro", "70.00", "Tarjeta", null),
-            PagoCaja("2025-06-06", "Reembolso tarjeta", "-35.00", "Manual", "true"),
-            PagoCaja("2025-06-06", "Reserva de Elena Mora", "85.00", "Efectivo", null),
-            PagoCaja("2025-06-06", "Reposición de llaves", "-15.00", "Manual", null)
-        )
-
-        // Calculamos el total de caja
-        listaPagosSimulados.forEach { pago ->
-            total += pago.cantidad.toDoubleOrNull() ?: 0.0
+        binding.btnConfirmarSeleccion.setOnClickListener(this)
+        binding.cajaChicaItem.btnCajaOpciones.setOnClickListener(this)
+        viewModel.obtenerFechaHoy()
+        //Muestra dialogo de las opciones a elegir al pinchar en menu del item de la caja aparte de instanciar
+        //el adaptador
+        adaptadorCajaChica = AdaptadorCajaChica(requireContext(), emptyList()) { pagoSeleccionado ->
+            mostrarDialogoOpciones()
         }
 
-        // Mostramos el total formateado
-        binding.cajaChicaItem.tvCajaTotal.text = String.format("%.2f€", total)
-
-        adaptadorCajaChica = AdaptadorCajaChica(requireContext(), listaPagosSimulados)
         binding.recyclerPagosCaja.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recyclerPagosCaja.adapter = adaptadorCajaChica
+        observers()
+    }
+
+    /**
+     * Observers del viewmodel para actualizar la info de la vista en tiempo real cuando el usuario va
+     * interactuando con la vista
+     */
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun observers() {
+        viewModel.pagosCajaChica.observe(viewLifecycleOwner) { pagos ->
+            adaptadorCajaChica.actualizarLista(pagos)
+            val total = pagos.sumOf { it.cantidad.toDoubleOrNull() ?: 0.0 }
+            binding.cajaChicaItem.tvCajaTotal.text = String.format("%.2f€", total)
+        }
+
+        viewModel.pagoRegistrado.observe(viewLifecycleOwner) { exito ->
+            exito?.let {
+                if (it) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Pago guardado correctamente",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(requireContext(), "Error al guardar el pago", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+                viewModel.limpiarEstadoPago()
+            }
+        }
+        viewModel.pagoEliminado.observe(viewLifecycleOwner) { exito ->
+            exito?.let {
+                if (it) {
+                    Toast.makeText(requireContext(), "Pago eliminado correctamente", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(), "Error al eliminar el pago", Toast.LENGTH_SHORT).show()
+                }
+
+                viewModel.limpiarEstadoPagoEliminado()
+            }
+        }
+
+        //Actualiza la fecha de la vista y recarga los nuevos datos
+        viewModel.fechaActual.observe(viewLifecycleOwner) { fecha ->
+            val token = "Bearer ${getTokenFromSharedPreferences()}"
+            val fechaFormateada = fecha.format(DateTimeFormatter.ISO_LOCAL_DATE)
+            viewModel.obtenerPagosCajaDia(token, fechaFormateada)
+
+            if (token != null) {
+                viewModel.obtenerPagosCajaDia(token, fechaFormateada)
+            }
+        }
+    }
+
+    //Metodo para obtener nuestro token guardado en shared preferences
+    private fun getTokenFromSharedPreferences(): String? {
+        val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", MODE_PRIVATE)
+        return sharedPreferences.getString("auth_token", null)
+    }
+
+    /**
+     * Funciones on click del fragment
+     */
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            binding.cajaChicaItem.btnCajaOpciones.id -> {
+                mostrarDialogoOpciones()
+            }
+            //Dependiendo de la opción seleccionada en el dialogo hara la opción de editar o eliminar un pago.
+            binding.btnConfirmarSeleccion.id -> {
+                val pagoSeleccionado = adaptadorCajaChica.obtenerSeleccionado()
+                if (pagoSeleccionado != null) {
+                    val token = getTokenFromSharedPreferences()
+                    when (accionActual) {
+                        //Abre un dialogo al seleccionar item de la caja y edita un pago seleccionado
+                        "editar" -> {
+                            val dialogo = DialogoPagoCajaFragment.nuevaInstanciaParaEditar(pagoSeleccionado) { pagoEditado ->
+                                viewModel.editarPago(token.toString(), pagoEditado)
+                            }
+                            dialogo.show(parentFragmentManager, "DialogoEditarPago")
+                        }
+                        //Abre un dialogo al seleccionar item de la caja y elimina un pago seleccionado
+                        "eliminar" -> {
+                            AlertDialog.Builder(requireContext())
+                                .setTitle("Confirmar eliminación")
+                                .setMessage("¿Estás seguro de que quieres eliminar este pago?")
+                                .setPositiveButton("Sí") { _, _ ->
+                                    viewModel.eliminarPago(token.toString(), pagoSeleccionado)
+                                }
+                                .setNegativeButton("Cancelar", null)
+                                .show()
+                        }
+
+                    }
+                    adaptadorCajaChica.mostrarCheckboxes(false)
+                    binding.btnConfirmarSeleccion.visibility = View.GONE
+                    accionActual = null
+                } else {
+                    mostrarSnackbar("Selecciona un pago primero")
+                }
+            }
+
+
+        }
+    }
+
+    /**
+     * Dialogo para mostrar diferentes opciones al usuario y dependiendo de la opción seleccinada la vista
+     * mostrará unas opciones u otras.
+     */
+    private fun mostrarDialogoOpciones() {
+        val opciones = arrayOf("Agregar", "Editar", "Eliminar")
+
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Selecciona una opción")
+        builder.setItems(opciones) { dialog, which ->
+            when (which) {
+                //Opcion agregar pago a través de DialogoPagoCajaFragment
+                0 -> {
+                    accionActual = null
+                    val token = "Bearer ${getTokenFromSharedPreferences() ?: ""}"
+                    val dialogo = DialogoPagoCajaFragment.nuevaInstanciaParaAgregar { nuevoPago ->
+                        viewModel.agregarPago(token, nuevoPago)
+                    }
+                    dialogo.show(parentFragmentManager, "DialogoAgregarPago")
+                }
+                //Opcion editar pago a través de DialogoPagoCajaFragment
+                1 -> {
+                    accionActual = "editar"
+                    adaptadorCajaChica.mostrarCheckboxes(true)
+                    binding.btnConfirmarSeleccion.visibility = View.VISIBLE
+                    mostrarSnackbar("Selecciona un pago para editar y pulsa Confirmar")
+                }
+                //Cambia estado check box y boton confirmación despues de eliminar pago.
+                2 -> {
+                    accionActual = "eliminar"
+                    adaptadorCajaChica.mostrarCheckboxes(true)
+                    binding.btnConfirmarSeleccion.visibility = View.VISIBLE
+                    mostrarSnackbar("Selecciona un pago para borrar y pulsa Confirmar")
+                }
+            }
+            dialog.dismiss()
+        }
+
+        builder.setNegativeButton("Cancelar") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        builder.show()
+    }
+    //Mensaje general para mostrar snackbar
+    private fun mostrarSnackbar(mensaje: String) {
+        Snackbar.make(binding.root, mensaje, Snackbar.LENGTH_SHORT).show()
     }
 
 }

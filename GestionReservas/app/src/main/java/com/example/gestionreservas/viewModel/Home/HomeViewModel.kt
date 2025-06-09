@@ -69,7 +69,11 @@ class HomeViewModel(
         val fechaFormateada = fecha.toString()
 
 
-        val nuevoPago = PagoCaja(fechaFormateada, concepto, cantidad, "Efectivo", "")
+        val nuevoPago = PagoCaja(
+            fecha = fechaFormateada, concepto = concepto, cantidad = cantidad, tipo = "Efectivo",
+            id = UUID.randomUUID().toString(),
+            parcial = ""
+        )
 
         viewModelScope.launch {
             try {

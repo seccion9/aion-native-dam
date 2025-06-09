@@ -17,13 +17,30 @@
 
     <!-- Lista de pagos -->
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginBottom="10dp"
         android:id="@+id/recyclerPagosCaja"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="@+id/cajaChicaItem"
-        app:layout_constraintTop_toBottomOf="@+id/cajaChicaItem"
+        app:layout_constraintBottom_toTopOf="@+id/btnConfirmarSeleccion"
         app:layout_constraintEnd_toEndOf="@+id/cajaChicaItem"
-        tools:layout_editor_absoluteX="10dp" />
+        app:layout_constraintStart_toStartOf="@+id/cajaChicaItem"
+        app:layout_constraintTop_toBottomOf="@+id/cajaChicaItem" />
+
+    <TextView
+        android:id="@+id/btnConfirmarSeleccion"
+        android:layout_width="match_parent"
+        android:background="@drawable/btn_borde_azul"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="Confirmar selección"
+        android:textSize="20sp"
+        android:textColor="@color/azul_app"
+        android:textAlignment="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

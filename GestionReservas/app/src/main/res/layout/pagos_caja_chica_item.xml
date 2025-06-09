@@ -9,40 +9,63 @@
     app:cardElevation="4dp"
     app:cardBackgroundColor="@android:color/white">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Cantidad -->
-        <TextView
-            android:id="@+id/tvCantidadPago"
+        <!-- CheckBox en la esquina superior derecha -->
+        <CheckBox
+            android:visibility="gone"
+            android:id="@+id/checkboxSeleccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="75.00€"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/verde_estado" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:padding="4dp" />
 
-        <!-- Concepto -->
-        <TextView
-            android:id="@+id/tvConceptoPago"
-            android:layout_width="wrap_content"
+        <!-- Contenedor vertical para datos del pago -->
+        <LinearLayout
+            android:id="@+id/contenedorTexto"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Reserva de Sergio Martín"
-            android:textSize="16sp"
-            android:textColor="@color/texto_principal"
-            android:paddingTop="4dp" />
+            android:orientation="vertical"
+            android:layout_toStartOf="@id/checkboxSeleccion"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="8dp">
 
-        <!-- Fecha -->
-        <TextView
-            android:id="@+id/tvFechaPago"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2025-06-05"
-            android:textSize="14sp"
-            android:textColor="@color/texto_secundario"
-            android:paddingTop="2dp" />
-    </LinearLayout>
+            <!-- Cantidad -->
+            <TextView
+                android:id="@+id/tvCantidadPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="75.00€"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/verde_estado" />
+
+            <!-- Concepto -->
+            <TextView
+                android:id="@+id/tvConceptoPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reserva de Sergio Martín"
+                android:textSize="16sp"
+                android:textColor="@color/texto_principal"
+                android:paddingTop="4dp" />
+
+            <!-- Fecha -->
+            <TextView
+                android:id="@+id/tvFechaPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2025-06-05"
+                android:textSize="14sp"
+                android:textColor="@color/texto_secundario"
+                android:paddingTop="2dp" />
+        </LinearLayout>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

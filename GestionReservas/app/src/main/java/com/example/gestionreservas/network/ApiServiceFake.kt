@@ -63,6 +63,10 @@ interface ApiServiceFake {
         @Body compra: Compra
     ): Response<Compra>
 
+    /**
+     * Llamadas a endpoint caja chica
+     */
+
     //Obtener los pagos del dia de la caja chica
     @GET("paymentsCajaChicaDia/{fecha}")
     suspend fun getPagosCajaDia(
@@ -76,12 +80,36 @@ interface ApiServiceFake {
         @Header("Authorization") token:String
     ):Response<List<PagoCajaChica>>
 
+    //Obtener los pagos totales de la caja chica
+    @GET("paymentsCajaChicaDia")
+    suspend fun getPagosCajaV2(
+        @Header("Authorization") token:String
+    ):Response<List<PagoCaja>>
+
     //Guardar pagos manuales caja chica
     @POST("paymentsCajaChica")
     suspend fun registrarPagoCajaChica(
         @Header("Authorization") token:String,
         @Body pagoCaja: PagoCaja
     ):Response<PagoCaja>
+
+    //Editar pago de caja
+    @PATCH("paymentsCajaChica/{id}")
+    suspend fun editarPagoCajaChica(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Body pagoCaja: PagoCaja
+    ): Response<PagoCaja>
+
+    //Eliminar pago de la api
+    @DELETE("paymentsCajaChica/{id}")
+    suspend fun eliminarPago(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Response<Unit>
+
+
+
 
     //Registrar compra en la API
     @POST("purchases")
@@ -90,17 +118,26 @@ interface ApiServiceFake {
         @Body compra:Compra
     ):Response<Compra>
 
+    /**
+     * Llamadas a endpoints de comentarios
+     */
+
+    //Registra un comentario
     @POST("comentarios")
     suspend fun registrarComentario(
         @Header("Authorization") token:String,
         @Body comentario: Comentario
     ):Response<Comentario>
-
+    //Obtiene todos los comentarios
     @GET("comentarios")
     suspend fun obtenerComentarios(
         @Header("Authorization") token: String
     ): Response<List<Comentario>>
 
+
+    /**
+     * Llamadas a endpoints bloqueos
+     */
     //Obtener bloqueos de API.
     @GET("bloqueos")
     suspend fun obtenerBloqueos(
@@ -120,6 +157,9 @@ interface ApiServiceFake {
         @Header("Authorization") token: String,
         @Query("fecha") fecha: String
     ): Response<List<Bloqueo>>
+
+
+
 
     //Borra compras de la API
     @DELETE("purchases/{id}")
