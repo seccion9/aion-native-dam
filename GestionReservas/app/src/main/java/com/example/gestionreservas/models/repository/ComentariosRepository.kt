@@ -20,5 +20,32 @@ class ComentariosRepository(private val api: ApiServiceFake) {
             emptyList()
         }
     }
+    suspend fun eliminarComentario(token: String, comentario: Comentario): Boolean {
+        return try {
+            val response = api.eliminarComentario("Bearer $token", comentario.id)
+            response.isSuccessful
+
+        } catch (e: Exception) {
+
+            Log.e("ComentariosRepository", "Excepción al borrar comentario: ${e.message}")
+            false
+        }
+    }
+    suspend fun editarComentario(token: String, comentario: Comentario): Boolean {
+        return try {
+            val response = api.editarComentario("Bearer $token", comentario.id, comentario)
+            if (response.isSuccessful) {
+                Log.d("ComentariosRepository", "Comentario editado correctamente")
+                true
+            } else {
+                Log.e("ComentariosRepository", "Error al editar: ${response.code()} - ${response.message()}")
+                false
+            }
+        } catch (e: Exception) {
+            Log.e("ComentariosRepository", "Excepción al editar comentario: ${e.message}")
+            false
+        }
+    }
+
 
 }

@@ -134,6 +134,20 @@ interface ApiServiceFake {
         @Header("Authorization") token: String
     ): Response<List<Comentario>>
 
+    //Borra un comentario
+    @DELETE("comentarios/{id}")
+    suspend fun eliminarComentario(
+        @Header("Authorization") token:String,
+        @Path("id")id:String
+    ):Response<Unit>
+
+    //Edita comentarios
+    @PATCH("comentarios/{id}")
+    suspend fun editarComentario(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Body comentario: Comentario
+    ): Response<Unit>
 
     /**
      * Llamadas a endpoints bloqueos

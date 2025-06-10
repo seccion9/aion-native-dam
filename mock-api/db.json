@@ -37862,6 +37862,38 @@
       "tipo": "Efectivo"
     }
   ],
+  "bloqueos": [
+    {
+      "id": "bloqueo-1",
+      "salas": [
+        "cal3"
+      ],
+      "tipo": "dia_entero",
+      "inicio": "2025-06-10",
+      "fin": "",
+      "motivo": "Mantenimiento preventivo"
+    },
+    {
+      "id": "bloqueo-2",
+      "salas": [
+        "cal4"
+      ],
+      "tipo": "franja",
+      "inicio": "2025-06-10 13:00",
+      "fin": "2025-06-10 14:00",
+      "motivo": "Actividad externa"
+    },
+    {
+      "id": "bloqueo-3",
+      "salas": [
+        "cal5"
+      ],
+      "tipo": "franja",
+      "inicio": "2025-06-11 16:00",
+      "fin": "2025-06-11 17:00",
+      "motivo": "Fallo eléctrico"
+    }
+  ],
   "comentarios": [
     {
       "descripcion": "prueba",
@@ -37896,22 +37928,6 @@
       "userId": 1
     },
     {
-      "descripcion": "prueba 4",
-      "fecha": "2025-05-28 10:09",
-      "id": "b806cc32-7e74-48d2-bfed-ea8a04354039",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "prueba 5",
-      "fecha": "2025-05-28 10:09",
-      "id": "96c4179a-73ed-4b60-8dc8-d79e04b1394c",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
       "descripcion": "prueba 1 dia 27",
       "fecha": "2025-05-28 08:33",
       "id": "d740e438-2878-41a3-8627-d8fffff4a98d",
@@ -37936,14 +37952,6 @@
       "userId": 1
     },
     {
-      "descripcion": "diana arreglada sala 1",
-      "fecha": "2025-05-24 09:54",
-      "id": "7c3a5c27-4948-4927-9fae-170dc4fd2378",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
       "descripcion": "diana 1 arreglada",
       "fecha": "2025-05-27 09:56",
       "id": "1cfbb319-8db0-43be-9ec7-5267cffc66be",
@@ -37963,14 +37971,6 @@
       "descripcion": "prueba ",
       "fecha": "2025-05-26 10:02",
       "id": "0005db5d-0ddd-44fb-819a-c5b6fd33add2",
-      "nombreUsuario": "Sergio Gómez",
-      "tipo": "Comentario",
-      "userId": 1
-    },
-    {
-      "descripcion": "prueba 2",
-      "fecha": "2025-05-26 10:03",
-      "id": "be4678fc-9304-4176-9d1f-ec55b4918b6b",
       "nombreUsuario": "Sergio Gómez",
       "tipo": "Comentario",
       "userId": 1
@@ -38008,8 +38008,8 @@
       "userId": 1
     },
     {
-      "descripcion": "hacha rota sala 3",
-      "fecha": "2025-06-06 06:34",
+      "descripcion": "hacha rota sala 3 diana 1",
+      "fecha": "2025-06-06 09:34",
       "id": "a3e75a07-27f7-4919-bf3d-a7543686a549",
       "nombreUsuario": "Sergio Gómez",
       "tipo": "Comentario",

@@ -1,4 +1,4 @@
-package com.example.gestionreservas.models.entity
+package com.example.gestionreservas.models.enums
 
 enum class EstadoSala {
     LIBRE,

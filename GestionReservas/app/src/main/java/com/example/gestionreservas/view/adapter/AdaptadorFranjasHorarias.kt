@@ -1,7 +1,6 @@
 package com.example.gestionreservas.view.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionreservas.R
 import com.example.gestionreservas.models.entity.Compra
-import com.example.gestionreservas.models.entity.EstadoSala
+import com.example.gestionreservas.models.enums.EstadoSala
 import com.example.gestionreservas.models.entity.FranjaHorariaReservas
 import com.example.gestionreservas.models.entity.ItemReservaPorSala
 import com.example.gestionreservas.models.entity.SalaConEstado

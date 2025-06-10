@@ -1,7 +1,6 @@
 package com.example.gestionreservas.view.adapter
 
 import android.content.Context
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +9,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionreservas.R
 import com.example.gestionreservas.models.entity.Comentario
-import com.example.gestionreservas.models.entity.PagoCaja
-import com.example.gestionreservas.view.adapter.AdaptadorCajaChica.MyHolder
+import com.example.gestionreservas.models.enums.AccionComentario
 
 class AdaptadorComentarios(
     private val context: Context,
-    private var listaComentarios:List<Comentario>
+    private var listaComentarios:List<Comentario>,
+    private var onAccionClick: ((Comentario, AccionComentario) -> Unit)? =null
 ):RecyclerView.Adapter<AdaptadorComentarios.MyHolder>(){
 
     class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,6 +36,14 @@ class AdaptadorComentarios(
         holder.nombreUsuario.text=item.nombreUsuario
         holder.fecha.text=item.fecha
         holder.descripcion.text=item.descripcion
+
+        holder.editar.setOnClickListener {
+            onAccionClick?.invoke(item, AccionComentario.EDITAR)
+        }
+
+        holder.delete.setOnClickListener {
+            onAccionClick?.invoke(item, AccionComentario.ELIMINAR)
+        }
 
     }
 

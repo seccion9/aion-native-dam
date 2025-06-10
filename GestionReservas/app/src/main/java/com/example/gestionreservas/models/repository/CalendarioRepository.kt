@@ -22,7 +22,8 @@ class CalendarioRepository(private val api: ApiServiceFake) {
      y las filtra por fecha exacta.
      */
     suspend fun obtenerOcupacionesDelDia(token: String, fechaStr: String): List<Ocupacion> {
-        val lista = api.obtenerReservasDia(token, fechaStr, fechaStr)
+        val lista = api.obtenerReservasDia("Bearer $token", fechaStr, fechaStr)
+        Log.e("CalendaioRepository","Lista:$lista")
         return lista.filter { it.date == fechaStr }
     }
 

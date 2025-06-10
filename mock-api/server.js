@@ -398,6 +398,47 @@ server.delete('/api/paymentsCajaChica/:id', (req, res) => {
   res.status(200).json({ mensaje: `Pago ${id} eliminado correctamente` });
 });
 
+server.delete('/api/comentarios/:id', (req, res) => {
+  const { id } = req.params;
+
+  const comentario = router.db.get('comentarios').find({ id }).value();
+
+  if (!comentario) {
+    return res.status(404).json({ error: 'Comentario no encontrado' });
+  }
+
+  router.db.get('comentarios').remove({ id }).write();
+
+  res.status(200).json({ mensaje: `Comentario ${id} eliminado correctamente` });
+});
+
+server.patch('/api/comentarios/:id', (req, res) => {
+  const { id } = req.params;
+  const cambios = req.body;
+
+  const auth = req.headers.authorization || '';
+  const token = auth.replace('Bearer ', '');
+  const user = router.db.get('users').find({ token }).value();
+
+  if (!user) return res.status(403).json({ error: 'Token inválido' });
+
+  const comentario = router.db.get('comentarios').find({ id }).value();
+
+  if (!comentario) {
+    return res.status(404).json({ error: 'Comentario no encontrado' });
+  }
+
+  if (String(comentario.userId) !== String(user.id)) {
+    return res.status(403).json({ error: 'No tienes permiso para editar este comentario' });
+  }
+
+  const comentarioActualizado = router.db.get('comentarios')
+    .find({ id })
+    .assign(cambios)
+    .write();
+
+  res.status(200).json(comentarioActualizado);
+});
 
 
 server.use(router);     // todas las colecciones con prefijo /api

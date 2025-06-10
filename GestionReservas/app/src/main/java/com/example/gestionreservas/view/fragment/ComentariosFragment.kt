@@ -1,33 +1,49 @@
 package com.example.gestionreservas.view.fragment
 
+import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.content.Context.MODE_PRIVATE
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestionreservas.R
+import com.example.gestionreservas.R.layout.bottomsheet_filtro_comentarios
 import com.example.gestionreservas.databinding.FragmentComentariosBinding
-import com.example.gestionreservas.databinding.FragmentListadoBinding
+import com.example.gestionreservas.models.enums.AccionComentario
 import com.example.gestionreservas.models.repository.ComentariosRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
 import com.example.gestionreservas.view.adapter.AdaptadorComentarios
-import com.example.gestionreservas.viewModel.CajaChica.CajaChicaViewModel
-import com.example.gestionreservas.viewModel.CajaChica.CajaChicaViewModelFactory
+import com.example.gestionreservas.view.dialogs.DialogoEditarComentarios
 import com.example.gestionreservas.viewModel.Comentarios.ComentariosViewModel
 import com.example.gestionreservas.viewModel.Comentarios.ComentariosViewModelFactory
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class ComentariosFragment: Fragment() {
     private lateinit var binding:FragmentComentariosBinding
     private lateinit var viewModel:ComentariosViewModel
     private val comentariosRepository=ComentariosRepository(RetrofitFakeInstance.apiFake)
     private lateinit var adaptadorComentarios: AdaptadorComentarios
+    @RequiresApi(Build.VERSION_CODES.O)
+    private var fechaInicioSeleccionada: String? = null
+    @RequiresApi(Build.VERSION_CODES.O)
+    private var fechaFinSeleccionada: String? = null
 
     //Añadimos al menú el boton de filtro
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -35,6 +51,7 @@ class ComentariosFragment: Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -53,30 +70,162 @@ class ComentariosFragment: Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun instancias(){
+        binding.tvFechaFiltro.text = "Todas las fechas"
+
         //Adaptador
-        adaptadorComentarios= AdaptadorComentarios(requireContext(), emptyList())
+        adaptadorComentarios = AdaptadorComentarios(requireContext(), emptyList()) { comentario, accion ->
+            when (accion) {
+                // Acción de editar comentario
+                AccionComentario.EDITAR -> {
+                    val dialogo = DialogoEditarComentarios.nuevaInstanciaParaEditar(comentario) { comentarioEditado ->
+                        viewModel.editarComentario(getTokenFromSharedPreferences().toString(), comentarioEditado)
+                    }
+                    dialogo.show(parentFragmentManager, "DialogoEditarComentario")
+
+                }
+                // Acción de eliminar comentario
+                AccionComentario.ELIMINAR -> {
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("Confirmar eliminación")
+                        .setMessage("¿Estás seguro de que quieres eliminar este comentario?")
+                        .setPositiveButton("Sí") { _, _ ->
+                            viewModel.eliminarComentario(getTokenFromSharedPreferences().toString(),comentario)
+                        }
+                        .setNegativeButton("Cancelar", null)
+                        .show()
+
+                }
+            }
+        }
+
         binding.recylerComentarios.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recylerComentarios.adapter = adaptadorComentarios
 
         observers()
+        filtrarPorDescripcion()
     }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun filtrarPorDescripcion() {
+        binding.editFiltroNombre.addTextChangedListener { editable ->
+            val descripcion = editable.toString() ?: ""
+            viewModel.actualizarFiltros(
+                descripcion = descripcion,
+                fechaInicio = fechaInicioSeleccionada,
+                fechaFin = fechaFinSeleccionada
+            )
+        }
+    }
+
 
     /**
      * Observers del viewmodel para cambiar datos de la vista en tiempo rela.
      */
-    private fun observers(){
+    private fun observers() {
         //Actualiza la lista de comentarios al detecta un cambio el viewmodel
-        viewModel.comentarios.observe(viewLifecycleOwner){comentarios ->
+        viewModel.comentarios.observe(viewLifecycleOwner) { comentarios ->
             Log.d("ComentariosFragment", "Se recibieron ${comentarios.size} comentarios")
             adaptadorComentarios.actualizarLista(comentarios)
+        }
+        viewModel.comentarioEliminado.observe(viewLifecycleOwner) { exito ->
+            exito?.let {
+                if (it) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Comentario eliminado correctamente",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Error al eliminar el comentario",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                viewModel.limpiarEstadoComentarioEliminado()
+            }
         }
     }
     //Metodo para obtener nuestro token guardado en shared preferences
     private fun getTokenFromSharedPreferences(): String? {
         val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", MODE_PRIVATE)
         return sharedPreferences.getString("auth_token", null)
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_filtro -> {
+                mostrarBottomSheetFiltro()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun mostrarBottomSheetFiltro() {
+        val bottomSheetView = layoutInflater.inflate(bottomsheet_filtro_comentarios, null)
+        val dialog = BottomSheetDialog(requireContext())
+        dialog.setContentView(bottomSheetView)
+
+        val editFechaInicio = bottomSheetView.findViewById<EditText>(R.id.editFechaInicio)
+        val editFechaFin = bottomSheetView.findViewById<EditText>(R.id.editFechaFin)
+        val btnAplicar = bottomSheetView.findViewById<TextView>(R.id.btnAplicarFiltros)
+        val btnCancelar = bottomSheetView.findViewById<TextView>(R.id.btnCancelarFiltros)
+
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        val hoy = LocalDate.now()
+
+        // Fecha Inicio
+        editFechaInicio.setOnClickListener {
+            val datePicker = DatePickerDialog(requireContext(), { _, year, month, day ->
+                val fecha = LocalDate.of(year, month + 1, day)
+                editFechaInicio.setText(fecha.format(formatter))
+            }, hoy.year, hoy.monthValue - 1, hoy.dayOfMonth)
+            datePicker.show()
+        }
+
+        // Fecha Fin
+        editFechaFin.setOnClickListener {
+            val datePicker = DatePickerDialog(requireContext(), { _, year, month, day ->
+                val fecha = LocalDate.of(year, month + 1, day)
+                editFechaFin.setText(fecha.format(formatter))
+            }, hoy.year, hoy.monthValue - 1, hoy.dayOfMonth)
+            datePicker.show()
+        }
+
+        // Cancelar
+        btnCancelar.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        // Aplicar filtro
+        btnAplicar.setOnClickListener {
+            val fechaInicio = editFechaInicio.text.toString()
+            val fechaFin = editFechaFin.text.toString()
+
+            if (fechaInicio.isNotEmpty() && fechaFin.isNotEmpty()) {
+                // Aquí sí tiene sentido guardar
+                fechaInicioSeleccionada = fechaInicio
+                fechaFinSeleccionada = fechaFin
+
+                // Reaplicamos filtro combinado
+                val descripcionActual = binding.editFiltroNombre.text.toString()
+                viewModel.actualizarFiltros(
+                    descripcion = descripcionActual,
+                    fechaInicio = fechaInicio,
+                    fechaFin = fechaFin
+                )
+
+                binding.tvFechaFiltro.text = "${fechaInicio.substring(5,10)} / ${fechaFin.substring(5,10)}"
+                dialog.dismiss()
+            }
+        }
+
+
+        dialog.show()
     }
 
 }

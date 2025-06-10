@@ -28,6 +28,7 @@ import com.example.gestionreservas.view.fragment.ComentariosFragment
 import com.example.gestionreservas.view.fragment.ConfiguracionFragment
 import com.example.gestionreservas.view.fragment.HomeFragment
 import com.example.gestionreservas.view.fragment.ListadoFragment
+import com.example.gestionreservas.view.fragment.MailingFragment
 import java.util.concurrent.TimeUnit
 
 class ReservasActivity : AppCompatActivity() {

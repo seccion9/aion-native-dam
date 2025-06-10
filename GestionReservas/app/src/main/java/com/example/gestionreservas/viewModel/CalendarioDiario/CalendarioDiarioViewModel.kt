@@ -1,21 +1,17 @@
 package com.example.gestionreservas.viewModel.CalendarioDiario
 
-import android.content.Context
 import android.os.Build
 import android.util.Log
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gestionreservas.models.entity.Bloqueo
-import com.example.gestionreservas.models.entity.Compra
-import com.example.gestionreservas.models.entity.EstadoSala
+import com.example.gestionreservas.models.enums.EstadoSala
 import com.example.gestionreservas.models.entity.FranjaHorariaReservas
 import com.example.gestionreservas.models.entity.Ocupacion
 import com.example.gestionreservas.models.entity.SalaConEstado
-import com.example.gestionreservas.models.entity.Sesion
 import com.example.gestionreservas.models.entity.SesionConCompra
 import com.example.gestionreservas.models.repository.CalendarioRepository
 import com.example.gestionreservas.models.repository.CompraRepository
@@ -108,7 +104,6 @@ class CalendarioDiarioViewModel(
                 val sesiones = compraRepository.obtenerSesionesDelDia(token, fecha)
                 sesionesGuardadas = sesiones
 
-
                 val listaOcupaciones = sesiones.mapNotNull { sc ->
                     sc.compra?.let { compra ->
                         val item = compra.items.firstOrNull()
@@ -125,11 +120,13 @@ class CalendarioDiarioViewModel(
                         } else null
                     }
                 }
-                Log.e("LISTAOCUPACIONES",listaOcupaciones.toString())
+
                 _ocupaciones.value = listaOcupaciones
+
+                val listaBloqueos = calendarioRepository.obtenerBloqueos("Bearer $token")
+                _bloqueos.value = listaBloqueos
+
                 actualizarFranjasConOcupaciones()
-
-
 
             } catch (e: Exception) {
                 try {
@@ -137,7 +134,6 @@ class CalendarioDiarioViewModel(
                         token,
                         fecha.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
                     )
-
                     _ocupaciones.postValue(fallback)
                 } catch (fallbackError: Exception) {
                     Log.e("Error", fallbackError.message.toString())
@@ -145,6 +141,7 @@ class CalendarioDiarioViewModel(
             }
         }
     }
+
     @RequiresApi(Build.VERSION_CODES.O)
     fun actualizarFranjasConOcupaciones() {
         val listaBase = generarHorasDelDia().toMutableList()
@@ -172,7 +169,6 @@ class CalendarioDiarioViewModel(
 
                 for (salaId in ocupacion.salas!!) {
                     val index = salaId.removePrefix("cal").toIntOrNull()?.minus(1)
-                    Log.d("DEBUG_SALA", "Asignando ${salaId} a index $index para la franja ${franja.horaInicio}")
                     if (index != null && index in 0 until totalSalas) {
                         salasDeFranja[index] = SalaConEstado(
                             idSala = salaId,
@@ -182,13 +178,14 @@ class CalendarioDiarioViewModel(
                     }
                 }
             }
+
+            // Procesar bloqueos del día
             val bloqueosDelDia = _bloqueos.value?.filter { bloqueo ->
                 val tipo = bloqueo.tipo.lowercase()
                 val fechaFranja = fechaActual.value?.toString() ?: return@filter false
 
                 when (tipo) {
                     "dia_entero" -> {
-                        // Si la franja coincide con el día del bloqueo
                         bloqueo.inicio == fechaFranja
                     }
                     "franja" -> {
@@ -200,7 +197,6 @@ class CalendarioDiarioViewModel(
                             val horaFranja = LocalTime.parse(franja.horaInicio, DateTimeFormatter.ofPattern("HH:mm"))
                             val fechaFranjaCompleta = LocalDateTime.of(_fechaActual.value, horaFranja)
 
-                            // Si la franja está dentro del rango de bloqueo
                             fechaFranjaCompleta in inicio..fin
                         } catch (e: Exception) {
                             false
@@ -210,19 +206,21 @@ class CalendarioDiarioViewModel(
                 }
             } ?: emptyList()
 
-        // Aplicar bloqueos a salas de la franja
+            // APLICAR bloqueos con prioridad sobre reservas
             for (bloqueo in bloqueosDelDia) {
                 for (salaBloqueada in bloqueo.salas) {
                     val idNormalizado = salaBloqueada.lowercase().replace(" ", "")
-                    val index = idNormalizado.removePrefix("sala").toIntOrNull()?.minus(1)
+                    val index = idNormalizado.removePrefix("sala").removePrefix("cal").toIntOrNull()?.minus(1)
                     if (index != null && index in 0 until totalSalas) {
-                        salasDeFranja[index] = salasDeFranja[index].copy(estado = EstadoSala.BLOQUEADA)
+                        salasDeFranja[index] = SalaConEstado(
+                            idSala = "cal${index + 1}",
+                            estado = EstadoSala.BLOQUEADA,
+                            reserva = null // IMPORTANTE: anular reserva si la tenía
+                        )
                     }
                 }
             }
 
-
-            // Asignar la lista final de salas a la franja
             franja.salas = salasDeFranja
         }
 
