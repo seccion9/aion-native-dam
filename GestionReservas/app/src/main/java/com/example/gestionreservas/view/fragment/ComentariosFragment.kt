@@ -11,7 +11,9 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -24,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestionreservas.R
 import com.example.gestionreservas.R.layout.bottomsheet_filtro_comentarios
 import com.example.gestionreservas.databinding.FragmentComentariosBinding
+import com.example.gestionreservas.models.entity.Comentario
 import com.example.gestionreservas.models.enums.AccionComentario
 import com.example.gestionreservas.models.repository.ComentariosRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
@@ -35,7 +38,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-class ComentariosFragment: Fragment() {
+class ComentariosFragment: Fragment(),OnClickListener {
     private lateinit var binding:FragmentComentariosBinding
     private lateinit var viewModel:ComentariosViewModel
     private val comentariosRepository=ComentariosRepository(RetrofitFakeInstance.apiFake)
@@ -65,7 +68,9 @@ class ComentariosFragment: Fragment() {
         val factory = ComentariosViewModelFactory(comentariosRepository)
         viewModel = ViewModelProvider(this, factory)[ComentariosViewModel::class.java]
 
+        binding.swipeRefreshComentarios.isRefreshing = true
         viewModel.obtenerComentarios(getTokenFromSharedPreferences().toString())
+
         instancias()
         return binding.root
     }
@@ -73,6 +78,13 @@ class ComentariosFragment: Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun instancias(){
         binding.tvFechaFiltro.text = "Todas las fechas"
+        binding.btnAgregarComentario.setOnClickListener(this)
+
+        //refresca la pantalla y los comentarios
+        binding.swipeRefreshComentarios.setOnRefreshListener {
+            viewModel.obtenerComentarios(getTokenFromSharedPreferences().toString())
+        }
+
 
         //Adaptador
         adaptadorComentarios = AdaptadorComentarios(requireContext(), emptyList()) { comentario, accion ->
@@ -103,6 +115,9 @@ class ComentariosFragment: Fragment() {
         binding.recylerComentarios.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recylerComentarios.adapter = adaptadorComentarios
+        //Animación del recycler
+        binding.recylerComentarios.layoutAnimation =
+            AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_fade_in)
 
         observers()
         filtrarPorDescripcion()
@@ -128,7 +143,10 @@ class ComentariosFragment: Fragment() {
         viewModel.comentarios.observe(viewLifecycleOwner) { comentarios ->
             Log.d("ComentariosFragment", "Se recibieron ${comentarios.size} comentarios")
             adaptadorComentarios.actualizarLista(comentarios)
+            binding.swipeRefreshComentarios.isRefreshing = false
+            binding.recylerComentarios.scheduleLayoutAnimation()
         }
+        //Comprueba si fue exitosa la eliminación de un comentario
         viewModel.comentarioEliminado.observe(viewLifecycleOwner) { exito ->
             exito?.let {
                 if (it) {
@@ -154,6 +172,10 @@ class ComentariosFragment: Fragment() {
         val sharedPreferences = requireActivity().getSharedPreferences("my_prefs", MODE_PRIVATE)
         return sharedPreferences.getString("auth_token", null)
     }
+
+    /**
+     * Detecta la pulsación del icono de filtro del menú para mostrar bottomsheet
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -164,6 +186,10 @@ class ComentariosFragment: Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    /**
+     * Muestra bottomsheet filtrar comentarios
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun mostrarBottomSheetFiltro() {
         val bottomSheetView = layoutInflater.inflate(bottomsheet_filtro_comentarios, null)
@@ -227,5 +253,21 @@ class ComentariosFragment: Fragment() {
 
         dialog.show()
     }
+
+    /**
+     * Muestra dialogo de agregar comentario al pulsar en agregar y lo añade a la api a través
+     * del viewmodel
+     */
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            binding.btnAgregarComentario.id -> {
+                val dialogo = DialogoEditarComentarios.nuevaInstanciaParaAgregar { nuevoComentario ->
+                    viewModel.agregarComentario(getTokenFromSharedPreferences().toString(), nuevoComentario)
+                }
+                dialogo.show(parentFragmentManager, "DialogoNuevoComentario")
+            }
+        }
+    }
+
 
 }

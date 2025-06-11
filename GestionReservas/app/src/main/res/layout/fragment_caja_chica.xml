@@ -1,46 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshCajaChica"
     android:layout_width="match_parent"
-    android:background="@color/fondo_app"
-    android:padding="10dp"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/cajaChicaItem"
-        layout="@layout/caja_chica"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    <!-- Lista de pagos -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginBottom="10dp"
-        android:id="@+id/recyclerPagosCaja"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnConfirmarSeleccion"
-        app:layout_constraintEnd_toEndOf="@+id/cajaChicaItem"
-        app:layout_constraintStart_toStartOf="@+id/cajaChicaItem"
-        app:layout_constraintTop_toBottomOf="@+id/cajaChicaItem" />
+        android:layout_height="match_parent"
+        android:background="@color/fondo_app"
+        android:padding="10dp">
 
-    <TextView
-        android:id="@+id/btnConfirmarSeleccion"
-        android:layout_width="match_parent"
-        android:background="@drawable/btn_borde_azul"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:text="Confirmar selección"
-        android:textSize="20sp"
-        android:textColor="@color/azul_app"
-        android:textAlignment="center"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <include
+            android:id="@+id/cajaChicaItem"
+            layout="@layout/caja_chica"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Lista de pagos -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerPagosCaja"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnConfirmarSeleccion"
+            app:layout_constraintEnd_toEndOf="@+id/cajaChicaItem"
+            app:layout_constraintStart_toStartOf="@+id/cajaChicaItem"
+            app:layout_constraintTop_toBottomOf="@+id/cajaChicaItem" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/btnConfirmarSeleccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:background="@drawable/btn_borde_azul"
+            android:text="Confirmar selección"
+            android:textAlignment="center"
+            android:textColor="@color/azul_app"
+            android:textSize="20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

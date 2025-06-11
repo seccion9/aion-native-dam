@@ -45,7 +45,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvtituloDiario">
 
             <TextView
-                android:id="@+id/btnZombieRoom"
+                android:id="@+id/btnConfirmadas"
                 android:layout_width="0dp"
                 android:padding="7dp"
                 android:gravity="center"
@@ -61,7 +61,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnEscapeJungle"
+                app:layout_constraintEnd_toStartOf="@+id/btnPendientes"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_weight="0.5" />
@@ -69,7 +69,7 @@
             <TextView
                 android:gravity="center"
                 android:padding="7dp"
-                android:id="@+id/btnEscapeJungle"
+                android:id="@+id/btnPendientes"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -80,7 +80,7 @@
                 android:text="ESCAPE JUNGLE"
                 android:textColor="@color/gray"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/btnZombieRoom"
+                app:layout_constraintStart_toEndOf="@+id/btnConfirmadas"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -246,8 +246,7 @@
         android:foreground="?attr/selectableItemBackground"
         android:gravity="center"
         android:padding="7dp"
-        android:layout_marginStart="
-10dp"
+        android:layout_marginStart="10dp"
         android:text="Bloqueo masivo"
         android:textColor="@color/white"
         android:textSize="14sp"

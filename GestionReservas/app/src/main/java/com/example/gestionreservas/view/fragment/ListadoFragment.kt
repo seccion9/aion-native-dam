@@ -55,6 +55,14 @@ class ListadoFragment: Fragment(),OnClickListener, AdapterView.OnItemSelectedLis
         viewModel = ViewModelProvider(this, ListadoViewModelFactory(compraRepository,experienciaRepository))[ListadoViewModel::class.java]
 
         instancias()
+        val estadoPreseleccionado = arguments?.getString("estado_preseleccionado", null)
+        estadoPreseleccionado?.let { estado ->
+            val index = listaEstadosReserva.indexOfFirst { it.equals(estado, ignoreCase = true) }
+            if (index != -1) {
+                binding.spinnerEstadoReserva.setSelection(index)
+                viewModel.actualizarEstadoSeleccionado(listaEstadosReserva[index])
+            }
+        }
 
         return binding.root
     }
@@ -124,7 +132,7 @@ class ListadoFragment: Fragment(),OnClickListener, AdapterView.OnItemSelectedLis
         }
         viewModel.listaFiltrada.observe(viewLifecycleOwner) { lista ->
             adaptadorListado.actualizarLista(lista)
-
+            binding.recyclerReservasListado.scheduleLayoutAnimation()
         }
         viewModel.experiencias.observe(viewLifecycleOwner) { experiencias ->
             listaExperiencias = experiencias.toMutableList()

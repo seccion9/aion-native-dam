@@ -19,7 +19,11 @@ class AdaptadorPagos(
 ) : RecyclerView.Adapter<AdaptadorPagos.MyHolder>() {
     private val itemsDesplegados = mutableSetOf<Int>()
 
+    /**
+     * Instancias de nuestra clase holder
+     */
     class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         var concepto = itemView.findViewById<TextView>(R.id.tvConcepto)
         var fecha = itemView.findViewById<TextView>(R.id.tvFecha)
         var pago = itemView.findViewById<TextView>(R.id.tvCantidadPago)

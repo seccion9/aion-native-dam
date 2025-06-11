@@ -17,7 +17,7 @@ object RetrofitFakeInstance {
 
     //Cambiar IP segun la IP que tengamos en nuestro ordenador
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.1.176:3000/api/")
+        .baseUrl("http://192.168.1.142:3000/api/")
         .client(okHttp)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

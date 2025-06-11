@@ -16,7 +16,9 @@ class AdaptadorComentarios(
     private var listaComentarios:List<Comentario>,
     private var onAccionClick: ((Comentario, AccionComentario) -> Unit)? =null
 ):RecyclerView.Adapter<AdaptadorComentarios.MyHolder>(){
-
+    /**
+     * Instancias de clase MyHolder
+     */
     class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var nombreUsuario=itemView.findViewById<TextView>(R.id.nombreUsuario)
         var fecha=itemView.findViewById<TextView>(R.id.tvHoraItemComentarios)
@@ -36,7 +38,7 @@ class AdaptadorComentarios(
         holder.nombreUsuario.text=item.nombreUsuario
         holder.fecha.text=item.fecha
         holder.descripcion.text=item.descripcion
-
+        //Listeners para realizar una opción u otra según se pinche en un icono u otro.
         holder.editar.setOnClickListener {
             onAccionClick?.invoke(item, AccionComentario.EDITAR)
         }

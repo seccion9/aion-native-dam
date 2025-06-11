@@ -54,6 +54,12 @@ class DialogoEditarComentarios(
             if (index != -1) {
                 binding.spinnerTipoComentario.setSelection(index)
             }
+        } ?: run {
+            // Si es nuevo comentario, prerellenar campos útiles
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+            binding.editFecha.setText(LocalDateTime.now().format(formatter))
+            binding.editUsuario.setText("Sergio Gómez")
+            binding.tvTituloEditar.setText("Agregar comentario")
         }
 
         binding.btnGuardar.setOnClickListener {
@@ -75,14 +81,15 @@ class DialogoEditarComentarios(
                 return@setOnClickListener
             }
 
-            val comentarioActualizado = Comentario(
-                id = comentarioExistente!!.id,
+            val comentarioFinal = Comentario(
+                id = comentarioExistente?.id ?: java.util.UUID.randomUUID().toString(),
                 fecha = fecha,
                 nombreUsuario = usuario,
                 descripcion = descripcion,
-                tipo = tipo
+                tipo = tipo,
             )
-            onGuardar(comentarioActualizado)
+
+            onGuardar(comentarioFinal)
             dismiss()
         }
     }

@@ -5,7 +5,9 @@ import com.example.gestionreservas.models.entity.Comentario
 import com.example.gestionreservas.network.ApiServiceFake
 
 class ComentariosRepository(private val api: ApiServiceFake) {
-
+    /**
+     * Obtiene comentarios de la API a través del API service y devuelve una lista de tipo comentario
+     */
     suspend fun obtenerComentariosApi(token: String): List<Comentario> {
         return try {
             val response = api.obtenerComentarios("Bearer $token")
@@ -20,6 +22,10 @@ class ComentariosRepository(private val api: ApiServiceFake) {
             emptyList()
         }
     }
+
+    /**
+     * Elimina un comentario de la api y devuelve true o falso dependiendo del exito de la operación
+     */
     suspend fun eliminarComentario(token: String, comentario: Comentario): Boolean {
         return try {
             val response = api.eliminarComentario("Bearer $token", comentario.id)
@@ -31,9 +37,30 @@ class ComentariosRepository(private val api: ApiServiceFake) {
             false
         }
     }
+    /**
+     * Edita un comentario de la api y devuelve true o falso dependiendo del exito de la operación
+     */
     suspend fun editarComentario(token: String, comentario: Comentario): Boolean {
         return try {
             val response = api.editarComentario("Bearer $token", comentario.id, comentario)
+            if (response.isSuccessful) {
+                Log.d("ComentariosRepository", "Comentario editado correctamente")
+                true
+            } else {
+                Log.e("ComentariosRepository", "Error al editar: ${response.code()} - ${response.message()}")
+                false
+            }
+        } catch (e: Exception) {
+            Log.e("ComentariosRepository", "Excepción al editar comentario: ${e.message}")
+            false
+        }
+    }
+    /**
+     * Agrea un comentario a la api y devuelve true o falso dependiendo del exito de la operación
+     */
+    suspend fun agregarComentario(token: String, comentario: Comentario): Boolean {
+        return try {
+            val response = api.registrarComentario("Bearer $token", comentario)
             if (response.isSuccessful) {
                 Log.d("ComentariosRepository", "Comentario editado correctamente")
                 true

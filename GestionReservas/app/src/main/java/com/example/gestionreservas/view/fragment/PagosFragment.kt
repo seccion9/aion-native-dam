@@ -41,6 +41,9 @@ class PagosFragment:Fragment() {
     private val compraRepository = CompraRepository(RetrofitFakeInstance.apiFake)
     private var refrescoManual = false
 
+    /**
+     * Botón de filtro en toolbar de la vista
+     */
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_pagos, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -56,6 +59,7 @@ class PagosFragment:Fragment() {
         setHasOptionsMenu(true)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Pagos"
 
+        //Instancia del viewmodel
         val factory = PagosViewModelFactory(cajaChicaRepository, compraRepository)
         viewModel = ViewModelProvider(this, factory)[PagosViewModel::class.java]
 
@@ -64,7 +68,6 @@ class PagosFragment:Fragment() {
     }
 
     private fun instancias() {
-
 
         //Adaptador recyclerview
         listaPagos = mutableListOf()
@@ -77,16 +80,16 @@ class PagosFragment:Fragment() {
         binding.recyclerPagosCajaChica.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recyclerPagosCajaChica.adapter = adaptadorPagos
-
+        //Animación de recarga del recycler
         binding.recyclerPagosCajaChica.layoutAnimation =
             AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_fade_in)
 
+        //Obtiene pagos del viewmodel si el token de shared preferences no es nulo
         getTokenFromSharedPreferences()?.let { viewModel.obtenerPagos(it) }
         //Observers
         observersFragment()
 
         //Refrescar vista
-
         binding.swipeRefreshLayout.setOnRefreshListener {
             refrescoManual = true
             refrescarListado()
@@ -95,6 +98,10 @@ class PagosFragment:Fragment() {
 
         filtrarListaPorConcepto()
     }
+
+    /**
+     * Filtro por concepto detectando con un listener si cambia el texto del editText.
+     */
     private fun filtrarListaPorConcepto() {
         binding.editTextBuscarConcepto.addTextChangedListener { editable ->
             val concepto = editable?.toString() ?: ""
@@ -102,17 +109,23 @@ class PagosFragment:Fragment() {
         }
     }
 
+    /**
+     * Observers del viewmodel para detectar cambios en los datos
+     */
     private fun observersFragment() {
+        //Actualiza vista de pagos en el recycler con animación
         viewModel.pagosCaja.observe(viewLifecycleOwner) { lista ->
 
             Log.d("CajaChicaFragment", "Recibidos ${lista.size} pagos caja")
             adaptadorPagos.actualizarLista(lista)
             binding.recyclerPagosCajaChica.scheduleLayoutAnimation()
         }
+        //Actualiza el recycler con los pagos filtrados
         viewModel.pagosFiltrados.observe(viewLifecycleOwner){pagos ->
             adaptadorPagos.actualizarLista(pagos)
             binding.recyclerPagosCajaChica.scheduleLayoutAnimation()
         }
+        //Detecta cuando dejan de cargarse los datos y muestra toast
         viewModel.cargando.observe(viewLifecycleOwner) { cargando ->
             binding.swipeRefreshLayout.isRefreshing = cargando
             if (!cargando && refrescoManual) {
@@ -132,9 +145,16 @@ class PagosFragment:Fragment() {
         return sharedPreferences.getString("auth_token", null)
     }
 
+    /**
+     * Función para obtener pagos del viewmodel
+     */
     private fun refrescarListado() {
         getTokenFromSharedPreferences()?.let { viewModel.obtenerPagos(it) }
     }
+
+    /**
+     * Detecta el item del menu para filtrar datos y muestra fragment de filtro de pagos.
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_filtro -> {
@@ -144,6 +164,10 @@ class PagosFragment:Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    /**
+     * Muestra bottomsheet para filtrar datos
+     */
     private fun mostrarBottomSheetFiltro() {
         val bottomSheet = FiltroPagosBottomSheetFragment(viewModel)
         bottomSheet.show(parentFragmentManager, "filtro_bottom_sheet")

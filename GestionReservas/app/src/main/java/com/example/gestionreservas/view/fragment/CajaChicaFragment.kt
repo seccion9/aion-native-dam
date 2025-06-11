@@ -8,12 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentCajaChicaBinding
 import com.example.gestionreservas.models.repository.CajaChicaRepository
 import com.example.gestionreservas.network.RetrofitFakeInstance
@@ -43,6 +45,7 @@ class CajaChicaFragment : Fragment(), OnClickListener {
         val factory = CajaChicaViewModelFactory(cajaChicaRepository)
         viewModel = ViewModelProvider(this, factory)[CajaChicaViewModel::class.java]
 
+        binding.swipeRefreshCajaChica.isRefreshing = true
         instancias()
         return binding.root
     }
@@ -52,6 +55,11 @@ class CajaChicaFragment : Fragment(), OnClickListener {
         binding.btnConfirmarSeleccion.setOnClickListener(this)
         binding.cajaChicaItem.btnCajaOpciones.setOnClickListener(this)
         viewModel.obtenerFechaHoy()
+        //Refresca los datos de la vista
+        binding.swipeRefreshCajaChica.setOnRefreshListener {
+            viewModel.obtenerFechaHoy()
+        }
+
         //Muestra dialogo de las opciones a elegir al pinchar en menu del item de la caja aparte de instanciar
         //el adaptador
         adaptadorCajaChica = AdaptadorCajaChica(requireContext(), emptyList()) { pagoSeleccionado ->
@@ -61,6 +69,10 @@ class CajaChicaFragment : Fragment(), OnClickListener {
         binding.recyclerPagosCaja.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recyclerPagosCaja.adapter = adaptadorCajaChica
+        //Animación del recylerview
+        binding.recyclerPagosCaja.layoutAnimation =
+            AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_fade_in)
+
         observers()
     }
 
@@ -70,12 +82,16 @@ class CajaChicaFragment : Fragment(), OnClickListener {
      */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun observers() {
+        //Actualiza lista de pagos y asigna el total al textView añadiendo animación al recyler
         viewModel.pagosCajaChica.observe(viewLifecycleOwner) { pagos ->
             adaptadorCajaChica.actualizarLista(pagos)
             val total = pagos.sumOf { it.cantidad.toDoubleOrNull() ?: 0.0 }
             binding.cajaChicaItem.tvCajaTotal.text = String.format("%.2f€", total)
-        }
+            binding.recyclerPagosCaja.scheduleLayoutAnimation()
+            binding.swipeRefreshCajaChica.isRefreshing = false
 
+        }
+        //Comprueba si el pago registrado fue exitoso o no
         viewModel.pagoRegistrado.observe(viewLifecycleOwner) { exito ->
             exito?.let {
                 if (it) {
@@ -92,6 +108,7 @@ class CajaChicaFragment : Fragment(), OnClickListener {
                 viewModel.limpiarEstadoPago()
             }
         }
+        //Comprueba si el pago eliminado fue exitoso o no
         viewModel.pagoEliminado.observe(viewLifecycleOwner) { exito ->
             exito?.let {
                 if (it) {
@@ -108,10 +125,10 @@ class CajaChicaFragment : Fragment(), OnClickListener {
         viewModel.fechaActual.observe(viewLifecycleOwner) { fecha ->
             val token = "Bearer ${getTokenFromSharedPreferences()}"
             val fechaFormateada = fecha.format(DateTimeFormatter.ISO_LOCAL_DATE)
-            viewModel.obtenerPagosCajaDia(token, fechaFormateada)
 
             if (token != null) {
                 viewModel.obtenerPagosCajaDia(token, fechaFormateada)
+
             }
         }
     }

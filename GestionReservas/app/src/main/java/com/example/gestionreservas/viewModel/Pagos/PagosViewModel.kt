@@ -36,7 +36,10 @@ class PagosViewModel(
     private var filtroEstado = "-- Todos --"
     private var filtroConcepto = ""
 
-
+    /**
+     * Comprueba si los diferentes filtros son nulos,después filtra la lista dependiendo de los filtros
+     * obtenidos y los guarda en pagos filtrados
+     */
     fun actualizarFiltros(tipo: String? = null, estado: String? = null, concepto: String? = null) {
         tipo?.let { filtroTipo = it }
         estado?.let { filtroEstado = it }
@@ -51,7 +54,11 @@ class PagosViewModel(
         }
     }
 
-
+    /**
+     * Obtiene pagos de caja chica repository lanzando una corrutina y filtra aquellos que son superiores
+     * a cero,después obtne las compras a través de compra repository suma las listas y las ordena por
+     * orden de realización
+     */
     fun obtenerPagos(token: String) {
         viewModelScope.launch {
             _cargando.value = true
@@ -89,6 +96,11 @@ class PagosViewModel(
             }
         }
     }
+
+    /**
+     * Genera objetos pago con objetos compra y los guarda en una lista de pagos para usarla en el
+     * viewmodel y el fragment
+     */
     fun generarPagosConCompras(listaCompras: List<Compra>): List<PagoReserva> {
         val listaPagos: MutableList<PagoReserva> = mutableListOf()
         _mapaPagosACompras.clear()

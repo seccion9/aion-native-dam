@@ -128,7 +128,10 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
         viewModel.bloqueos.observe(viewLifecycleOwner) { bloqueos ->
             Log.d("FRAGMENT_BLOQUEOS", "Bloqueos recibidos: ${bloqueos?.size}")
             bloqueos?.forEach { bloqueo ->
-                Log.d("FRAGMENT_BLOQUEOS", "Bloqueo -> id: ${bloqueo.id}, tipo: ${bloqueo.tipo}, salas: ${bloqueo.salas}, inicio: ${bloqueo.inicio}")
+                Log.d(
+                    "FRAGMENT_BLOQUEOS",
+                    "Bloqueo -> id: ${bloqueo.id}, tipo: ${bloqueo.tipo}, salas: ${bloqueo.salas}, inicio: ${bloqueo.inicio}"
+                )
             }
         }
     }
@@ -151,7 +154,7 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
                     .addToBackStack(null)
                     .commit()
             },
-            onItemClick = {compraSeleccionada ->
+            onItemClick = { compraSeleccionada ->
                 val bundle = Bundle().apply {//Te lleva a la vista reserva al pinchar en el
                     putSerializable("compra", compraSeleccionada)
                 }
@@ -166,7 +169,8 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
         binding.recyclerHorasSalas.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerHorasSalas.adapter = adaptadorFranjasHorarias
         //Animación del recycler
-        val controller = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_fade_in)
+        val controller =
+            AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_fade_in)
         binding.recyclerHorasSalas.layoutAnimation = controller
         //Refresca pantalla al inicio.
         binding.swipeRefreshLayout.setOnRefreshListener {
@@ -174,6 +178,7 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
         }
 
     }
+
     //Actualiza la fecha del textview según nos movamos por la vista
     @RequiresApi(Build.VERSION_CODES.O)
     private fun actualizarFecha(fecha: LocalDate) {
@@ -196,24 +201,28 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
             //binding.btnBloquear.id -> cambiarFragment(PostPurchaseFragment())
             binding.btnBloqueoMasivo.id -> mostrarDialogoBloqueo()
             binding.selectFecha.id -> mostrarSeleccionFecha()
-            binding.btnZombieRoom.id -> {
-                val bundle = Bundle()
-                bundle.putString("idExperience", "exp_zombie_2")
-                bundle.putString("nombreExperience", "Zombie Room")
-                val fragment = ListadoFragment()
-                fragment.arguments = bundle
+            binding.btnConfirmadas.id -> {
+                val bundle = Bundle().apply {
+                    putString("estado_preseleccionado", "Confirmada")
+                }
+                val fragment = ListadoFragment().apply {
+                    arguments = bundle
+                }
                 cambiarFragment(fragment)
             }
-            binding.tvHoy.id ->{
+
+            binding.btnPendientes.id -> {
+                val bundle = Bundle().apply {
+                    putString("estado_preseleccionado", "Pendiente")
+                }
+                val fragment = ListadoFragment().apply {
+                    arguments = bundle
+                }
+                cambiarFragment(fragment)
+            }
+
+            binding.tvHoy.id -> {
                 viewModel.irAHoy()
-            }
-            binding.btnEscapeJungle.id -> {
-                val bundle = Bundle()
-                bundle.putString("idExperience", "exp_jungle_1")
-                bundle.putString("nombreExperience", "Escape Jungle")
-                val fragment = ListadoFragment()
-                fragment.arguments = bundle
-                cambiarFragment(fragment)
             }
         }
     }
@@ -270,7 +279,11 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
                 }
 
                 if (salasSeleccionadas.isEmpty()) {
-                    Toast.makeText(requireContext(), "Debes seleccionar al menos una sala", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Debes seleccionar al menos una sala",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     return@setPositiveButton
                 }
 
@@ -288,7 +301,8 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
                     Log.d("BLOQUEAR_FECHA", "Bloqueo: $bloqueo")
                     viewModel.registrarBloqueo(token, bloqueo)
                 } else {
-                    Toast.makeText(requireContext(), "Token no disponible", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Token no disponible", Toast.LENGTH_SHORT)
+                        .show()
                 }
 
             }
@@ -357,12 +371,13 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
         transacion.addToBackStack(null)
         transacion.commit()
     }
+
     //Instancias listeners
     private fun instanciasListeners() {
         binding.tvFlechaDerechaHoy.setOnClickListener(this)
         binding.tvFlechaIzquierdaHoy.setOnClickListener(this)
-        binding.btnZombieRoom.setOnClickListener(this)
-        binding.btnEscapeJungle.setOnClickListener(this)
+        binding.btnConfirmadas.setOnClickListener(this)
+        binding.btnPendientes.setOnClickListener(this)
         binding.selectFecha.setOnClickListener(this)
         binding.tvHoy.setOnClickListener(this)
         //binding.btnBloquear.setOnClickListener(this)
@@ -370,7 +385,8 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
     }
 
     private fun seleccionSalas(view: View) {
-        val listaSalas = listOf("Sala 1", "Sala 2", "Sala 3", "Sala 4", "Sala 5", "Sala 6", "Sala 7", "Sala 8")
+        val listaSalas =
+            listOf("Sala 1", "Sala 2", "Sala 3", "Sala 4", "Sala 5", "Sala 6", "Sala 7", "Sala 8")
         val contenedorCheckbox = view.findViewById<LinearLayout>(R.id.contenedorCheckboxSalas)
         val checkboxes = mutableListOf<CheckBox>()
 
@@ -393,6 +409,7 @@ class CalendarioFragmentDiario : Fragment(), OnClickListener {
         }
 
     }
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun refrescarTodaLaPantalla() {
         binding.swipeRefreshLayout.isRefreshing = true

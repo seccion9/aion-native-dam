@@ -49,14 +49,14 @@ class CajaChicaViewModel(
                 var listaPagos = cajaChicaRepository.obtenerPagosDelDia(token, fecha)
                 if (listaPagos != null) {
                     _pagosCajaChica.value = listaPagos
-                    Log.e("ViewModelCajaChica", "Pagos obtenidos: $listaPagos")
+                    //Log.e("ViewModelCajaChica", "Pagos obtenidos: $listaPagos")
                 } else {
-                    Log.e("ViewModelCajaChica", "Error al obtener pagos caja")
+                    //Log.e("ViewModelCajaChica", "Error al obtener pagos caja")
                     _pagosCajaChica.value = emptyList()
                 }
 
             } catch (e: Exception) {
-                Log.e("ViewModelCajaChica", "Error al obtener pagos caja : ${e.message}")
+                //Log.e("ViewModelCajaChica", "Error al obtener pagos caja : ${e.message}")
             }
         }
     }
