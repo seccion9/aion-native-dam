@@ -1,6 +1,7 @@
 package com.example.gestionreservas.TestCajaChica
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.gestionreservas.getOrAwaitValue
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.ItemReserva
 import com.example.gestionreservas.models.entity.Pago
@@ -10,7 +11,6 @@ import com.example.gestionreservas.models.entity.ResumenItem
 import com.example.gestionreservas.models.repository.CajaChicaRepository
 import com.example.gestionreservas.models.repository.ComentariosRepository
 import com.example.gestionreservas.viewModel.CajaChica.CajaChicaViewModel
-import com.example.gestionreservas.viewModel.Configuracion.getOrAwaitValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher

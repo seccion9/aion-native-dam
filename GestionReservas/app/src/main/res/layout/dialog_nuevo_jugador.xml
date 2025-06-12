@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/etNombreJugador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del jugador"
+        android:background="@drawable/boton_add_player"
+        android:padding="12dp"
+        android:textColorHint="#999"
+        android:textColor="#000"
+        android:textSize="16sp" />
+</LinearLayout>

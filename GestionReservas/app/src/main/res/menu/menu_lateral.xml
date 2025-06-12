@@ -30,10 +30,10 @@
                 android:id="@+id/comentarios"
                 android:icon="@drawable/comentarios"
                 android:title="Comentarios"/>
-            <!--<item
+            <item
                 android:id="@+id/mailing"
-                android:icon="@drawable/email"
-                android:title="Mailing"/>-->
+                android:icon="@drawable/assign"
+                android:title="Mailing"/>
         </menu>
     </item>
 

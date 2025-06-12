@@ -17,10 +17,12 @@
     <color name="chip_background">#E3F2FD</color>
     <color name="azul_fuerte">#1976D2</color>
     <color name="azul_claro">#E3F2FD</color>
+    <color name="star_yellow">#FFD700</color>
 
     <color name="ambar_fuerte">#FFA000</color>
     <color name="ambar_claro">#FFF8E1</color>
 
+    <color name="fondo_azul_oscuro">#002A2A</color>
     <color name="rojo_fuerte">#D32F2F</color>
     <color name="rojo_claro">#FFEBEE</color>
 

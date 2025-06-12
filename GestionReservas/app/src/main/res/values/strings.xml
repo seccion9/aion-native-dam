@@ -15,6 +15,11 @@
         <item>Consulta</item>
         <item>Cancelacion</item>
     </array>
+    <array name="comentario_monitores">
+        <item>Carlos</item>
+        <item>David</item>
+        <item>Patricia</item>
+    </array>
     <array name="metodosPago_array">
         <item>-- Todos --</item>
         <item>Tarjeta</item>

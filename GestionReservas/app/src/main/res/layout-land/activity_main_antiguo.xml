@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_gradiante"
+    android:background="@color/fondo_app"
     android:padding="20dp"
 
     tools:context=".view.activities.MainActivity">
@@ -17,20 +17,19 @@
         android:layout_marginTop="20dp"
         android:text="Iniciar Sesión"
         android:textSize="38sp"
-        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageView
         android:id="@+id/ivUser"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginTop="20dp"
+        android:background="@color/fondo_app"
         android:scaleType="centerCrop"
-        app:backgroundTint="#004C4C"
-        android:src="@drawable/usuarion"
+        android:src="@drawable/usuario"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tvTitulo"
         app:layout_constraintStart_toStartOf="@+id/tvTitulo"
@@ -38,7 +37,6 @@
 
 
     <EditText
-        android:drawableTint="#004C4C"
         android:id="@+id/editCorreo"
         android:layout_width="250dp"
         android:layout_height="50dp"
@@ -53,7 +51,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:drawableTint="#004C4C"
         android:id="@+id/editPass"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -70,14 +67,11 @@
     <CheckBox
         android:id="@+id/checkboxCuenta"
         android:layout_width="wrap_content"
-        android:textColor="@color/white"
-        app:buttonTint="@color/white"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/editPass"
         app:layout_constraintTop_toBottomOf="@+id/editPass" />
 
     <TextView
-        android:textColor="@color/white"
         android:id="@+id/tvRecordarme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -91,7 +85,7 @@
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/boton_login_azul"
+        android:background="@drawable/boton_personalizado"
         android:foreground="?attr/selectableItemBackground"
         android:text="Login"
         android:textColor="@color/white"
@@ -106,10 +100,10 @@
         android:layout_width="wrap_content"
         android:id="@+id/btnReset"
         android:layout_height="wrap_content"
-        android:background="@drawable/boton_login_blanco"
+        android:background="@drawable/boton_personalizado"
         android:foreground="?attr/selectableItemBackground"
         android:text="Reset"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/editPass"

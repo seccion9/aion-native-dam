@@ -88,9 +88,9 @@ class ReservasActivity : AppCompatActivity() {
                     replaceFragment(ComentariosFragment())
                 }
                 //Se deja opción creada por si en el futuro se quiere implemenatr
-                /*R.id.mailing -> {
+                R.id.mailing -> {
                     replaceFragment(MailingFragment())
-                }*/
+                }
                 R.id.cajaChica ->{
                     replaceFragment(CajaChicaFragment())
                 }

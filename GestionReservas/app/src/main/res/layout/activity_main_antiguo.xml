@@ -5,79 +5,79 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_gradiante"
+    android:background="@color/fondo_app"
     android:padding="20dp"
-
     tools:context=".view.activities.MainActivity">
 
     <TextView
+        android:layout_marginTop="40dp"
         android:id="@+id/tvTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="Iniciar Sesión"
-        android:textSize="38sp"
-        android:textColor="@color/white"
+        android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageView
         android:id="@+id/ivUser"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/fondo_app"
+        android:maxWidth="400dp"
         android:scaleType="centerCrop"
-        app:backgroundTint="#004C4C"
-        android:src="@drawable/usuarion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tvTitulo"
-        app:layout_constraintStart_toStartOf="@+id/tvTitulo"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
-
+        android:src="@drawable/usuario"
+        app:layout_constraintEnd_toEndOf="@id/tvTitulo"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/tvTitulo"
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo" />
 
     <EditText
-        android:drawableTint="#004C4C"
         android:id="@+id/editCorreo"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="70dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:maxWidth="400dp"
         android:background="@drawable/edit_login"
         android:drawableLeft="@drawable/sobre"
         android:hint="Correo electrónico"
         android:paddingLeft="10dp"
+        android:textSize="20sp"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/ivUser"
+        app:layout_constraintStart_toStartOf="@id/ivUser"
+        app:layout_constraintEnd_toEndOf="@id/ivUser" />
 
     <EditText
-        android:drawableTint="#004C4C"
         android:id="@+id/editPass"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:maxWidth="400dp"
         android:background="@drawable/edit_login"
         android:drawableLeft="@drawable/candadocerrado"
         android:hint="Contraseña"
         android:paddingLeft="10dp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editCorreo"
-        app:layout_constraintStart_toStartOf="@+id/editCorreo"
-        app:layout_constraintTop_toBottomOf="@+id/editCorreo" />
+        app:layout_constraintTop_toBottomOf="@id/editCorreo"
+        app:layout_constraintStart_toStartOf="@id/editCorreo"
+        app:layout_constraintEnd_toEndOf="@id/editCorreo" />
+
+
     <CheckBox
         android:id="@+id/checkboxCuenta"
         android:layout_width="wrap_content"
-        android:textColor="@color/white"
-        app:buttonTint="@color/white"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/editPass"
         app:layout_constraintTop_toBottomOf="@+id/editPass" />
 
     <TextView
-        android:textColor="@color/white"
         android:id="@+id/tvRecordarme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -85,57 +85,52 @@
         app:layout_constraintBottom_toBottomOf="@+id/checkboxCuenta"
         app:layout_constraintStart_toEndOf="@+id/checkboxCuenta"
         app:layout_constraintTop_toBottomOf="@+id/editPass" />
-
+    <!-- Botón Login -->
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="20dp"
         android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/boton_login_azul"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/boton_personalizado"
         android:foreground="?attr/selectableItemBackground"
         android:text="Login"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="@+id/editPass"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxCuenta" />
+        app:layout_constraintStart_toStartOf="@id/editPass"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/checkboxCuenta" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
+        android:layout_marginStart="10dp"
         android:id="@+id/btnReset"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/boton_login_blanco"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/boton_personalizado"
         android:foreground="?attr/selectableItemBackground"
         android:text="Reset"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/editPass"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxCuenta" />
+        app:layout_constraintEnd_toEndOf="@id/editPass"
+        app:layout_constraintStart_toEndOf="@id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/checkboxCuenta" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.45" />
 
+    <!-- Guideline vertical para organización (si la necesitas) -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.75" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

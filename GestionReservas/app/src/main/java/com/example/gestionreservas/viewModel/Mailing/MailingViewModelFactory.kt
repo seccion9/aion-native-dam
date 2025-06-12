@@ -2,19 +2,13 @@ package com.example.gestionreservas.viewModel.Mailing
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.gestionreservas.repository.MailingRepository
+import com.example.gestionreservas.models.repository.CompraRepository
+import com.example.gestionreservas.models.repository.ExperienciaRepository
+import com.example.gestionreservas.viewModel.ListadosReservas.ListadoViewModel
 
-
-class MailingViewModelFactory(
-    private val mailingRepository: MailingRepository
-) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(MailingViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return MailingViewModel(mailingRepository) as T
+class MailingViewModelFactory (
+    ) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return MailingViewModel() as T
         }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
 }
-
-

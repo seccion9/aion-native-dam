@@ -1,85 +1,290 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fondo_card_correo"
-    android:padding="10dp">
-
-    <TextView
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/boton_gmail"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="Login Correo"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/btnCerrarSesion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/boton_gmail"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="Cerrar Sesion"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/fondo_app"
+    android:fillViewport="true">
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefresh"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/barraBoton"
-        app:layout_constraintTop_toBottomOf="@+id/barraBoton">
+        android:id="@+id/swipeRefreshMailing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerCorreos"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/white" />
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollMailing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:allowClickWhenDisabled="true"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tituloJugadores"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="8dp"
+                    android:text="Jugadores"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:padding="10dp"
+                    android:id="@+id/recyclerJugadores"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/tituloJugadores"
+                    app:layout_constraintStart_toStartOf="@+id/tituloJugadores"
+                    app:layout_constraintTop_toBottomOf="@+id/tituloJugadores" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/contenerdorBotonAddPlayer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerJugadores">
+
+                    <TextView
+                        android:id="@+id/btnAgregarJugador"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/boton_add_player"
+                        android:gravity="center"
+                        android:text="+ Add player"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tituloMonitor"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="8dp"
+                    android:text="Monitor"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/contenerdorBotonAddPlayer"
+                    app:layout_constraintStart_toStartOf="@+id/contenerdorBotonAddPlayer"
+                    app:layout_constraintTop_toBottomOf="@+id/contenerdorBotonAddPlayer" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutSpinnerMonitoresFondo"
+                    android:layout_width="0dp"
+
+                    android:background="@color/white"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/tituloMonitor"
+                    app:layout_constraintStart_toStartOf="@+id/tituloMonitor"
+                    app:layout_constraintTop_toBottomOf="@+id/tituloMonitor">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutSpinnerMonitores"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/boton_add_player"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <Spinner
+                            android:id="@+id/spinnerEstadoReserva"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="8dp"
+                            android:background="@android:color/transparent"
+                            android:entries="@array/comentario_monitores"
+                            android:popupBackground="@color/white"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/arrowIcon"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/arrowIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:contentDescription="Desplegar"
+                            android:src="@drawable/flecha_abajo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@android:color/black" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutPuntuacion"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutSpinnerMonitoresFondo"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <TextView
+                        android:id="@+id/tituloPuntuacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Puntuación"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <RatingBar
+                        android:id="@+id/ratingEscapeRoom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:stepSize="1"
+                        android:rating="0"
+                        style="?android:attr/ratingBarStyleIndicator"
+                        android:isIndicator="false"
+                        android:progressTint="@color/star_yellow"
+                        app:layout_constraintTop_toTopOf="@id/tituloPuntuacion"
+                        app:layout_constraintBottom_toBottomOf="@id/tituloPuntuacion"
+                        app:layout_constraintStart_toEndOf="@id/tituloPuntuacion"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutComentarios"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutPuntuacion"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <TextView
+                        android:id="@+id/tituloComentarios"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Comentarios"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerComentarios"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/tituloComentarios"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editarComentario"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Escribe un comentario..."
+                        android:background="@drawable/boton_add_player"
+                        android:padding="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/recyclerComentarios"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/botonEnviarComentario"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/botonEnviarComentario"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/send"
+                        android:contentDescription="Enviar"
+                        app:layout_constraintBottom_toBottomOf="@id/editarComentario"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/editarComentario"
+                        app:tint="@color/black" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutFotos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginTop="4dp"
+                    android:padding="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutComentarios"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <TextView
+                        android:id="@+id/tituloFotos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fotos"
+                        android:textStyle="bold"
+
+                        android:textSize="18sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerFotos"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:clipToPadding="false"
+                        android:paddingEnd="8dp"
+                        android:overScrollMode="never"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintTop_toBottomOf="@id/tituloFotos"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/btnAgregarFoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+ Añadir foto"
+                        android:background="@drawable/boton_add_player"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/recyclerFotos"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Barrier
-
-        android:id="@+id/barraBoton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="btnLogin,btnCerrarSesion" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

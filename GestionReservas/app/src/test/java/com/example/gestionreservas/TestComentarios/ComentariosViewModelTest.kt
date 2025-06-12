@@ -1,10 +1,10 @@
 package com.example.gestionreservas.TestComentarios
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.gestionreservas.getOrAwaitValue
 import com.example.gestionreservas.models.entity.Comentario
 import com.example.gestionreservas.models.repository.ComentariosRepository
 import com.example.gestionreservas.viewModel.Comentarios.ComentariosViewModel
-import com.example.gestionreservas.viewModel.Configuracion.getOrAwaitValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher

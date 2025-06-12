@@ -85,12 +85,12 @@ class PagosViewModel(
                     _compras.value=listaCompras
                     _pagosCaja.value =(pagosDesdeCompras+listaCajaChica).sortedByDescending { it.fecha }
                 } else {
-                    Log.e("ViewModelCajaChica", "Error al obtener bloqueos")
+                    //Log.e("ViewModelCajaChica", "Error al obtener bloqueos")
                     _compras.value= emptyList()
                     _pagosCaja.value = emptyList()
                 }
             } catch (e: Exception) {
-                Log.e("ViewModelCajaChica", "Error al obtener pagos ${e.message}")
+                //Log.e("ViewModelCajaChica", "Error al obtener pagos ${e.message}")
             }finally {
                 _cargando.value = false
             }
@@ -107,7 +107,7 @@ class PagosViewModel(
 
         listaCompras.forEach { compra ->
             compra.payments.forEach { payment ->
-                Log.d("PagosDebug", "Payment: ${payment.id}, tipo: ${payment.tipo}")
+                //Log.d("PagosDebug", "Payment: ${payment.id}, tipo: ${payment.tipo}")
                 val pago = PagoReserva(
                     id = payment.id,
                     fecha = compra.fechaCompra,
