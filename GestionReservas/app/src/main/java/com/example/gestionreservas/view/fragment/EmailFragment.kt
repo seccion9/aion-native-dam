@@ -22,11 +22,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentEmailBinding
-import com.example.gestionreservas.databinding.FragmentMailingBinding
 import com.example.gestionreservas.model.CorreoItem
 import com.example.gestionreservas.models.entity.TokenResponse
-import com.example.gestionreservas.repository.MailingRepository
-import com.example.gestionreservas.repository.MailingRepository.obtenerTokenGuardado
+import com.example.gestionreservas.repository.EmailRepository
+import com.example.gestionreservas.repository.EmailRepository.obtenerTokenGuardado
 import com.example.gestionreservas.view.adapter.AdaptadorCorreo
 import com.example.gestionreservas.viewModel.Email.EmailViewModel
 import com.example.gestionreservas.viewModel.Email.EmailViewModelFactory
@@ -85,7 +84,7 @@ class EmailFragment : Fragment(), View.OnClickListener {
         binding = FragmentEmailBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Mailing"
-        val factory = EmailViewModelFactory(MailingRepository)
+        val factory = EmailViewModelFactory(EmailRepository)
         emailViewModel = ViewModelProvider(this, factory).get(EmailViewModel::class.java)
 
         instancias()

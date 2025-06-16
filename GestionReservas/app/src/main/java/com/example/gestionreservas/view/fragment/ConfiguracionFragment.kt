@@ -23,7 +23,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.gestionreservas.R
 import com.example.gestionreservas.databinding.FragmentConfiguracionBinding
-import com.example.gestionreservas.repository.MailingRepository
+import com.example.gestionreservas.repository.EmailRepository
 import com.example.gestionreservas.view.activities.MainActivity
 import com.example.gestionreservas.viewModel.Configuracion.ConfiguracionViewModel
 import com.example.gestionreservas.viewModel.Configuracion.ConfiguracionViewModelFactory
@@ -45,7 +45,7 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
         if (notificacionesActivas) {
             pedirPermisoNotificaciones()
         }
-        val mailingRepository = MailingRepository
+        val mailingRepository = EmailRepository
         val factory = ConfiguracionViewModelFactory(mailingRepository)
         viewModel = ViewModelProvider(this, factory).get(ConfiguracionViewModel::class.java)
 
@@ -169,7 +169,7 @@ class ConfiguracionFragment:Fragment(),OnClickListener {
         when(v?.id){
             binding.tvCerrarSesionGmail.id->{
 
-                MailingRepository.cerrarSesion(requireContext()) {
+                EmailRepository.cerrarSesion(requireContext()) {
                     Toast.makeText(requireContext(), "Sesión de Gmail cerrada", Toast.LENGTH_SHORT).show()
                     requireActivity().invalidateOptionsMenu()
                     binding.tvCorreoGmail.text="No conectado"

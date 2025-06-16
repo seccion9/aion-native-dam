@@ -4,13 +4,16 @@ import com.example.gestionreservas.models.entity.Bloqueo
 import com.example.gestionreservas.models.entity.Comentario
 import com.example.gestionreservas.models.entity.Compra
 import com.example.gestionreservas.models.entity.ExperienciaCompleta
+import com.example.gestionreservas.models.entity.Jugador
 import com.example.gestionreservas.models.entity.LoginRequest
 import com.example.gestionreservas.models.entity.LoginResponse
+import com.example.gestionreservas.models.entity.Monitor
 import com.example.gestionreservas.models.entity.Ocupacion
 import com.example.gestionreservas.models.entity.OcupacionCalendarioSemanal
 import com.example.gestionreservas.models.entity.PagoCaja
 import com.example.gestionreservas.models.entity.PagoCajaChica
 import com.example.gestionreservas.models.entity.PagoReserva
+import com.example.gestionreservas.models.entity.SesionMailing
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -187,4 +190,25 @@ interface ApiServiceFake {
     suspend fun obtenerExperiencias(
         @Header("Authorization") token:String
     ):Response<List<ExperienciaCompleta>>
+
+    /**
+     * Llamadas a endpoint sesiones mailing
+     */
+
+    @POST("sesionesMailing")
+    suspend fun registrarSesionMailing(
+        @Header("Authorization") token: String,
+        @Body sesion: SesionMailing
+    ): Response<SesionMailing>
+
+
+    /**
+     * Llamadas a endpoint monitores
+     */
+
+    //Obtiene los monitores registrados en la API
+    @GET("monitores")
+    suspend fun obtenerMonitores(
+        @Header("Authorization") token:String
+    ):Response<List<Monitor>>
 }

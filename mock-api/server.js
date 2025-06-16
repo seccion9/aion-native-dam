@@ -441,6 +441,37 @@ server.patch('/api/comentarios/:id', (req, res) => {
 });
 
 
+
+server.get('/api/monitores', (req, res) => {
+  const auth = req.headers.authorization || '';
+  const token = auth.replace('Bearer ', '');
+  const user = router.db.get('users').find({ token }).value();
+
+  if (!user) return res.status(403).json({ error: 'Token inválido' });
+
+  const monitoresUsuario = router.db
+    .get('monitores')
+    .filter({ userId: user.id }) // si cada monitor está vinculado a un usuario
+    .value();
+
+  res.status(200).json(monitoresUsuario);
+});
+
+const { v4: uuidv4 } = require('uuid');
+server.post('/api/sesionesMailing', (req, res) => {
+  const nuevaSesion = {
+    ...req.body,
+    id: uuidv4()
+  };
+
+  const db = router.db;
+  db.get('sesionesMailing').push(nuevaSesion).write();
+
+  res.status(201).json(nuevaSesion);
+});
+
+
+
 server.use(router);     // todas las colecciones con prefijo /api
 /* ───────────────────────── Lanzar servidor ───────────────────────── */
 server.listen(3000, () =>

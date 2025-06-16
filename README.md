@@ -1,4 +1,3 @@
-
 # 📱 Gestión de Reservas – Funcionalidades por Pantalla
 
 Este documento describe de forma clara y ordenada las funcionalidades principales de cada fragmento o vista de la aplicación **Gestión de Reservas**.
@@ -123,6 +122,24 @@ Esta vista permite visualizar todos los pagos registrados, incluyendo los asocia
 
 ---
 
+## 📷 MailingFragment
+
+**Registro de información de sesiones especiales.**
+
+- Permite registrar una sesión completa con:
+  - Monitor responsable.
+  - Jugadores asistentes (nombre, imagen, puntuación individual).
+  - Resumen y puntuación final.
+  - Fotos asociadas (base64).
+  - Email de contacto del cliente para futuras comunicaciones.
+- Selección de monitor desde un `Spinner`.
+- Posibilidad de cargar imágenes desde cámara o galería.
+- Se muestra una lista de jugadores añadidos y su puntuación.
+- Botón para **enviar la sesión** (registro en la API).
+- Opción para **resetear** el formulario y comenzar una nueva sesión.
+- Integrado con `ViewModel` y persistencia temporal local.
+
+
 ## 🧭 ReservasActivity
 
 **Contenedor principal de navegación.**
@@ -139,6 +156,22 @@ Esta vista permite visualizar todos los pagos registrados, incluyendo los asocia
 
 ---
 
+## 🧪 Testing
+
+**Cobertura básica de pruebas para asegurar calidad del código.**
+
+- Tests unitarios de los principales `ViewModel`, incluyendo:
+  - `ConfiguracionViewModel`
+  - `CajaChicaViewModel`
+  - `ComentariosViewModel`
+- Verificación de comportamiento esperado en:
+  - Activación y desactivación de notificaciones.
+  - Inserción y eliminación de pagos manuales.
+  - Carga de comentarios desde API mock.
+- Tests instrumentados con **Espresso** para:
+  - Flujo de login.
+  - Navegación hacia fragmentos clave (Caja Chica, Comentarios, Configuración).
+- Uso de `InstantTaskExecutorRule` y `ActivityScenario` en entorno controlado.
 
 
 ## 🧱 Arquitectura y Tecnologías

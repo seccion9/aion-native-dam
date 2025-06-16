@@ -3,6 +3,8 @@
   "/api/getPurchaseById": "/purchasesById",
   "/api/getExperiencesByIdsAndDate": "/experiencesByDate",
   "/api/paymentsCajaChica": "/paymentsCajaChica",
+  "/api/monitores": "/monitores",
+  "/sesionesMailing": "/sesionesMailing",
   "/api/getExperiencesByIds": "/experiencesByIds",
   "/api/paymentsCajaChicaDia": "/paymentsCajaChica"
 }

@@ -8,10 +8,10 @@ import androidx.lifecycle.ViewModel
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.gestionreservas.background.CheckReservasWorker
-import com.example.gestionreservas.repository.MailingRepository
+import com.example.gestionreservas.repository.EmailRepository
 
 class ConfiguracionViewModel(
-    private val mailingRepository: MailingRepository
+    private val mailingRepository: EmailRepository
 ):ViewModel() {
 
     private val _email= MutableLiveData<String?>()

@@ -4,8 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.gestionreservas.getOrAwaitValue
-import com.example.gestionreservas.models.repository.CompraRepository
-import com.example.gestionreservas.repository.MailingRepository
+import com.example.gestionreservas.repository.EmailRepository
 import com.example.gestionreservas.viewModel.Configuracion.ConfiguracionViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -29,12 +28,12 @@ class ConfiguracionViewModelTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
     private val testDispatcher = StandardTestDispatcher()
     private lateinit var viewModel: ConfiguracionViewModel
-    private lateinit var mockRepository: MailingRepository
+    private lateinit var mockRepository: EmailRepository
 
     @Before
     fun setUp(){
         Dispatchers.setMain(testDispatcher)
-        mockRepository=mock(MailingRepository::class.java)
+        mockRepository=mock(EmailRepository::class.java)
     }
     @After
     fun tearDown() {

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.gestionreservas.R
 import com.example.gestionreservas.models.entity.Jugador
+import com.example.gestionreservas.utils.ImagenUtils
 
 class AdaptadorJugadores(
     private var context: Context,
@@ -39,11 +40,14 @@ class AdaptadorJugadores(
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         val jugador = listaJugadores[position]
         holder.nombre.text = jugador.nombre
-        Glide.with(context)
-            .load(jugador.imagen)
-            .placeholder(R.drawable.usuarion)
-            .circleCrop()
-            .into(holder.imagen)
+
+        val bitmap = ImagenUtils.convertirBase64ABitmap(jugador.imagen)
+        if (bitmap != null) {
+            holder.imagen.setImageBitmap(bitmap)
+        } else {
+            holder.imagen.setImageResource(R.drawable.usuarion)
+        }
+
     }
 
     fun actualizarLista(nuevaLista: List<Jugador>) {

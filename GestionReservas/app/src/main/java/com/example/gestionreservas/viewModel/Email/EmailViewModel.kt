@@ -8,11 +8,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gestionreservas.model.CorreoItem
 import com.example.gestionreservas.models.entity.TokenResponse
-import com.example.gestionreservas.repository.MailingRepository
+import com.example.gestionreservas.repository.EmailRepository
 import kotlinx.coroutines.launch
 
 class EmailViewModel(
-    private val mailingRepository: MailingRepository
+    private val mailingRepository: EmailRepository
 ): ViewModel() {
 
     private val _sesionCerrada = MutableLiveData<Boolean>(false)

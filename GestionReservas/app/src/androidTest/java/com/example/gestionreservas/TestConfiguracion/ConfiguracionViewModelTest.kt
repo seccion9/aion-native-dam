@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
-import com.example.gestionreservas.repository.MailingRepository
+import com.example.gestionreservas.repository.EmailRepository
 import com.example.gestionreservas.viewModel.Configuracion.ConfiguracionViewModel
 import com.example.gestionreservas.viewModel.Configuracion.getOrAwaitValue
 import org.junit.Assert.*
@@ -27,7 +27,7 @@ class ConfiguracionViewModelTest {
     fun setUp() {
         context = ApplicationProvider.getApplicationContext()
         context.getSharedPreferences("ajustes", Context.MODE_PRIVATE).edit().clear().commit()
-        viewModel = ConfiguracionViewModel(MailingRepository)
+        viewModel = ConfiguracionViewModel(EmailRepository)
     }
 
     @Test
